@@ -13,8 +13,12 @@ namespace Semesterprojekt_Datenbank.Model
         public DateTime Date { get; set; }
         public decimal TotalNetto { get; set; }
         public decimal TotalBrutto { get; set; }
-        public Customer CustomerId { get; set; }
-        public Order OrderId { get; set; }
-        public Town TownId { get; set; }
+        public int CustomerId { get; set; }
+        public int OrderId { get; set; }
+        public int TownId { get; set; }
+        public Customer Customer { get; set; }
+        public Order Order { get; set; }
+        public Town Town { get; set; }
+        
     }
 }

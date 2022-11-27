@@ -15,7 +15,8 @@ namespace Semesterprojekt_Datenbank.Model
         public string Website { get; set; }
         public string Password { get; set; }
         public string Street { get; set; }
-        public Town TownId { get; set; }
+        public int TownId { get; set; }
+        public Town Town { get; set; }
         public virtual ICollection<Invoice> Invoices { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 

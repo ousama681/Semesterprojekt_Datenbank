@@ -12,7 +12,8 @@ namespace Semesterprojekt_Datenbank.Model
         public string Name { get; set; }
         public int Nr { get; set; }
         public decimal Price { get; set; }
-        public virtual ArticleGroup ArticleGroupId { get; set; }
+        public int ArticleGroupId { get; set; }
+        public ArticleGroup ArticleGroup { get; set; }
         
 
     }
