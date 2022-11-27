@@ -14,7 +14,7 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
         public void Visit(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Order>().HasOne(c => c.Customer).WithMany(c => c.Orders).HasForeignKey(c => c.CustomerId);
-            modelBuilder.Entity
+            
         }
     }
 }
