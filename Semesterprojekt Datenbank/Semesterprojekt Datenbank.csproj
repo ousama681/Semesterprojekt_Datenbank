@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Viewmodel\" />
     <Folder Include="View\" />
   </ItemGroup>
 
