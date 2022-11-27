@@ -14,7 +14,7 @@ namespace Semesterprojekt_Datenbank.Model
         public decimal PriceBrutto { get; set; }
         public int ArticleId { get; set; }
         public int OrderId { get; set; }
-        public Article Article { get; set; }
-        public Order Order { get; set; }
+        public virtual Article Article { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

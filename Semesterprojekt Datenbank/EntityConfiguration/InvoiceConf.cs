@@ -13,7 +13,7 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
     {
         public void Visit(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Invoice>().HasOne(c => c.CustomerId).WithMany(i => i.Invoices).HasForeignKey(c => c.CustomerId);
+            modelBuilder.Entity<Invoice>().HasOne(c => c.Customer).WithMany(i => i.Invoices).HasForeignKey(c => c.CustomerId);
             
         }
     }
