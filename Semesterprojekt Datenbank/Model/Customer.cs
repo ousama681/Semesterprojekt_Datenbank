@@ -20,5 +20,6 @@ namespace Semesterprojekt_Datenbank.Model
         public virtual ICollection<Invoice> Invoices { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
+
     }
 }

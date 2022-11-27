@@ -14,5 +14,7 @@ namespace Semesterprojekt_Datenbank.Model
         public virtual Customer Customer { get; set; }
         public virtual ICollection<Position> Positions { get; set; }
 
+        public virtual Invoice Invoice { get; set; }
+
     }
 }

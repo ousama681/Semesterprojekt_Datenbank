@@ -13,7 +13,11 @@ namespace Semesterprojekt_Datenbank.Model
         public int Nr { get; set; }
         public decimal Price { get; set; }
         public int ArticleGroupId { get; set; }
+        public int MwstId { get; set; }
+        public virtual MWST MWST { get; set; }
         public virtual ArticleGroup ArticleGroup { get; set; }
+
+        public virtual ICollection<Position> Positions { get; set; }
         
 
     }

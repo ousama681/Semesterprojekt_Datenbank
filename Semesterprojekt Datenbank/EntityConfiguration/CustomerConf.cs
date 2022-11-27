@@ -15,11 +15,14 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
         {
             modelBuilder.Entity<Customer>().Property(a => a.Nr).IsRequired();
             modelBuilder.Entity<Customer>().Property(a => a.Name).IsRequired();
-            modelBuilder.Entity<Customer>().Property(a => a.Email).IsRequired();
-            modelBuilder.Entity<Customer>().Property(a => a.Website).IsRequired();
-            modelBuilder.Entity<Customer>().Property(a => a.Password).IsRequired();
-            
-           
+            modelBuilder.Entity<Customer>().Property(a => a.Email);
+            modelBuilder.Entity<Customer>().Property(a => a.Website);
+            modelBuilder.Entity<Customer>().Property(a => a.Password);
+
+            modelBuilder.Entity<Customer>()
+                .HasOne(c => c.Town)
+                .WithMany(t => t.Customers)
+                .HasForeignKey(c => c.TownId);
         }
     }
 }
