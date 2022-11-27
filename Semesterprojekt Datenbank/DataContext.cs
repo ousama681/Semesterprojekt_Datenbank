@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Semesterprojekt_Datenbank.EntityConfiguration;
 using Semesterprojekt_Datenbank.Model;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -19,18 +21,28 @@ namespace Semesterprojekt_Datenbank
         DbSet<Town> Town;
         DbSet<Order> Orders;
         DbSet<Position> Positions;
+        DbSet<MWST> MWSTs;
 
 
         // DESKTOP-1470VE0\ZBW
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("DataSource=DESKTOP-1470VE0\\ZBW; Database=DBAProject; Trusted_Connection=true; Encrypt=false;");
+            const string OUSAMA_CONNECTION = "DataSource=DESKTOP-1470VE0\\ZBW; Database=DBAProject; Trusted_Connection=true; Encrypt=false;";
+
+            optionsBuilder.UseSqlServer(OUSAMA_CONNECTION);
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+            new ArticleConf().Visit(modelBuilder);
+            new ArticleGroupConf().Visit(modelBuilder);
+            new CustomerConf().Visit(modelBuilder);
+            new InvoiceConf().Visit(modelBuilder);
+            new MWSTConf().Visit(modelBuilder);
+            new OrderConf().Visit(modelBuilder);
+            new PositionConf().Visit(modelBuilder);
+            new TownConf().Visit(modelBuilder);
         }
 
     }
