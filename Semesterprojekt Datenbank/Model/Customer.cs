@@ -14,10 +14,10 @@ namespace Semesterprojekt_Datenbank.Model
         public string Email { get; set; }
         public string Website { get; set; }
         public string Password { get; set; }
-        public Location LocationId { get; set; }
         public string Street { get; set; }
-        public virtual ICollection<Customer> Customers { get; set; }
-
+        public Town TownId { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
 
     }
 }

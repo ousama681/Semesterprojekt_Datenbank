@@ -16,7 +16,7 @@ namespace Semesterprojekt_Datenbank
         DbSet<ArticleGroup> ArticleGroups;
         DbSet<Customer> Customer;
         DbSet<Invoice> Invoices;
-        DbSet<Location> Location;
+        DbSet<Town> Town;
         DbSet<Order> Orders;
         DbSet<Position> Positions;
 
@@ -30,7 +30,7 @@ namespace Semesterprojekt_Datenbank
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            ArticleConf.Init();
+            
         }
 
     }

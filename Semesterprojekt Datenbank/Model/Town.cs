@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Semesterprojekt_Datenbank.Model
 {
-    public class Location
+    public class Town
     {
         public int Id { get; set; }
         public string ZipCode { get; set; }
         public string City  { get; set; }
         public string Country { get; set; }
-        public Street StreetId { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
     }
 }
