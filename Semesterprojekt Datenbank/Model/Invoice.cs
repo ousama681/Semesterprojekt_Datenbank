@@ -16,9 +16,9 @@ namespace Semesterprojekt_Datenbank.Model
         public int CustomerId { get; set; }
         public int OrderId { get; set; }
         public int TownId { get; set; }
-        public Customer Customer { get; set; }
-        public Order Order { get; set; }
-        public Town Town { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual Order Order { get; set; }
+        public virtual Town Town { get; set; }
         
     }
 }
