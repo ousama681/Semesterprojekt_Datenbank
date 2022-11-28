@@ -24,12 +24,14 @@ namespace Semesterprojekt_Datenbank
         DbSet<MWST> MWSTs;
 
 
-        // DESKTOP-1470VE0\ZBW
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             const string OUSAMA_CONNECTION = "DataSource=DESKTOP-1470VE0\\ZBW; Database=DBAProject; Trusted_Connection=true; Encrypt=false;";
+            const string Leandro_Connection = "Server=LEANDROPAJE1C16\\ZBWMSSQL; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
 
-            optionsBuilder.UseSqlServer(OUSAMA_CONNECTION);
+
+            optionsBuilder.UseSqlServer(Leandro_Connection);
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }
 
