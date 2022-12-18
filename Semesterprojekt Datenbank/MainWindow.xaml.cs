@@ -27,22 +27,22 @@ namespace Semesterprojekt_Datenbank
 
         private void CmdCustomer_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show(" Customer Works!");
         }
 
         private void CmdArticle_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Article Works!");
         }
 
         private void CmdArticleGroup_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("ArticleGroup Works!");
         }
 
         private void CmdOrder_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Order Works!");
         }
     }
 }

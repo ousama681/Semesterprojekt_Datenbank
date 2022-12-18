@@ -9,7 +9,53 @@
         WindowStartupLocation="CenterScreen" Foreground="White"
         Background="Silver">
 
+    <!--Recources-->
+    <Window.Resources>
+
+        <!--Templates-->
+        <!--NavButtonTemplate-->
+        <ControlTemplate x:Key="NavButton" TargetType="Button">
+            <Grid Height="50" Width="150" Margin="20,0">
+
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup Name="States">
+                        <VisualState Name="Normal">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="NavButtonShape" 
+                                                Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)"
+                                                To="Transparent"
+                                                Duration="0:0:1.0"/>
+                            </Storyboard>
+                        </VisualState>
+                        <VisualState Name="MouseOver">
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetName="NavButtonShape" 
+                                                Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" 
+                                                To="Gainsboro" 
+                                                Duration="0:0:0.0"/>
+                            </Storyboard>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+
+                <Rectangle x:Name="NavButtonShape" Cursor="Hand" Fill="Transparent" Stroke="{TemplateBinding Foreground}"></Rectangle>
+
+                <ContentPresenter Cursor="Hand"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center">
+                </ContentPresenter>
+            </Grid>
+            <!--<ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Fill" TargetName="NavButtonShape" Value="DarkGray"></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>-->
+        </ControlTemplate>
+    </Window.Resources>
+
+    <!--MainGrid-->
     <Grid>
+        <!--Main Background-->
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                 <GradientStop Color="#eaeaea" Offset="1"/>
@@ -17,32 +63,28 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        
+        <!--NavBar-->
         <StackPanel Height="70"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Top"
                     Orientation="Horizontal">
-            
+
+            <!--NavBarBackground-->
             <StackPanel.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <GradientStop Color="#d3d5d6" Offset="0.0"/>
                     <GradientStop Color="#636669" Offset="1"/>
                 </LinearGradientBrush>
             </StackPanel.Background>
-            
-            
-            
-            <Button x:Name="CmdCustomer"
-                    Height="50"
-                    Width="150"
-                    Margin="20,0,10,0"
-                    Content="Customers"
-                    FontSize="16"
-                    Click="CmdCustomer_Click"
-                    Cursor="Hand">
-                    
 
-                <Button.Style>
+            <!--NavBarButtons-->
+            <Button Template="{StaticResource NavButton}"
+                x:Name="CmdCustomer"
+                Content="Kunde"
+                FontSize="16"
+                Click="CmdCustomer_Click">
+
+                <!--<Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="Transparent"/>
                         <Style.Triggers>
@@ -51,72 +93,70 @@
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-                </Button.Style>
+                </Button.Style>-->
             </Button>
 
-            <Button x:Name="CmdArticle"
-                    Height="50"
-                    Width="150"
-                    Margin="10,0,10,0"
-                    Content="Articles"
+            <Button Template="{StaticResource NavButton}"
+                    x:Name="CmdArticle"
+                    Content="Artikel"
                     FontSize="16"
-                    Click="CmdArticle_Click"
-                    Cursor="Hand">
-
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="white"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+                    Click="CmdArticle_Click">
             </Button>
 
-            <Button x:Name="CmdArticleGroup"
-                    Height="50"
-                    Width="150"
-                    Margin="10,0,10,0"
-                    Content="Articlegroups"
+            <Button Template="{StaticResource NavButton}"
+                    x:Name="CmdArticleGroup"
+                    Content="Artikelgruppen"
                     FontSize="16"
-                    Click="CmdArticleGroup_Click"
-                    Cursor="Hand">
-                
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="white"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+                    Click="CmdArticleGroup_Click">
             </Button>
 
-            <Button x:Name="CmdOrder"
-                    Height="50"
-                    Width="150"
-                    Margin="10,0,10,0"
-                    Content="Orders"
+            <Button Template="{StaticResource NavButton}"
+                    x:Name="CmdOrder"
+                    Content="Bestellungen"
                     FontSize="16"
-                    Click="CmdOrder_Click"
-                    Cursor="Hand">
-                
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="Transparent"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="white"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+                    Click="CmdOrder_Click">
             </Button>
         </StackPanel>
-        
+
+        <!--CustomerPanel-->
+        <Grid Margin="0,70,0,60"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Visibility="Visible" Grid.Row="8" Grid.Column="5" Panel.ZIndex="2">
+            <Label Content="Kunde" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,9,0,0" FontSize="20"/>
+            <Label Content="Kundenname" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,49,0,0"/>
+            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,74,0,0"/>
+            <Label Content="E-mail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,113,0,0"/>
+            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,136,0,0"/>
+            <Label Content="Strasse" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,169,0,0"/>
+            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,196,0,0"/>
+            <Label Content="PLZ" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,229,0,0"/>
+            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,256,0,0"/>
+            <Label Content="Stadt" HorizontalAlignment="Left" Margin="12,289,0,0" VerticalAlignment="Top"/>
+            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,314,0,0"/>
+
+        </Grid>
+
+        <!--ArticlePanel-->
+        <Grid Margin="0,70,0,60"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Visibility="Hidden">
+
+        </Grid>
+
+        <!--ArticleGroupsPanel-->
+        <Grid Margin="0,70,0,60"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Visibility="Hidden">
+        </Grid>
+
+        <!--OrderPanel-->
+        <Grid Margin="0,70,0,60"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Visibility="Hidden">
+        </Grid>
     </Grid>
 </Window>
