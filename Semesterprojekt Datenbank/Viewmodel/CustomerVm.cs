@@ -1,0 +1,71 @@
+﻿using Semesterprojekt_Datenbank.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Security;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace Semesterprojekt_Datenbank.Viewmodel
+{
+    public class CustomerVm : Utilities.ViewModelBase
+    {
+
+        private readonly Customer customer;
+        public int ID
+        {
+            get { return customer.Id; }
+            set { customer.Id = value; OnPropertyChanged(); }
+        }
+
+        public int Nr
+        {
+            get { return customer.Nr; }
+            set { customer.Nr = value;OnPropertyChanged(); }
+        }
+
+        public string Name
+        {
+            get { return customer.Name; }
+            set { customer.Name = value; OnPropertyChanged(); }
+        }
+
+        public string Email
+        {
+            get { return customer.Email; }
+            set { customer.Email = value; OnPropertyChanged(); }
+        }
+
+        public string Website
+        {
+            get { return customer.Website; }
+            set
+            { customer.Website = value; OnPropertyChanged(); }
+        }
+
+        public string Password
+        {
+            get { return customer.Password; }
+            set
+            { customer.Password = value; OnPropertyChanged(); }
+        }
+
+        public string Street
+        {
+            get { return customer.Street; }
+            set
+            { customer.Street = value;OnPropertyChanged(); }
+        }
+
+        public int TownId
+        {
+            get { return customer.TownId; }
+            set { customer.TownId = value;OnPropertyChanged();}
+        }
+     
+    }
+}
+                //public virtual Town Town { get; set; }
+                //public virtual ICollection<Invoice> Invoices { get; set; }
+                //public virtual ICollection<Order> Orders { get; set; }
