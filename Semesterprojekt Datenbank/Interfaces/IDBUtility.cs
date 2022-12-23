@@ -1,4 +1,4 @@
-﻿namespace Semesterprojekt_Datenbank.Viewmodel
+﻿namespace Semesterprojekt_Datenbank.Interfaces
 {
     public interface IDBUtility
     {

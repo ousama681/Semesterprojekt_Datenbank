@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Semesterprojekt_Datenbank.Viewmodel
+namespace Semesterprojekt_Datenbank.Utilities
 {
     public class DBUtilityCustomer : IDBUtility
     {

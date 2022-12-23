@@ -10,7 +10,6 @@ namespace Semesterprojekt_Datenbank.Utilities
         public void OnPropertyChanged([CallerMemberName] string propName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-
         }
     }
 }
