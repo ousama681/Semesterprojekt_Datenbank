@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace Semesterprojekt_Datenbank.View
 {
     /// <summary>
-    /// Interaction logic for Customer.xaml
+    /// Interaction logic for CustomerView.xaml
     /// </summary>
-    public partial class Customer : UserControl
+    public partial class CustomerView : UserControl
     {
-        public Customer()
+        public CustomerView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show($"{customerId.Text},{customerName.Text},{Street.Text}");
         }
     }
 }

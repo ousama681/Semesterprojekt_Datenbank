@@ -3,12 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Semesterprojekt_Datenbank"
+        xmlns:vm="clr-namespace:Semesterprojekt_Datenbank.Viewmodel"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280"
         WindowStartupLocation="CenterScreen" Foreground="White"
         Background="Silver">
 
+    <Window.DataContext>
+        <vm:NavigationVm/>
+    </Window.DataContext>
     <!--Recources-->
     <Window.Resources>
 
@@ -45,11 +48,6 @@
                                   VerticalAlignment="Center">
                 </ContentPresenter>
             </Grid>
-            <!--<ControlTemplate.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Fill" TargetName="NavButtonShape" Value="DarkGray"></Setter>
-                </Trigger>
-            </ControlTemplate.Triggers>-->
         </ControlTemplate>
     </Window.Resources>
 
@@ -80,6 +78,7 @@
             <!--NavBarButtons-->
             <Button Template="{StaticResource NavButton}"
                 x:Name="CmdCustomer"
+                Command="{Binding CustomerCommand}"    
                 Content="Kunde"
                 FontSize="16"
                 Click="CmdCustomer_Click">
@@ -119,7 +118,7 @@
         </StackPanel>
 
         <!--CustomerPanel-->
-        <Grid Margin="0,70,0,60"
+        <!--<Grid Margin="0,70,0,60"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Visibility="Visible" Grid.Row="8" Grid.Column="5" Panel.ZIndex="2">
@@ -137,7 +136,7 @@
 
         </Grid>
 
-        <!--ArticlePanel-->
+        --><!--ArticlePanel--><!--
         <Grid Margin="0,70,0,60"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
@@ -145,18 +144,19 @@
 
         </Grid>
 
-        <!--ArticleGroupsPanel-->
+        --><!--ArticleGroupsPanel--><!--
         <Grid Margin="0,70,0,60"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Visibility="Hidden">
         </Grid>
 
-        <!--OrderPanel-->
+        --><!--OrderPanel--><!--
         <Grid Margin="0,70,0,60"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
                     Visibility="Hidden">
-        </Grid>
+        </Grid>-->
+        <ContentControl Content="{Binding CurrentView}"/>
     </Grid>
 </Window>

@@ -1,6 +1,7 @@
 ﻿using Semesterprojekt_Datenbank.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Security;
 using System.Text;
@@ -64,6 +65,10 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             set { customer.TownId = value;OnPropertyChanged();}
         }
      
+        public CustomerVm() 
+        {
+            customer = new Customer(1,1, "fluffy", "macpants@hotchicks.ch", "How To MVVM, wtf!!?!.ch", "ligma", "WPFAvenue", 6666);
+        }
     }
 }
                 //public virtual Town Town { get; set; }

@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Semesterprojekt_Datenbank.View.CustomerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:vm="clr-namespace:Semesterprojekt_Datenbank.Viewmodel"
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="1280">
+    <UserControl.DataContext>
+        <vm:CustomerVm/>
+    </UserControl.DataContext>
+
+    <Grid Margin="0,70,0,60"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Visibility="Visible" Grid.Row="8" Grid.Column="5" Panel.ZIndex="2">
+        <Label Content="Kunde" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,9,0,0" FontSize="20"/>
+        <Label Content="Kundenid" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,49,0,0"/>
+        <TextBox x:Name="customerId" TextWrapping="Wrap" Text="{Binding ID}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,74,0,0"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,113,0,0"/>
+        <TextBox x:Name="Email" TextWrapping="Wrap" Text="{Binding Email}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,136,0,0"/>
+        <Label Content="Strasse" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,169,0,0"/>
+        <TextBox x:Name="Street" TextWrapping="Wrap" Text="{Binding Street}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,196,0,0"/>
+        <Label Content="PLZ" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,229,0,0"/>
+        <TextBox x:Name="ZipCode" TextWrapping="Wrap" Text="{Binding TownId}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,256,0,0"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="12,289,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="customerName" TextWrapping="Wrap" Text="{Binding Name}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,314,0,0"/>
+        <Button Content="Create" HorizontalAlignment="Left" Margin="15,360,0,0" VerticalAlignment="Top" Width="65" Click="Button_Click"/>
+    </Grid>
+</UserControl>
+
