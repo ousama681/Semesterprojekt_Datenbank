@@ -1,10 +1,11 @@
-﻿namespace Semesterprojekt_Datenbank.Interfaces
+﻿using System.Collections.Generic;
+namespace Semesterprojekt_Datenbank.Interfaces
 {
-    public interface IDBUtility
+    public interface IDBUtility<T>
     {
         // CRUD Funktionen der Datenbank
 
-        void Create();
+        void Create(T item);
 
         void Read();
 
@@ -13,6 +14,7 @@
 
         void Delete();
 
+        void Migrate();
 
     }
 }

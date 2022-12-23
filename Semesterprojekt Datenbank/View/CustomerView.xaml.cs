@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Semesterprojekt_Datenbank.Viewmodel;
 
 namespace Semesterprojekt_Datenbank.View
 {
@@ -20,14 +21,24 @@ namespace Semesterprojekt_Datenbank.View
     /// </summary>
     public partial class CustomerView : UserControl
     {
+        CustomerVm vm;
         public CustomerView()
-        {
+        {           
             InitializeComponent();
+            vm = new CustomerVm();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show($"{customerId.Text},{customerName.Text},{Street.Text}");
+            vm.ID = Convert.ToInt16(customerId.Text);
+            vm.Nr = Convert.ToInt16(Nr.Text);
+            vm.Name = customerName.Text;
+            vm.Email = Email.Text;
+            vm.Website= Website.Text;
+            vm.Password= Password.Text;
+            vm.Street= Street.Text;
+            vm.TownId = Convert.ToInt16(ZipCode.Text);
+            vm.CreateCustomer();
         }
     }
 }

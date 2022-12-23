@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Semesterprojekt_Datenbank.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Semesterprojekt_Datenbank.Model
 {
     public class Customer
     {
+        
         public int Id { get; set; }
         public int Nr { get; set; }
         public string Name { get; set; }
@@ -24,11 +26,11 @@ namespace Semesterprojekt_Datenbank.Model
             Id = id;
             Nr = nr;
             Name = name;
-            Email = email;
-            Website = website;
-            Password = password;
-            Street = street;
-            TownId = townId;
+            Email = email = "";
+            Website = website = "";
+            Password = password = "";
+            Street = street = "";
+            TownId = townId = 0;
         }
         public Customer() { }
     }

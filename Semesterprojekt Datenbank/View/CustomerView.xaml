@@ -25,7 +25,14 @@
         <TextBox x:Name="ZipCode" TextWrapping="Wrap" Text="{Binding TownId}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,256,0,0"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="12,289,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="customerName" TextWrapping="Wrap" Text="{Binding Name}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,314,0,0"/>
-        <Button Content="Create" HorizontalAlignment="Left" Margin="15,360,0,0" VerticalAlignment="Top" Width="65" Click="Button_Click"/>
+
+        <TextBox x:Name="Password" TextWrapping="Wrap" Text="{Binding Password}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,357,0,0"/>
+
+        <TextBox x:Name="Website" TextWrapping="Wrap" Text="{Binding Website}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,385,0,0"/>
+
+        <TextBox x:Name="Nr" TextWrapping="Wrap" Text="{Binding Nr}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,410,0,0"/>
+        <Button Content="Create" HorizontalAlignment="Left" Margin="15,470,0,0" VerticalAlignment="Top" Width="65" Click="Button_Click"/>
+      
     </Grid>
 </UserControl>
 

@@ -1,76 +1,74 @@
 ﻿using Semesterprojekt_Datenbank.Model;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Security;
-using System.Text;
-using System.Threading.Tasks;
-
+using Semesterprojekt_Datenbank.Utilities;
 
 namespace Semesterprojekt_Datenbank.Viewmodel
 {
     public class CustomerVm : Utilities.ViewModelBase
     {
 
-        private readonly Customer customer;
+        private readonly Customer customer = new Customer();
+        private DBUtilityCustomer dB = new DBUtilityCustomer();
         public int ID
         {
             get { return customer.Id; }
-            set { customer.Id = value; OnPropertyChanged(); }
+            set { customer.Id = value; /*OnPropertyChanged();*/ }
         }
 
         public int Nr
         {
             get { return customer.Nr; }
-            set { customer.Nr = value;OnPropertyChanged(); }
+            set { customer.Nr = value; /*OnPropertyChanged();*/ }
         }
 
         public string Name
         {
             get { return customer.Name; }
-            set { customer.Name = value; OnPropertyChanged(); }
+            set { customer.Name = value; /*OnPropertyChanged();*/ }
         }
 
         public string Email
         {
             get { return customer.Email; }
-            set { customer.Email = value; OnPropertyChanged(); }
+            set { customer.Email = value; /*OnPropertyChanged();*/ }
         }
 
         public string Website
         {
             get { return customer.Website; }
-            set
-            { customer.Website = value; OnPropertyChanged(); }
+            set { customer.Website = value; /*OnPropertyChanged();*/ }
         }
 
         public string Password
         {
             get { return customer.Password; }
-            set
-            { customer.Password = value; OnPropertyChanged(); }
+            set { customer.Password = value; /*OnPropertyChanged();*/ }
         }
 
         public string Street
         {
             get { return customer.Street; }
-            set
-            { customer.Street = value;OnPropertyChanged(); }
+            set { customer.Street = value; /*OnPropertyChanged();*/ }
         }
 
         public int TownId
         {
             get { return customer.TownId; }
-            set { customer.TownId = value;OnPropertyChanged();}
+            set { customer.TownId = value; /*OnPropertyChanged();*/ }
         }
-     
-        public CustomerVm() 
+
+        public CustomerVm()
         {
-            customer = new Customer(1,1, "fluffy", "macpants@hotchicks.ch", "How To MVVM, wtf!!?!.ch", "ligma", "WPFAvenue", 6666);
+            
+            //customer = new Customer(1, 1, "fluffy", "macpants@hotchicks.ch", "How To MVVM, wtf!!?!.ch", "ligma", "WPFAvenue", 6666);
+        }
+
+
+        public void CreateCustomer()
+        {
+            dB.Create(customer);
         }
     }
 }
-                //public virtual Town Town { get; set; }
-                //public virtual ICollection<Invoice> Invoices { get; set; }
-                //public virtual ICollection<Order> Orders { get; set; }
+//public virtual Town Town { get; set; }
+//public virtual ICollection<Invoice> Invoices { get; set; }
+//public virtual ICollection<Order> Orders { get; set; }
