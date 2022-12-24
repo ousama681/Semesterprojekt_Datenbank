@@ -26,6 +26,15 @@ namespace Semesterprojekt_Datenbank.View
         {           
             InitializeComponent();
             vm = new CustomerVm();
+            customerId.Text = 12.ToString();
+            Nr.Text = 24.ToString();
+            customerName.Text = "Thomas";
+            Email.Text = "kehl@bro.ch";
+            Website.Text = "chillerroom.ch";
+            Password.Text= "Password";
+            Street.Text = "ggdfd";
+            ZipCode.Text = 3424.ToString();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
