@@ -27,7 +27,7 @@ namespace Semesterprojekt_Datenbank
 
         private void CmdCustomer_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(" Customer Works!");
+            
         }
 
         private void CmdArticle_Click(object sender, RoutedEventArgs e)

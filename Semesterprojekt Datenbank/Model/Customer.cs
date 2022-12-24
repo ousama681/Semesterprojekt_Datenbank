@@ -30,7 +30,7 @@ namespace Semesterprojekt_Datenbank.Model
             Website = website = "";
             Password = password = "";
             Street = street = "";
-            TownId = townId = 0;
+            TownId = townId;
         }
         public Customer() { }
     }

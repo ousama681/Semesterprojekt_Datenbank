@@ -33,18 +33,18 @@ namespace Semesterprojekt_Datenbank.View
             Website.Text = "chillerroom.ch";
             Password.Text= "Password";
             Street.Text = "ggdfd";
-            ZipCode.Text = 3424.ToString();
+            ZipCode.Text = 1.ToString();
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            vm.ID = Convert.ToInt16(customerId.Text);
+            //vm.ID = Convert.ToInt16(customerId.Text);
             vm.Nr = Convert.ToInt16(Nr.Text);
             vm.Name = customerName.Text;
             vm.Email = Email.Text;
-            vm.Website= Website.Text;
-            vm.Password= Password.Text;
+            vm.Website = Website.Text;
+            vm.Password = Password.Text.GetHashCode().ToString();
             vm.Street= Street.Text;
             vm.TownId = Convert.ToInt16(ZipCode.Text);
             vm.CreateCustomer();
