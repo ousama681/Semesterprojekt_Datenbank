@@ -16,12 +16,12 @@ namespace Semesterprojekt_Datenbank.Utilities
         public void Create(Customer item)
         {
             Customer c;
-            using (var connection = new DataContext())
+            using (var context = new DataContext())
             { 
                 if (item is Customer)
                 {
                     c = (Customer)(object)item;
-                    connection.Add(c);
+                    context.Add(c);
                     mb.Entity<Customer>().HasData(new Customer() 
                     {  
                         Id = c.Id, Nr = c.Nr, Name = c.Name, 
@@ -29,7 +29,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                         Password = c.Password, Street = c.Street, 
                         TownId = c.TownId 
                     });
-                    connection.SaveChanges();
+                    context.SaveChanges();
                 }
             }       
         }

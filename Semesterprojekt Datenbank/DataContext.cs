@@ -45,6 +45,7 @@ namespace Semesterprojekt_Datenbank
             new OrderConf().Visit(modelBuilder);
             new PositionConf().Visit(modelBuilder);
             new TownConf().Visit(modelBuilder);
+            
         }
 
     }
