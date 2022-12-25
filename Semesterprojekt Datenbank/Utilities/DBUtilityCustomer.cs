@@ -24,10 +24,10 @@ namespace Semesterprojekt_Datenbank.Utilities
                     context.Add(c);
                     mb.Entity<Customer>().HasData(new Customer() 
                     {  
-                        Id = c.Id, Nr = c.Nr, Name = c.Name, 
+                        /*Id = c.Id, */Nr = c.Nr, Name = c.Name, 
                         Email = c.Email, Website = c.Website, 
-                        Password = c.Password, Street = c.Street, 
-                        TownId = c.TownId 
+                        Password = c.Password, Street = c.Street,
+                        TownId = c.TownId
                     });
                     context.SaveChanges();
                 }
