@@ -48,43 +48,6 @@ namespace Semesterprojekt_Datenbank
             new OrderConf().Visit(modelBuilder);
             new PositionConf().Visit(modelBuilder);
             new TownConf().Visit(modelBuilder);
-
-            var lineNumber = 0;
-
-            using (var connection = new SqlConnection())
-            {
-                connection.ConnectionString = OUSAMA_CONNECTION;
-                SqlCommand cmd = new SqlCommand();
-                connection.Open();
-
-                using (StreamReader reader = new StreamReader(@"C:\ZbwTechniker\DatenbankenAdvanced\plz_verzeichnis_new.csv"))
-                {
-                    while (!reader.EndOfStream)
-                    {
-                        var line = reader.ReadLine();
-                        if (lineNumber != 0)
-                        {
-
-                            var values = line.Split(";");
-                            var zipcode = values[0];
-                            var city = values[1];
-
-                            var sql = "INSERT INTO dbo.Town(Zipcode, City, Country)" +
-                                      "VALUES" +
-                                      $"({values[0]}, '{values[1].Replace("'", "´")}' , 'CH')";
-
-                            cmd.CommandText = sql;
-                            cmd.CommandType = CommandType.Text;
-
-                            Console.WriteLine(sql);
-                            cmd.Connection = connection;
-                            cmd.ExecuteNonQuery();
-                        }
-
-                        lineNumber++;
-                    }
-                }
-            }
         }
 
     }

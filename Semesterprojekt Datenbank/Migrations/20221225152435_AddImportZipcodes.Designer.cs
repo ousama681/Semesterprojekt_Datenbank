@@ -12,8 +12,8 @@ using Semesterprojekt_Datenbank;
 namespace SemesterprojektDatenbank.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221225133345_testCustomerErstellt")]
-    partial class testCustomerErstellt
+    [Migration("20221225152435_AddImportZipcodes")]
+    partial class AddImportZipcodes
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
