@@ -39,10 +39,6 @@ namespace Semesterprojekt_Datenbank.Utilities
             throw new NotImplementedException();
         }
 
-        public void Migrate()
-        {
-           
-        }
 
         public void Read()
         {

@@ -1,17 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
 using Semesterprojekt_Datenbank.EntityConfiguration;
 using Semesterprojekt_Datenbank.Model;
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
-using System.Data;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
 
 namespace Semesterprojekt_Datenbank
 {
@@ -32,9 +22,7 @@ namespace Semesterprojekt_Datenbank
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
-
-            optionsBuilder.UseSqlServer(OUSAMA_CONNECTION);
+            optionsBuilder.UseSqlServer(Leandro_Connection);
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }
 
