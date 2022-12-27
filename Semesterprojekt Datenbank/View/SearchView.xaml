@@ -10,9 +10,13 @@
     <UserControl.DataContext>
         <vm:MainWindowVm/>
     </UserControl.DataContext>
-    
-    <Grid>
+
+    <Grid Margin="0,70,0,60"
+          HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch"
+          Visibility="Visible">
         <DataGrid x:Name="DGSearch" d:ItemsSource="{d:SampleData ItemCount=10}"/>
+        <TextBox x:Name="TXTTest" HorizontalAlignment="Left" Margin="230,402,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </UserControl>

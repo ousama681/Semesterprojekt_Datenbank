@@ -23,6 +23,7 @@ namespace Semesterprojekt_Datenbank.View
         public SearchView()
         {
             InitializeComponent();
+            TXTTest.Text = "Hello";
         }
     }
 }

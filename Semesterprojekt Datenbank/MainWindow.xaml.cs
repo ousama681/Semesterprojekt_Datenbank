@@ -40,7 +40,7 @@ namespace Semesterprojekt_Datenbank
 
         private void CmdArticle_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Article Works!");
+            
         }
 
         private void CmdArticleGroup_Click(object sender, RoutedEventArgs e)
