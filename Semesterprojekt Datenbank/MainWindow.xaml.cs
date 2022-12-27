@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Semesterprojekt_Datenbank.Viewmodel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace Semesterprojekt_Datenbank
     /// </summary>
     public partial class MainWindow : Window
     {
+        MainWindowVm mainWindowVm;
+
         public MainWindow()
         {
             InitializeComponent();
+            mainWindowVm = new MainWindowVm();
+
         }
 
         private void CmdCustomer_Click(object sender, RoutedEventArgs e)
@@ -43,6 +48,12 @@ namespace Semesterprojekt_Datenbank
         private void CmdOrder_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Order Works!");
+        }
+
+        private void CmdSearch_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindowVm.Search(TxtSearch.Text);
+
         }
     }
 }

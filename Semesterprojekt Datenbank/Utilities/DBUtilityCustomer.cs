@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Semesterprojekt_Datenbank.Utilities
 {
-    public class DBUtilityCustomer /*: IDBUtility<T>*/
+    public class DBUtilityCustomer : IDBUtility<Customer>
     {
         ModelBuilder mb = new ModelBuilder();
         public void Create(Customer item)
@@ -39,10 +39,9 @@ namespace Semesterprojekt_Datenbank.Utilities
             throw new NotImplementedException();
         }
 
-
-        public void Read()
+        public void Read(Customer item)
         {
-            throw new NotImplementedException();
+
         }
 
         public void Update()

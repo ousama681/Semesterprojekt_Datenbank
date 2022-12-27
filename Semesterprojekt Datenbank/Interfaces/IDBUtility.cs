@@ -5,15 +5,13 @@ namespace Semesterprojekt_Datenbank.Interfaces
     {
         // CRUD Funktionen der Datenbank
 
-        void Create(T item); // Create and Insert new Item
+        void Create(T item);
 
-        void Read();        // Read == Find == Select Item
+        void Read(T item);
 
-        void Update();      // update == bearbeiten Item
+        void Update();
 
-        void Delete();      // delete == item => Achtung kaskadierung!
-
-      
+        void Delete();
 
     }
 }

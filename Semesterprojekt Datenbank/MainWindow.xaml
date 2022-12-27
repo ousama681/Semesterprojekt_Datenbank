@@ -115,7 +115,9 @@
                     FontSize="16"
                     Click="CmdOrder_Click">
             </Button>
+            
         </StackPanel>
+        
 
         <!--CustomerPanel-->
         <!--<Grid Margin="0,70,0,60"
@@ -158,5 +160,10 @@
                     Visibility="Hidden">
         </Grid>-->
         <ContentControl Content="{Binding CurrentView}"/>
+        <ContentControl>
+            <TextBox x:Name="TxtSearch" HorizontalAlignment="Left" Margin="845,34,0,0" TextWrapping="Wrap" FontSize="16" Text="" VerticalAlignment="Top" Width="250" Height="25"/>
+        </ContentControl>
+        <Label Content="Suchen" FontSize="16" HorizontalAlignment="Left" Margin="839,3,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="CmdSearch" Click="CmdSearch_Click" Content="Starte Suche" HorizontalAlignment="Left" Margin="1115,34,0,0" VerticalAlignment="Top" Height="25" Width="85"/>
     </Grid>
 </Window>

@@ -12,6 +12,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
     public class NavigationVm : Utilities.ViewModelBase
     {
         private object _currentView;
+
         public object CurrentView
         {
             get { return _currentView; }
@@ -20,6 +21,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         //public ICommand HomeCommand { get; set; }
         public ICommand CustomerCommand { get; set; }
+        
         //public ICommand ProductsCommand { get; set; }
         //public ICommand OrdersCommand { get; set; }
         //public ICommand TransactionCommand { get; set; }

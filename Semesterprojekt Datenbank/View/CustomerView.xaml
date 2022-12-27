@@ -30,7 +30,7 @@
 
         <TextBox x:Name="Website" TextWrapping="Wrap" Text="{Binding Website}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,385,0,0"/>
 
-        <TextBox x:Name="Nr" TextWrapping="Wrap" Text="{Binding Nr}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,410,0,0"/>
+        <TextBox x:Name="Nr" TextWrapping="Wrap" Text="{Binding Nr}" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,412,0,0"/>
         <Button Content="Create" HorizontalAlignment="Left" Margin="15,470,0,0" VerticalAlignment="Top" Width="65" Click="Button_Click"/>
       
     </Grid>

@@ -20,14 +20,13 @@ namespace SemesterprojektDatenbank.Migrations
         {
             var lineNumber = 0;
 
-            using (var connection = new SqlConnection())  // hier ist Idisposable drin => somit schliesst die verbindung automatisch...
+            using (var connection = new SqlConnection())
             {
-                connection.ConnectionString = Leandro_Connection;
+                connection.ConnectionString = OUSAMA_CONNECTION;
                 SqlCommand cmd = new SqlCommand();
                 connection.Open();
-               
 
-                using (StreamReader reader = new StreamReader(@"C:\Users\leandropajer\Source\Repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))
+                using (StreamReader reader = new StreamReader(@"C:\ZbwTechniker\DatenbankenAdvanced\plz_verzeichnis_new.csv"))
                 {
                     while (!reader.EndOfStream)
                     {
