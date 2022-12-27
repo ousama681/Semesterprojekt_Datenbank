@@ -57,6 +57,7 @@ namespace Semesterprojekt_Datenbank
         {
            var dataTable =  mainWindowVm.Search(TxtSearch.Text);
             searchView.DGSearch.DataContext = dataTable;
+
                         
 
         }

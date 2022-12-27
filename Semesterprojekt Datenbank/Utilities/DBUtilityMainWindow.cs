@@ -1,9 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.Options;
 using System;
-using System.Configuration;
 using System.Data;
-using System.Windows.Controls;
 
 namespace Semesterprojekt_Datenbank.Utilities
 {
@@ -19,7 +16,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             throw new NotImplementedException();
         }
 
-        public DataTable Read(string searchText)
+        public DataSet Read(string searchText)
         {
 
             try
@@ -30,9 +27,9 @@ namespace Semesterprojekt_Datenbank.Utilities
                 {
                     if (connection.State != ConnectionState.Open)
                         connection.Open();
-                    using(DataTable dataTable = new DataTable("Customer"))
+                    using (DataTable dataTable = new DataTable("Customer"))
                     {
-                        using(SqlCommand cmd = new SqlCommand(
+                        using (SqlCommand cmd = new SqlCommand(
                             "SELECT * from Customer WHERE Name=@Name or Email=@Email or Website=@Website or Street=@Street ", connection))
                         {
                             //cmd.Parameters.AddWithValue("nr", searchText);
@@ -45,10 +42,12 @@ namespace Semesterprojekt_Datenbank.Utilities
 
                             adapter.Fill(dataTable);
 
-                            return dataTable;
+                            DataSet dataSet = new DataSet();
+                            dataSet.Tables.Add(dataTable);
 
-                            Console.WriteLine(dataTable.ToString());    
 
+
+                            return dataSet;
                         }
                     }
                 }

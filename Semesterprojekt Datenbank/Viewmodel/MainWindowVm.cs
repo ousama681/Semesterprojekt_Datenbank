@@ -13,11 +13,12 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         private DBUtilityMainWindow dBmMainWindow = new DBUtilityMainWindow();
         //public string SearchText { get; set ; }
 
-        public DataTable Search(string searchtext)
+        public DataSet Search(string searchtext)
         {
-           var dataTable = dBmMainWindow.Read(searchtext);
+           var dataSet = dBmMainWindow.Read(searchtext);
 
-            return dataTable;
+
+            return dataSet;
            
         }
     }
