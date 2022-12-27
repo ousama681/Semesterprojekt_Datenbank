@@ -97,6 +97,7 @@
 
             <Button Template="{StaticResource NavButton}"
                     x:Name="CmdArticle"
+                    Command="{Binding ArticleCommand}" 
                     Content="Artikel"
                     FontSize="16"
                     Click="CmdArticle_Click">

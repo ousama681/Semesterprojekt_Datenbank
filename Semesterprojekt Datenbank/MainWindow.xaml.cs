@@ -1,4 +1,5 @@
-﻿using Semesterprojekt_Datenbank.Viewmodel;
+﻿using Semesterprojekt_Datenbank.View;
+using Semesterprojekt_Datenbank.Viewmodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,11 +23,13 @@ namespace Semesterprojekt_Datenbank
     public partial class MainWindow : Window
     {
         MainWindowVm mainWindowVm;
+        SearchView searchView;
 
         public MainWindow()
         {
             InitializeComponent();
             mainWindowVm = new MainWindowVm();
+            searchView = new SearchView();
 
         }
 
@@ -52,7 +55,9 @@ namespace Semesterprojekt_Datenbank
 
         private void CmdSearch_Click(object sender, RoutedEventArgs e)
         {
-            mainWindowVm.Search(TxtSearch.Text);
+           var dataTable =  mainWindowVm.Search(TxtSearch.Text);
+            searchView.DGSearch.DataContext = dataTable;
+                        
 
         }
     }

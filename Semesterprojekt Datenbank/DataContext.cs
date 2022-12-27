@@ -12,29 +12,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using System.Configuration;
 
 namespace Semesterprojekt_Datenbank
 {
     public class DataContext : DbContext
     {
-        DbSet<Article> Articles;
-        DbSet<ArticleGroup> ArticleGroups;
-        DbSet<Customer> Customer;
-        DbSet<Invoice> Invoices;
-        DbSet<Town> Town;
-        DbSet<Order> Orders;
-        DbSet<Position> Positions;
-        DbSet<MWST> MWSTs;
+        public DbSet<ArticleGroup> ArticleGroups { get; set; }
+        public DbSet<Article> Articles {get;set;}
+        public DbSet<Customer> Customer {get;set;}
+        public DbSet<Invoice> Invoices {get;set;}
+        public DbSet<Town> Town {get;set;}
+        public DbSet<Order> Orders {get;set;}
+        public DbSet<Position> Positions {get;set;}
+        public DbSet<MWST> MWSTs {get;set;}
+
 
         const string OUSAMA_CONNECTION = "Server=DESKTOP-PMVN625; Database=DBAProject; Trusted_Connection=true; Encrypt=false;";
-        const string Leandro_Connection = "Server=LEANDROPAJE1C16\\ZBWMSSQL; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
+        public const string Leandro_Connection = "Server=LEANDROPAJE1C16\\ZBWMSSQL; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         const string BigBoss = "Server=DESKTOP-1470VE0\\ZBW; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
 
-            optionsBuilder.UseSqlServer(OUSAMA_CONNECTION);
+
+            //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
+            optionsBuilder.UseSqlServer(Leandro_Connection);
+
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }
 

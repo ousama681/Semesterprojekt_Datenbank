@@ -1,5 +1,6 @@
 ﻿using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Utilities;
+using Semesterprojekt_Datenbank.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         //public ICommand HomeCommand { get; set; }
         public ICommand CustomerCommand { get; set; }
         
-        //public ICommand ProductsCommand { get; set; }
+        public ICommand ArticleCommand { get; set; }
         //public ICommand OrdersCommand { get; set; }
         //public ICommand TransactionCommand { get; set; }
         //public ICommand ShipmentCommand { get; set; }
@@ -30,7 +31,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         //private void Home(object obj) => CurrentView = new HomeVM();
         private void Customer(object obj) => CurrentView = new CustomerVm();
-        //private void Product(object obj) => CurrentView = new ProductVM();
+        private void Article(object obj) => CurrentView = new MainWindowVm();
         //private void Order(object obj) => CurrentView = new OrderVM();
         //private void Transaction(object obj) => CurrentView = new TransactionVM();
         //private void Shipment(object obj) => CurrentView = new ShipmentVM();
@@ -40,7 +41,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         {
             //HomeCommand = new RelayCommand(Home);
             CustomerCommand = new RelayCommand(Customer);
-            //ProductsCommand = new RelayCommand(Product);
+            ArticleCommand = new RelayCommand(Article);
             //OrdersCommand = new RelayCommand(Order);
             //TransactionCommand = new RelayCommand(Transaction);
             //ShipmentCommand = new RelayCommand(Shipment);
