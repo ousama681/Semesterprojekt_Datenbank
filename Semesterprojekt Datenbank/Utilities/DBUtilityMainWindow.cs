@@ -41,7 +41,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             throw new NotImplementedException();
         }
 
-        public DataTable Read(string searchText)
+        public DataSet Read(string searchText)
         {
             // Funktioniert noch nicht mit Datatables oder DataSets.
             // evtl. eine liste machen... Testliste funktioniert.
