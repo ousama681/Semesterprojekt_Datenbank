@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Semesterprojekt_Datenbank.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +26,27 @@ namespace Semesterprojekt_Datenbank.View
         {
             InitializeComponent();
             TXTTest.Text = "Hello";
+            
+        }
+
+        private void TXTTest_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DGSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        public void SetDataGridContent(DataTable dataTable)
+        {
+            dataGridXaml.ItemsSource = dataTable.DefaultView;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            dataGridXaml.ItemsSource = DBUtilityMainWindow.GetSampleCustomerList();
         }
     }
 }

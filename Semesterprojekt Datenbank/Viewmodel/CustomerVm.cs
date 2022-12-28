@@ -8,11 +8,6 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         private readonly Customer customer = new Customer();
         private DBUtilityCustomer dB = new DBUtilityCustomer();
-        public int ID
-        {
-            get { return customer.Id; }
-            set { customer.Id = value; /*OnPropertyChanged();*/ }
-        }
 
         public int Nr
         {
