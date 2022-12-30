@@ -118,48 +118,6 @@
             </Button>
             
         </StackPanel>
-        
-
-        <!--CustomerPanel-->
-        <!--<Grid Margin="0,70,0,60"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Visibility="Visible" Grid.Row="8" Grid.Column="5" Panel.ZIndex="2">
-            <Label Content="Kunde" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,9,0,0" FontSize="20"/>
-            <Label Content="Kundenname" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,49,0,0"/>
-            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,74,0,0"/>
-            <Label Content="E-mail" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,113,0,0"/>
-            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,136,0,0"/>
-            <Label Content="Strasse" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,169,0,0"/>
-            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,196,0,0"/>
-            <Label Content="PLZ" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,229,0,0"/>
-            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,256,0,0"/>
-            <Label Content="Stadt" HorizontalAlignment="Left" Margin="12,289,0,0" VerticalAlignment="Top"/>
-            <TextBox TextWrapping="Wrap" Text="" Width="120" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="15,314,0,0"/>
-
-        </Grid>
-
-        --><!--ArticlePanel--><!--
-        <Grid Margin="0,70,0,60"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Visibility="Hidden">
-
-        </Grid>
-
-        --><!--ArticleGroupsPanel--><!--
-        <Grid Margin="0,70,0,60"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Visibility="Hidden">
-        </Grid>
-
-        --><!--OrderPanel--><!--
-        <Grid Margin="0,70,0,60"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Stretch"
-                    Visibility="Hidden">
-        </Grid>-->
         <ContentControl Content="{Binding CurrentView}"/>
         <ContentControl>
             <TextBox x:Name="TxtSearch" HorizontalAlignment="Left" Margin="845,34,0,0" TextWrapping="Wrap" FontSize="16" Text="" VerticalAlignment="Top" Width="250" Height="25"/>

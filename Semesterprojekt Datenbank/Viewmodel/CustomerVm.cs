@@ -1,10 +1,13 @@
 ﻿using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Utilities;
+using System.Collections.Generic;
 
 namespace Semesterprojekt_Datenbank.Viewmodel
 {
     public class CustomerVm : Utilities.ViewModelBase
     {
+        public static List<Customer> CustomerList { get; set; } = new List<Customer>();
+        
 
         private readonly Customer customer = new Customer();
         private DBUtilityCustomer dB = new DBUtilityCustomer();

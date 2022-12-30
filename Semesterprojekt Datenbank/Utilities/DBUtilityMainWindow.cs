@@ -61,7 +61,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                         {
                             if (searchText.All(char.IsDigit))
                                 cmd.Parameters.AddWithValue("nr", Convert.ToInt32(searchText));
-                            cmd.Parameters.AddWithValue("name", searchText);  // schaue bei Ihr hier ist der string ansderst Format string
+                            cmd.Parameters.AddWithValue("name", searchText);  // schaue bei Ihr, hier ist der string ansderst, Format string
                             cmd.Parameters.AddWithValue("Email", searchText);
                             cmd.Parameters.AddWithValue("website", searchText);
                             cmd.Parameters.AddWithValue("street", searchText);

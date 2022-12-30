@@ -14,12 +14,12 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 {
     public class MainWindowVm : Utilities.ViewModelBase
     {
-        private DBUtilityMainWindow dBmMainWindow = new DBUtilityMainWindow();
+        private DBUtilityMainWindow dBMainWindow = new DBUtilityMainWindow();
         SearchView searchView;
 
-        public void Search(string searchtext)
+        public void Search(string searchText)
         {
-            var dataTable = dBmMainWindow.Read(searchtext);
+            var dataTable = dBMainWindow.Read(searchText);
             searchView = new SearchView();
             searchView.SetDataGridContent(dataTable);
         }
