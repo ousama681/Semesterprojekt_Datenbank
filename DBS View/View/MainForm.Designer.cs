@@ -74,9 +74,9 @@
             // 
             this.CmdOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdOrders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CmdOrders.Location = new System.Drawing.Point(0, 261);
+            this.CmdOrders.Location = new System.Drawing.Point(3, 261);
             this.CmdOrders.Name = "CmdOrders";
-            this.CmdOrders.Size = new System.Drawing.Size(166, 47);
+            this.CmdOrders.Size = new System.Drawing.Size(157, 47);
             this.CmdOrders.TabIndex = 3;
             this.CmdOrders.Text = "Aufträge";
             this.CmdOrders.UseVisualStyleBackColor = true;
@@ -86,9 +86,9 @@
             // 
             this.CmdArticleGroups.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdArticleGroups.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CmdArticleGroups.Location = new System.Drawing.Point(0, 208);
+            this.CmdArticleGroups.Location = new System.Drawing.Point(3, 208);
             this.CmdArticleGroups.Name = "CmdArticleGroups";
-            this.CmdArticleGroups.Size = new System.Drawing.Size(166, 47);
+            this.CmdArticleGroups.Size = new System.Drawing.Size(157, 47);
             this.CmdArticleGroups.TabIndex = 2;
             this.CmdArticleGroups.Text = "Artikelgruppen";
             this.CmdArticleGroups.UseVisualStyleBackColor = true;
@@ -98,9 +98,9 @@
             // 
             this.CmdArticle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdArticle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CmdArticle.Location = new System.Drawing.Point(0, 155);
+            this.CmdArticle.Location = new System.Drawing.Point(3, 155);
             this.CmdArticle.Name = "CmdArticle";
-            this.CmdArticle.Size = new System.Drawing.Size(166, 47);
+            this.CmdArticle.Size = new System.Drawing.Size(157, 47);
             this.CmdArticle.TabIndex = 1;
             this.CmdArticle.Text = "Artikel";
             this.CmdArticle.UseVisualStyleBackColor = true;
@@ -110,9 +110,9 @@
             // 
             this.CmdCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CmdCustomer.Location = new System.Drawing.Point(0, 102);
+            this.CmdCustomer.Location = new System.Drawing.Point(3, 102);
             this.CmdCustomer.Name = "CmdCustomer";
-            this.CmdCustomer.Size = new System.Drawing.Size(166, 47);
+            this.CmdCustomer.Size = new System.Drawing.Size(157, 47);
             this.CmdCustomer.TabIndex = 2;
             this.CmdCustomer.Text = "Kunde";
             this.CmdCustomer.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@
             this.PnlBack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBack.Location = new System.Drawing.Point(166, 0);
             this.PnlBack.Name = "PnlBack";
-            this.PnlBack.Size = new System.Drawing.Size(775, 477);
+            this.PnlBack.Size = new System.Drawing.Size(909, 477);
             this.PnlBack.TabIndex = 4;
             // 
             // PnlMainPanel
@@ -134,7 +134,7 @@
             this.PnlMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlMainPanel.Location = new System.Drawing.Point(0, 45);
             this.PnlMainPanel.Name = "PnlMainPanel";
-            this.PnlMainPanel.Size = new System.Drawing.Size(775, 432);
+            this.PnlMainPanel.Size = new System.Drawing.Size(909, 432);
             this.PnlMainPanel.TabIndex = 5;
             // 
             // PnlTitle
@@ -144,7 +144,7 @@
             this.PnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlTitle.Location = new System.Drawing.Point(0, 0);
             this.PnlTitle.Name = "PnlTitle";
-            this.PnlTitle.Size = new System.Drawing.Size(775, 45);
+            this.PnlTitle.Size = new System.Drawing.Size(909, 45);
             this.PnlTitle.TabIndex = 4;
             // 
             // LblTitle
@@ -162,7 +162,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(941, 477);
+            this.ClientSize = new System.Drawing.Size(1075, 477);
             this.Controls.Add(this.PnlBack);
             this.Controls.Add(this.PnlSidebar);
             this.Name = "MainForm";

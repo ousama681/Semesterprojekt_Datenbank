@@ -35,6 +35,10 @@
             this.colStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTown = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmdAddCustomer = new System.Windows.Forms.Button();
+            this.CmdDelete = new System.Windows.Forms.Button();
+            this.CmdSearch = new System.Windows.Forms.Button();
+            this.TxtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCustomer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,12 +58,12 @@
             this.colStreet,
             this.colTown,
             this.colZipCode});
-            this.DgvCustomer.Location = new System.Drawing.Point(12, 72);
+            this.DgvCustomer.Location = new System.Drawing.Point(12, 41);
             this.DgvCustomer.Name = "DgvCustomer";
             this.DgvCustomer.ReadOnly = true;
             this.DgvCustomer.RowTemplate.Height = 25;
             this.DgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvCustomer.Size = new System.Drawing.Size(901, 366);
+            this.DgvCustomer.Size = new System.Drawing.Size(877, 343);
             this.DgvCustomer.TabIndex = 1;
             // 
             // colNr
@@ -104,17 +108,56 @@
             this.colZipCode.Name = "colZipCode";
             this.colZipCode.ReadOnly = true;
             // 
+            // CmdAddCustomer
+            // 
+            this.CmdAddCustomer.Location = new System.Drawing.Point(12, 12);
+            this.CmdAddCustomer.Name = "CmdAddCustomer";
+            this.CmdAddCustomer.Size = new System.Drawing.Size(94, 23);
+            this.CmdAddCustomer.TabIndex = 4;
+            this.CmdAddCustomer.Text = "Hinzufügen";
+            this.CmdAddCustomer.UseVisualStyleBackColor = true;
+            // 
+            // CmdDelete
+            // 
+            this.CmdDelete.Location = new System.Drawing.Point(112, 12);
+            this.CmdDelete.Name = "CmdDelete";
+            this.CmdDelete.Size = new System.Drawing.Size(75, 23);
+            this.CmdDelete.TabIndex = 5;
+            this.CmdDelete.Text = "Löschen";
+            this.CmdDelete.UseVisualStyleBackColor = true;
+            // 
+            // CmdSearch
+            // 
+            this.CmdSearch.Location = new System.Drawing.Point(437, 12);
+            this.CmdSearch.Name = "CmdSearch";
+            this.CmdSearch.Size = new System.Drawing.Size(75, 23);
+            this.CmdSearch.TabIndex = 6;
+            this.CmdSearch.Text = "Suchen";
+            this.CmdSearch.UseVisualStyleBackColor = true;
+            // 
+            // TxtSearch
+            // 
+            this.TxtSearch.Location = new System.Drawing.Point(331, 12);
+            this.TxtSearch.Name = "TxtSearch";
+            this.TxtSearch.Size = new System.Drawing.Size(100, 23);
+            this.TxtSearch.TabIndex = 7;
+            // 
             // ArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(925, 450);
+            this.ClientSize = new System.Drawing.Size(901, 396);
+            this.Controls.Add(this.TxtSearch);
+            this.Controls.Add(this.CmdSearch);
+            this.Controls.Add(this.CmdDelete);
+            this.Controls.Add(this.CmdAddCustomer);
             this.Controls.Add(this.DgvCustomer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ArticleForm";
             this.Text = "Artikel";
             ((System.ComponentModel.ISupportInitialize)(this.DgvCustomer)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -127,5 +170,9 @@
         private DataGridViewTextBoxColumn colStreet;
         private DataGridViewTextBoxColumn colTown;
         private DataGridViewTextBoxColumn colZipCode;
+        private Button CmdAddCustomer;
+        private Button CmdDelete;
+        private Button CmdSearch;
+        private TextBox TxtSearch;
     }
 }

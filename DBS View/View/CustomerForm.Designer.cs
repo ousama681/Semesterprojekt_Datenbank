@@ -57,7 +57,7 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(341, 13);
+            this.TxtSearch.Location = new System.Drawing.Point(341, 12);
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(100, 23);
             this.TxtSearch.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             // CmdDelete
             // 
-            this.CmdDelete.Location = new System.Drawing.Point(112, 13);
+            this.CmdDelete.Location = new System.Drawing.Point(112, 12);
             this.CmdDelete.Name = "CmdDelete";
             this.CmdDelete.Size = new System.Drawing.Size(75, 23);
             this.CmdDelete.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             // CmdAddCustomer
             // 
-            this.CmdAddCustomer.Location = new System.Drawing.Point(12, 13);
+            this.CmdAddCustomer.Location = new System.Drawing.Point(12, 12);
             this.CmdAddCustomer.Name = "CmdAddCustomer";
             this.CmdAddCustomer.Size = new System.Drawing.Size(94, 23);
             this.CmdAddCustomer.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             // CmdSearch
             // 
-            this.CmdSearch.Location = new System.Drawing.Point(447, 13);
+            this.CmdSearch.Location = new System.Drawing.Point(447, 12);
             this.CmdSearch.Name = "CmdSearch";
             this.CmdSearch.Size = new System.Drawing.Size(75, 23);
             this.CmdSearch.TabIndex = 4;
@@ -110,7 +110,7 @@
             this.colStreet,
             this.colTown,
             this.colZipCode});
-            this.DgvCustomer.Location = new System.Drawing.Point(12, 42);
+            this.DgvCustomer.Location = new System.Drawing.Point(12, 41);
             this.DgvCustomer.Name = "DgvCustomer";
             this.DgvCustomer.ReadOnly = true;
             this.DgvCustomer.RowTemplate.Height = 25;
