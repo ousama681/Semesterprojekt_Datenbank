@@ -14,14 +14,22 @@ namespace DBS_View.View
 {
     public partial class AddCustomerForm : Form
     {
+        CustomerVm customer;
         public AddCustomerForm()
         {
             InitializeComponent();
+            customer = new CustomerVm();
         }
-
+        
         public AddCustomerForm(CustomerVm cu)
         {
             InitializeComponent();
+            
+        }
+
+        private void CmdSave_Click(object sender, EventArgs e)
+        {
+            customer.CreateCustomer();
         }
     }
 }

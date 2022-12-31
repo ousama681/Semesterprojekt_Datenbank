@@ -19,11 +19,6 @@ namespace DBS_View.View
         private CustomerVm customerVm;
         public CustomerForm()
         {
-            //CustomerVm.CustomerList.Add(new CustomerVm(1,"s","sdf@d","fds.ch", "pw", "street", 12));
-            //CustomerVm.CustomerList.Add(new CustomerVm(2, "s", "sdf@d", "fds.ch", "pw", "street", 12));
-            //CustomerVm.CustomerList.Add(new CustomerVm(3, "s", "sdf@d", "fds.ch", "pw", "street", 12));
-            //CustomerVm.CustomerList.Add(new CustomerVm(4, "s", "sdf@d", "fds.ch", "pw", "street", 12));
-            //CustomerVm.CustomerList.Add(new CustomerVm(5, "s", "sdf@d", "fds.ch", "pw", "sdsfds", 12));
             InitializeComponent();
             customerVm = new CustomerVm();
             

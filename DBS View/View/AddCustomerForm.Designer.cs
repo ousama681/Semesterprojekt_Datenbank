@@ -59,6 +59,7 @@
             this.CmdSave.TabIndex = 7;
             this.CmdSave.Text = "Speichern";
             this.CmdSave.UseVisualStyleBackColor = true;
+            this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
             // 
             // CmdAbort
             // 
