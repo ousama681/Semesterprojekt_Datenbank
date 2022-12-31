@@ -114,7 +114,7 @@
             this.DgvCustomer.Name = "DgvCustomer";
             this.DgvCustomer.ReadOnly = true;
             this.DgvCustomer.RowTemplate.Height = 25;
-            this.DgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DgvCustomer.Size = new System.Drawing.Size(901, 396);
             this.DgvCustomer.TabIndex = 0;
             this.DgvCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataResultList_CellContentClick);

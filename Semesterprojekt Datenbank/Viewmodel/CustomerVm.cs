@@ -6,11 +6,13 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 {
     public class CustomerVm : Utilities.ViewModelBase
     {
-        public static List<Customer> CustomerList { get; set; } = new List<Customer>();
-        
+        public static List<CustomerVm> CustomerList { get; set; } = new List<CustomerVm>();
 
+        private readonly Town town = new Town();
         private readonly Customer customer = new Customer();
         private DBUtilityCustomer dB = new DBUtilityCustomer();
+
+        
 
         public int Nr
         {
@@ -47,12 +49,23 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             get { return customer.Street; }
             set { customer.Street = value; /*OnPropertyChanged();*/ }
         }
-
-        public int TownId
+        public string ZipCode 
         {
-            get { return customer.TownId; }
-            set { customer.TownId = value; /*OnPropertyChanged();*/ }
+            get { return town.ZipCode; }
+            set { town.ZipCode = value; } 
         }
+        public string City
+        {
+            get { return town.City; }
+            set { town.City = value; }
+        }
+
+
+        //public int TownId
+        //{
+        //    get { return customer.TownId; }
+        //    set { customer.TownId = value; /*OnPropertyChanged();*/ }
+        //}
 
         public CustomerVm()
         {

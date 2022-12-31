@@ -28,85 +28,67 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DgvCustomer = new System.Windows.Forms.DataGridView();
+            this.DgvArticle = new System.Windows.Forms.DataGridView();
             this.colNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTown = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colArticleGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CmdAddCustomer = new System.Windows.Forms.Button();
             this.CmdDelete = new System.Windows.Forms.Button();
             this.CmdSearch = new System.Windows.Forms.Button();
             this.TxtSearch = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvArticle)).BeginInit();
             this.SuspendLayout();
             // 
-            // DgvCustomer
+            // DgvArticle
             // 
-            this.DgvCustomer.AllowUserToAddRows = false;
-            this.DgvCustomer.AllowUserToDeleteRows = false;
-            this.DgvCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DgvArticle.AllowUserToAddRows = false;
+            this.DgvArticle.AllowUserToDeleteRows = false;
+            this.DgvArticle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DgvArticle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DgvArticle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvArticle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colNr,
             this.colName,
-            this.colEmail,
-            this.colStreet,
-            this.colTown,
-            this.colZipCode});
-            this.DgvCustomer.Location = new System.Drawing.Point(12, 41);
-            this.DgvCustomer.Name = "DgvCustomer";
-            this.DgvCustomer.ReadOnly = true;
-            this.DgvCustomer.RowTemplate.Height = 25;
-            this.DgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvCustomer.Size = new System.Drawing.Size(877, 343);
-            this.DgvCustomer.TabIndex = 1;
+            this.colPrice,
+            this.colArticleGroup});
+            this.DgvArticle.Location = new System.Drawing.Point(12, 41);
+            this.DgvArticle.Name = "DgvArticle";
+            this.DgvArticle.ReadOnly = true;
+            this.DgvArticle.RowTemplate.Height = 25;
+            this.DgvArticle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvArticle.Size = new System.Drawing.Size(877, 343);
+            this.DgvArticle.TabIndex = 1;
             // 
             // colNr
             // 
             this.colNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNr.HeaderText = "Nr";
+            this.colNr.HeaderText = "Artikelnr.";
             this.colNr.Name = "colNr";
             this.colNr.ReadOnly = true;
             // 
             // colName
             // 
             this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.HeaderText = "Name";
+            this.colName.HeaderText = "Bezeichnung";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
             // 
-            // colEmail
+            // colPrice
             // 
-            this.colEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colEmail.HeaderText = "Email";
-            this.colEmail.Name = "colEmail";
-            this.colEmail.ReadOnly = true;
+            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colPrice.HeaderText = "Preis";
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
             // 
-            // colStreet
+            // colArticleGroup
             // 
-            this.colStreet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colStreet.HeaderText = "Street";
-            this.colStreet.Name = "colStreet";
-            this.colStreet.ReadOnly = true;
-            // 
-            // colTown
-            // 
-            this.colTown.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTown.HeaderText = "Town";
-            this.colTown.Name = "colTown";
-            this.colTown.ReadOnly = true;
-            // 
-            // colZipCode
-            // 
-            this.colZipCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colZipCode.HeaderText = "Zip Code";
-            this.colZipCode.Name = "colZipCode";
-            this.colZipCode.ReadOnly = true;
+            this.colArticleGroup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colArticleGroup.HeaderText = "Artikelgruppe";
+            this.colArticleGroup.Name = "colArticleGroup";
+            this.colArticleGroup.ReadOnly = true;
             // 
             // CmdAddCustomer
             // 
@@ -116,6 +98,7 @@
             this.CmdAddCustomer.TabIndex = 4;
             this.CmdAddCustomer.Text = "Hinzufügen";
             this.CmdAddCustomer.UseVisualStyleBackColor = true;
+            this.CmdAddCustomer.Click += new System.EventHandler(this.CmdAddArticle_Click);
             // 
             // CmdDelete
             // 
@@ -125,6 +108,7 @@
             this.CmdDelete.TabIndex = 5;
             this.CmdDelete.Text = "Löschen";
             this.CmdDelete.UseVisualStyleBackColor = true;
+            this.CmdDelete.Click += new System.EventHandler(this.CmdDelete_Click);
             // 
             // CmdSearch
             // 
@@ -134,6 +118,7 @@
             this.CmdSearch.TabIndex = 6;
             this.CmdSearch.Text = "Suchen";
             this.CmdSearch.UseVisualStyleBackColor = true;
+            this.CmdSearch.Click += new System.EventHandler(this.CmdSearch_Click);
             // 
             // TxtSearch
             // 
@@ -141,6 +126,8 @@
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(100, 23);
             this.TxtSearch.TabIndex = 7;
+            this.TxtSearch.Click += new System.EventHandler(this.TxtSearch_TextChanged);
+            this.TxtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
             // 
             // ArticleForm
             // 
@@ -151,11 +138,11 @@
             this.Controls.Add(this.CmdSearch);
             this.Controls.Add(this.CmdDelete);
             this.Controls.Add(this.CmdAddCustomer);
-            this.Controls.Add(this.DgvCustomer);
+            this.Controls.Add(this.DgvArticle);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ArticleForm";
             this.Text = "Artikel";
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgvArticle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,16 +150,14 @@
 
         #endregion
 
-        private DataGridView DgvCustomer;
-        private DataGridViewTextBoxColumn colNr;
-        private DataGridViewTextBoxColumn colName;
-        private DataGridViewTextBoxColumn colEmail;
-        private DataGridViewTextBoxColumn colStreet;
-        private DataGridViewTextBoxColumn colTown;
-        private DataGridViewTextBoxColumn colZipCode;
+        private DataGridView DgvArticle;
         private Button CmdAddCustomer;
         private Button CmdDelete;
         private Button CmdSearch;
         private TextBox TxtSearch;
+        private DataGridViewTextBoxColumn colNr;
+        private DataGridViewTextBoxColumn colName;
+        private DataGridViewTextBoxColumn colPrice;
+        private DataGridViewTextBoxColumn colArticleGroup;
     }
 }

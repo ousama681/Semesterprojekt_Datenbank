@@ -7,19 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Semesterprojekt_Datenbank.Model;
-using Semesterprojekt_Datenbank.Viewmodel;
 
 namespace DBS_View.View
 {
-    public partial class AddCustomerForm : Form
+    public partial class AddArticleForm : Form
     {
-        public AddCustomerForm()
-        {
-            InitializeComponent();
-        }
-
-        public AddCustomerForm(CustomerVm cu)
+        public AddArticleForm()
         {
             InitializeComponent();
         }

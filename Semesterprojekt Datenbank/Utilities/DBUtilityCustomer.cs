@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Semesterprojekt_Datenbank.Interfaces;
 using Semesterprojekt_Datenbank.Model;
+using Semesterprojekt_Datenbank.Viewmodel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,15 @@ using System.Threading.Tasks;
 
 namespace Semesterprojekt_Datenbank.Utilities
 {
-    public class DBUtilityCustomer : IDBUtility<Customer>
+    public class DBUtilityCustomer : IDBUtility<CustomerVm>
     {
         ModelBuilder mb = new ModelBuilder();
-        public void Create(Customer item)
+        public void Create(CustomerVm item)
         {
             Customer c;
             using (var context = new DataContext())
-            { 
+            {
+                var id = GetTownId(context, item);
                 if (item is Customer)
                 {
                     c = (Customer)(object)item;
@@ -39,7 +41,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             throw new NotImplementedException();
         }
 
-        public void Read(Customer item)
+        public void Read(CustomerVm item)
         {
 
         }
@@ -47,6 +49,14 @@ namespace Semesterprojekt_Datenbank.Utilities
         public void Update()
         {
             throw new NotImplementedException();
+        }
+
+        public int GetTownId(DataContext context, CustomerVm customer)
+        {
+            var id = from town in context.Town
+                     where town.ZipCode.Contains(customer.ZipCode)
+                     select town.Id;
+            return Convert.ToInt32(id);
         }
     }
 }

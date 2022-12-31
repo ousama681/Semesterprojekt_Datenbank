@@ -45,11 +45,15 @@
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.LblPassword = new System.Windows.Forms.Label();
             this.LblAddCustomerTitle = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.TxtCountry = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CmdSave
             // 
-            this.CmdSave.Location = new System.Drawing.Point(7, 400);
+            this.CmdSave.Location = new System.Drawing.Point(10, 468);
             this.CmdSave.Name = "CmdSave";
             this.CmdSave.Size = new System.Drawing.Size(94, 35);
             this.CmdSave.TabIndex = 7;
@@ -58,7 +62,7 @@
             // 
             // CmdAbort
             // 
-            this.CmdAbort.Location = new System.Drawing.Point(107, 400);
+            this.CmdAbort.Location = new System.Drawing.Point(110, 468);
             this.CmdAbort.Name = "CmdAbort";
             this.CmdAbort.Size = new System.Drawing.Size(91, 35);
             this.CmdAbort.TabIndex = 8;
@@ -95,14 +99,14 @@
             // 
             // TxtEmail
             // 
-            this.TxtEmail.Location = new System.Drawing.Point(9, 214);
+            this.TxtEmail.Location = new System.Drawing.Point(12, 282);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(173, 23);
             this.TxtEmail.TabIndex = 4;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(9, 283);
+            this.textBox6.Location = new System.Drawing.Point(12, 351);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(319, 23);
             this.textBox6.TabIndex = 5;
@@ -151,7 +155,7 @@
             // 
             this.LblEmail.AutoSize = true;
             this.LblEmail.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblEmail.Location = new System.Drawing.Point(7, 191);
+            this.LblEmail.Location = new System.Drawing.Point(12, 259);
             this.LblEmail.Name = "LblEmail";
             this.LblEmail.Size = new System.Drawing.Size(46, 20);
             this.LblEmail.TabIndex = 12;
@@ -161,7 +165,7 @@
             // 
             this.LblWebsite.AutoSize = true;
             this.LblWebsite.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblWebsite.Location = new System.Drawing.Point(10, 259);
+            this.LblWebsite.Location = new System.Drawing.Point(10, 328);
             this.LblWebsite.Name = "LblWebsite";
             this.LblWebsite.Size = new System.Drawing.Size(62, 20);
             this.LblWebsite.TabIndex = 13;
@@ -169,7 +173,7 @@
             // 
             // TxtPassword
             // 
-            this.TxtPassword.Location = new System.Drawing.Point(9, 353);
+            this.TxtPassword.Location = new System.Drawing.Point(12, 421);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.Size = new System.Drawing.Size(173, 23);
             this.TxtPassword.TabIndex = 6;
@@ -179,7 +183,7 @@
             // 
             this.LblPassword.AutoSize = true;
             this.LblPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPassword.Location = new System.Drawing.Point(7, 330);
+            this.LblPassword.Location = new System.Drawing.Point(12, 398);
             this.LblPassword.Name = "LblPassword";
             this.LblPassword.Size = new System.Drawing.Size(66, 20);
             this.LblPassword.TabIndex = 15;
@@ -195,11 +199,49 @@
             this.LblAddCustomerTitle.TabIndex = 16;
             this.LblAddCustomerTitle.Text = "Kunde hinzufügen";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(209, 214);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 23);
+            this.textBox1.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(209, 191);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 20);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "PLZ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(10, 191);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 20);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Land";
+            // 
+            // TxtCountry
+            // 
+            this.TxtCountry.Location = new System.Drawing.Point(12, 214);
+            this.TxtCountry.Name = "TxtCountry";
+            this.TxtCountry.Size = new System.Drawing.Size(173, 23);
+            this.TxtCountry.TabIndex = 19;
+            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 445);
+            this.ClientSize = new System.Drawing.Size(343, 518);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.TxtCountry);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.LblAddCustomerTitle);
             this.Controls.Add(this.LblPassword);
             this.Controls.Add(this.TxtPassword);
@@ -244,5 +286,9 @@
         private TextBox TxtPassword;
         private Label LblPassword;
         private Label LblAddCustomerTitle;
+        private TextBox textBox1;
+        private Label label1;
+        private Label label2;
+        private TextBox TxtCountry;
     }
 }

@@ -19,11 +19,11 @@ namespace DBS_View.View
         private CustomerVm customerVm;
         public CustomerForm()
         {
-            CustomerVm.CustomerList.Add(new Customer(1,"s","sdf@d","fds.ch", "pw", "street", 12));
-            CustomerVm.CustomerList.Add(new Customer(2, "s", "sdf@d", "fds.ch", "pw", "street", 12));
-            CustomerVm.CustomerList.Add(new Customer(3, "s", "sdf@d", "fds.ch", "pw", "street", 12));
-            CustomerVm.CustomerList.Add(new Customer(4, "s", "sdf@d", "fds.ch", "pw", "street", 12));
-            CustomerVm.CustomerList.Add(new Customer(5, "s", "sdf@d", "fds.ch", "pw", "sdsfds", 12));
+            //CustomerVm.CustomerList.Add(new CustomerVm(1,"s","sdf@d","fds.ch", "pw", "street", 12));
+            //CustomerVm.CustomerList.Add(new CustomerVm(2, "s", "sdf@d", "fds.ch", "pw", "street", 12));
+            //CustomerVm.CustomerList.Add(new CustomerVm(3, "s", "sdf@d", "fds.ch", "pw", "street", 12));
+            //CustomerVm.CustomerList.Add(new CustomerVm(4, "s", "sdf@d", "fds.ch", "pw", "street", 12));
+            //CustomerVm.CustomerList.Add(new CustomerVm(5, "s", "sdf@d", "fds.ch", "pw", "sdsfds", 12));
             InitializeComponent();
             customerVm = new CustomerVm();
             
@@ -58,7 +58,7 @@ namespace DBS_View.View
                                     "wirklich löschen?", "Eintrag löschen?", MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    Customer cu = CustomerVm.CustomerList.Find(x => x.Name == customerName);
+                    //Customer cu = CustomerVm.CustomerList.Find(x => x.Name == customerName);
 
                     // Search Data.CustomerList for customers with the same ContactPerson
                     // This prevents an error when deleting a customer with the same ContactPerson as another customer
@@ -93,12 +93,12 @@ namespace DBS_View.View
 
             if (gridSender.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex >= 0)
             {
-                int customerNameColumnIndex = DgvCustomer.Columns["dcolCustomerName"].Index;
+                int customerNameColumnIndex = DgvCustomer.Columns["colName"].Index;
                 DataGridViewRow row = DgvCustomer.Rows[e.RowIndex];
                 DataGridViewCell cell = row.Cells[customerNameColumnIndex];
                 string customerName = Convert.ToString(cell.Value);
 
-                Customer cu = CustomerVm.CustomerList.Find(x => x.Name == customerName);
+                CustomerVm cu = CustomerVm.CustomerList.Find(x => x.Name == customerName);
 
                 AddCustomerForm addCustomerForm = new AddCustomerForm(cu);
                 addCustomerForm.FormClosed += new FormClosedEventHandler(this.AddCustomerForm_FormClosed);
@@ -115,7 +115,7 @@ namespace DBS_View.View
 
             DataGridViewColumnCollection column = DgvCustomer.Columns;
 
-            foreach (Customer customer in CustomerVm.CustomerList)
+            foreach (CustomerVm customer in CustomerVm.CustomerList)
             {
                 // Add new row to DataGridView
                 int rowIndex = row.Add();
@@ -128,8 +128,9 @@ namespace DBS_View.View
                 cell[column["colName"].Index].Value = customer.Name;
                 cell[column["colEmail"].Index].Value = customer.Email;
                 cell[column["colStreet"].Index].Value = customer.Street;
-                cell[column["colTown"].Index].Value = customer.Town;
-                cell[column["colZipCode"].Index].Value = customer.TownId;
+                cell[column["colTown"].Index].Value = customer.City;
+                cell[column["colZipCode"].Index].Value = customer.ZipCode;
+                
                 //cell[column["dcolBusinessPhoneNumber"].Index].Value = cu.BusinessPhoneNumber;
                 //cell[column["dcolFaxNumber"].Index].Value = cu.FaxNumber;
                 //cell[column["dcolContactPerson"].Index].Value = cu.ContactPersonString;
