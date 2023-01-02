@@ -65,7 +65,7 @@
             this.pictureBox1.Image = global::DBS_View.Properties.Resources.user_networking;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(166, 96);
+            this.pictureBox1.Size = new System.Drawing.Size(166, 116);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -74,7 +74,7 @@
             // 
             this.CmdOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdOrders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CmdOrders.Location = new System.Drawing.Point(3, 261);
+            this.CmdOrders.Location = new System.Drawing.Point(3, 282);
             this.CmdOrders.Name = "CmdOrders";
             this.CmdOrders.Size = new System.Drawing.Size(157, 47);
             this.CmdOrders.TabIndex = 3;
@@ -86,7 +86,7 @@
             // 
             this.CmdArticleGroups.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdArticleGroups.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CmdArticleGroups.Location = new System.Drawing.Point(3, 208);
+            this.CmdArticleGroups.Location = new System.Drawing.Point(3, 229);
             this.CmdArticleGroups.Name = "CmdArticleGroups";
             this.CmdArticleGroups.Size = new System.Drawing.Size(157, 47);
             this.CmdArticleGroups.TabIndex = 2;
@@ -98,7 +98,7 @@
             // 
             this.CmdArticle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdArticle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CmdArticle.Location = new System.Drawing.Point(3, 155);
+            this.CmdArticle.Location = new System.Drawing.Point(3, 176);
             this.CmdArticle.Name = "CmdArticle";
             this.CmdArticle.Size = new System.Drawing.Size(157, 47);
             this.CmdArticle.TabIndex = 1;
@@ -110,7 +110,7 @@
             // 
             this.CmdCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CmdCustomer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.CmdCustomer.Location = new System.Drawing.Point(3, 102);
+            this.CmdCustomer.Location = new System.Drawing.Point(3, 123);
             this.CmdCustomer.Name = "CmdCustomer";
             this.CmdCustomer.Size = new System.Drawing.Size(157, 47);
             this.CmdCustomer.TabIndex = 2;
@@ -132,9 +132,9 @@
             // PnlMainPanel
             // 
             this.PnlMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PnlMainPanel.Location = new System.Drawing.Point(0, 45);
+            this.PnlMainPanel.Location = new System.Drawing.Point(0, 47);
             this.PnlMainPanel.Name = "PnlMainPanel";
-            this.PnlMainPanel.Size = new System.Drawing.Size(909, 432);
+            this.PnlMainPanel.Size = new System.Drawing.Size(909, 430);
             this.PnlMainPanel.TabIndex = 5;
             // 
             // PnlTitle
@@ -144,14 +144,14 @@
             this.PnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlTitle.Location = new System.Drawing.Point(0, 0);
             this.PnlTitle.Name = "PnlTitle";
-            this.PnlTitle.Size = new System.Drawing.Size(909, 45);
+            this.PnlTitle.Size = new System.Drawing.Size(909, 47);
             this.PnlTitle.TabIndex = 4;
             // 
             // LblTitle
             // 
             this.LblTitle.AutoSize = true;
             this.LblTitle.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTitle.Location = new System.Drawing.Point(354, 9);
+            this.LblTitle.Location = new System.Drawing.Point(6, 9);
             this.LblTitle.Name = "LblTitle";
             this.LblTitle.Size = new System.Drawing.Size(66, 25);
             this.LblTitle.TabIndex = 0;

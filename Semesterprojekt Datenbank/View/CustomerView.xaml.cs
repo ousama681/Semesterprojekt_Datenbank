@@ -47,7 +47,7 @@ namespace Semesterprojekt_Datenbank.View
             vm.Password = Password.Text.GetHashCode().ToString();
             vm.Street= Street.Text;
             //vm.TownId = Convert.ToInt16(ZipCode.Text);
-            vm.CreateCustomer();
+            //vm.CreateCustomer(customer);
         }
     }
 }

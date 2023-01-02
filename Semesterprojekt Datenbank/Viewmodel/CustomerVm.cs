@@ -9,56 +9,63 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public static List<CustomerVm> CustomerList { get; set; } = new List<CustomerVm>();
 
         private readonly Town town = new Town();
-        private readonly CustomerVm customer;
+        //private readonly CustomerVm customer;
         private DBUtilityCustomer dB = new DBUtilityCustomer();
 
-        
+        public int Nr { get; set; }
+        public string Name { get; set; }
+        public string Street { get; set; }
+        public string ZipCode { get; set; }
+        public string City { get; set; }
+        public string Email { get; set; }
+        public string Website { get; set; }
+        public string Password { get; set; }
 
-        public int Nr
-        {
-            get { return customer.Nr; }
-            set { customer.Nr = value; /*OnPropertyChanged();*/ }
-        }
+        //public int Nr
+        //{
+        //    get { return customer.Nr; }
+        //    set { customer.Nr = value; /*OnPropertyChanged();*/ }
+        //}
 
-        public string Name
-        {
-            get { return customer.Name; }
-            set { customer.Name = value; /*OnPropertyChanged();*/ }
-        }
+        //public string Name
+        //{
+        //    get { return customer.Name; }
+        //    set { customer.Name = value; /*OnPropertyChanged();*/ }
+        //}
 
-        public string Email
-        {
-            get { return customer.Email; }
-            set { customer.Email = value; /*OnPropertyChanged();*/ }
-        }
+        //public string Email
+        //{
+        //    get { return customer.Email; }
+        //    set { customer.Email = value; /*OnPropertyChanged();*/ }
+        //}
 
-        public string Website
-        {
-            get { return customer.Website; }
-            set { customer.Website = value; /*OnPropertyChanged();*/ }
-        }
+        //public string Website
+        //{
+        //    get { return customer.Website; }
+        //    set { customer.Website = value; /*OnPropertyChanged();*/ }
+        //}
 
-        public string Password
-        {
-            get { return customer.Password; }
-            set { customer.Password = value; /*OnPropertyChanged();*/ }
-        }
+        //public string Password
+        //{
+        //    get { return customer.Password; }
+        //    set { customer.Password = value; /*OnPropertyChanged();*/ }
+        //}
 
-        public string Street
-        {
-            get { return customer.Street; }
-            set { customer.Street = value; /*OnPropertyChanged();*/ }
-        }
-        public string ZipCode 
-        {
-            get { return town.ZipCode; }
-            set { town.ZipCode = value; } 
-        }
-        public string City
-        {
-            get { return town.City; }
-            set { town.City = value; }
-        }
+        //public string Street
+        //{
+        //    get { return customer.Street; }
+        //    set { customer.Street = value; /*OnPropertyChanged();*/ }
+        //}
+        //public string ZipCode 
+        //{
+        //    get { return town.ZipCode; }
+        //    set { town.ZipCode = value; } 
+        //}
+        //public string City
+        //{
+        //    get { return town.City; }
+        //    set { town.City = value; }
+        //}
 
 
         //public int TownId
@@ -74,9 +81,10 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         }
 
 
-        public void CreateCustomer()
+        public bool CreateCustomer(CustomerVm customer)
         {
-            dB.Create(customer);
+            var customerSaved = dB.Create(customer);
+            return customerSaved;
         }
     }
 }

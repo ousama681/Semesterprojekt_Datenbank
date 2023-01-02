@@ -35,7 +35,7 @@
             this.TxtStreet = new System.Windows.Forms.TextBox();
             this.TxtTown = new System.Windows.Forms.TextBox();
             this.TxtEmail = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.TxtWebsite = new System.Windows.Forms.TextBox();
             this.LblCustomerNr = new System.Windows.Forms.Label();
             this.LblName = new System.Windows.Forms.Label();
             this.LblStreet = new System.Windows.Forms.Label();
@@ -45,10 +45,8 @@
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.LblPassword = new System.Windows.Forms.Label();
             this.LblAddCustomerTitle = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtZipCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.TxtCountry = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CmdSave
@@ -63,12 +61,14 @@
             // 
             // CmdAbort
             // 
+            this.CmdAbort.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CmdAbort.Location = new System.Drawing.Point(110, 468);
             this.CmdAbort.Name = "CmdAbort";
             this.CmdAbort.Size = new System.Drawing.Size(91, 35);
             this.CmdAbort.TabIndex = 8;
             this.CmdAbort.Text = "Abbrechen";
             this.CmdAbort.UseVisualStyleBackColor = true;
+            this.CmdAbort.Click += new System.EventHandler(this.CmdAbort_Click);
             // 
             // TxtCustomerNr
             // 
@@ -86,16 +86,16 @@
             // 
             // TxtStreet
             // 
-            this.TxtStreet.Location = new System.Drawing.Point(9, 145);
+            this.TxtStreet.Location = new System.Drawing.Point(12, 145);
             this.TxtStreet.Name = "TxtStreet";
             this.TxtStreet.Size = new System.Drawing.Size(173, 23);
             this.TxtStreet.TabIndex = 2;
             // 
             // TxtTown
             // 
-            this.TxtTown.Location = new System.Drawing.Point(209, 145);
+            this.TxtTown.Location = new System.Drawing.Point(12, 214);
             this.TxtTown.Name = "TxtTown";
-            this.TxtTown.Size = new System.Drawing.Size(119, 23);
+            this.TxtTown.Size = new System.Drawing.Size(168, 23);
             this.TxtTown.TabIndex = 3;
             // 
             // TxtEmail
@@ -105,12 +105,12 @@
             this.TxtEmail.Size = new System.Drawing.Size(173, 23);
             this.TxtEmail.TabIndex = 4;
             // 
-            // textBox6
+            // TxtWebsite
             // 
-            this.textBox6.Location = new System.Drawing.Point(12, 351);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(319, 23);
-            this.textBox6.TabIndex = 5;
+            this.TxtWebsite.Location = new System.Drawing.Point(12, 351);
+            this.TxtWebsite.Name = "TxtWebsite";
+            this.TxtWebsite.Size = new System.Drawing.Size(319, 23);
+            this.TxtWebsite.TabIndex = 5;
             // 
             // LblCustomerNr
             // 
@@ -126,7 +126,7 @@
             // 
             this.LblName.AutoSize = true;
             this.LblName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblName.Location = new System.Drawing.Point(10, 59);
+            this.LblName.Location = new System.Drawing.Point(12, 59);
             this.LblName.Name = "LblName";
             this.LblName.Size = new System.Drawing.Size(96, 20);
             this.LblName.TabIndex = 9;
@@ -136,7 +136,7 @@
             // 
             this.LblStreet.AutoSize = true;
             this.LblStreet.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblStreet.Location = new System.Drawing.Point(7, 122);
+            this.LblStreet.Location = new System.Drawing.Point(12, 122);
             this.LblStreet.Name = "LblStreet";
             this.LblStreet.Size = new System.Drawing.Size(55, 20);
             this.LblStreet.TabIndex = 10;
@@ -146,7 +146,7 @@
             // 
             this.LblTown.AutoSize = true;
             this.LblTown.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTown.Location = new System.Drawing.Point(207, 122);
+            this.LblTown.Location = new System.Drawing.Point(12, 191);
             this.LblTown.Name = "LblTown";
             this.LblTown.Size = new System.Drawing.Size(30, 20);
             this.LblTown.TabIndex = 11;
@@ -200,12 +200,12 @@
             this.LblAddCustomerTitle.TabIndex = 16;
             this.LblAddCustomerTitle.Text = "Kunde hinzufügen";
             // 
-            // textBox1
+            // TxtZipCode
             // 
-            this.textBox1.Location = new System.Drawing.Point(209, 214);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 17;
+            this.TxtZipCode.Location = new System.Drawing.Point(209, 214);
+            this.TxtZipCode.Name = "TxtZipCode";
+            this.TxtZipCode.Size = new System.Drawing.Size(100, 23);
+            this.TxtZipCode.TabIndex = 17;
             // 
             // label1
             // 
@@ -217,32 +217,13 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "PLZ";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(10, 191);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 20);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Land";
-            // 
-            // TxtCountry
-            // 
-            this.TxtCountry.Location = new System.Drawing.Point(12, 214);
-            this.TxtCountry.Name = "TxtCountry";
-            this.TxtCountry.Size = new System.Drawing.Size(173, 23);
-            this.TxtCountry.TabIndex = 19;
-            // 
             // AddCustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(343, 518);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.TxtCountry);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtZipCode);
             this.Controls.Add(this.LblAddCustomerTitle);
             this.Controls.Add(this.LblPassword);
             this.Controls.Add(this.TxtPassword);
@@ -252,7 +233,7 @@
             this.Controls.Add(this.LblStreet);
             this.Controls.Add(this.LblName);
             this.Controls.Add(this.LblCustomerNr);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.TxtWebsite);
             this.Controls.Add(this.TxtEmail);
             this.Controls.Add(this.TxtTown);
             this.Controls.Add(this.TxtStreet);
@@ -262,6 +243,7 @@
             this.Controls.Add(this.CmdSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "AddCustomerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Formular";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -277,7 +259,7 @@
         private TextBox TxtStreet;
         private TextBox TxtTown;
         private TextBox TxtEmail;
-        private TextBox textBox6;
+        private TextBox TxtWebsite;
         private Label LblCustomerNr;
         private Label LblName;
         private Label LblStreet;
@@ -287,9 +269,7 @@
         private TextBox TxtPassword;
         private Label LblPassword;
         private Label LblAddCustomerTitle;
-        private TextBox textBox1;
+        private TextBox TxtZipCode;
         private Label label1;
-        private Label label2;
-        private TextBox TxtCountry;
     }
 }

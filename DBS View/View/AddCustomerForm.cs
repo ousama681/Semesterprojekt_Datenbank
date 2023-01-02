@@ -18,7 +18,7 @@ namespace DBS_View.View
         public AddCustomerForm()
         {
             InitializeComponent();
-            customer = new CustomerVm();
+            
         }
         
         public AddCustomerForm(CustomerVm cu)
@@ -29,7 +29,26 @@ namespace DBS_View.View
 
         private void CmdSave_Click(object sender, EventArgs e)
         {
-            customer.CreateCustomer();
+            customer = new CustomerVm();
+
+            customer.Name = TxtCustomerName.Text;
+            if (TxtCustomerNr.TextLength > 0)
+                customer.Nr = Convert.ToInt32(TxtCustomerNr.Text);
+            customer.Street = TxtStreet.Text;
+            customer.City = TxtTown.Text;
+            customer.ZipCode = TxtZipCode.Text;
+            customer.Email = TxtEmail.Text;
+            customer.Website = TxtWebsite.Text;
+            customer.Password = TxtPassword.Text.GetHashCode().ToString();
+
+            var customerSaved = customer.CreateCustomer(customer);
+            if(customerSaved)
+                this.Close();
+        }
+
+        private void CmdAbort_Click(object sender, EventArgs e)
+        {
+            //this.Close();
         }
     }
 }
