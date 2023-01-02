@@ -21,10 +21,18 @@ namespace DBS_View.View
             
         }
         
-        public AddCustomerForm(CustomerVm cu)
+        public AddCustomerForm(CustomerVm c)
         {
             InitializeComponent();
-            
+            TxtCustomerName.Text = c.Name;
+            TxtCustomerNr.Text = c.Nr.ToString();
+            TxtStreet.Text = c.Street;
+            TxtTown.Text = c.City;
+            TxtZipCode.Text = c.ZipCode;
+            TxtEmail.Text = c.Email;
+            TxtWebsite.Text = c.Website;
+            TxtPassword.Text = c.Password;
+
         }
 
         private void CmdSave_Click(object sender, EventArgs e)
