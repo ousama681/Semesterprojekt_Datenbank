@@ -22,11 +22,11 @@ namespace SemesterprojektDatenbank.Migrations
 
             using (var connection = new SqlConnection())
             {
-                connection.ConnectionString = OUSAMA_CONNECTION;
+                connection.ConnectionString = BigBoss;
                 SqlCommand cmd = new SqlCommand();
                 connection.Open();
 
-                using (StreamReader reader = new StreamReader(@"C:\ZbwTechniker\DatenbankenAdvanced\plz_verzeichnis_new.csv"))
+                using (StreamReader reader = new StreamReader(@"C:\Users\kimde\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))
                 {
                     while (!reader.EndOfStream)
                     {

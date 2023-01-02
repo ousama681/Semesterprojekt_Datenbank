@@ -3,10 +3,7 @@ using Semesterprojekt_Datenbank.Interfaces;
 using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Viewmodel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 
@@ -15,41 +12,41 @@ namespace Semesterprojekt_Datenbank.Utilities
     public class DBUtilityCustomer : IDBUtility<CustomerVm>
     {
         ModelBuilder mb = new ModelBuilder();
-        public bool Create(CustomerVm item)
+        public void Create(CustomerVm customerVm)
         {
             try
             {
                 using (var context = new DataContext())
                 {
-                    Customer c;
-                    var id = GetTownId(context, item);
-                    if (item is Customer)
+                    var id = GetTownId(context, customerVm);
+                    Customer c = new Customer(customerVm.Nr, customerVm.Name, customerVm.Email, customerVm.Website, customerVm.Password, customerVm.Street, id);
+                    context.Add(c);
+                    mb.Entity<Customer>().HasData(new Customer()
                     {
-                        c = (Customer)(object)item;
-                        context.Add(c);
-                        mb.Entity<Customer>().HasData(new Customer()
-                        {
-                            /*Id = c.Id, */
-                            Nr = c.Nr,
-                            Name = c.Name,
-                            Email = c.Email,
-                            Website = c.Website,
-                            Password = c.Password,
-                            Street = c.Street,
-                            TownId = c.TownId
-                        });
-                        context.SaveChanges();
-                        return true;
-                    }
+                        Nr = c.Nr,
+                        Name = c.Name,
+                        Email = c.Email,
+                        Website = c.Website,
+                        Password = c.Password,
+                        Street = c.Street,
+                        TownId = id
+                    });
+                    context.SaveChanges();
+                    CustomerVm.CustomerList.Add(customerVm);
                 }
             }
             catch (Microsoft.Data.SqlClient.SqlException e)
             {
-                Console.WriteLine(e);
-                MessageBox.Show("Kunde konnte nicht gespeichert werden. Keine Verbindung zur Datenbank!\r\n \r\n" + "Error Message: \r\n" + e.Message);
-                return false;
+                MessageBox.Show("Kunde konnte nicht gespeichert werden. Keine Verbindung zur Datenbank!\r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+                return;
             }
-            return false;
+            catch (Exception e)
+            {
+               MessageBox.Show("Kunde konnte nicht gespeichert werden. \r\n \r\n" +
+                    "Error Message: \r\n" + e.Message);
+                return;
+            }
         }
 
         public void Delete()
@@ -70,8 +67,8 @@ namespace Semesterprojekt_Datenbank.Utilities
         public int GetTownId(DataContext context, CustomerVm customer)
         {
             var id = (from town in context.Town
-                     where town.ZipCode.Contains(customer.ZipCode)
-                     select town.Id).Single();
+                      where town.ZipCode.Contains(customer.ZipCode)
+                      select town.Id).FirstOrDefault();
             return Convert.ToInt32(id);
         }
     }

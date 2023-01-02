@@ -81,10 +81,10 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         }
 
 
-        public bool CreateCustomer(CustomerVm customer)
+        public void CreateCustomer(CustomerVm customer)
         {
-            var customerSaved = dB.Create(customer);
-            return customerSaved;
+            dB.Create(customer);
+            
         }
     }
 }

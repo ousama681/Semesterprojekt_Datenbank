@@ -41,9 +41,8 @@ namespace DBS_View.View
             customer.Website = TxtWebsite.Text;
             customer.Password = TxtPassword.Text.GetHashCode().ToString();
 
-            var customerSaved = customer.CreateCustomer(customer);
-            if(customerSaved)
-                this.Close();
+            customer.CreateCustomer(customer);
+            this.Close();
         }
 
 
