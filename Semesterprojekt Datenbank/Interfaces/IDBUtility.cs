@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Documents;
+
 namespace Semesterprojekt_Datenbank.Interfaces
 {
     public interface IDBUtility<T>
@@ -7,7 +10,7 @@ namespace Semesterprojekt_Datenbank.Interfaces
 
         void Create(T customerVm);
 
-        void Read(T item);
+        List<T> Read();
 
         void Update();
 

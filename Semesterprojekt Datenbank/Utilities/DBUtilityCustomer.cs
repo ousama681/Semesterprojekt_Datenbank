@@ -3,6 +3,7 @@ using Semesterprojekt_Datenbank.Interfaces;
 using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Viewmodel;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
@@ -54,9 +55,38 @@ namespace Semesterprojekt_Datenbank.Utilities
             throw new NotImplementedException();
         }
 
-        public void Read(CustomerVm item)
+        public List<CustomerVm> Read()
         {
-
+            try
+            {
+                using (var context = new DataContext())
+                {
+                    List<CustomerVm> vmList = new List<CustomerVm>();
+                    var queryCustomer = (from customer in context.Customer
+                        select customer).ToList();
+                    foreach (var customer in queryCustomer )
+                    {
+                        var queryTown = (from town in context.Town
+                            where town.Id == customer.TownId
+                            select town).FirstOrDefault();
+                        CustomerVm vm = new CustomerVm(customer.Nr, customer.Name, customer.Street, queryTown.ZipCode, queryTown.City, customer.Email, customer.Website, customer.Password);
+                        vmList.Add(vm);
+                    }
+                    return vmList;
+                }
+            }
+            catch (Microsoft.Data.SqlClient.SqlException e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. Keine Verbindung zur Datenbank!\r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+                return null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. \r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+                return null;
+            }
         }
 
         public void Update()

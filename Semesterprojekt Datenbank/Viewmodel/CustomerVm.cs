@@ -20,6 +20,17 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public string Email { get; set; }
         public string Website { get; set; }
         public string Password { get; set; }
+        public CustomerVm(int nr, string name, string street, string zipCode, string city, string email, string website, string password)
+        {
+            Nr = nr;
+            Name = name;
+            Street = street;
+            ZipCode = zipCode;
+            City = city;
+            Email = email;
+            Website = website;
+            Password = password;
+        }
 
         //public int Nr
         //{
