@@ -68,7 +68,6 @@
             this.CmdAbort.TabIndex = 8;
             this.CmdAbort.Text = "Abbrechen";
             this.CmdAbort.UseVisualStyleBackColor = true;
-            this.CmdAbort.Click += new System.EventHandler(this.CmdAbort_Click);
             // 
             // TxtCustomerNr
             // 

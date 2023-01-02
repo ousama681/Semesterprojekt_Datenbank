@@ -46,9 +46,6 @@ namespace DBS_View.View
                 this.Close();
         }
 
-        private void CmdAbort_Click(object sender, EventArgs e)
-        {
-            //this.Close();
-        }
+
     }
 }
