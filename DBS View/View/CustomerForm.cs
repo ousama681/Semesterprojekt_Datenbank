@@ -17,6 +17,8 @@ namespace DBS_View.View
     public partial class CustomerForm : Form
     {
         private CustomerVm customerVm;
+       
+
         public CustomerForm()
         {
             InitializeComponent();
@@ -86,6 +88,7 @@ namespace DBS_View.View
         {
             DataGridView gridSender = (DataGridView)sender;
 
+           
             if (gridSender.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex >= 0)
             {
                 int customerNameColumnIndex = DgvCustomer.Columns["colName"].Index;

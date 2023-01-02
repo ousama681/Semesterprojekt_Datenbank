@@ -26,7 +26,7 @@ namespace Semesterprojekt_Datenbank
         public DbSet<Order> Orders {get;set;}
         public DbSet<Position> Positions {get;set;}
         public DbSet<MWST> MWSTs {get;set;}
-
+        public object ObjectStateManager { get; internal set; }
 
         const string OUSAMA_CONNECTION = "Server=DESKTOP-PMVN625; Database=DBAProject; Trusted_Connection=true; Encrypt=false;";
         public const string Leandro_Connection = "Server=LEANDROPAJE1C16\\ZBWMSSQL; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
@@ -37,7 +37,7 @@ namespace Semesterprojekt_Datenbank
 
 
             //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-            optionsBuilder.UseSqlServer(BigBoss);
+            optionsBuilder.UseSqlServer(Leandro_Connection);
 
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }

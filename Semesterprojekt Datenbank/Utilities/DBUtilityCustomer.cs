@@ -13,6 +13,7 @@ namespace Semesterprojekt_Datenbank.Utilities
     public class DBUtilityCustomer : IDBUtility<CustomerVm>
     {
         ModelBuilder mb = new ModelBuilder();
+
         public void Create(CustomerVm customerVm)
         {
             try
@@ -20,10 +21,11 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     var id = GetTownId(context, customerVm);
-                    Customer c = new Customer(customerVm.Nr, customerVm.Name, customerVm.Email, customerVm.Website, customerVm.Password, customerVm.Street, id);
+                    Customer c = new Customer(customerVm.Id, customerVm.Nr, customerVm.Name, customerVm.Email, customerVm.Website, customerVm.Password, customerVm.Street, id);
                     context.Add(c);
                     mb.Entity<Customer>().HasData(new Customer()
                     {
+                        Id = id,
                         Nr = c.Nr,
                         Name = c.Name,
                         Email = c.Email,
@@ -44,8 +46,8 @@ namespace Semesterprojekt_Datenbank.Utilities
             }
             catch (Exception e)
             {
-               MessageBox.Show("Kunde konnte nicht gespeichert werden. \r\n \r\n" +
-                    "Error Message: \r\n" + e.Message);
+                MessageBox.Show("Kunde konnte nicht gespeichert werden. \r\n \r\n" +
+                     "Error Message: \r\n" + e.Message);
                 return;
             }
         }
@@ -63,13 +65,14 @@ namespace Semesterprojekt_Datenbank.Utilities
                 {
                     List<CustomerVm> vmList = new List<CustomerVm>();
                     var queryCustomer = (from customer in context.Customer
-                        select customer).ToList();
-                    foreach (var customer in queryCustomer )
+                                         select customer).ToList();
+                    foreach (var customer in queryCustomer)
                     {
                         var queryTown = (from town in context.Town
-                            where town.Id == customer.TownId
-                            select town).FirstOrDefault();
-                        CustomerVm vm = new CustomerVm(customer.Nr, customer.Name, customer.Street, queryTown.ZipCode, queryTown.City, customer.Email, customer.Website, customer.Password);
+                                         where town.Id == customer.TownId
+                                         select town).FirstOrDefault();
+
+                        CustomerVm vm = new CustomerVm(customer.Id, customer.Nr, customer.Name, customer.Street, queryTown.ZipCode, queryTown.City, customer.Email, customer.Website, customer.Password);
                         vmList.Add(vm);
                     }
                     return vmList;
@@ -88,10 +91,70 @@ namespace Semesterprojekt_Datenbank.Utilities
                 return null;
             }
         }
-
-        public void Update()
+        public CustomerVm ReadSingle(CustomerVm findCustomerVM)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var context = new DataContext())
+                {
+                    var querySingleCustomer = (from customer in context.Customer
+                                               where customer.Nr == findCustomerVM.Nr
+                                               select customer).SingleOrDefault();
+
+                    var querySingleTown = (from town in context.Town
+                                           where town.Id == querySingleCustomer.TownId
+                                           select town).FirstOrDefault();
+
+                    CustomerVm vm = new CustomerVm(querySingleCustomer.Id, querySingleCustomer.Nr, querySingleCustomer.Name, querySingleCustomer.Street, querySingleTown.ZipCode, querySingleTown.City, querySingleCustomer.Email, querySingleCustomer.Website, querySingleCustomer.Password);
+                    return vm;
+                }
+            }
+            catch (Microsoft.Data.SqlClient.SqlException e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. Keine Verbindung zur Datenbank!\r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+                return null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. \r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+                return null;
+            }
+
+
+        }
+
+        public void Update(CustomerVm customerVm)
+        {
+            try
+            {
+                using (var context = new DataContext())
+                {
+                    var queryForCustomer = (from customer in context.Customer
+                                            where customer.Nr == customerVm.Nr
+                                            select customer).SingleOrDefault();
+                    var queryForTown = (from town in context.Town
+                                        where town.ZipCode == customerVm.ZipCode
+                                        select town).FirstOrDefault();
+
+                    queryForCustomer.Nr = customerVm.Nr;
+                    queryForCustomer.Name = customerVm.Name;
+                    queryForCustomer.Street = customerVm.Street;
+                    queryForCustomer.Email = customerVm.Email;
+                    queryForCustomer.Website = customerVm.Website;
+                    queryForCustomer.Password = customerVm.Password;
+                    queryForCustomer.TownId = queryForTown.Id;
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
         public int GetTownId(DataContext context, CustomerVm customer)
@@ -101,5 +164,11 @@ namespace Semesterprojekt_Datenbank.Utilities
                       select town.Id).FirstOrDefault();
             return Convert.ToInt32(id);
         }
+
+
+
+
+
+
     }
 }

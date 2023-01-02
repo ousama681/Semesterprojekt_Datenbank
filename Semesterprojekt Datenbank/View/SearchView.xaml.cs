@@ -46,7 +46,7 @@ namespace Semesterprojekt_Datenbank.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             
-            dataGridXaml.ItemsSource = DBUtilityMainWindow.GetSampleCustomerList();
+            //dataGridXaml.ItemsSource = DBUtilityMainWindow.GetSampleCustomerList();
         }
     }
 }

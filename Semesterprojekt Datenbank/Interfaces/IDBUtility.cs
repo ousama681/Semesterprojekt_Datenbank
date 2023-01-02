@@ -11,8 +11,9 @@ namespace Semesterprojekt_Datenbank.Interfaces
         void Create(T customerVm);
 
         List<T> Read();
+        T ReadSingle(T item);
 
-        void Update();
+        void Update(T item);
 
         void Delete();
 

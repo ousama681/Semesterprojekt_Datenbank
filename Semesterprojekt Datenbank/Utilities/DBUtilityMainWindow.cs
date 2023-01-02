@@ -13,23 +13,23 @@ namespace Semesterprojekt_Datenbank.Utilities
     public class DBUtilityMainWindow /*: IDBUtility<T>*/
     {
         //Test list for DataGrid Tests
-        public static List<Customer> GetSampleCustomerList()
-        {
-            return new List<Customer>(new Customer[4] {
-            new Customer(12, "Zero","2332",
-                "12 North Third Street", "Apartment 45",
-               " b 23",12),
-            new Customer(12, "One","2332",
-                "34 West Fifth Street", "Apartment 67",
-               " b 23",12),
-            new Customer(12, "Two","2332",
-                "56 East Seventh Street", "Apartment 89",
-               " b 23",12),
-            new Customer(12, "Three","2332",
-                "78 South Ninth Street", "Apartment 10",
-               " b 23",12)
-        });
-        }
+        //public static List<Customer> GetSampleCustomerList()
+        //{
+        //    return new List<Customer>(new Customer[4] {
+        //    new Customer(12, "Zero","2332",
+        //        "12 North Third Street", "Apartment 45",
+        //       " b 23",12),
+        //    new Customer(12, "One","2332",
+        //        "34 West Fifth Street", "Apartment 67",
+        //       " b 23",12),
+        //    new Customer(12, "Two","2332",
+        //        "56 East Seventh Street", "Apartment 89",
+        //       " b 23",12),
+        //    new Customer(12, "Three","2332",
+        //        "78 South Ninth Street", "Apartment 10",
+        //       " b 23",12)
+        //});
+        //}
 
         public void Create()
         {

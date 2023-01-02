@@ -42,6 +42,7 @@
             this.colStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTown = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColUpdate = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.customerVmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.townBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvCustomer)).BeginInit();
@@ -109,7 +110,8 @@
             this.colEmail,
             this.colStreet,
             this.colTown,
-            this.colZipCode});
+            this.colZipCode,
+            this.ColUpdate});
             this.DgvCustomer.Location = new System.Drawing.Point(12, 41);
             this.DgvCustomer.Name = "DgvCustomer";
             this.DgvCustomer.ReadOnly = true;
@@ -161,6 +163,15 @@
             this.colZipCode.Name = "colZipCode";
             this.colZipCode.ReadOnly = true;
             // 
+            // ColUpdate
+            // 
+            this.ColUpdate.HeaderText = "Bearbeiten";
+            this.ColUpdate.Name = "ColUpdate";
+            this.ColUpdate.ReadOnly = true;
+            this.ColUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColUpdate.Text = "Drück mich für Update";
+            // 
             // CustomerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -197,5 +208,6 @@
         private DataGridViewTextBoxColumn colStreet;
         private DataGridViewTextBoxColumn colTown;
         private DataGridViewTextBoxColumn colZipCode;
+        private DataGridViewButtonColumn ColUpdate;
     }
 }

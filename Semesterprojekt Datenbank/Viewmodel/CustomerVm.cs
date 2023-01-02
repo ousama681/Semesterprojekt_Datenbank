@@ -12,6 +12,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         //private readonly CustomerVm customer;
         private DBUtilityCustomer dB = new DBUtilityCustomer();
 
+        public int Id { get; set; }
         public int Nr { get; set; }
         public string Name { get; set; }
         public string Street { get; set; }
@@ -20,8 +21,10 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public string Email { get; set; }
         public string Website { get; set; }
         public string Password { get; set; }
-        public CustomerVm(int nr, string name, string street, string zipCode, string city, string email, string website, string password)
+
+        public CustomerVm(int id,int nr, string name, string street, string zipCode, string city, string email, string website, string password)
         {
+            Id= id;
             Nr = nr;
             Name = name;
             Street = street;
@@ -34,8 +37,8 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         //public int Nr
         //{
-        //    get { return customer.Nr; }
-        //    set { customer.Nr = value; /*OnPropertyChanged();*/ }
+        //    get { return Nr; }
+        //    set { customer.Nr = value; /*OnPropertyChanged();*/}
         //}
 
         //public string Name
@@ -87,18 +90,26 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         public CustomerVm()
         {
-            
-            //customer = new Customer(1, 1, "fluffy", "macpants@hotchicks.ch", "How To MVVM, wtf!!?!.ch", "ligma", "WPFAvenue", 6666);
+
         }
 
 
         public void CreateCustomer(CustomerVm customer)
         {
             dB.Create(customer);
-            
+
+        }
+
+        public void UpdateCustomer(CustomerVm updatecustomerVm)
+        {
+            var outputDbCustomer = dB.ReadSingle(updatecustomerVm);
+
+            if (!outputDbCustomer.Equals(updatecustomerVm))
+            {
+                dB.Update(updatecustomerVm);
+            }
+
         }
     }
 }
-//public virtual Town Town { get; set; }
-//public virtual ICollection<Invoice> Invoices { get; set; }
-//public virtual ICollection<Order> Orders { get; set; }
+

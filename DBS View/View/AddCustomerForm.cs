@@ -1,29 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Semesterprojekt_Datenbank.Model;
-using Semesterprojekt_Datenbank.Viewmodel;
+﻿using Semesterprojekt_Datenbank.Viewmodel;
 
 namespace DBS_View.View
 {
     public partial class AddCustomerForm : Form
     {
         CustomerVm customer;
+        CustomerForm customerForm;
+        public bool isCustomerUpdated = false;
+
         public AddCustomerForm()
         {
             InitializeComponent();
-            
+            customerForm = new CustomerForm();
+            customer = new CustomerVm();
+
+
         }
-        
+
         public AddCustomerForm(CustomerVm c)
         {
             InitializeComponent();
+            customerForm = new CustomerForm();
+            customer = new CustomerVm();
+            isCustomerUpdated= true;
+            
             TxtCustomerName.Text = c.Name;
             TxtCustomerNr.Text = c.Nr.ToString();
             TxtStreet.Text = c.Street;
@@ -37,9 +37,9 @@ namespace DBS_View.View
 
         private void CmdSave_Click(object sender, EventArgs e)
         {
-            customer = new CustomerVm();
 
             customer.Name = TxtCustomerName.Text;
+
             if (TxtCustomerNr.TextLength > 0)
                 customer.Nr = Convert.ToInt32(TxtCustomerNr.Text);
             customer.Street = TxtStreet.Text;
@@ -49,8 +49,20 @@ namespace DBS_View.View
             customer.Website = TxtWebsite.Text;
             customer.Password = TxtPassword.Text.GetHashCode().ToString();
 
-            customer.CreateCustomer(customer);
+            if (isCustomerUpdated != true)
+            {
+                customer.CreateCustomer(customer);
+            }
+
+            else
+            {
+                customer.UpdateCustomer(customer);
+            }
+
             this.Close();
+
+
+
         }
 
 

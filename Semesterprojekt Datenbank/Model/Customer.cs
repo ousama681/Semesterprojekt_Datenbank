@@ -21,8 +21,9 @@ namespace Semesterprojekt_Datenbank.Model
         public virtual Town Town { get; set; }
         public virtual ICollection<Invoice> Invoices { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
-        public Customer(int nr, string name, string email, string website, string password, string street, int townId)
+        public Customer(int id, int nr, string name, string email, string website, string password, string street, int townId)
         {
+            Id = id;
             Nr = nr;
             Name = name;
             Email = email;
