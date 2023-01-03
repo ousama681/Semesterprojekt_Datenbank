@@ -54,7 +54,7 @@
             this.CmdSave.Location = new System.Drawing.Point(10, 468);
             this.CmdSave.Name = "CmdSave";
             this.CmdSave.Size = new System.Drawing.Size(94, 35);
-            this.CmdSave.TabIndex = 7;
+            this.CmdSave.TabIndex = 8;
             this.CmdSave.Text = "Speichern";
             this.CmdSave.UseVisualStyleBackColor = true;
             this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
@@ -65,7 +65,7 @@
             this.CmdAbort.Location = new System.Drawing.Point(110, 468);
             this.CmdAbort.Name = "CmdAbort";
             this.CmdAbort.Size = new System.Drawing.Size(91, 35);
-            this.CmdAbort.TabIndex = 8;
+            this.CmdAbort.TabIndex = 9;
             this.CmdAbort.Text = "Abbrechen";
             this.CmdAbort.UseVisualStyleBackColor = true;
             // 
@@ -102,14 +102,14 @@
             this.TxtEmail.Location = new System.Drawing.Point(12, 282);
             this.TxtEmail.Name = "TxtEmail";
             this.TxtEmail.Size = new System.Drawing.Size(173, 23);
-            this.TxtEmail.TabIndex = 4;
+            this.TxtEmail.TabIndex = 5;
             // 
             // TxtWebsite
             // 
             this.TxtWebsite.Location = new System.Drawing.Point(12, 351);
             this.TxtWebsite.Name = "TxtWebsite";
             this.TxtWebsite.Size = new System.Drawing.Size(319, 23);
-            this.TxtWebsite.TabIndex = 5;
+            this.TxtWebsite.TabIndex = 6;
             // 
             // LblCustomerNr
             // 
@@ -176,7 +176,7 @@
             this.TxtPassword.Location = new System.Drawing.Point(12, 421);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.Size = new System.Drawing.Size(173, 23);
-            this.TxtPassword.TabIndex = 6;
+            this.TxtPassword.TabIndex = 7;
             this.TxtPassword.UseSystemPasswordChar = true;
             // 
             // LblPassword
@@ -204,7 +204,7 @@
             this.TxtZipCode.Location = new System.Drawing.Point(209, 214);
             this.TxtZipCode.Name = "TxtZipCode";
             this.TxtZipCode.Size = new System.Drawing.Size(100, 23);
-            this.TxtZipCode.TabIndex = 17;
+            this.TxtZipCode.TabIndex = 4;
             // 
             // label1
             // 

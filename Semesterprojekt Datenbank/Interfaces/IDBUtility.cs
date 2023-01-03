@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Documents;
+using Semesterprojekt_Datenbank.Utilities;
 
 namespace Semesterprojekt_Datenbank.Interfaces
 {
@@ -8,7 +9,7 @@ namespace Semesterprojekt_Datenbank.Interfaces
     {
         // CRUD Funktionen der Datenbank
 
-        void Create(T customerVm);
+        void Create(InClassName<T> inClassName);
 
         List<T> Read();
         T ReadSingle(T customerVm);

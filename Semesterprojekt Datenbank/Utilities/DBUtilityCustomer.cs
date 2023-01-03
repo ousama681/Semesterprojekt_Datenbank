@@ -172,10 +172,15 @@ namespace Semesterprojekt_Datenbank.Utilities
                     context.SaveChanges();
                 }
             }
-            catch (Exception)
+            catch (Microsoft.Data.SqlClient.SqlException e)
             {
-
-                throw;
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. Keine Verbindung zur Datenbank!\r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. \r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
             }
 
         }

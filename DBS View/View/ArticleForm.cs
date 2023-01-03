@@ -42,28 +42,20 @@ namespace DBS_View.View
                                     "wirklich löschen?", "Eintrag löschen?", MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //Article article = ArticleVm.ArticleList.Find(x => x.Name == articleName);
-
-                    // Search Data.CustomerList for customers with the same ContactPerson
-                    // This prevents an error when deleting a customer with the same ContactPerson as another customer
-                    //List<Customer> customerList = CustomerVm.CustomerList.FindAll(x => x.ContactPerson == cu.ContactPerson);
-                    ////List<Customer> customerList = Data.CustomerList.FindAll(x => x.Equals(cu.ContactPerson));
-                    //if (customerList.Count <= 1)
-                    //{
-                    //    CustomerVm.PersonList.Remove(cu.ContactPerson);
-                    //}
-                    //CustomerVm.CustomerList.Remove(cu);
-                    DgvArticle.Rows.RemoveAt(DgvArticle.CurrentRow.Index);
-
-                    //CsvHandler.WriteToCsv(CustomerVm.PersonList, CustomerVm.EmployeeList, CustomerVm.ApprenticeList, CustomerVm.CadreList, CustomerVm.CustomerList,
-                    //                @"saveDataPerson.csv", @"saveDataEmployee.csv", @"saveDataApprentice.csv", @"saveDataCadre.csv", @"saveDataCustomer.csv");
+                    ArticleVm articleVm = ArticleVm.ArticleList.Find(x => x.Name == articleName);
+                    bool deleteCustomerSuccessful = articleVm.DeleteArticle(articleVm);
+                    if (deleteCustomerSuccessful)
+                    {
+                        ArticleVm.ArticleList.Remove(articleVm);
+                        DgvArticle.Rows.RemoveAt(DgvArticle.CurrentRow.Index);
+                    }
                 }
             }
         }
 
         private void CmdSearch_Click(object sender, EventArgs e)
         {
-            SearchCustomer();
+            SearchArticle();
         }
         private void AddCustomerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -98,7 +90,7 @@ namespace DBS_View.View
 
             DataGridViewColumnCollection column = DgvArticle.Columns;
 
-            foreach (Article article in ArticleVm.ArticleList)
+            foreach (ArticleVm articleVm in ArticleVm.ArticleList)
             {
                 // Add new row to DataGridView
                 int rowIndex = row.Add();
@@ -107,9 +99,9 @@ namespace DBS_View.View
                 DataGridViewCellCollection cell = row[rowIndex].Cells;
 
                 // Add data to new row
-                cell[column["colNr"].Index].Value = article.Nr;
-                cell[column["colName"].Index].Value = article.Name;
-                cell[column["colPrice"].Index].Value = article.Price;
+                cell[column["colNr"].Index].Value = articleVm.Nr;
+                cell[column["colName"].Index].Value = articleVm.Name;
+                cell[column["colPrice"].Index].Value = articleVm.Price;
 
                 //------------------------------------------------------------------------
                 cell[column["colArticleGroup"].Index].Value = "";  // implement  ArticleGroup!!!!!!!
@@ -121,7 +113,7 @@ namespace DBS_View.View
             DgvArticle.ClearSelection();
         }
 
-        private void SearchCustomer()
+        private void SearchArticle()
         {
             // Create row and column variable for better readability
             DataGridViewColumnCollection column = DgvArticle.Columns;
@@ -185,7 +177,7 @@ namespace DBS_View.View
         {
             if (e.KeyCode == Keys.Enter)
             {
-                SearchCustomer();
+                SearchArticle();
 
                 // Suppresses the Windows sound if "enter" is pressed in a single line textbox
                 e.Handled = true;

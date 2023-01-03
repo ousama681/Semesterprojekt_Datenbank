@@ -35,64 +35,10 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             Password = password;
         }
 
-        //public int Nr
-        //{
-        //    get { return Nr; }
-        //    set { customerVm.Nr = value; /*OnPropertyChanged();*/}
-        //}
-
-        //public string Name
-        //{
-        //    get { return customerVm.Name; }
-        //    set { customerVm.Name = value; /*OnPropertyChanged();*/ }
-        //}
-
-        //public string Email
-        //{
-        //    get { return customerVm.Email; }
-        //    set { customerVm.Email = value; /*OnPropertyChanged();*/ }
-        //}
-
-        //public string Website
-        //{
-        //    get { return customerVm.Website; }
-        //    set { customerVm.Website = value; /*OnPropertyChanged();*/ }
-        //}
-
-        //public string Password
-        //{
-        //    get { return customerVm.Password; }
-        //    set { customerVm.Password = value; /*OnPropertyChanged();*/ }
-        //}
-
-        //public string Street
-        //{
-        //    get { return customerVm.Street; }
-        //    set { customerVm.Street = value; /*OnPropertyChanged();*/ }
-        //}
-        //public string ZipCode 
-        //{
-        //    get { return town.ZipCode; }
-        //    set { town.ZipCode = value; } 
-        //}
-        //public string City
-        //{
-        //    get { return town.City; }
-        //    set { town.City = value; }
-        //}
-
-
-        //public int TownId
-        //{
-        //    get { return customerVm.TownId; }
-        //    set { customerVm.TownId = value; /*OnPropertyChanged();*/ }
-        //}
-
         public CustomerVm()
         {
 
         }
-
 
         public void CreateCustomer(CustomerVm customerVm)
         {

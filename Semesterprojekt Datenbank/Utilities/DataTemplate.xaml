@@ -3,7 +3,7 @@
                     xmlns:vm="clr-namespace:Semesterprojekt_Datenbank.Viewmodel"
                     xmlns:view="clr-namespace:Semesterprojekt_Datenbank.View">
 
-    <DataTemplate DataType="{x:Type vm:CustomerVm}">
+    <DataTemplate DataType="{x:Type vm:ArticleVm}">
         <view:CustomerView></view:CustomerView>
     </DataTemplate>
 

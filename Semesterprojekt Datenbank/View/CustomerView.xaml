@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="650" d:DesignWidth="1280">
     <UserControl.DataContext>
-        <vm:CustomerVm/>
+        <vm:ArticleVm/>
     </UserControl.DataContext>
 
     <Grid Margin="0,70,0,60"

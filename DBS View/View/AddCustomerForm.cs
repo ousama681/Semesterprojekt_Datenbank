@@ -6,7 +6,7 @@ namespace DBS_View.View
     {
         CustomerVm customerVm;
         CustomerForm customerForm;
-        public bool isCustomerUpdated;
+        private bool isCustomerUpdated;
 
         public AddCustomerForm()
         {
@@ -35,9 +35,7 @@ namespace DBS_View.View
 
         private void CmdSave_Click(object sender, EventArgs e)
         {
-
             customerVm.Name = TxtCustomerName.Text;
-
             if (TxtCustomerNr.TextLength > 0)
                 customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
             customerVm.Street = TxtStreet.Text;
@@ -51,16 +49,11 @@ namespace DBS_View.View
             {
                 customerVm.CreateCustomer(customerVm);
             }
-
             else
             {
                 customerVm.UpdateCustomer(customerVm);
             }
-
             this.Close();
-
-
-
         }
 
 
