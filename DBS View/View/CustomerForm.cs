@@ -112,31 +112,30 @@ namespace DBS_View.View
             DataGridViewRowCollection row = DgvCustomer.Rows;
 
             DataGridViewColumnCollection column = DgvCustomer.Columns;
-
-            foreach (CustomerVm customer in CustomerVm.CustomerList)
+            if (CustomerVm.CustomerList != null)
             {
-                // Add new row to DataGridView
-                int rowIndex = row.Add();
+                foreach (CustomerVm customer in CustomerVm.CustomerList)
+                {
+                    // Add new row to DataGridView
+                    int rowIndex = row.Add();
 
-                // Create cell variable for better readability
-                DataGridViewCellCollection cell = row[rowIndex].Cells;
+                    // Create cell variable for better readability
+                    DataGridViewCellCollection cell = row[rowIndex].Cells;
 
-                // Add data to new row
-                cell[column["colNr"].Index].Value = customer.Nr;
-                cell[column["colName"].Index].Value = customer.Name;
-                cell[column["colEmail"].Index].Value = customer.Email;
-                cell[column["colStreet"].Index].Value = customer.Street;
-                cell[column["colTown"].Index].Value = customer.City;
-                cell[column["colZipCode"].Index].Value = customer.ZipCode;
-                
-                //cell[column["dcolBusinessPhoneNumber"].Index].Value = cu.BusinessPhoneNumber;
-                //cell[column["dcolFaxNumber"].Index].Value = cu.FaxNumber;
-                //cell[column["dcolContactPerson"].Index].Value = cu.ContactPersonString;
-                //cell[column["dcolCustomerType"].Index].Value = cu.CustomerType;
-                //cell[column["dcolStatus"].Index].Value = cu.ContactPerson.Status ? "✔️ Aktiv" : "🚫 Passiv";
+                    // Add data to new row
+                    cell[column["colNr"].Index].Value = customer.Nr;
+                    cell[column["colName"].Index].Value = customer.Name;
+                    cell[column["colEmail"].Index].Value = customer.Email;
+                    cell[column["colWebsite"].Index].Value = customer.Website;
+                    cell[column["colStreet"].Index].Value = customer.Street;
+                    cell[column["colTown"].Index].Value = customer.City;
+                    cell[column["colZipCode"].Index].Value = customer.ZipCode;
+
+                }
+                //DgvCustomer.Sort(column["colName"], ListSortDirection.Ascending);
+                DgvCustomer.ClearSelection();
             }
-            //DgvCustomer.Sort(column["colName"], ListSortDirection.Ascending);
-            DgvCustomer.ClearSelection();
+           
         }
 
         private void SearchCustomer()

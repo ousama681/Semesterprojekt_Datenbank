@@ -39,6 +39,7 @@
             this.colNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWebsite = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTown = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,6 +109,7 @@
             this.colNr,
             this.colName,
             this.colEmail,
+            this.colWebsite,
             this.colStreet,
             this.colTown,
             this.colZipCode,
@@ -141,6 +143,12 @@
             this.colEmail.HeaderText = "Email";
             this.colEmail.Name = "colEmail";
             this.colEmail.ReadOnly = true;
+            // 
+            // colWebsite
+            // 
+            this.colWebsite.HeaderText = "Website";
+            this.colWebsite.Name = "colWebsite";
+            this.colWebsite.ReadOnly = true;
             // 
             // colStreet
             // 
@@ -205,6 +213,7 @@
         private DataGridViewTextBoxColumn colNr;
         private DataGridViewTextBoxColumn colName;
         private DataGridViewTextBoxColumn colEmail;
+        private DataGridViewTextBoxColumn colWebsite;
         private DataGridViewTextBoxColumn colStreet;
         private DataGridViewTextBoxColumn colTown;
         private DataGridViewTextBoxColumn colZipCode;
