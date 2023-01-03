@@ -37,7 +37,7 @@ namespace Semesterprojekt_Datenbank
 
 
             //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-            optionsBuilder.UseSqlServer(Leandro_Connection);
+            optionsBuilder.UseSqlServer(BigBoss);
 
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }

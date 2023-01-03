@@ -117,6 +117,7 @@
             this.DgvCustomer.Location = new System.Drawing.Point(12, 41);
             this.DgvCustomer.Name = "DgvCustomer";
             this.DgvCustomer.ReadOnly = true;
+            this.DgvCustomer.RowHeadersVisible = false;
             this.DgvCustomer.RowTemplate.Height = 25;
             this.DgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.DgvCustomer.Size = new System.Drawing.Size(901, 396);
@@ -126,6 +127,7 @@
             // colNr
             // 
             this.colNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNr.FillWeight = 18F;
             this.colNr.HeaderText = "Nr";
             this.colNr.Name = "colNr";
             this.colNr.ReadOnly = true;
@@ -133,6 +135,7 @@
             // colName
             // 
             this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colName.FillWeight = 30.20566F;
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
@@ -140,12 +143,14 @@
             // colEmail
             // 
             this.colEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colEmail.FillWeight = 30.20566F;
             this.colEmail.HeaderText = "Email";
             this.colEmail.Name = "colEmail";
             this.colEmail.ReadOnly = true;
             // 
             // colWebsite
             // 
+            this.colWebsite.FillWeight = 30.20566F;
             this.colWebsite.HeaderText = "Website";
             this.colWebsite.Name = "colWebsite";
             this.colWebsite.ReadOnly = true;
@@ -153,6 +158,7 @@
             // colStreet
             // 
             this.colStreet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colStreet.FillWeight = 30.20566F;
             this.colStreet.HeaderText = "Street";
             this.colStreet.Name = "colStreet";
             this.colStreet.ReadOnly = true;
@@ -160,6 +166,7 @@
             // colTown
             // 
             this.colTown.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colTown.FillWeight = 30.20566F;
             this.colTown.HeaderText = "Town";
             this.colTown.Name = "colTown";
             this.colTown.ReadOnly = true;
@@ -167,18 +174,22 @@
             // colZipCode
             // 
             this.colZipCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colZipCode.FillWeight = 30.20566F;
             this.colZipCode.HeaderText = "Zip Code";
             this.colZipCode.Name = "colZipCode";
             this.colZipCode.ReadOnly = true;
             // 
             // ColUpdate
             // 
+            this.ColUpdate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColUpdate.FillWeight = 150F;
             this.ColUpdate.HeaderText = "Bearbeiten";
             this.ColUpdate.Name = "ColUpdate";
             this.ColUpdate.ReadOnly = true;
             this.ColUpdate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColUpdate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColUpdate.Text = "Drück mich für Update";
+            this.ColUpdate.Text = "Bearbeiten";
+            this.ColUpdate.UseColumnTextForButtonValue = true;
             // 
             // CustomerForm
             // 

@@ -109,9 +109,9 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             }
         }
 
-        public void DeleteCustomer(CustomerVm customerVm)
+        public bool DeleteCustomer(CustomerVm customerVm)
         {
-            dB.Delete(customerVm);
+            return dB.Delete(customerVm);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Semesterprojekt_Datenbank.Interfaces
 
         void Update(T item);
 
-        void Delete(T item);
+        bool Delete(T item);
 
     }
 }

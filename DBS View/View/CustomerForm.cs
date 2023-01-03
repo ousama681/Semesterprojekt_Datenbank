@@ -52,12 +52,12 @@ namespace DBS_View.View
                                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     CustomerVm customerVm = CustomerVm.CustomerList.Find(x => x.Name == customerName);
-                    customerVm.DeleteCustomer(customerVm);
-                    CustomerVm.CustomerList.Remove(customerVm);
-                    DgvCustomer.Rows.RemoveAt(DgvCustomer.CurrentRow.Index);
-
-                    //CsvHandler.WriteToCsv(CustomerVm.PersonList, CustomerVm.EmployeeList, CustomerVm.ApprenticeList, CustomerVm.CadreList, CustomerVm.CustomerList,
-                    //                @"saveDataPerson.csv", @"saveDataEmployee.csv", @"saveDataApprentice.csv", @"saveDataCadre.csv", @"saveDataCustomer.csv");
+                    bool deleteCustomerSuccessful = customerVm.DeleteCustomer(customerVm);
+                    if (deleteCustomerSuccessful)
+                    {
+                        CustomerVm.CustomerList.Remove(customerVm);
+                        DgvCustomer.Rows.RemoveAt(DgvCustomer.CurrentRow.Index);
+                    }
                 }
             }
         }
