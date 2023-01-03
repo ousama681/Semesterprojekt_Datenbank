@@ -4,59 +4,57 @@ namespace DBS_View.View
 {
     public partial class AddCustomerForm : Form
     {
-        CustomerVm customer;
+        CustomerVm customerVm;
         CustomerForm customerForm;
-        public bool isCustomerUpdated = false;
+        public bool isCustomerUpdated;
 
         public AddCustomerForm()
         {
             InitializeComponent();
             customerForm = new CustomerForm();
-            customer = new CustomerVm();
-
-
+            customerVm = new CustomerVm();
         }
 
-        public AddCustomerForm(CustomerVm c)
+        public AddCustomerForm(CustomerVm customerVm)
         {
             InitializeComponent();
             customerForm = new CustomerForm();
-            customer = new CustomerVm();
+            this.customerVm = new CustomerVm();
             isCustomerUpdated= true;
             
-            TxtCustomerName.Text = c.Name;
-            TxtCustomerNr.Text = c.Nr.ToString();
-            TxtStreet.Text = c.Street;
-            TxtTown.Text = c.City;
-            TxtZipCode.Text = c.ZipCode;
-            TxtEmail.Text = c.Email;
-            TxtWebsite.Text = c.Website;
-            TxtPassword.Text = c.Password;
+            TxtCustomerName.Text = customerVm.Name;
+            TxtCustomerNr.Text = customerVm.Nr.ToString();
+            TxtStreet.Text = customerVm.Street;
+            TxtTown.Text = customerVm.City;
+            TxtZipCode.Text = customerVm.ZipCode;
+            TxtEmail.Text = customerVm.Email;
+            TxtWebsite.Text = customerVm.Website;
+            TxtPassword.Text = customerVm.Password;
 
         }
 
         private void CmdSave_Click(object sender, EventArgs e)
         {
 
-            customer.Name = TxtCustomerName.Text;
+            customerVm.Name = TxtCustomerName.Text;
 
             if (TxtCustomerNr.TextLength > 0)
-                customer.Nr = Convert.ToInt32(TxtCustomerNr.Text);
-            customer.Street = TxtStreet.Text;
-            customer.City = TxtTown.Text;
-            customer.ZipCode = TxtZipCode.Text;
-            customer.Email = TxtEmail.Text;
-            customer.Website = TxtWebsite.Text;
-            customer.Password = TxtPassword.Text.GetHashCode().ToString();
+                customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
+            customerVm.Street = TxtStreet.Text;
+            customerVm.City = TxtTown.Text;
+            customerVm.ZipCode = TxtZipCode.Text;
+            customerVm.Email = TxtEmail.Text;
+            customerVm.Website = TxtWebsite.Text;
+            customerVm.Password = TxtPassword.Text.GetHashCode().ToString();
 
             if (isCustomerUpdated != true)
             {
-                customer.CreateCustomer(customer);
+                customerVm.CreateCustomer(customerVm);
             }
 
             else
             {
-                customer.UpdateCustomer(customer);
+                customerVm.UpdateCustomer(customerVm);
             }
 
             this.Close();

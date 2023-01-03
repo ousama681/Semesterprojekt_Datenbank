@@ -114,7 +114,7 @@ namespace DBS_View.View
             DataGridViewColumnCollection column = DgvCustomer.Columns;
             if (CustomerVm.CustomerList != null)
             {
-                foreach (CustomerVm customer in CustomerVm.CustomerList)
+                foreach (CustomerVm customerVm in CustomerVm.CustomerList)
                 {
                     // Add new row to DataGridView
                     int rowIndex = row.Add();
@@ -123,13 +123,13 @@ namespace DBS_View.View
                     DataGridViewCellCollection cell = row[rowIndex].Cells;
 
                     // Add data to new row
-                    cell[column["colNr"].Index].Value = customer.Nr;
-                    cell[column["colName"].Index].Value = customer.Name;
-                    cell[column["colEmail"].Index].Value = customer.Email;
-                    cell[column["colWebsite"].Index].Value = customer.Website;
-                    cell[column["colStreet"].Index].Value = customer.Street;
-                    cell[column["colTown"].Index].Value = customer.City;
-                    cell[column["colZipCode"].Index].Value = customer.ZipCode;
+                    cell[column["colNr"].Index].Value = customerVm.Nr;
+                    cell[column["colName"].Index].Value = customerVm.Name;
+                    cell[column["colEmail"].Index].Value = customerVm.Email;
+                    cell[column["colWebsite"].Index].Value = customerVm.Website;
+                    cell[column["colStreet"].Index].Value = customerVm.Street;
+                    cell[column["colTown"].Index].Value = customerVm.City;
+                    cell[column["colZipCode"].Index].Value = customerVm.ZipCode;
 
                 }
                 //DgvCustomer.Sort(column["colName"], ListSortDirection.Ascending);

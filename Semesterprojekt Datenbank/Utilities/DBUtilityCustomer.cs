@@ -12,7 +12,7 @@ namespace Semesterprojekt_Datenbank.Utilities
 {
     public class DBUtilityCustomer : IDBUtility<CustomerVm>
     {
-        ModelBuilder mb = new ModelBuilder();
+        ModelBuilder modelBuilder = new ModelBuilder();
 
         public void Create(CustomerVm customerVm)
         {
@@ -21,17 +21,17 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     var id = GetTownId(context, customerVm);
-                    Customer c = new Customer(customerVm.Id, customerVm.Nr, customerVm.Name, customerVm.Email, customerVm.Website, customerVm.Password, customerVm.Street, id);
-                    context.Add(c);
-                    mb.Entity<Customer>().HasData(new Customer()
+                    Customer customer = new Customer(customerVm.Id, customerVm.Nr, customerVm.Name, customerVm.Email, customerVm.Website, customerVm.Password, customerVm.Street, id);
+                    context.Add(customer);
+                    modelBuilder.Entity<Customer>().HasData(new Customer()
                     {
                         Id = id,
-                        Nr = c.Nr,
-                        Name = c.Name,
-                        Email = c.Email,
-                        Website = c.Website,
-                        Password = c.Password,
-                        Street = c.Street,
+                        Nr = customer.Nr,
+                        Name = customer.Name,
+                        Email = customer.Email,
+                        Website = customer.Website,
+                        Password = customer.Password,
+                        Street = customer.Street,
                         TownId = id
                     });
                     context.SaveChanges();
@@ -63,7 +63,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 using (var context = new DataContext())
                 {
-                    List<CustomerVm> vmList = new List<CustomerVm>();
+                    List<CustomerVm> customerVmList = new List<CustomerVm>();
                     var queryCustomer = (from customer in context.Customer
                                          select customer).ToList();
                     foreach (var customer in queryCustomer)
@@ -72,10 +72,10 @@ namespace Semesterprojekt_Datenbank.Utilities
                                          where town.Id == customer.TownId
                                          select town).FirstOrDefault();
 
-                        CustomerVm vm = new CustomerVm(customer.Id, customer.Nr, customer.Name, customer.Street, queryTown.ZipCode, queryTown.City, customer.Email, customer.Website, customer.Password);
-                        vmList.Add(vm);
+                        CustomerVm customerVm = new CustomerVm(customer.Id, customer.Nr, customer.Name, customer.Street, queryTown.ZipCode, queryTown.City, customer.Email, customer.Website, customer.Password);
+                        customerVmList.Add(customerVm);
                     }
-                    return vmList;
+                    return customerVmList;
                 }
             }
             catch (Microsoft.Data.SqlClient.SqlException e)
@@ -91,21 +91,21 @@ namespace Semesterprojekt_Datenbank.Utilities
                 return null;
             }
         }
-        public CustomerVm ReadSingle(CustomerVm findCustomerVM)
+        public CustomerVm ReadSingle(CustomerVm customerVm)
         {
             try
             {
                 using (var context = new DataContext())
                 {
-                    var querySingleCustomer = (from customer in context.Customer
-                                               where customer.Nr == findCustomerVM.Nr
+                    var queryCustomer = (from customer in context.Customer
+                                               where customer.Nr == customerVm.Nr
                                                select customer).SingleOrDefault();
 
-                    var querySingleTown = (from town in context.Town
-                                           where town.Id == querySingleCustomer.TownId
+                    var queryTown = (from town in context.Town
+                                           where town.Id == queryCustomer.TownId
                                            select town).FirstOrDefault();
 
-                    CustomerVm vm = new CustomerVm(querySingleCustomer.Id, querySingleCustomer.Nr, querySingleCustomer.Name, querySingleCustomer.Street, querySingleTown.ZipCode, querySingleTown.City, querySingleCustomer.Email, querySingleCustomer.Website, querySingleCustomer.Password);
+                    CustomerVm vm = new CustomerVm(queryCustomer.Id, queryCustomer.Nr, queryCustomer.Name, queryCustomer.Street, queryTown.ZipCode, queryTown.City, queryCustomer.Email, queryCustomer.Website, queryCustomer.Password);
                     return vm;
                 }
             }

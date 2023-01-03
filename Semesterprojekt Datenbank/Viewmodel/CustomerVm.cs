@@ -9,7 +9,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public static List<CustomerVm> CustomerList { get; set; } = new List<CustomerVm>();
 
         private readonly Town town = new Town();
-        //private readonly CustomerVm customer;
+        //private readonly CustomerVm customerVm;
         private DBUtilityCustomer dB = new DBUtilityCustomer();
 
         public int Id { get; set; }
@@ -38,37 +38,37 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         //public int Nr
         //{
         //    get { return Nr; }
-        //    set { customer.Nr = value; /*OnPropertyChanged();*/}
+        //    set { customerVm.Nr = value; /*OnPropertyChanged();*/}
         //}
 
         //public string Name
         //{
-        //    get { return customer.Name; }
-        //    set { customer.Name = value; /*OnPropertyChanged();*/ }
+        //    get { return customerVm.Name; }
+        //    set { customerVm.Name = value; /*OnPropertyChanged();*/ }
         //}
 
         //public string Email
         //{
-        //    get { return customer.Email; }
-        //    set { customer.Email = value; /*OnPropertyChanged();*/ }
+        //    get { return customerVm.Email; }
+        //    set { customerVm.Email = value; /*OnPropertyChanged();*/ }
         //}
 
         //public string Website
         //{
-        //    get { return customer.Website; }
-        //    set { customer.Website = value; /*OnPropertyChanged();*/ }
+        //    get { return customerVm.Website; }
+        //    set { customerVm.Website = value; /*OnPropertyChanged();*/ }
         //}
 
         //public string Password
         //{
-        //    get { return customer.Password; }
-        //    set { customer.Password = value; /*OnPropertyChanged();*/ }
+        //    get { return customerVm.Password; }
+        //    set { customerVm.Password = value; /*OnPropertyChanged();*/ }
         //}
 
         //public string Street
         //{
-        //    get { return customer.Street; }
-        //    set { customer.Street = value; /*OnPropertyChanged();*/ }
+        //    get { return customerVm.Street; }
+        //    set { customerVm.Street = value; /*OnPropertyChanged();*/ }
         //}
         //public string ZipCode 
         //{
@@ -84,8 +84,8 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         //public int TownId
         //{
-        //    get { return customer.TownId; }
-        //    set { customer.TownId = value; /*OnPropertyChanged();*/ }
+        //    get { return customerVm.TownId; }
+        //    set { customerVm.TownId = value; /*OnPropertyChanged();*/ }
         //}
 
         public CustomerVm()
@@ -94,19 +94,18 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         }
 
 
-        public void CreateCustomer(CustomerVm customer)
+        public void CreateCustomer(CustomerVm customerVm)
         {
-            dB.Create(customer);
-
+            dB.Create(customerVm);
         }
 
-        public void UpdateCustomer(CustomerVm updatecustomerVm)
+        public void UpdateCustomer(CustomerVm CustomerVm)
         {
-            var outputDbCustomer = dB.ReadSingle(updatecustomerVm);
+            var outputDbCustomer = dB.ReadSingle(CustomerVm);
 
-            if (!outputDbCustomer.Equals(updatecustomerVm))
+            if (!outputDbCustomer.Equals(CustomerVm))
             {
-                dB.Update(updatecustomerVm);
+                dB.Update(CustomerVm);
             }
 
         }
