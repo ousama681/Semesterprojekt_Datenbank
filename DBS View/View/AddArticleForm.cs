@@ -29,13 +29,14 @@ namespace DBS_View.View
             this.articleVm = new ArticleVm();
             isArticleUpdated = true;
 
-            TxtArticleGroup.Text = "";
+            TxtArticleGroup.Text = articleVm.ArticleGroup;
             TxtArticleName.Text = articleVm.Name;
             TxtArticleNr.Text = articleVm.Nr.ToString();
             TxtPrice.Text = articleVm.Price.ToString();
         }
         private void CmdSave_Click(object sender, EventArgs e)
         {
+            articleVm.ArticleGroup = TxtArticleGroup.Text;
             articleVm.Name = TxtArticleName.Text;
             if (TxtArticleNr.TextLength > 0 && TxtArticleNr.Text.All(char.IsDigit))
                 articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text);
