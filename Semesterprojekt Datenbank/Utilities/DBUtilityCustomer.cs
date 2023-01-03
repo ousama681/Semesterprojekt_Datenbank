@@ -52,9 +52,29 @@ namespace Semesterprojekt_Datenbank.Utilities
             }
         }
 
-        public void Delete()
+        public void Delete(CustomerVm customerVm)
         {
-            throw new NotImplementedException();
+            try
+            {
+                using (var context = new DataContext())
+                {
+                    var queryCustomer = (from customer in context.Customer
+                        where customer.Nr == customerVm.Nr
+                        select customer).SingleOrDefault();
+                    context.Remove(queryCustomer);
+                    context.SaveChanges();
+                }
+            }
+            catch (Microsoft.Data.SqlClient.SqlException e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. Keine Verbindung zur Datenbank!\r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. \r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+            }
         }
 
         public List<CustomerVm> Read()

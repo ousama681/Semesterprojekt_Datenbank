@@ -40,10 +40,6 @@ namespace DBS_View.View
 
         private void CmdDelete_Click(object sender, EventArgs e)
         {
-            //--------------------------------------------------------------------------
-            //Muss noch aus der DB gelöscht werden!!!!!!!!!!!!!
-            //--------------------------------------------------------------------------
-
             if (DgvCustomer.CurrentRow != null)
             {
                 // Create row and column variable for better readability
@@ -55,17 +51,9 @@ namespace DBS_View.View
                                     "wirklich löschen?", "Eintrag löschen?", MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    //Customer cu = CustomerVm.CustomerList.Find(x => x.Name == customerName);
-
-                    // Search Data.CustomerList for customers with the same ContactPerson
-                    // This prevents an error when deleting a customer with the same ContactPerson as another customer
-                    //List<Customer> customerList = CustomerVm.CustomerList.FindAll(x => x.ContactPerson == cu.ContactPerson);
-                    ////List<Customer> customerList = Data.CustomerList.FindAll(x => x.Equals(cu.ContactPerson));
-                    //if (customerList.Count <= 1)
-                    //{
-                    //    CustomerVm.PersonList.Remove(cu.ContactPerson);
-                    //}
-                    //CustomerVm.CustomerList.Remove(cu);
+                    CustomerVm customerVm = CustomerVm.CustomerList.Find(x => x.Name == customerName);
+                    customerVm.DeleteCustomer(customerVm);
+                    CustomerVm.CustomerList.Remove(customerVm);
                     DgvCustomer.Rows.RemoveAt(DgvCustomer.CurrentRow.Index);
 
                     //CsvHandler.WriteToCsv(CustomerVm.PersonList, CustomerVm.EmployeeList, CustomerVm.ApprenticeList, CustomerVm.CadreList, CustomerVm.CustomerList,

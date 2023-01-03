@@ -107,7 +107,11 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             {
                 dB.Update(CustomerVm);
             }
+        }
 
+        public void DeleteCustomer(CustomerVm customerVm)
+        {
+            dB.Delete(customerVm);
         }
     }
 }
