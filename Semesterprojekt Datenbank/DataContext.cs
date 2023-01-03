@@ -18,7 +18,7 @@ namespace Semesterprojekt_Datenbank
 {
     public class DataContext : DbContext
     {
-        public DbSet<ArticleGroup> ArticleGroups { get; set; }
+        public DbSet<ArticleGroup> ArticleGroup { get; set; }
         public DbSet<Article> Articles {get;set;}
         public DbSet<Customer> Customer {get;set;}
         public DbSet<Invoice> Invoices {get;set;}
@@ -37,7 +37,7 @@ namespace Semesterprojekt_Datenbank
 
 
             //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-            optionsBuilder.UseSqlServer(BigBoss);
+            optionsBuilder.UseSqlServer(Leandro_Connection);
 
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }

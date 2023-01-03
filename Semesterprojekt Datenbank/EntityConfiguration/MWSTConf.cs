@@ -10,7 +10,7 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
         public void Visit(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<MWST>()
-                .Property(m => MWST.TaxValue)
+                .Property(m => m.TaxValue)
                 .IsRequired();
         }
     }
