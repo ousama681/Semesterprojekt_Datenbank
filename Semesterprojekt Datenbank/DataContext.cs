@@ -19,25 +19,26 @@ namespace Semesterprojekt_Datenbank
     public class DataContext : DbContext
     {
         public DbSet<ArticleGroup> ArticleGroup { get; set; }
-        public DbSet<Article> Articles {get;set;}
+        public DbSet<Article> Article {get;set;}
         public DbSet<Customer> Customer {get;set;}
-        public DbSet<Invoice> Invoices {get;set;}
+        public DbSet<Invoice> Invoice {get;set;}
         public DbSet<Town> Town {get;set;}
-        public DbSet<Order> Orders {get;set;}
-        public DbSet<Position> Positions {get;set;}
-        public DbSet<MWST> MWSTs {get;set;}
+        public DbSet<Order> Order {get;set;}
+        public DbSet<Position> Position {get;set;}
+        public DbSet<MWST> MWST {get;set;}
         public object ObjectStateManager { get; internal set; }
 
         const string OUSAMA_CONNECTION = "Server=DESKTOP-PMVN625; Database=DBAProject; Trusted_Connection=true; Encrypt=false;";
         public const string Leandro_Connection = "Server=LEANDROPAJE1C16\\ZBWMSSQL; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         const string BigBoss = "Server=DESKTOP-1470VE0\\ZBW; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
+        const string KimPc = "Server=Koneko\\KONEKO; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
 
             //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-            optionsBuilder.UseSqlServer(Leandro_Connection);
+            optionsBuilder.UseSqlServer(KimPc);
 
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }

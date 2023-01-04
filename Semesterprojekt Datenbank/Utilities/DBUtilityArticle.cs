@@ -66,7 +66,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 using (var context = new DataContext())
                 {
-                    var queryArticle = (from article in context.Articles
+                    var queryArticle = (from article in context.Article
                                         where article.Nr == articleVm.Nr
                                         select article).SingleOrDefault();
                     context.Remove(queryArticle);
@@ -95,7 +95,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     List<ArticleVm> articleVmList = new List<ArticleVm>();
-                    var queryArticleList = (from article in context.Articles
+                    var queryArticleList = (from article in context.Article
                                             select article).ToList();
                     foreach (var article in queryArticleList)
                     {
@@ -129,7 +129,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 using (var context = new DataContext())
                 {
-                    var queryArticle = (from article in context.Articles
+                    var queryArticle = (from article in context.Article
                                         where articleVm.Nr == article.Nr
                                         select article).SingleOrDefault();
                     var queryArticleGroup = (from articleGroup in context.ArticleGroup
@@ -159,7 +159,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 using (var context = new DataContext())
                 {
-                    var queryForArticle = (from article in context.Articles
+                    var queryForArticle = (from article in context.Article
                                            where article.Nr == articleVm.Nr
                                            select article).SingleOrDefault();
                     var queryForArticleGroup = (from articleGroup in context.ArticleGroup
