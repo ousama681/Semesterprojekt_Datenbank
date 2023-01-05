@@ -102,9 +102,7 @@ namespace DBS_View.View
                 cell[column["colNr"].Index].Value = articleVm.Nr;
                 cell[column["colName"].Index].Value = articleVm.Name;
                 cell[column["colPrice"].Index].Value = articleVm.Price;
-                cell[column["colArticleGroup"].Index].Value = articleVm.ArticleGroup;  
-                
-
+                cell[column["colArticleGroup"].Index].Value = articleVm.ArticleGroup;
 
             }
             //DgvCustomer.Sort(column["colName"], ListSortDirection.Ascending);
