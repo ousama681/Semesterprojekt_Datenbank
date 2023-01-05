@@ -64,6 +64,7 @@
             this.DgvArticle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvArticle.Size = new System.Drawing.Size(877, 343);
             this.DgvArticle.TabIndex = 1;
+            this.DgvArticle.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataResultList_CellContentClick);
             // 
             // colNr
             // 
@@ -100,6 +101,8 @@
             this.colUpdateArticle.ReadOnly = true;
             this.colUpdateArticle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colUpdateArticle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colUpdateArticle.Text = "Bearbeiten";
+            this.colUpdateArticle.UseColumnTextForButtonValue = true;
             // 
             // CmdAddCustomer
             // 

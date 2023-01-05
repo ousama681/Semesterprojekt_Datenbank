@@ -30,30 +30,39 @@ namespace DBS_View.View
             TxtEmail.Text = customerVm.Email;
             TxtWebsite.Text = customerVm.Website;
             TxtPassword.Text = customerVm.Password;
+            TxtCustomerNr.Enabled = false;
 
         }
 
         private void CmdSave_Click(object sender, EventArgs e)
         {
-            customerVm.Name = TxtCustomerName.Text;
-            if (TxtCustomerNr.TextLength > 0)
-                customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
-            customerVm.Street = TxtStreet.Text;
-            customerVm.City = TxtTown.Text;
-            customerVm.ZipCode = TxtZipCode.Text;
-            customerVm.Email = TxtEmail.Text;
-            customerVm.Website = TxtWebsite.Text;
-            customerVm.Password = TxtPassword.Text.GetHashCode().ToString();
-
-            if (isCustomerUpdated != true)
+            if(customerVm.isCustomerNrUsed(Convert.ToInt32(TxtCustomerNr.Text)))
             {
-                customerVm.CreateCustomer(customerVm);
+                customerVm.Name = TxtCustomerName.Text;
+                if (TxtCustomerNr.TextLength > 0)
+                    customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
+                customerVm.Street = TxtStreet.Text;
+                customerVm.City = TxtTown.Text;
+                customerVm.ZipCode = TxtZipCode.Text;
+                customerVm.Email = TxtEmail.Text;
+                customerVm.Website = TxtWebsite.Text;
+                customerVm.Password = TxtPassword.Text.GetHashCode().ToString();
+
+                if (isCustomerUpdated != true)
+                {
+                    customerVm.CreateCustomer(customerVm);
+                }
+                else
+                {
+                    customerVm.UpdateCustomer(customerVm);
+                }
+                this.Close();
             }
             else
             {
-                customerVm.UpdateCustomer(customerVm);
+                MessageBox.Show(this, "Kundennr bereits vergeben. Bitte andere Kundennummer auswählen.");
             }
-            this.Close();
+
         }
 
 

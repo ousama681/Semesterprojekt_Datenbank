@@ -21,37 +21,49 @@ namespace DBS_View.View
         {
             InitializeComponent();
             articleVm = new ArticleVm();
+            CmbArticleGroup.DataSource = articleVm.GetArticleGRoupNames();
         }
         public AddArticleForm(ArticleVm articleVm)
         {
+            
             InitializeComponent();
             articleForm = new ArticleForm();
             this.articleVm = new ArticleVm();
             isArticleUpdated = true;
 
-            TxtArticleGroup.Text = articleVm.ArticleGroup;
+            CmbArticleGroup.Text = articleVm.ArticleGroup;
             TxtArticleName.Text = articleVm.Name;
             TxtArticleNr.Text = articleVm.Nr.ToString();
             TxtPrice.Text = articleVm.Price.ToString();
+            TxtArticleNr.Enabled = false;
+            CmbArticleGroup.DataSource = articleVm.GetArticleGRoupNames();
         }
         private void CmdSave_Click(object sender, EventArgs e)
         {
-            articleVm.ArticleGroup = TxtArticleGroup.Text;
-            articleVm.Name = TxtArticleName.Text;
-            if (TxtArticleNr.TextLength > 0 && TxtArticleNr.Text.All(char.IsDigit))
-                articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text);
-            if (TxtArticleNr.TextLength > 0 && !TxtPrice.Text.Any(char.IsLetter))
-                articleVm.Price = Convert.ToDecimal(TxtPrice.Text);
-
-            if (isArticleUpdated != true)
+            if (!articleVm.isArticleNrUsed(Convert.ToInt32(TxtArticleNr.Text)) && TxtArticleNr.TextLength > 0 && TxtArticleNr.Text.All(char.IsDigit))
             {
-                articleVm.CreateArticle(articleVm);
+                articleVm.ArticleGroup = CmbArticleGroup.Text;
+                articleVm.Name = TxtArticleName.Text;
+                articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text);
+
+                if (TxtPrice.TextLength > 0 && !TxtPrice.Text.Any(char.IsLetter))
+                    articleVm.Price = Convert.ToDecimal(TxtPrice.Text);
+
+                if (isArticleUpdated != true)
+                {
+                    articleVm.CreateArticle(articleVm);
+                }
+                else
+                {
+                    articleVm.UpdateArticle(articleVm);
+                }
+                this.Close();
             }
             else
             {
-                articleVm.UpdateArticle(articleVm);
+                MessageBox.Show(this,"Artikelnr bereits vergeben. Bitte andere Artikelnummer auswählen.");
             }
-            this.Close();
+            
         }
     }
 }

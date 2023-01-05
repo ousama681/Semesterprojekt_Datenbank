@@ -170,6 +170,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                     queryForCustomer.TownId = queryForTown.Id;
 
                     context.SaveChanges();
+                    CustomerVm.CustomerList = Read();
                 }
             }
             catch (Microsoft.Data.SqlClient.SqlException e)

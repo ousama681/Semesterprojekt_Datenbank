@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Semesterprojekt_Datenbank.Utilities;
+using System.Windows.Markup;
 
 namespace Semesterprojekt_Datenbank.Viewmodel
 {
     public class ArticleVm
     {
+        
         public static List<ArticleVm> ArticleList { get; set; } = new List<ArticleVm>();
         private DBUtilityArticle dB = new DBUtilityArticle();
 
@@ -48,7 +50,24 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         {
             return dB.Delete(articleVm);
         }
+        public bool isArticleNrUsed(int nr)
+        {
+            bool nrUsed = false;
+            foreach (var vm in ArticleList)
+            {
+                if (nr == vm.Nr)
+                {
+                    nrUsed = true;
+                    return nrUsed;
+                }
+            }
+            return false;
+        }
 
+        public List<string> GetArticleGRoupNames()
+        {
+            return dB.ReadArticleGroup();
+        }
 
 
     }

@@ -33,12 +33,12 @@
             this.LblArticleGRoup = new System.Windows.Forms.Label();
             this.LblName = new System.Windows.Forms.Label();
             this.LblArticleNr = new System.Windows.Forms.Label();
-            this.TxtArticleGroup = new System.Windows.Forms.TextBox();
             this.TxtArticleName = new System.Windows.Forms.TextBox();
             this.TxtArticleNr = new System.Windows.Forms.TextBox();
             this.LblAddCustomerTitle = new System.Windows.Forms.Label();
             this.CmdAbort = new System.Windows.Forms.Button();
             this.CmdSave = new System.Windows.Forms.Button();
+            this.CmbArticleGroup = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // LblPrice
@@ -88,13 +88,6 @@
             this.LblArticleNr.TabIndex = 25;
             this.LblArticleNr.Text = "Artikelnr.";
             // 
-            // TxtArticleGroup
-            // 
-            this.TxtArticleGroup.Location = new System.Drawing.Point(12, 208);
-            this.TxtArticleGroup.Name = "TxtArticleGroup";
-            this.TxtArticleGroup.Size = new System.Drawing.Size(191, 23);
-            this.TxtArticleGroup.TabIndex = 21;
-            // 
             // TxtArticleName
             // 
             this.TxtArticleName.Location = new System.Drawing.Point(12, 79);
@@ -139,11 +132,20 @@
             this.CmdSave.UseVisualStyleBackColor = true;
             this.CmdSave.Click += new System.EventHandler(this.CmdSave_Click);
             // 
+            // CmbArticleGroup
+            // 
+            this.CmbArticleGroup.FormattingEnabled = true;
+            this.CmbArticleGroup.Location = new System.Drawing.Point(12, 208);
+            this.CmbArticleGroup.Name = "CmbArticleGroup";
+            this.CmbArticleGroup.Size = new System.Drawing.Size(128, 23);
+            this.CmbArticleGroup.TabIndex = 34;
+            // 
             // AddArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(307, 365);
+            this.Controls.Add(this.CmbArticleGroup);
             this.Controls.Add(this.CmdAbort);
             this.Controls.Add(this.CmdSave);
             this.Controls.Add(this.LblAddCustomerTitle);
@@ -152,7 +154,6 @@
             this.Controls.Add(this.LblArticleGRoup);
             this.Controls.Add(this.LblName);
             this.Controls.Add(this.LblArticleNr);
-            this.Controls.Add(this.TxtArticleGroup);
             this.Controls.Add(this.TxtArticleName);
             this.Controls.Add(this.TxtArticleNr);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -171,11 +172,11 @@
         private Label LblArticleGRoup;
         private Label LblName;
         private Label LblArticleNr;
-        private TextBox TxtArticleGroup;
         private TextBox TxtArticleName;
         private TextBox TxtArticleNr;
         private Label LblAddCustomerTitle;
         private Button CmdAbort;
         private Button CmdSave;
+        private ComboBox CmbArticleGroup;
     }
 }

@@ -87,7 +87,30 @@ namespace Semesterprojekt_Datenbank.Utilities
                 return false;
             }
         }
-
+        public List<string> ReadArticleGroup()
+        {
+            try
+            {
+                using (var context = new DataContext())
+                {
+                    return (from articleGroup in context.ArticleGroup 
+                            select articleGroup.Name).ToList();
+                    
+                }
+            }
+            catch (Microsoft.Data.SqlClient.SqlException e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. Keine Verbindung zur Datenbank!\r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+                return null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. \r\n \r\n" +
+                                "Error Message: \r\n" + e.Message);
+                return null;
+            }
+        }
         public List<ArticleVm> Read()
         {
             try
@@ -133,7 +156,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                                         where articleVm.Nr == article.Nr
                                         select article).SingleOrDefault();
                     var queryArticleGroup = (from articleGroup in context.ArticleGroup
-                                             where articleGroup.Id == queryArticle.Id
+                                             where articleGroup.Id == queryArticle.ArticleGroupId
                                              select articleGroup).FirstOrDefault();
                     ArticleVm vm = new ArticleVm(queryArticle.Name, queryArticle.Nr, queryArticle.Price, queryArticleGroup.Name);
                     return vm;
@@ -173,6 +196,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                     queryForArticle.Mwstid = 1;
 
                     context.SaveChanges();
+                    ArticleVm.ArticleList = Read();
                 }
             }
             catch (Microsoft.Data.SqlClient.SqlException e)

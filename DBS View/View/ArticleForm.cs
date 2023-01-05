@@ -17,6 +17,7 @@ namespace DBS_View.View
         public ArticleForm()
         {
             InitializeComponent();
+            
         }
 
         private void CmdAddArticle_Click(object sender, EventArgs e)
@@ -27,9 +28,6 @@ namespace DBS_View.View
         }
         private void CmdDelete_Click(object sender, EventArgs e)
         {
-            //--------------------------------------------------------------------------
-            //Muss noch aus der DB gelöscht werden!!!!!!!!!!!!!
-            //--------------------------------------------------------------------------
 
             if (DgvArticle.CurrentRow != null)
             {
