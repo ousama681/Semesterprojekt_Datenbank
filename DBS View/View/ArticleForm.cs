@@ -22,7 +22,7 @@ namespace DBS_View.View
         private void CmdAddArticle_Click(object sender, EventArgs e)
         {
             AddArticleForm addArticleForm = new AddArticleForm();
-            //addArticleForm.FormClosed += new FormClosedEventHandler(this.AddCustomerForm_FormClosed); // Findet addArticleForm nicht....-------------
+            addArticleForm.FormClosed += new FormClosedEventHandler(this.AddArticleForm_FormClosed);
             addArticleForm.ShowDialog();
         }
         private void CmdDelete_Click(object sender, EventArgs e)
@@ -43,8 +43,8 @@ namespace DBS_View.View
                                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ArticleVm articleVm = ArticleVm.ArticleList.Find(x => x.Name == articleName);
-                    bool deleteCustomerSuccessful = articleVm.DeleteArticle(articleVm);
-                    if (deleteCustomerSuccessful)
+                    bool deleteArticleSuccessful = articleVm.DeleteArticle(articleVm);
+                    if (deleteArticleSuccessful)
                     {
                         ArticleVm.ArticleList.Remove(articleVm);
                         DgvArticle.Rows.RemoveAt(DgvArticle.CurrentRow.Index);
@@ -57,7 +57,7 @@ namespace DBS_View.View
         {
             SearchArticle();
         }
-        private void AddCustomerForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void AddArticleForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             FillDataGrid();
         }
@@ -68,16 +68,16 @@ namespace DBS_View.View
 
             if (gridSender.Columns[e.ColumnIndex] is DataGridViewButtonColumn && e.ColumnIndex >= 0)
             {
-                int customerNameColumnIndex = DgvArticle.Columns["colName"].Index;
+                int articleNameColumnIndex = DgvArticle.Columns["colName"].Index;
                 DataGridViewRow row = DgvArticle.Rows[e.RowIndex];
-                DataGridViewCell cell = row.Cells[customerNameColumnIndex];
-                string customerName = Convert.ToString(cell.Value);
+                DataGridViewCell cell = row.Cells[articleNameColumnIndex];
+                string artikelName = Convert.ToString(cell.Value);
+                ArticleVm articleVm = ArticleVm.ArticleList.Find(x => x.Name == artikelName);
+                
 
-                CustomerVm cu = CustomerVm.CustomerList.Find(x => x.Name == customerName);
-
-                AddCustomerForm addCustomerForm = new AddCustomerForm(cu);
-                addCustomerForm.FormClosed += new FormClosedEventHandler(this.AddCustomerForm_FormClosed);
-                addCustomerForm.ShowDialog();
+                AddArticleForm addArticleForm = new AddArticleForm(articleVm);
+                addArticleForm.FormClosed += new FormClosedEventHandler(this.AddArticleForm_FormClosed);
+                addArticleForm.ShowDialog();
             }
         }
 
@@ -102,10 +102,8 @@ namespace DBS_View.View
                 cell[column["colNr"].Index].Value = articleVm.Nr;
                 cell[column["colName"].Index].Value = articleVm.Name;
                 cell[column["colPrice"].Index].Value = articleVm.Price;
-
-                //------------------------------------------------------------------------
-                cell[column["colArticleGroup"].Index].Value = "";  // implement  ArticleGroup!!!!!!!
-                //------------------------------------------------------------------------
+                cell[column["colArticleGroup"].Index].Value = articleVm.ArticleGroup;  
+                
 
 
             }
@@ -185,7 +183,10 @@ namespace DBS_View.View
             }
         }
 
-
+        private void ArticleForm_Load(object sender, EventArgs e)
+        {
+            FillDataGrid();
+        }
     }
 
 

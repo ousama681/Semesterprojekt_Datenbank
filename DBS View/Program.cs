@@ -15,8 +15,10 @@ namespace DBS_View
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            DBUtilityCustomer db = new DBUtilityCustomer();
-            CustomerVm.CustomerList = db.Read();
+            DBUtilityCustomer dbCustomer = new DBUtilityCustomer();
+            DBUtilityArticle dbArticle = new DBUtilityArticle();
+            CustomerVm.CustomerList = dbCustomer.Read();
+            ArticleVm.ArticleList = dbArticle.Read();
             Application.Run(new MainForm());
         }
     }

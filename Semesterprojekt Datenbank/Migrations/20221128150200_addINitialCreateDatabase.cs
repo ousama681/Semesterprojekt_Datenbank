@@ -57,7 +57,8 @@ namespace SemesterprojektDatenbank.Migrations
                 name: "Article",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nr = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -69,7 +70,7 @@ namespace SemesterprojektDatenbank.Migrations
                     table.PrimaryKey("PK_Article", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Article_ArticleGroup_Id",
-                        column: x => x.Id,
+                        column: x => x.ArticleGroupId,
                         principalTable: "ArticleGroup",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);

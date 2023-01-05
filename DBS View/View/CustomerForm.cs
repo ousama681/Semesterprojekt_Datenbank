@@ -16,13 +16,13 @@ namespace DBS_View.View
 {
     public partial class CustomerForm : Form
     {
-        private CustomerVm customerVm;
+        
        
 
         public CustomerForm()
         {
             InitializeComponent();
-            customerVm = new CustomerVm();
+            
             
         }
 

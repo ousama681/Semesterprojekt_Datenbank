@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.DgvArticle = new System.Windows.Forms.DataGridView();
-            this.CmdAddCustomer = new System.Windows.Forms.Button();
-            this.CmdDelete = new System.Windows.Forms.Button();
-            this.CmdSearch = new System.Windows.Forms.Button();
-            this.TxtSearch = new System.Windows.Forms.TextBox();
             this.colNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colArticleGroup = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUpdateArticle = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.CmdAddCustomer = new System.Windows.Forms.Button();
+            this.CmdDelete = new System.Windows.Forms.Button();
+            this.CmdSearch = new System.Windows.Forms.Button();
+            this.TxtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +64,42 @@
             this.DgvArticle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvArticle.Size = new System.Drawing.Size(877, 343);
             this.DgvArticle.TabIndex = 1;
+            // 
+            // colNr
+            // 
+            this.colNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colNr.HeaderText = "Artikelnr.";
+            this.colNr.Name = "colNr";
+            this.colNr.ReadOnly = true;
+            // 
+            // colName
+            // 
+            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colName.HeaderText = "Bezeichnung";
+            this.colName.Name = "colName";
+            this.colName.ReadOnly = true;
+            // 
+            // colPrice
+            // 
+            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colPrice.HeaderText = "Preis";
+            this.colPrice.Name = "colPrice";
+            this.colPrice.ReadOnly = true;
+            // 
+            // colArticleGroup
+            // 
+            this.colArticleGroup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colArticleGroup.HeaderText = "Artikelgruppe";
+            this.colArticleGroup.Name = "colArticleGroup";
+            this.colArticleGroup.ReadOnly = true;
+            // 
+            // colUpdateArticle
+            // 
+            this.colUpdateArticle.HeaderText = "Bearbeiten";
+            this.colUpdateArticle.Name = "colUpdateArticle";
+            this.colUpdateArticle.ReadOnly = true;
+            this.colUpdateArticle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colUpdateArticle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // CmdAddCustomer
             // 
@@ -104,42 +140,6 @@
             this.TxtSearch.Click += new System.EventHandler(this.TxtSearch_TextChanged);
             this.TxtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtSearch_KeyDown);
             // 
-            // colNr
-            // 
-            this.colNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNr.HeaderText = "Artikelnr.";
-            this.colNr.Name = "colNr";
-            this.colNr.ReadOnly = true;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.HeaderText = "Bezeichnung";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colPrice
-            // 
-            this.colPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colPrice.HeaderText = "Preis";
-            this.colPrice.Name = "colPrice";
-            this.colPrice.ReadOnly = true;
-            // 
-            // colArticleGroup
-            // 
-            this.colArticleGroup.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colArticleGroup.HeaderText = "Artikelgruppe";
-            this.colArticleGroup.Name = "colArticleGroup";
-            this.colArticleGroup.ReadOnly = true;
-            // 
-            // colUpdateArticle
-            // 
-            this.colUpdateArticle.HeaderText = "Bearbeiten";
-            this.colUpdateArticle.Name = "colUpdateArticle";
-            this.colUpdateArticle.ReadOnly = true;
-            this.colUpdateArticle.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colUpdateArticle.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // ArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -153,6 +153,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ArticleForm";
             this.Text = "Artikel";
+            this.Load += new System.EventHandler(this.ArticleForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgvArticle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -100,7 +100,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                     foreach (var article in queryArticleList)
                     {
                         var queryArticleGroup = (from articleGroup in context.ArticleGroup
-                                                 where article.Id == articleGroup.Id
+                                                 where article.ArticleGroupId == articleGroup.Id
                                                  select articleGroup).FirstOrDefault();
 
                         ArticleVm articleVm = new ArticleVm(article.Name, article.Nr, article.Price, queryArticleGroup.Name);
