@@ -38,9 +38,9 @@
             // 
             // TrVArticleGroup
             // 
-            this.TrVArticleGroup.Location = new System.Drawing.Point(408, 23);
+            this.TrVArticleGroup.Location = new System.Drawing.Point(167, 12);
             this.TrVArticleGroup.Name = "TrVArticleGroup";
-            this.TrVArticleGroup.Size = new System.Drawing.Size(362, 361);
+            this.TrVArticleGroup.Size = new System.Drawing.Size(362, 372);
             this.TrVArticleGroup.TabIndex = 0;
             // 
             // CmdAddArticleGroup

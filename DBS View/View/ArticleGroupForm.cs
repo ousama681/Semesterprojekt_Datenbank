@@ -1,17 +1,12 @@
 ﻿using Semesterprojekt_Datenbank.Viewmodel;
-using System.Windows.Controls;
-using Syncfusion.Windows.Forms.Tools;
 
 
 namespace DBS_View.View
 {
     public partial class ArticleGroupForm : Form
     {
-
         ArticleGroupVm articleGroupVm;
 
-        private Syncfusion.Windows.Forms.Tools.TreeViewAdv treeViewAdv1;
-       
         public ArticleGroupForm()
         {
             InitializeComponent();
@@ -20,8 +15,6 @@ namespace DBS_View.View
 
         private void CmdAddArticleGroup_Click(object sender, EventArgs e)
         {
-
-
 
         }
 
@@ -47,26 +40,14 @@ namespace DBS_View.View
 
             var myArticleGroupList = articleGroupVm.GetArticleGroup();
 
-            TreeNode rootNode;
-            TreeNode childNode;
-            List<TreeNode> rootnodes = new List<TreeNode>();
-            List<TreeNode> childnodes = new List<TreeNode>();
+            TreeNode node;
             List<TreeNode> nodes = new List<TreeNode>();
 
-            foreach (var eachRootNode in myArticleGroupList)
+            foreach (var articleGroupVm in myArticleGroupList)
             {
-                if (eachRootNode.ParentName is "none")
-                {
-                    rootNode = new TreeNode(eachRootNode.Name);  
-                    rootNode.Tag = eachRootNode.ParentName;
-                    nodes.Add(rootNode);
-                }
-                else
-                {
-                    childNode = new TreeNode(eachRootNode.Name);               
-                    childNode.Tag = eachRootNode.ParentName;
-                    nodes.Add(childNode);
-                }
+                node = new TreeNode(articleGroupVm.Name);
+                node.Tag = articleGroupVm.ParentName;
+                nodes.Add(node);
             }
 
             for (int i = 0; i < nodes.Count; i++)
@@ -74,17 +55,10 @@ namespace DBS_View.View
                 for (int j = 0; j < nodes.Count; j++)
                 {
                     if (nodes[i].Text == nodes[j].Tag.ToString())
-                    {
                         nodes[i].Nodes.Add(nodes[j]);
-                        
-                    }
                 }
                 if (nodes[i].Tag.ToString() == "none")
-                {
                     TrVArticleGroup.Nodes.Add(nodes[i]);
-                }
-                
-
             }
         }
     }
