@@ -14,6 +14,8 @@ namespace DBS_View.View
 {
     public partial class ArticleForm : Form
     {
+        AddArticleForm addArticleForm;
+
         public ArticleForm()
         {
             InitializeComponent();
@@ -22,7 +24,7 @@ namespace DBS_View.View
 
         private void CmdAddArticle_Click(object sender, EventArgs e)
         {
-            AddArticleForm addArticleForm = new AddArticleForm();
+            addArticleForm = new AddArticleForm();
             addArticleForm.FormClosed += new FormClosedEventHandler(this.AddArticleForm_FormClosed);
             addArticleForm.ShowDialog();
         }

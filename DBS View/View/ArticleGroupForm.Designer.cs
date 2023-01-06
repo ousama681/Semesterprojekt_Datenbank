@@ -28,31 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.trVArticleGroup = new System.Windows.Forms.TreeView();
+            this.TrVArticleGroup = new System.Windows.Forms.TreeView();
+            this.CmdAddArticleGroup = new System.Windows.Forms.Button();
+            this.CmdDeleteArticleGroup = new System.Windows.Forms.Button();
+            this.TxtSearchArticleGroup = new System.Windows.Forms.TextBox();
+            this.CmdSearchArticleGroup = new System.Windows.Forms.Button();
+            this.TxtAddArticleGroup = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // trVArticleGroup
+            // TrVArticleGroup
             // 
-            this.trVArticleGroup.Location = new System.Drawing.Point(12, 12);
-            this.trVArticleGroup.Name = "trVArticleGroup";
-            this.trVArticleGroup.Size = new System.Drawing.Size(358, 372);
-            this.trVArticleGroup.TabIndex = 0;
+            this.TrVArticleGroup.Location = new System.Drawing.Point(408, 23);
+            this.TrVArticleGroup.Name = "TrVArticleGroup";
+            this.TrVArticleGroup.Size = new System.Drawing.Size(362, 361);
+            this.TrVArticleGroup.TabIndex = 0;
+            // 
+            // CmdAddArticleGroup
+            // 
+            this.CmdAddArticleGroup.Location = new System.Drawing.Point(12, 110);
+            this.CmdAddArticleGroup.Name = "CmdAddArticleGroup";
+            this.CmdAddArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.CmdAddArticleGroup.TabIndex = 1;
+            this.CmdAddArticleGroup.Text = "Hinzufügen";
+            this.CmdAddArticleGroup.UseVisualStyleBackColor = true;
+            this.CmdAddArticleGroup.Click += new System.EventHandler(this.CmdAddArticleGroup_Click);
+            // 
+            // CmdDeleteArticleGroup
+            // 
+            this.CmdDeleteArticleGroup.Location = new System.Drawing.Point(12, 168);
+            this.CmdDeleteArticleGroup.Name = "CmdDeleteArticleGroup";
+            this.CmdDeleteArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.CmdDeleteArticleGroup.TabIndex = 2;
+            this.CmdDeleteArticleGroup.Text = "Löschen";
+            this.CmdDeleteArticleGroup.UseVisualStyleBackColor = true;
+            this.CmdDeleteArticleGroup.Click += new System.EventHandler(this.CmdDeleteArticleGroup_Click);
+            // 
+            // TxtSearchArticleGroup
+            // 
+            this.TxtSearchArticleGroup.Location = new System.Drawing.Point(12, 23);
+            this.TxtSearchArticleGroup.Name = "TxtSearchArticleGroup";
+            this.TxtSearchArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.TxtSearchArticleGroup.TabIndex = 3;
+            // 
+            // CmdSearchArticleGroup
+            // 
+            this.CmdSearchArticleGroup.Location = new System.Drawing.Point(12, 52);
+            this.CmdSearchArticleGroup.Name = "CmdSearchArticleGroup";
+            this.CmdSearchArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.CmdSearchArticleGroup.TabIndex = 4;
+            this.CmdSearchArticleGroup.Text = "Suchen";
+            this.CmdSearchArticleGroup.UseVisualStyleBackColor = true;
+            this.CmdSearchArticleGroup.Click += new System.EventHandler(this.CmdSearchArticleGroup_Click);
+            // 
+            // TxtAddArticleGroup
+            // 
+            this.TxtAddArticleGroup.Location = new System.Drawing.Point(12, 139);
+            this.TxtAddArticleGroup.Name = "TxtAddArticleGroup";
+            this.TxtAddArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.TxtAddArticleGroup.TabIndex = 5;
             // 
             // ArticleGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 396);
-            this.Controls.Add(this.trVArticleGroup);
+            this.Controls.Add(this.TxtAddArticleGroup);
+            this.Controls.Add(this.CmdSearchArticleGroup);
+            this.Controls.Add(this.TxtSearchArticleGroup);
+            this.Controls.Add(this.CmdDeleteArticleGroup);
+            this.Controls.Add(this.CmdAddArticleGroup);
+            this.Controls.Add(this.TrVArticleGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ArticleGroupForm";
             this.Text = "Artikelgruppen";
+            this.Load += new System.EventHandler(this.ArticleGroupForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private TreeView trVArticleGroup;
+        private TreeView TrVArticleGroup;
+        private Button CmdAddArticleGroup;
+        private Button CmdDeleteArticleGroup;
+        private TextBox TxtSearchArticleGroup;
+        private Button CmdSearchArticleGroup;
+        private TextBox TxtAddArticleGroup;
     }
 }
