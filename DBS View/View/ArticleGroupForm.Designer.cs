@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo treeNodeAdvStyleInfo2 = new Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo();
+            Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo treeNodeAdvStyleInfo1 = new Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo();
             this.CmdAddArticleGroup = new System.Windows.Forms.Button();
             this.CmdDeleteArticleGroup = new System.Windows.Forms.Button();
             this.TxtSearchArticleGroup = new System.Windows.Forms.TextBox();
@@ -121,14 +121,15 @@
             // 
             // TrVArticleGroup
             // 
-            treeNodeAdvStyleInfo2.CheckBoxTickThickness = 1;
-            treeNodeAdvStyleInfo2.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            treeNodeAdvStyleInfo2.EnsureDefaultOptionedChild = true;
-            treeNodeAdvStyleInfo2.IntermediateCheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            treeNodeAdvStyleInfo2.OptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            treeNodeAdvStyleInfo2.SelectedOptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            treeNodeAdvStyleInfo1.CheckBoxTickThickness = 1;
+            treeNodeAdvStyleInfo1.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo1.EnsureDefaultOptionedChild = true;
+            treeNodeAdvStyleInfo1.IntermediateCheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo1.OptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo1.SelectedOptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            treeNodeAdvStyleInfo1.ShowOptionButton = false;
             this.TrVArticleGroup.BaseStylePairs.AddRange(new Syncfusion.Windows.Forms.Tools.StyleNamePair[] {
-            new Syncfusion.Windows.Forms.Tools.StyleNamePair("Standard", treeNodeAdvStyleInfo2)});
+            new Syncfusion.Windows.Forms.Tools.StyleNamePair("Standard", treeNodeAdvStyleInfo1)});
             this.TrVArticleGroup.BeforeTouchSize = new System.Drawing.Size(312, 368);
             // 
             // 
@@ -158,6 +159,7 @@
             this.TrVArticleGroup.ToolTipControl.Size = new System.Drawing.Size(392, 112);
             this.TrVArticleGroup.ToolTipControl.TabIndex = 0;
             this.TrVArticleGroup.ToolTipControl.Visible = true;
+            this.TrVArticleGroup.AfterCheck += new Syncfusion.Windows.Forms.Tools.TreeNodeAdvEventHandler(this.TrVArticleGroup_AfterCheck);
             // 
             // ArticleGroupForm
             // 

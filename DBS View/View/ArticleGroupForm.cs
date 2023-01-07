@@ -9,6 +9,7 @@ namespace DBS_View.View
     {
         ArticleGroupVm articleGroupVm;
         bool isAnyCheckboxSelected = false;
+       
 
         public ArticleGroupForm()
         {
@@ -57,17 +58,6 @@ namespace DBS_View.View
                     articleGroupVm.CreateArticleGroup(new ArticleGroupVm(newNode.Text, newNode.Tag.ToString()));
                     node.Checked = false;
                 }
-                //for (int i = 0; i < node.Nodes.Count; i++)
-                //{
-                //    if (node.Nodes[i].Checked == true)
-                //    {
-                //        TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
-                //        newNode.Tag = node.Nodes[i].Text;
-                //        node.Nodes[i].Nodes.Add(newNode);
-                //        isAnyCheckboxSelected = true;
-                //        articleGroupVm.CreateArticleGroup(new ArticleGroupVm(newNode.Text, newNode.Tag.ToString()));
-                //    }
-                //}
                 if(node.Nodes.Count > 0)
                 RekursiveCheckSelectedTreeNodes(node.Nodes);
             }
@@ -149,6 +139,37 @@ namespace DBS_View.View
 
             TrVArticleGroup.ShowCheckBoxes ^= true;
             TrVArticleGroup.LabelEdit ^= true;
+        }
+
+        
+        private void TrVArticleGroup_AfterCheck(object sender, TreeNodeAdvEventArgs e)
+        {
+            if (isAnyCheckboxSelected) return;
+            if (e.Node.Checked)
+            {
+                if (TrVArticleGroup.Nodes.Count > 0) UncheckAll(TrVArticleGroup.Nodes[0]);
+                isAnyCheckboxSelected = true;
+                e.Node.Checked = true;
+                isAnyCheckboxSelected = false;
+            }
+        }
+        void UncheckAll(TreeNodeAdv node)
+        {
+            if (node != null)
+            {
+                node.Checked = false;
+                foreach (TreeNodeAdv item in node.Nodes)
+                {
+                    isAnyCheckboxSelected = true;
+                    item.Checked = false;
+                    if (item.Nodes.Count > 0) UncheckAll(item.Nodes[0]);
+                }
+
+                if (node.NextNode != null)
+                    UncheckAll(node.NextNode);
+
+            }
+            isAnyCheckboxSelected = false;
         }
     }
 }
