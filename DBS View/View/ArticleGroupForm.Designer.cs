@@ -34,20 +34,24 @@
             this.TxtSearchArticleGroup = new System.Windows.Forms.TextBox();
             this.CmdSearchArticleGroup = new System.Windows.Forms.Button();
             this.TxtAddArticleGroup = new System.Windows.Forms.TextBox();
+            this.LblStreet = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CmdAdjustArticleGroups = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TrVArticleGroup
             // 
-            this.TrVArticleGroup.Location = new System.Drawing.Point(167, 12);
+            this.TrVArticleGroup.Location = new System.Drawing.Point(195, 12);
             this.TrVArticleGroup.Name = "TrVArticleGroup";
             this.TrVArticleGroup.Size = new System.Drawing.Size(362, 372);
             this.TrVArticleGroup.TabIndex = 0;
             // 
             // CmdAddArticleGroup
             // 
-            this.CmdAddArticleGroup.Location = new System.Drawing.Point(12, 110);
+            this.CmdAddArticleGroup.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmdAddArticleGroup.Location = new System.Drawing.Point(12, 303);
             this.CmdAddArticleGroup.Name = "CmdAddArticleGroup";
-            this.CmdAddArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.CmdAddArticleGroup.Size = new System.Drawing.Size(164, 29);
             this.CmdAddArticleGroup.TabIndex = 1;
             this.CmdAddArticleGroup.Text = "Hinzufügen";
             this.CmdAddArticleGroup.UseVisualStyleBackColor = true;
@@ -55,9 +59,10 @@
             // 
             // CmdDeleteArticleGroup
             // 
-            this.CmdDeleteArticleGroup.Location = new System.Drawing.Point(12, 168);
+            this.CmdDeleteArticleGroup.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmdDeleteArticleGroup.Location = new System.Drawing.Point(12, 354);
             this.CmdDeleteArticleGroup.Name = "CmdDeleteArticleGroup";
-            this.CmdDeleteArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.CmdDeleteArticleGroup.Size = new System.Drawing.Size(164, 30);
             this.CmdDeleteArticleGroup.TabIndex = 2;
             this.CmdDeleteArticleGroup.Text = "Löschen";
             this.CmdDeleteArticleGroup.UseVisualStyleBackColor = true;
@@ -65,16 +70,17 @@
             // 
             // TxtSearchArticleGroup
             // 
-            this.TxtSearchArticleGroup.Location = new System.Drawing.Point(12, 23);
+            this.TxtSearchArticleGroup.Location = new System.Drawing.Point(12, 35);
             this.TxtSearchArticleGroup.Name = "TxtSearchArticleGroup";
-            this.TxtSearchArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.TxtSearchArticleGroup.Size = new System.Drawing.Size(164, 23);
             this.TxtSearchArticleGroup.TabIndex = 3;
             // 
             // CmdSearchArticleGroup
             // 
-            this.CmdSearchArticleGroup.Location = new System.Drawing.Point(12, 52);
+            this.CmdSearchArticleGroup.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmdSearchArticleGroup.Location = new System.Drawing.Point(12, 64);
             this.CmdSearchArticleGroup.Name = "CmdSearchArticleGroup";
-            this.CmdSearchArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.CmdSearchArticleGroup.Size = new System.Drawing.Size(164, 29);
             this.CmdSearchArticleGroup.TabIndex = 4;
             this.CmdSearchArticleGroup.Text = "Suchen";
             this.CmdSearchArticleGroup.UseVisualStyleBackColor = true;
@@ -82,16 +88,50 @@
             // 
             // TxtAddArticleGroup
             // 
-            this.TxtAddArticleGroup.Location = new System.Drawing.Point(12, 139);
+            this.TxtAddArticleGroup.Location = new System.Drawing.Point(12, 274);
             this.TxtAddArticleGroup.Name = "TxtAddArticleGroup";
-            this.TxtAddArticleGroup.Size = new System.Drawing.Size(131, 23);
+            this.TxtAddArticleGroup.Size = new System.Drawing.Size(164, 23);
             this.TxtAddArticleGroup.TabIndex = 5;
+            // 
+            // LblStreet
+            // 
+            this.LblStreet.AutoSize = true;
+            this.LblStreet.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblStreet.Location = new System.Drawing.Point(12, 12);
+            this.LblStreet.Name = "LblStreet";
+            this.LblStreet.Size = new System.Drawing.Size(164, 20);
+            this.LblStreet.TabIndex = 11;
+            this.LblStreet.Text = "Artikelgruppe anzeigen";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(12, 251);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(177, 20);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Artikelgruppe hinzufügen";
+            // 
+            // CmdAdjustArticleGroups
+            // 
+            this.CmdAdjustArticleGroups.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmdAdjustArticleGroups.Location = new System.Drawing.Point(12, 201);
+            this.CmdAdjustArticleGroups.Name = "CmdAdjustArticleGroups";
+            this.CmdAdjustArticleGroups.Size = new System.Drawing.Size(164, 29);
+            this.CmdAdjustArticleGroups.TabIndex = 13;
+            this.CmdAdjustArticleGroups.Text = "Bearbeiten";
+            this.CmdAdjustArticleGroups.UseVisualStyleBackColor = true;
+            this.CmdAdjustArticleGroups.Click += new System.EventHandler(this.CmdAdjustArticleGroups_Click);
             // 
             // ArticleGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 396);
+            this.Controls.Add(this.CmdAdjustArticleGroups);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblStreet);
             this.Controls.Add(this.TxtAddArticleGroup);
             this.Controls.Add(this.CmdSearchArticleGroup);
             this.Controls.Add(this.TxtSearchArticleGroup);
@@ -115,5 +155,8 @@
         private TextBox TxtSearchArticleGroup;
         private Button CmdSearchArticleGroup;
         private TextBox TxtAddArticleGroup;
+        private Label LblStreet;
+        private Label label1;
+        private Button CmdAdjustArticleGroups;
     }
 }

@@ -28,7 +28,10 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         public ArticleGroupVm() { }
 
-
+        public void CreateArticleGroup(ArticleGroupVm articleGroupVm)
+        {
+            db.Create(articleGroupVm);
+        }
         public List<ArticleGroupVm> GetArticleGroup()
         {
             return db.Read();

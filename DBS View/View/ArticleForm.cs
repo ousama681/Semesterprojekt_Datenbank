@@ -89,21 +89,23 @@ namespace DBS_View.View
             DataGridViewRowCollection row = DgvArticle.Rows;
 
             DataGridViewColumnCollection column = DgvArticle.Columns;
-
-            foreach (ArticleVm articleVm in ArticleVm.ArticleList)
+            if (ArticleVm.ArticleList != null)
             {
-                // Add new row to DataGridView
-                int rowIndex = row.Add();
+                foreach (ArticleVm articleVm in ArticleVm.ArticleList)
+                {
+                    // Add new row to DataGridView
+                    int rowIndex = row.Add();
 
-                // Create cell variable for better readability
-                DataGridViewCellCollection cell = row[rowIndex].Cells;
+                    // Create cell variable for better readability
+                    DataGridViewCellCollection cell = row[rowIndex].Cells;
 
-                // Add data to new row
-                cell[column["colNr"].Index].Value = articleVm.Nr;
-                cell[column["colName"].Index].Value = articleVm.Name;
-                cell[column["colPrice"].Index].Value = articleVm.Price;
-                cell[column["colArticleGroup"].Index].Value = articleVm.ArticleGroup;
+                    // Add data to new row
+                    cell[column["colNr"].Index].Value = articleVm.Nr;
+                    cell[column["colName"].Index].Value = articleVm.Name;
+                    cell[column["colPrice"].Index].Value = articleVm.Price;
+                    cell[column["colArticleGroup"].Index].Value = articleVm.ArticleGroup;
 
+                }
             }
             //DgvCustomer.Sort(column["colName"], ListSortDirection.Ascending);
             DgvArticle.ClearSelection();

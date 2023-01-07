@@ -36,7 +36,7 @@ namespace DBS_View.View
             TxtArticleNr.Text = articleVm.Nr.ToString();
             TxtPrice.Text = articleVm.Price.ToString();
             TxtArticleNr.Enabled = false;
-            CmbArticleGroup.DataSource = articleVm.GetArticleGRoupNames();
+            CmbArticleGroup.Text = articleVm.ArticleGroup;
         }
         private void CmdSave_Click(object sender, EventArgs e)
         {
