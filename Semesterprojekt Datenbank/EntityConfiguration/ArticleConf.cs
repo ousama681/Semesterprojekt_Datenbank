@@ -25,7 +25,7 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
             modelBuilder.Entity<Article>().HasOne(a => a.MWST)
                 .WithMany(m => m.Articles).HasForeignKey(a => a.Mwstid);
             
-
+            
         }
     }
 }
