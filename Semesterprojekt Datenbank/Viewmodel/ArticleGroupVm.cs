@@ -37,5 +37,11 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             return db.Read();
         }
 
+        public bool DeleteArticleGroup(ArticleGroupVm articleGroupVm)
+        {
+            return db.Delete(articleGroupVm);
+
+        }
+
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.TrVArticleGroup = new System.Windows.Forms.TreeView();
+            Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo treeNodeAdvStyleInfo2 = new Syncfusion.Windows.Forms.Tools.TreeNodeAdvStyleInfo();
             this.CmdAddArticleGroup = new System.Windows.Forms.Button();
             this.CmdDeleteArticleGroup = new System.Windows.Forms.Button();
             this.TxtSearchArticleGroup = new System.Windows.Forms.TextBox();
@@ -37,14 +37,9 @@
             this.LblStreet = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CmdAdjustArticleGroups = new System.Windows.Forms.Button();
+            this.TrVArticleGroup = new Syncfusion.Windows.Forms.Tools.TreeViewAdv();
+            ((System.ComponentModel.ISupportInitialize)(this.TrVArticleGroup)).BeginInit();
             this.SuspendLayout();
-            // 
-            // TrVArticleGroup
-            // 
-            this.TrVArticleGroup.Location = new System.Drawing.Point(195, 12);
-            this.TrVArticleGroup.Name = "TrVArticleGroup";
-            this.TrVArticleGroup.Size = new System.Drawing.Size(362, 372);
-            this.TrVArticleGroup.TabIndex = 0;
             // 
             // CmdAddArticleGroup
             // 
@@ -124,11 +119,52 @@
             this.CmdAdjustArticleGroups.UseVisualStyleBackColor = true;
             this.CmdAdjustArticleGroups.Click += new System.EventHandler(this.CmdAdjustArticleGroups_Click);
             // 
+            // TrVArticleGroup
+            // 
+            treeNodeAdvStyleInfo2.CheckBoxTickThickness = 1;
+            treeNodeAdvStyleInfo2.CheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo2.EnsureDefaultOptionedChild = true;
+            treeNodeAdvStyleInfo2.IntermediateCheckColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo2.OptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            treeNodeAdvStyleInfo2.SelectedOptionButtonColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(210)))), ((int)(((byte)(210)))));
+            this.TrVArticleGroup.BaseStylePairs.AddRange(new Syncfusion.Windows.Forms.Tools.StyleNamePair[] {
+            new Syncfusion.Windows.Forms.Tools.StyleNamePair("Standard", treeNodeAdvStyleInfo2)});
+            this.TrVArticleGroup.BeforeTouchSize = new System.Drawing.Size(312, 368);
+            // 
+            // 
+            // 
+            this.TrVArticleGroup.HelpTextControl.BaseThemeName = null;
+            this.TrVArticleGroup.HelpTextControl.Location = new System.Drawing.Point(0, 0);
+            this.TrVArticleGroup.HelpTextControl.Name = "";
+            this.TrVArticleGroup.HelpTextControl.Size = new System.Drawing.Size(392, 112);
+            this.TrVArticleGroup.HelpTextControl.TabIndex = 0;
+            this.TrVArticleGroup.HelpTextControl.Visible = true;
+            this.TrVArticleGroup.InactiveSelectedNodeForeColor = System.Drawing.SystemColors.ControlText;
+            this.TrVArticleGroup.Location = new System.Drawing.Point(563, 12);
+            this.TrVArticleGroup.MetroColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(165)))), ((int)(((byte)(220)))));
+            this.TrVArticleGroup.Name = "TrVArticleGroup";
+            this.TrVArticleGroup.SelectedNodeForeColor = System.Drawing.SystemColors.HighlightText;
+            this.TrVArticleGroup.Size = new System.Drawing.Size(312, 368);
+            this.TrVArticleGroup.TabIndex = 14;
+            this.TrVArticleGroup.Text = "treeViewAdv1";
+            this.TrVArticleGroup.ThemeStyle.TreeNodeAdvStyle.CheckBoxTickThickness = 0;
+            this.TrVArticleGroup.ThemeStyle.TreeNodeAdvStyle.EnsureDefaultOptionedChild = true;
+            // 
+            // 
+            // 
+            this.TrVArticleGroup.ToolTipControl.BaseThemeName = null;
+            this.TrVArticleGroup.ToolTipControl.Location = new System.Drawing.Point(0, 0);
+            this.TrVArticleGroup.ToolTipControl.Name = "";
+            this.TrVArticleGroup.ToolTipControl.Size = new System.Drawing.Size(392, 112);
+            this.TrVArticleGroup.ToolTipControl.TabIndex = 0;
+            this.TrVArticleGroup.ToolTipControl.Visible = true;
+            // 
             // ArticleGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 396);
+            this.Controls.Add(this.TrVArticleGroup);
             this.Controls.Add(this.CmdAdjustArticleGroups);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LblStreet);
@@ -137,19 +173,17 @@
             this.Controls.Add(this.TxtSearchArticleGroup);
             this.Controls.Add(this.CmdDeleteArticleGroup);
             this.Controls.Add(this.CmdAddArticleGroup);
-            this.Controls.Add(this.TrVArticleGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ArticleGroupForm";
             this.Text = "Artikelgruppen";
             this.Load += new System.EventHandler(this.ArticleGroupForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.TrVArticleGroup)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private TreeView TrVArticleGroup;
         private Button CmdAddArticleGroup;
         private Button CmdDeleteArticleGroup;
         private TextBox TxtSearchArticleGroup;
@@ -158,5 +192,6 @@
         private Label LblStreet;
         private Label label1;
         private Button CmdAdjustArticleGroups;
+        private Syncfusion.Windows.Forms.Tools.TreeViewAdv TrVArticleGroup;
     }
 }

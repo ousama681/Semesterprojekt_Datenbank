@@ -47,9 +47,17 @@ namespace Semesterprojekt_Datenbank.Utilities
             }
         }
 
-        public bool Delete(ArticleGroupVm item)
+        public bool Delete(ArticleGroupVm articleGroupVm)
         {
-            throw new NotImplementedException();
+            using (var context = new DataContext())
+            {
+                var articleGroupDeleteQuery = (from articlegroup in context.ArticleGroup
+                                              where articlegroup.Name == articleGroupVm.Name
+                                                  select articlegroup).SingleOrDefault();
+                context.Remove(articleGroupDeleteQuery);
+                context.SaveChanges();
+                return true;
+            }
         }
 
         public List<ArticleGroupVm> Read()

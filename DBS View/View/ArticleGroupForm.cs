@@ -1,5 +1,6 @@
 ﻿using Semesterprojekt_Datenbank.Viewmodel;
 using System.Xml.Linq;
+using Syncfusion.Windows.Forms.Tools;
 
 
 namespace DBS_View.View
@@ -18,41 +19,43 @@ namespace DBS_View.View
         private void CmdAddArticleGroup_Click(object sender, EventArgs e)
         {
             isAnyCheckboxSelected = false;
-            foreach (TreeNode node in TrVArticleGroup.Nodes)
+            foreach (TreeNodeAdv node in TrVArticleGroup.Nodes)
             {
                 if (node.Checked == true)
                 {
-                    TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
+                    TreeNodeAdv newNode = new TreeNodeAdv(TxtAddArticleGroup.Text);
                     newNode.Tag = node.Text;
                     node.Nodes.Add(newNode);
                     isAnyCheckboxSelected = true;
                     articleGroupVm.CreateArticleGroup(new ArticleGroupVm(newNode.Text, newNode.Tag.ToString()));
+                    node.Checked = false;
                 }
                 RekursiveCheckSelectedTreeNodes(node.Nodes);
             }
 
             if (isAnyCheckboxSelected == false)
             {
-                TreeNode rootNode = new TreeNode(TxtAddArticleGroup.Text);
+                TreeNodeAdv rootNode = new TreeNodeAdv(TxtAddArticleGroup.Text);
                 rootNode.Tag = "none";
                 TrVArticleGroup.Nodes.Add(rootNode);
                 articleGroupVm.CreateArticleGroup(new ArticleGroupVm(rootNode.Text, rootNode.Tag.ToString()));
             }
             TrVArticleGroup.LabelEdit = false;
-            TrVArticleGroup.CheckBoxes = false;
+            TrVArticleGroup.ShowCheckBoxes = false;
         }
 
-        private void RekursiveCheckSelectedTreeNodes(TreeNodeCollection childNodeCollections)
+        private void RekursiveCheckSelectedTreeNodes(TreeNodeAdvCollection childNodeCollections)
         {
-            foreach (TreeNode node in childNodeCollections)
+            foreach (TreeNodeAdv node in childNodeCollections)
             {
                 if (node.Checked == true)
                 {
-                    TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
+                    TreeNodeAdv newNode = new TreeNodeAdv(TxtAddArticleGroup.Text);
                     newNode.Tag = node.Text;
                     node.Nodes.Add(newNode);
                     isAnyCheckboxSelected = true;
                     articleGroupVm.CreateArticleGroup(new ArticleGroupVm(newNode.Text, newNode.Tag.ToString()));
+                    node.Checked = false;
                 }
                 //for (int i = 0; i < node.Nodes.Count; i++)
                 //{
@@ -72,7 +75,34 @@ namespace DBS_View.View
         }
         private void CmdDeleteArticleGroup_Click(object sender, EventArgs e)
         {
+            isAnyCheckboxSelected = false;
+            foreach (TreeNodeAdv node in TrVArticleGroup.Nodes)
+            {
+                if (node.Checked == true)
+                {
+                    ArticleGroupVm vm = new ArticleGroupVm(node.Text, node.Tag.ToString());
+                    articleGroupVm.DeleteArticleGroup(vm);
+                }
+                RekursiveCheckSelectedTreeNodesForDeleting(node.Nodes);
+            }
+            TrVArticleGroup.LabelEdit = false;
+            TrVArticleGroup.ShowCheckBoxes = false;
+            LoadTreeView();
+        }
 
+        private void RekursiveCheckSelectedTreeNodesForDeleting(TreeNodeAdvCollection childNodeCollections)
+        {
+            foreach (TreeNodeAdv node in childNodeCollections)
+            {
+                if (node.Checked == true)
+                {
+                    ArticleGroupVm vm = new ArticleGroupVm(node.Text, node.Tag.ToString());
+                    articleGroupVm.DeleteArticleGroup(vm);
+                }
+
+                if (node.Nodes.Count > 0)
+                    RekursiveCheckSelectedTreeNodesForDeleting(node.Nodes);
+            }
         }
 
         private void CmdSearchArticleGroup_Click(object sender, EventArgs e)
@@ -92,12 +122,12 @@ namespace DBS_View.View
 
             var ArticleGroupList = articleGroupVm.GetArticleGroup();
 
-            TreeNode node;
-            List<TreeNode> nodes = new List<TreeNode>();
+            TreeNodeAdv node;
+            List<TreeNodeAdv> nodes = new List<TreeNodeAdv>();
             if(ArticleGroupList != null)
             foreach (var articleGroupVm in ArticleGroupList)
             {
-                node = new TreeNode(articleGroupVm.Name);
+                node = new TreeNodeAdv(articleGroupVm.Name);
                 node.Tag = articleGroupVm.ParentName;
                 nodes.Add(node);
             }
@@ -117,7 +147,7 @@ namespace DBS_View.View
         private void CmdAdjustArticleGroups_Click(object sender, EventArgs e)
         {
 
-            TrVArticleGroup.CheckBoxes ^= true;
+            TrVArticleGroup.ShowCheckBoxes ^= true;
             TrVArticleGroup.LabelEdit ^= true;
         }
     }
