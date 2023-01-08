@@ -67,6 +67,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     List<ArticleGroupVm> articleGroupVmList = new List<ArticleGroupVm>();
+
                     var queryArticleGroup = (from articleGroup in context.ArticleGroup
                                              select articleGroup).ToList();
 
