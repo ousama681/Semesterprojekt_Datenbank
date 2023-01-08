@@ -16,5 +16,12 @@ namespace DBS_View.View
         {
             InitializeComponent();
         }
+
+        private void CmdAddOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

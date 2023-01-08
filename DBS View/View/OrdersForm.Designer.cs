@@ -28,151 +28,214 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DgvCustomer = new System.Windows.Forms.DataGridView();
-            this.colNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStreet = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTown = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colZipCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CmdAddCustomer = new System.Windows.Forms.Button();
-            this.CmdDelete = new System.Windows.Forms.Button();
+            this.CmdAddPosition = new System.Windows.Forms.Button();
+            this.CmdDeletePosition = new System.Windows.Forms.Button();
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.CmdSearch = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCustomer)).BeginInit();
+            this.DgVOrders = new System.Windows.Forms.DataGridView();
+            this.LbPositionen = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.CmbArticle = new System.Windows.Forms.ComboBox();
+            this.LblArticleName = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.CmdAddOrder = new System.Windows.Forms.Button();
+            this.CmdDeleteOrder = new System.Windows.Forms.Button();
+            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
             this.SuspendLayout();
             // 
-            // DgvCustomer
+            // CmdAddPosition
             // 
-            this.DgvCustomer.AllowUserToAddRows = false;
-            this.DgvCustomer.AllowUserToDeleteRows = false;
-            this.DgvCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvCustomer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colNr,
-            this.colName,
-            this.colEmail,
-            this.colStreet,
-            this.colTown,
-            this.colZipCode});
-            this.DgvCustomer.Location = new System.Drawing.Point(12, 41);
-            this.DgvCustomer.Name = "DgvCustomer";
-            this.DgvCustomer.ReadOnly = true;
-            this.DgvCustomer.RowTemplate.Height = 25;
-            this.DgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvCustomer.Size = new System.Drawing.Size(877, 343);
-            this.DgvCustomer.TabIndex = 1;
+            this.CmdAddPosition.Location = new System.Drawing.Point(697, 205);
+            this.CmdAddPosition.Name = "CmdAddPosition";
+            this.CmdAddPosition.Size = new System.Drawing.Size(121, 40);
+            this.CmdAddPosition.TabIndex = 5;
+            this.CmdAddPosition.Text = "Position hinzufügen";
+            this.CmdAddPosition.UseVisualStyleBackColor = true;
+            this.CmdAddPosition.Click += new System.EventHandler(this.CmdAddOrder_Click);
             // 
-            // colNr
+            // CmdDeletePosition
             // 
-            this.colNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colNr.HeaderText = "Nr";
-            this.colNr.Name = "colNr";
-            this.colNr.ReadOnly = true;
-            // 
-            // colName
-            // 
-            this.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
-            // 
-            // colEmail
-            // 
-            this.colEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colEmail.HeaderText = "Email";
-            this.colEmail.Name = "colEmail";
-            this.colEmail.ReadOnly = true;
-            // 
-            // colStreet
-            // 
-            this.colStreet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colStreet.HeaderText = "Street";
-            this.colStreet.Name = "colStreet";
-            this.colStreet.ReadOnly = true;
-            // 
-            // colTown
-            // 
-            this.colTown.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colTown.HeaderText = "Town";
-            this.colTown.Name = "colTown";
-            this.colTown.ReadOnly = true;
-            // 
-            // colZipCode
-            // 
-            this.colZipCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colZipCode.HeaderText = "Zip Code";
-            this.colZipCode.Name = "colZipCode";
-            this.colZipCode.ReadOnly = true;
-            // 
-            // CmdAddCustomer
-            // 
-            this.CmdAddCustomer.Location = new System.Drawing.Point(12, 12);
-            this.CmdAddCustomer.Name = "CmdAddCustomer";
-            this.CmdAddCustomer.Size = new System.Drawing.Size(94, 23);
-            this.CmdAddCustomer.TabIndex = 5;
-            this.CmdAddCustomer.Text = "Hinzufügen";
-            this.CmdAddCustomer.UseVisualStyleBackColor = true;
-            // 
-            // CmdDelete
-            // 
-            this.CmdDelete.Location = new System.Drawing.Point(112, 12);
-            this.CmdDelete.Name = "CmdDelete";
-            this.CmdDelete.Size = new System.Drawing.Size(75, 23);
-            this.CmdDelete.TabIndex = 6;
-            this.CmdDelete.Text = "Löschen";
-            this.CmdDelete.UseVisualStyleBackColor = true;
+            this.CmdDeletePosition.Location = new System.Drawing.Point(824, 205);
+            this.CmdDeletePosition.Name = "CmdDeletePosition";
+            this.CmdDeletePosition.Size = new System.Drawing.Size(75, 40);
+            this.CmdDeletePosition.TabIndex = 6;
+            this.CmdDeletePosition.Text = "Position löschen";
+            this.CmdDeletePosition.UseVisualStyleBackColor = true;
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(329, 12);
+            this.TxtSearch.Location = new System.Drawing.Point(697, 383);
             this.TxtSearch.Name = "TxtSearch";
-            this.TxtSearch.Size = new System.Drawing.Size(100, 23);
+            this.TxtSearch.Size = new System.Drawing.Size(121, 23);
             this.TxtSearch.TabIndex = 7;
             // 
             // CmdSearch
             // 
-            this.CmdSearch.Location = new System.Drawing.Point(435, 11);
+            this.CmdSearch.Location = new System.Drawing.Point(824, 383);
             this.CmdSearch.Name = "CmdSearch";
             this.CmdSearch.Size = new System.Drawing.Size(75, 23);
             this.CmdSearch.TabIndex = 8;
             this.CmdSearch.Text = "Suchen";
             this.CmdSearch.UseVisualStyleBackColor = true;
             // 
+            // DgVOrders
+            // 
+            this.DgVOrders.AllowUserToDeleteRows = false;
+            this.DgVOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgVOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colOrderNr,
+            this.colCustomerName});
+            this.DgVOrders.Location = new System.Drawing.Point(12, 12);
+            this.DgVOrders.Name = "DgVOrders";
+            this.DgVOrders.ReadOnly = true;
+            this.DgVOrders.RowHeadersVisible = false;
+            this.DgVOrders.RowTemplate.Height = 25;
+            this.DgVOrders.Size = new System.Drawing.Size(203, 394);
+            this.DgVOrders.TabIndex = 9;
+            // 
+            // LbPositionen
+            // 
+            this.LbPositionen.FormattingEnabled = true;
+            this.LbPositionen.ItemHeight = 15;
+            this.LbPositionen.Location = new System.Drawing.Point(230, 12);
+            this.LbPositionen.Name = "LbPositionen";
+            this.LbPositionen.Size = new System.Drawing.Size(457, 394);
+            this.LbPositionen.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(697, 137);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 20);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Anzahl";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(697, 160);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(200, 23);
+            this.textBox1.TabIndex = 38;
+            // 
+            // CmbArticle
+            // 
+            this.CmbArticle.FormattingEnabled = true;
+            this.CmbArticle.Location = new System.Drawing.Point(697, 96);
+            this.CmbArticle.Name = "CmbArticle";
+            this.CmbArticle.Size = new System.Drawing.Size(200, 23);
+            this.CmbArticle.TabIndex = 37;
+            // 
+            // LblArticleName
+            // 
+            this.LblArticleName.AutoSize = true;
+            this.LblArticleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblArticleName.Location = new System.Drawing.Point(697, 73);
+            this.LblArticleName.Name = "LblArticleName";
+            this.LblArticleName.Size = new System.Drawing.Size(89, 20);
+            this.LblArticleName.TabIndex = 36;
+            this.LblArticleName.Text = "Artikelname";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(697, 35);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 23);
+            this.comboBox1.TabIndex = 42;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(697, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(51, 20);
+            this.label3.TabIndex = 43;
+            this.label3.Text = "Kunde";
+            // 
+            // CmdAddOrder
+            // 
+            this.CmdAddOrder.Location = new System.Drawing.Point(697, 320);
+            this.CmdAddOrder.Name = "CmdAddOrder";
+            this.CmdAddOrder.Size = new System.Drawing.Size(121, 40);
+            this.CmdAddOrder.TabIndex = 44;
+            this.CmdAddOrder.Text = "Auftrag erstellen";
+            this.CmdAddOrder.UseVisualStyleBackColor = true;
+            // 
+            // CmdDeleteOrder
+            // 
+            this.CmdDeleteOrder.Location = new System.Drawing.Point(824, 320);
+            this.CmdDeleteOrder.Name = "CmdDeleteOrder";
+            this.CmdDeleteOrder.Size = new System.Drawing.Size(75, 40);
+            this.CmdDeleteOrder.TabIndex = 45;
+            this.CmdDeleteOrder.Text = "Auftrag löschen";
+            this.CmdDeleteOrder.UseVisualStyleBackColor = true;
+            // 
+            // colOrderNr
+            // 
+            this.colOrderNr.FillWeight = 40F;
+            this.colOrderNr.HeaderText = "Auftragsnr";
+            this.colOrderNr.Name = "colOrderNr";
+            this.colOrderNr.ReadOnly = true;
+            this.colOrderNr.Width = 80;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.HeaderText = "Kundenname";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.ReadOnly = true;
+            this.colCustomerName.Width = 120;
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(901, 396);
+            this.ClientSize = new System.Drawing.Size(909, 430);
+            this.Controls.Add(this.CmdDeleteOrder);
+            this.Controls.Add(this.CmdAddOrder);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.CmbArticle);
+            this.Controls.Add(this.LblArticleName);
+            this.Controls.Add(this.LbPositionen);
+            this.Controls.Add(this.DgVOrders);
             this.Controls.Add(this.CmdSearch);
             this.Controls.Add(this.TxtSearch);
-            this.Controls.Add(this.CmdDelete);
-            this.Controls.Add(this.CmdAddCustomer);
-            this.Controls.Add(this.DgvCustomer);
+            this.Controls.Add(this.CmdDeletePosition);
+            this.Controls.Add(this.CmdAddPosition);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OrdersForm";
             this.Text = "Aufträge";
-            ((System.ComponentModel.ISupportInitialize)(this.DgvCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private DataGridView DgvCustomer;
-        private DataGridViewTextBoxColumn colNr;
-        private DataGridViewTextBoxColumn colName;
-        private DataGridViewTextBoxColumn colEmail;
-        private DataGridViewTextBoxColumn colStreet;
-        private DataGridViewTextBoxColumn colTown;
-        private DataGridViewTextBoxColumn colZipCode;
-        private Button CmdAddCustomer;
-        private Button CmdDelete;
+        private Button CmdAddPosition;
+        private Button CmdDeletePosition;
         private TextBox TxtSearch;
         private Button CmdSearch;
+        private DataGridView DgVOrders;
+        private ListBox LbPositionen;
+        private Label label1;
+        private TextBox textBox1;
+        private ComboBox CmbArticle;
+        private Label LblArticleName;
+        private ComboBox comboBox1;
+        private Label label3;
+        private Button CmdAddOrder;
+        private Button CmdDeleteOrder;
+        private DataGridViewTextBoxColumn colOrderNr;
+        private DataGridViewTextBoxColumn colCustomerName;
     }
 }
