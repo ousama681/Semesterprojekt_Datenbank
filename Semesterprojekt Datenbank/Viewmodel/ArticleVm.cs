@@ -11,7 +11,6 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 {
     public class ArticleVm
     {
-        
         public static List<ArticleVm> ArticleList { get; set; } = new List<ArticleVm>();
         private DBUtilityArticle dB = new DBUtilityArticle();
 

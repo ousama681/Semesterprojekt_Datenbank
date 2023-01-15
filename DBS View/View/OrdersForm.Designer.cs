@@ -33,18 +33,19 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.CmdSearch = new System.Windows.Forms.Button();
             this.DgVOrders = new System.Windows.Forms.DataGridView();
+            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LbPositionen = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.CmbArticle = new System.Windows.Forms.ComboBox();
             this.LblArticleName = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CmbCustomer = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.CmdAddOrder = new System.Windows.Forms.Button();
             this.CmdDeleteOrder = new System.Windows.Forms.Button();
-            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumQuantity = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // CmdAddPosition
@@ -55,7 +56,7 @@
             this.CmdAddPosition.TabIndex = 5;
             this.CmdAddPosition.Text = "Position hinzufügen";
             this.CmdAddPosition.UseVisualStyleBackColor = true;
-            this.CmdAddPosition.Click += new System.EventHandler(this.CmdAddOrder_Click);
+            this.CmdAddPosition.Click += new System.EventHandler(this.CmdAddPosition_Click);
             // 
             // CmdDeletePosition
             // 
@@ -65,6 +66,7 @@
             this.CmdDeletePosition.TabIndex = 6;
             this.CmdDeletePosition.Text = "Position löschen";
             this.CmdDeletePosition.UseVisualStyleBackColor = true;
+            this.CmdDeletePosition.Click += new System.EventHandler(this.CmdDeletePosition_Click);
             // 
             // TxtSearch
             // 
@@ -97,6 +99,21 @@
             this.DgVOrders.Size = new System.Drawing.Size(203, 394);
             this.DgVOrders.TabIndex = 9;
             // 
+            // colOrderNr
+            // 
+            this.colOrderNr.FillWeight = 40F;
+            this.colOrderNr.HeaderText = "Auftragsnr";
+            this.colOrderNr.Name = "colOrderNr";
+            this.colOrderNr.ReadOnly = true;
+            this.colOrderNr.Width = 80;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.HeaderText = "Kundenname";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.ReadOnly = true;
+            this.colCustomerName.Width = 120;
+            // 
             // LbPositionen
             // 
             this.LbPositionen.FormattingEnabled = true;
@@ -116,13 +133,6 @@
             this.label1.TabIndex = 39;
             this.label1.Text = "Anzahl";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(697, 160);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 23);
-            this.textBox1.TabIndex = 38;
-            // 
             // CmbArticle
             // 
             this.CmbArticle.FormattingEnabled = true;
@@ -141,13 +151,13 @@
             this.LblArticleName.TabIndex = 36;
             this.LblArticleName.Text = "Artikelname";
             // 
-            // comboBox1
+            // CmbCustomer
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(697, 35);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 23);
-            this.comboBox1.TabIndex = 42;
+            this.CmbCustomer.FormattingEnabled = true;
+            this.CmbCustomer.Location = new System.Drawing.Point(697, 35);
+            this.CmbCustomer.Name = "CmbCustomer";
+            this.CmbCustomer.Size = new System.Drawing.Size(200, 23);
+            this.CmbCustomer.TabIndex = 42;
             // 
             // label3
             // 
@@ -167,6 +177,7 @@
             this.CmdAddOrder.TabIndex = 44;
             this.CmdAddOrder.Text = "Auftrag erstellen";
             this.CmdAddOrder.UseVisualStyleBackColor = true;
+            this.CmdAddOrder.Click += new System.EventHandler(this.CmdAddOrder_Click);
             // 
             // CmdDeleteOrder
             // 
@@ -176,33 +187,26 @@
             this.CmdDeleteOrder.TabIndex = 45;
             this.CmdDeleteOrder.Text = "Auftrag löschen";
             this.CmdDeleteOrder.UseVisualStyleBackColor = true;
+            this.CmdDeleteOrder.Click += new System.EventHandler(this.CmdDeleteOrder_Click);
             // 
-            // colOrderNr
+            // NumQuantity
             // 
-            this.colOrderNr.FillWeight = 40F;
-            this.colOrderNr.HeaderText = "Auftragsnr";
-            this.colOrderNr.Name = "colOrderNr";
-            this.colOrderNr.ReadOnly = true;
-            this.colOrderNr.Width = 80;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.HeaderText = "Kundenname";
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.ReadOnly = true;
-            this.colCustomerName.Width = 120;
+            this.NumQuantity.Location = new System.Drawing.Point(698, 160);
+            this.NumQuantity.Name = "NumQuantity";
+            this.NumQuantity.Size = new System.Drawing.Size(53, 23);
+            this.NumQuantity.TabIndex = 46;
             // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(909, 430);
+            this.Controls.Add(this.NumQuantity);
             this.Controls.Add(this.CmdDeleteOrder);
             this.Controls.Add(this.CmdAddOrder);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CmbCustomer);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.CmbArticle);
             this.Controls.Add(this.LblArticleName);
             this.Controls.Add(this.LbPositionen);
@@ -215,6 +219,7 @@
             this.Name = "OrdersForm";
             this.Text = "Aufträge";
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,14 +233,14 @@
         private DataGridView DgVOrders;
         private ListBox LbPositionen;
         private Label label1;
-        private TextBox textBox1;
         private ComboBox CmbArticle;
         private Label LblArticleName;
-        private ComboBox comboBox1;
+        private ComboBox CmbCustomer;
         private Label label3;
         private Button CmdAddOrder;
         private Button CmdDeleteOrder;
         private DataGridViewTextBoxColumn colOrderNr;
         private DataGridViewTextBoxColumn colCustomerName;
+        private NumericUpDown NumQuantity;
     }
 }
