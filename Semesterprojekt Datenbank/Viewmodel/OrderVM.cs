@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Semesterprojekt_Datenbank.Utilities;
 
 namespace Semesterprojekt_Datenbank.Viewmodel
 {
@@ -11,6 +12,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public static List<OrderVM> OrderList = new List<OrderVM>();
 
         public List<OrderVM> PositionList = new List<OrderVM>();
+        private DBUtilityOrder db = new DBUtilityOrder();
         public string customerName { get; set; }
         public string articleName { get; set; }
         public int quantity { get; set;  }
@@ -49,7 +51,15 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         }
 
+        public List<string> GetCustomerNames()
+        {
+            return db.ReadCustomerNames();
+        }
 
+        public List<string> GetArticles()
+        {
+            return db.ReadArticles();
+        }
 
 
     }

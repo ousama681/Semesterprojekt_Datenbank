@@ -40,29 +40,30 @@ namespace DBS_View.View
         }
         private void CmdSave_Click(object sender, EventArgs e)
         {
-            if (!articleVm.isArticleNrUsed(Convert.ToInt32(TxtArticleNr.Text)) && TxtArticleNr.TextLength > 0 && TxtArticleNr.Text.All(char.IsDigit))
-            {
-                articleVm.ArticleGroup = CmbArticleGroup.Text;
-                articleVm.Name = TxtArticleName.Text;
-                articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text);
-
-                if (TxtPrice.TextLength > 0 && !TxtPrice.Text.Any(char.IsLetter))
-                    articleVm.Price = Convert.ToDecimal(TxtPrice.Text);
-
-                if (isArticleUpdated != true)
-                {
-                    articleVm.CreateArticle(articleVm);
+            articleVm.ArticleGroup = CmbArticleGroup.Text;
+            articleVm.Name = TxtArticleName.Text;
+            if (TxtPrice.TextLength > 0 && !TxtPrice.Text.Any(char.IsLetter)) 
+                articleVm.Price = Convert.ToDecimal(TxtPrice.Text);
+            if (isArticleUpdated != true)
+            { 
+                if (!articleVm.isArticleNrUsed(Convert.ToInt32(TxtArticleNr.Text)) && TxtArticleNr.TextLength > 0 && TxtArticleNr.Text.All(char.IsDigit))
+                    { 
+                        articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text);
+                        articleVm.CreateArticle(articleVm);
                 }
                 else
-                {
-                    articleVm.UpdateArticle(articleVm);
+                { 
+                    MessageBox.Show(this, "Artikelnr bereits vergeben. Bitte andere Artikelnummer auswählen.");
                 }
-                this.Close();
-            }
+                }
             else
-            {
-                MessageBox.Show(this,"Artikelnr bereits vergeben. Bitte andere Artikelnummer auswählen.");
+            { 
+                articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text); 
+                articleVm.UpdateArticle(articleVm);
             }
+            this.Close();
+            
+            
             
         }
     }

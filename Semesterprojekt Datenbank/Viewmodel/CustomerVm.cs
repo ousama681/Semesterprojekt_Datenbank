@@ -59,7 +59,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         {
             return dB.Delete(customerVm);
         }
-        public bool isCustomerNrUsed(int nr)
+        public bool IsCustomerNrUsed(int nr)
         {
             bool nrUsed = false;
             foreach (var vm in CustomerList)

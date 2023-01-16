@@ -20,6 +20,8 @@ namespace DBS_View.View
             InitializeComponent();
             orderVM = new OrderVM();
             positionnr = 1;
+            CmbCustomer.DataSource = orderVM.GetCustomerNames();
+            CmbArticle.DataSource = orderVM.GetArticles();
         }
 
         private void CmdAddPosition_Click(object sender, EventArgs e)
@@ -27,8 +29,8 @@ namespace DBS_View.View
             OrderVM pos = new OrderVM();
             pos.positionNr = positionnr++;
             pos.articleName = CmbArticle.Text;
-            orderVM.customerName = CmbCustomer.Text;
             pos.quantity = Convert.ToInt32(NumQuantity.Value);
+            orderVM.customerName = CmbCustomer.Text;
             orderVM.PositionList.Add(pos);
             LbPositionen.Items.Clear();
             LbPositionen.Items.Add(orderVM.customerName);
