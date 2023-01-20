@@ -53,9 +53,9 @@ namespace Semesterprojekt_Datenbank.Utilities
         {
             using (var context = new DataContext())
             {
-                var articleGroupDeleteQuery = (from articlegroup in context.ArticleGroup
-                                               where articlegroup.Name == articleGroupVm.Name
-                                               select articlegroup).SingleOrDefault();
+                var articleGroupDeleteQuery = (from articleGroup in context.ArticleGroup
+                                               where articleGroup.Name == articleGroupVm.Name
+                                               select articleGroup).SingleOrDefault();
                 context.Remove(articleGroupDeleteQuery);
                 context.SaveChanges();
                 return true;
@@ -145,9 +145,21 @@ namespace Semesterprojekt_Datenbank.Utilities
                 return null;
             }
         }
-        public ArticleGroupVm ReadSingle(ArticleGroupVm customerVm)
+        public ArticleGroupVm ReadSingle(ArticleGroupVm articleGroupVm)
         {
             throw new NotImplementedException();
+        }
+
+        public int GetId(ArticleGroupVm articleGroupVm)
+        {
+            using (var context = new DataContext())
+            {
+                var getIdQuery = (from articleGroup in context.ArticleGroup
+                    where articleGroupVm.Name == articleGroup.Name
+                    select articleGroup.Id).SingleOrDefault();
+                context.SaveChanges();
+                return getIdQuery;
+            }
         }
 
         public void Update(ArticleGroupVm item)

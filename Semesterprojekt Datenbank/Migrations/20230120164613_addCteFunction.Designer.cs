@@ -12,15 +12,15 @@ using Semesterprojekt_Datenbank;
 namespace SemesterprojektDatenbank.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230107011601_CreatingTestingData")]
-    partial class CreatingTestingData
+    [Migration("20230120164613_addCteFunction")]
+    partial class addCteFunction
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.0")
+                .HasAnnotation("ProductVersion", "7.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

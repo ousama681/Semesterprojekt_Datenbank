@@ -1,5 +1,7 @@
 ﻿using Semesterprojekt_Datenbank.Viewmodel;
 using Syncfusion.Windows.Forms.Tools;
+using System.Windows.Forms;
+using System.Xml.Linq;
 
 
 namespace DBS_View.View
@@ -23,11 +25,16 @@ namespace DBS_View.View
             {
                 if (node.Checked == true)
                 {
-                    TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
-                    newNode.Tag = node.Text;
-                    node.Nodes.Add(newNode);
                     isAnyCheckboxSelected = true;
-                    articleGroupVm.CreateArticleGroup(new ArticleGroupVm(newNode.Text, newNode.Tag.ToString()));
+                    TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
+                    newNode.Tag = node.ImageIndex; //ImageIndex == ID Node == newNode ParentID
+                    ArticleGroupVm vm = new ArticleGroupVm(newNode.Text, newNode.Tag.ToString());
+                    
+                    articleGroupVm.CreateArticleGroup(vm);
+                    newNode.ImageIndex = articleGroupVm.GetNodeId(vm);
+                    
+                    node.Nodes.Add(newNode);
+
                     node.Checked = false;
                 }
                 RekursiveCheckSelectedTreeNodes(node.Nodes);
@@ -35,9 +42,13 @@ namespace DBS_View.View
             if (isAnyCheckboxSelected == false)
             {
                 TreeNode rootNode = new TreeNode(TxtAddArticleGroup.Text);
-                rootNode.Tag = 0;
+                rootNode.Tag = null;
+                ArticleGroupVm vm = new ArticleGroupVm(rootNode.Text, rootNode.Tag.ToString());
+                
+                articleGroupVm.CreateArticleGroup(vm);
+                rootNode.ImageIndex = articleGroupVm.GetNodeId(vm);
+                
                 TrVArticleGroup.Nodes.Add(rootNode);
-                articleGroupVm.CreateArticleGroup(new ArticleGroupVm(rootNode.Text, rootNode.Tag.ToString()));
             }
             TrVArticleGroup.LabelEdit = false;
         }

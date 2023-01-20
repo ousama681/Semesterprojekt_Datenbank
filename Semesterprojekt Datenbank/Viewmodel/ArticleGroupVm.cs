@@ -19,7 +19,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ParentId { get; set; } 
+        public string? ParentId { get; set; } 
 
         public ArticleGroupVm(int id, string name, string parentId)
         {
@@ -39,24 +39,21 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public void CreateArticleGroup(ArticleGroupVm articleGroupVm)
         {
             db.Create(articleGroupVm);
+
         }
         public List<ArticleGroupVm> GetArticleGroup()
         {
             return db.CteRead();
-
-
-
-
-
-
-
-
         }
 
         public bool DeleteArticleGroup(ArticleGroupVm articleGroupVm)
         {
             return db.Delete(articleGroupVm);
+        }
 
+        public int GetNodeId(ArticleGroupVm articleGroupVm)
+        {
+            return db.GetId(articleGroupVm);
         }
 
     }
