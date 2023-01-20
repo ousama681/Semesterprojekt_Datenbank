@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Semesterprojekt_Datenbank.Model
 {
@@ -6,16 +7,16 @@ namespace Semesterprojekt_Datenbank.Model
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ParentName { get; set; }
+        public string ParentId { get; set; }
         public virtual ICollection<Article> Articles { get; set; }
 
 
         public ArticleGroup() { }
 
-        public ArticleGroup(string name, string parentName)
+        public ArticleGroup(string name, string parentId)
         {
             Name = name;
-            ParentName = parentName;
+            ParentId = parentId;
         }
     }
 }

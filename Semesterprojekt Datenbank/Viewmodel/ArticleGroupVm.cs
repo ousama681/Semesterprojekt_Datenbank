@@ -1,5 +1,6 @@
 ﻿using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Utilities;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,12 +19,19 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ParentName { get; set; }
+        public string ParentId { get; set; } 
 
-        public ArticleGroupVm(string name, string parentName)
+        public ArticleGroupVm(int id, string name, string parentId)
+        {
+            Id = id;
+            Name = name;
+            ParentId = parentId;
+        }
+
+        public ArticleGroupVm(string name, string parentId)
         {
             Name = name;
-            ParentName = parentName;
+            ParentId = parentId;
         }
 
         public ArticleGroupVm() { }
@@ -34,7 +42,15 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         }
         public List<ArticleGroupVm> GetArticleGroup()
         {
-            return db.Read();
+            return db.CteRead();
+
+
+
+
+
+
+
+
         }
 
         public bool DeleteArticleGroup(ArticleGroupVm articleGroupVm)

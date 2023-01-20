@@ -18,19 +18,19 @@ namespace SemesterprojektDatenbank.Migrations
         {
 
             // TestingData for ArticleGroup
-            migrationBuilder.Sql("INSERT INTO dbo.ArticleGroup(Name, ParentName)" +
+            migrationBuilder.Sql("INSERT INTO dbo.ArticleGroup(Name, ParentId)" +
                                  "VALUES" +
-                                 "('Audio Player', 'Audio')," +
-                                 "('Audio Zubehör + Ersatzteile', 'Audio')," +
-                                 "('Car HiFi', 'Audio')," +
-                                 "('DJ', 'Audio')," +
-                                 "('Audio', 'none')," +
-                                 "('Gehäuse', 'PC Komponenten')," +
-                                 "('Grafikkarte', 'PC Komponenten')," +
-                                 "('Mainboard', 'PC Komponenten')," +
-                                 "('Prozessor', 'PC Komponenten')," +
-                                 "('RAM', 'PC Komponenten')," +
-                                 "('PC Komponenten', 'none')" +
+                                 "('Audio Player', 5)," +
+                                 "('Audio Zubehör + Ersatzteile', 5)," +
+                                 "('Car HiFi', 5)," +
+                                 "('DJ', 5)," +
+                                 "('Audio', null)," +
+                                 "('Gehäuse', 11)," +
+                                 "('Grafikkarte', 11)," +
+                                 "('Mainboard', 11)," +
+                                 "('Prozessor', 11)," +
+                                 "('RAM', 11)," +
+                                 "('PC Komponenten', null)" +
                                  ";");
 
 

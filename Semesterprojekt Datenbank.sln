@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semesterprojekt Datenbank", "Semesterprojekt Datenbank\Semesterprojekt Datenbank.csproj", "{9DE3379B-AEAB-4D37-A500-2E76C109DCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBS View", "DBS View\DBS View.csproj", "{560AA30F-46C5-4AE6-B779-484755DCAB5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBS View", "DBS View\DBS View.csproj", "{560AA30F-46C5-4AE6-B779-484755DCAB5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

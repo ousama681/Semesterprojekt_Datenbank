@@ -14,7 +14,7 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
         public void Visit(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ArticleGroup>().Property(a => a.Name).IsRequired();
-            modelBuilder.Entity<ArticleGroup>().Property(a => a.ParentName);
+            modelBuilder.Entity<ArticleGroup>().Property(a => a.ParentId);
         }
     }
 }
