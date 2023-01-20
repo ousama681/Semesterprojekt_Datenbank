@@ -32,7 +32,6 @@ namespace DBS_View.View
                 }
                 RekursiveCheckSelectedTreeNodes(node.Nodes);
             }
-
             if (isAnyCheckboxSelected == false)
             {
                 TreeNode rootNode = new TreeNode(TxtAddArticleGroup.Text);
@@ -41,7 +40,6 @@ namespace DBS_View.View
                 articleGroupVm.CreateArticleGroup(new ArticleGroupVm(rootNode.Text, rootNode.Tag.ToString()));
             }
             TrVArticleGroup.LabelEdit = false;
-            
         }
 
         private void RekursiveCheckSelectedTreeNodes(TreeNodeCollection childNodeCollections)
@@ -60,7 +58,6 @@ namespace DBS_View.View
                 if(node.Nodes.Count > 0)
                 RekursiveCheckSelectedTreeNodes(node.Nodes);
             }
-            
         }
         private void CmdDeleteArticleGroup_Click(object sender, EventArgs e)
         {
@@ -88,7 +85,6 @@ namespace DBS_View.View
                     ArticleGroupVm vm = new ArticleGroupVm(node.Text, node.Tag.ToString());
                     articleGroupVm.DeleteArticleGroup(vm);
                 }
-
                 if (node.Nodes.Count > 0)
                     RekursiveCheckSelectedTreeNodesForDeleting(node.Nodes);
             }
@@ -138,23 +134,10 @@ namespace DBS_View.View
 
         private void CmdAdjustArticleGroups_Click(object sender, EventArgs e)
         {
-
             TrVArticleGroup.CheckBoxes ^= true;
             TrVArticleGroup.LabelEdit ^= true;
         }
 
-        
-        //private void TrVArticleGroup_AfterCheck(object sender, TreeNodeEventArgs e)
-        //{
-        //    if (isAnyCheckboxSelected) return;
-        //    if (e.Node.Checked)
-        //    {
-        //        if (TrVArticleGroup.Nodes.Count > 0) UncheckAll(TrVArticleGroup.Nodes[0]);
-        //        isAnyCheckboxSelected = true;
-        //        e.Node.Checked = true;
-        //        isAnyCheckboxSelected = false;
-        //    }
-        //}
         void UncheckAll(TreeNode node)
         {
             if (node != null)
@@ -169,9 +152,20 @@ namespace DBS_View.View
 
                 if (node.NextNode != null)
                     UncheckAll(node.NextNode);
-
             }
             isAnyCheckboxSelected = false;
+        }
+
+        private void TrVArticleGroup_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (isAnyCheckboxSelected) return;
+            if (e.Node.Checked)
+            {
+                if (TrVArticleGroup.Nodes.Count > 0) UncheckAll(TrVArticleGroup.Nodes[0]);
+                isAnyCheckboxSelected = true;
+                e.Node.Checked = true;
+                isAnyCheckboxSelected = false;
+            }
         }
     }
 }

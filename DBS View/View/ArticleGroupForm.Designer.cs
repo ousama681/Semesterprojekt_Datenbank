@@ -123,6 +123,7 @@
             this.TrVArticleGroup.Name = "TrVArticleGroup";
             this.TrVArticleGroup.Size = new System.Drawing.Size(225, 368);
             this.TrVArticleGroup.TabIndex = 15;
+            this.TrVArticleGroup.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TrVArticleGroup_AfterCheck);
             // 
             // ArticleGroupForm
             // 
