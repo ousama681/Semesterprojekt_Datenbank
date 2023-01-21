@@ -37,6 +37,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CmdAdjustArticleGroups = new System.Windows.Forms.Button();
             this.TrVArticleGroup = new System.Windows.Forms.TreeView();
+            this.TxtArticleGroupName = new System.Windows.Forms.TextBox();
+            this.CmdChangeArticleGrpName = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CmdAddArticleGroup
@@ -125,11 +127,31 @@
             this.TrVArticleGroup.TabIndex = 15;
             this.TrVArticleGroup.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TrVArticleGroup_AfterCheck);
             // 
+            // TxtArticleGroupName
+            // 
+            this.TxtArticleGroupName.Location = new System.Drawing.Point(12, 140);
+            this.TxtArticleGroupName.Name = "TxtArticleGroupName";
+            this.TxtArticleGroupName.Size = new System.Drawing.Size(164, 23);
+            this.TxtArticleGroupName.TabIndex = 16;
+            // 
+            // CmdChangeArticleGrpName
+            // 
+            this.CmdChangeArticleGrpName.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmdChangeArticleGrpName.Location = new System.Drawing.Point(12, 166);
+            this.CmdChangeArticleGrpName.Name = "CmdChangeArticleGrpName";
+            this.CmdChangeArticleGrpName.Size = new System.Drawing.Size(164, 29);
+            this.CmdChangeArticleGrpName.TabIndex = 17;
+            this.CmdChangeArticleGrpName.Text = "Name ändern";
+            this.CmdChangeArticleGrpName.UseVisualStyleBackColor = true;
+            this.CmdChangeArticleGrpName.Click += new System.EventHandler(this.CmdChangeArticleGrpName_Click);
+            // 
             // ArticleGroupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(901, 396);
+            this.Controls.Add(this.CmdChangeArticleGrpName);
+            this.Controls.Add(this.TxtArticleGroupName);
             this.Controls.Add(this.TrVArticleGroup);
             this.Controls.Add(this.CmdAdjustArticleGroups);
             this.Controls.Add(this.label1);
@@ -158,5 +180,7 @@
         private Label label1;
         private Button CmdAdjustArticleGroups;
         private TreeView TrVArticleGroup;
+        private TextBox TxtArticleGroupName;
+        private Button CmdChangeArticleGrpName;
     }
 }

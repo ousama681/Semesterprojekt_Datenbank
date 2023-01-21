@@ -12,7 +12,7 @@ namespace SemesterprojektDatenbank.Migrations
     {
         /// <inheritdoc />
 
-        const string OUSAMA_CONNECTION = "Server=DESKTOP-PMVN625; Database=DBAProject; Trusted_Connection=true; Encrypt=false;";
+        const string OUSAMA_CONNECTION = "Server=DESKTOP-PMVN625; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         const string Leandro_Connection = "Server=LEANDROPAJE1C16\\ZBWMSSQL; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         const string BigBoss = "Server=DESKTOP-1470VE0\\ZBW; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         const string KimPc = "Server=Koneko\\KONEKO; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
@@ -25,7 +25,7 @@ namespace SemesterprojektDatenbank.Migrations
 
             using (var connection = new SqlConnection())
             {
-                connection.ConnectionString = KimPc;
+                connection.ConnectionString = OUSAMA_CONNECTION;
                 SqlCommand cmd = new SqlCommand();
                 connection.Open();
 
@@ -34,7 +34,7 @@ namespace SemesterprojektDatenbank.Migrations
 
                 //using (StreamReader reader = new StreamReader(@"C:\dbs\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
 
-                using (StreamReader reader = new StreamReader(@"C:\Users\Koneko\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
+                using (StreamReader reader = new StreamReader(@"C:\ZbwTechniker\DatenbankenAdvanced\SemesterarbeitDBS\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
                 {
                     while (!reader.EndOfStream)
                     {

@@ -2,6 +2,8 @@
 using Syncfusion.Windows.Forms.Tools;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Semesterprojekt_Datenbank;
+using Semesterprojekt_Datenbank.Utilities;
 
 
 namespace DBS_View.View
@@ -176,6 +178,21 @@ namespace DBS_View.View
                 isAnyCheckboxSelected = true;
                 e.Node.Checked = true;
                 isAnyCheckboxSelected = false;
+            }
+        }
+
+        private void CmdChangeArticleGrpName_Click(object sender, EventArgs e)
+        {
+            string oldName = TrVArticleGroup.SelectedNode.Text;
+            string newName = TxtArticleGroupName.Text;
+            if (newName.Length != 0)
+            {
+                TrVArticleGroup.SelectedNode.Text = newName;
+
+
+               DBUtilityArticleGroup.ChangeArticleGroupName(newName, oldName);
+
+
             }
         }
     }

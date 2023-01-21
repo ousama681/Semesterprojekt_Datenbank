@@ -118,7 +118,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                     //order by Id;";
 
                     //            List<ArticleGroup>? result = context.ArticleGroup.FromSqlRaw(cte).ToList();
-                    SqlConnection conn = new SqlConnection("Server=Koneko\\KONEKO; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;");
+                    SqlConnection conn = new SqlConnection(DataContext.OUSAMA_CONNECTION);
                     SqlCommand cmd = new SqlCommand("Select * from dbo.ArticleGroups()", conn);
                     conn.Open();
                     IDataReader dr = cmd.ExecuteReader();
@@ -165,6 +165,18 @@ namespace Semesterprojekt_Datenbank.Utilities
         public void Update(ArticleGroupVm item)
         {
             throw new NotImplementedException();
+        }
+
+        public static void ChangeArticleGroupName(string newName, string oldName)
+        {
+            var context = new DataContext();
+
+            (from a in context.ArticleGroup
+                    where a.Name == oldName 
+                    select a).ToList()
+                .ForEach(x => x.Name = newName);
+
+            context.SaveChanges();
         }
 
     }
