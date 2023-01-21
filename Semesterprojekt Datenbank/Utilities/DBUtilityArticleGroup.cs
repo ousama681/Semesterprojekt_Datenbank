@@ -171,11 +171,13 @@ namespace Semesterprojekt_Datenbank.Utilities
         {
             var context = new DataContext();
 
+            // ArticleGruppenach nach Name suchen und mit neuem Namen ersetzen
             (from a in context.ArticleGroup
                     where a.Name == oldName 
                     select a).ToList()
                 .ForEach(x => x.Name = newName);
 
+            // Änderungen speichern
             context.SaveChanges();
         }
 

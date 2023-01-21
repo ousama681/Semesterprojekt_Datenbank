@@ -54,6 +54,10 @@ namespace Semesterprojekt_Datenbank
             new OrderConf().Visit(modelBuilder);
             new PositionConf().Visit(modelBuilder);
             new TownConf().Visit(modelBuilder);
+
+            modelBuilder
+                .Entity<Customer>()
+                .ToTable("Customer", c => c.IsTemporal());
         }
 
     }
