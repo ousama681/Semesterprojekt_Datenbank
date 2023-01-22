@@ -187,11 +187,7 @@ namespace DBS_View.View
             if (newName.Length != 0)
             {
                 TrVArticleGroup.SelectedNode.Text = newName;
-
-
-               DBUtilityArticleGroup.ChangeArticleGroupName(newName, oldName);
-
-
+                DBUtilityArticleGroup.ChangeArticleGroupName(newName, oldName);
             }
         }
     }
