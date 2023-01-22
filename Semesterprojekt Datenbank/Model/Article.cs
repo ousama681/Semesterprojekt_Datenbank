@@ -34,5 +34,11 @@ namespace Semesterprojekt_Datenbank.Model
         {
 
         }
+
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

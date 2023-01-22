@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Semesterprojekt_Datenbank.Utilities;
 using Semesterprojekt_Datenbank.Viewmodel;
 
 namespace DBS_View.View
@@ -15,13 +16,48 @@ namespace DBS_View.View
     {
         OrderVM orderVM;
         private int positionnr;
+        ArticleGroupVm articleGroupVm;
+
         public OrdersForm()
         {
             InitializeComponent();
             orderVM = new OrderVM();
             positionnr = 1;
             CmbCustomer.DataSource = orderVM.GetCustomerNames();
-            CmbArticle.DataSource = orderVM.GetArticles();
+            //CmbArticle.DataSource = orderVM.GetArticles();
+            articleGroupVm = new ArticleGroupVm();
+            LoadTreeView();
+        }
+
+        private void LoadTreeView()
+        {
+            TrVArticleGroupOrder.Nodes.Clear();
+
+
+            var ArticleGroupList = articleGroupVm.GetArticleGroup();
+
+            TreeNode node;
+            List<TreeNode> nodes = new List<TreeNode>();
+            if (ArticleGroupList != null)
+                foreach (var articleGroupVm in ArticleGroupList)
+                {
+                    node = new TreeNode(articleGroupVm.Name);
+                    node.Tag = articleGroupVm.ParentId;
+                    node.ImageIndex = articleGroupVm.Id;
+                    nodes.Add(node);
+
+                }
+
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                for (int j = 0; j < nodes.Count; j++)
+                {
+                    if (nodes[i].ImageIndex.ToString() == nodes[j].Tag.ToString())
+                        nodes[i].Nodes.Add(nodes[j]);
+                }
+                if (nodes[i].Tag == "")
+                    TrVArticleGroupOrder.Nodes.Add(nodes[i]);
+            }
         }
 
         private void CmdAddPosition_Click(object sender, EventArgs e)
@@ -78,6 +114,22 @@ namespace DBS_View.View
         private void CmdDeleteOrder_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void TrVArticleGroupOrder_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            LbArtikel.Items.Clear();
+
+            string articleGroupName = TrVArticleGroupOrder.SelectedNode.Text;
+
+            int parentId = DBUtilityArticleGroup.GetParentId(articleGroupName);
+            var articles = DBUtilityArticleGroup.GetArticlesWithParentId(parentId);
+
+
+            foreach (var article in articles)
+            {
+                LbArtikel.Items.Add(article);
+            }
         }
     }
 }
