@@ -30,13 +30,10 @@ namespace DBS_View.View
                     isAnyCheckboxSelected = true;
                     TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
                     newNode.Tag = node.ImageIndex; //ImageIndex == ID Node == newNode ParentID
-                    ArticleGroupVm vm = new ArticleGroupVm(newNode.Text, newNode.Tag.ToString());
-                    
+                    ArticleGroupVm vm = new ArticleGroupVm(newNode.Text, newNode.Tag?.ToString());
                     articleGroupVm.CreateArticleGroup(vm);
                     newNode.ImageIndex = articleGroupVm.GetNodeId(vm);
-                    
                     node.Nodes.Add(newNode);
-
                     node.Checked = false;
                 }
                 RekursiveCheckSelectedTreeNodes(node.Nodes);
@@ -45,7 +42,7 @@ namespace DBS_View.View
             {
                 TreeNode rootNode = new TreeNode(TxtAddArticleGroup.Text);
                 rootNode.Tag = null;
-                ArticleGroupVm vm = new ArticleGroupVm(rootNode.Text, rootNode.Tag.ToString());
+                ArticleGroupVm vm = new ArticleGroupVm(rootNode.Text, rootNode.Tag?.ToString());
                 
                 articleGroupVm.CreateArticleGroup(vm);
                 rootNode.ImageIndex = articleGroupVm.GetNodeId(vm);
@@ -61,11 +58,13 @@ namespace DBS_View.View
             {
                 if (node.Checked == true)
                 {
-                    TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
-                    newNode.Tag = node.Text;
-                    node.Nodes.Add(newNode);
                     isAnyCheckboxSelected = true;
-                    articleGroupVm.CreateArticleGroup(new ArticleGroupVm(newNode.Text, newNode.Tag.ToString()));
+                    TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
+                    newNode.Tag = node.ImageIndex;
+                    ArticleGroupVm vm = new ArticleGroupVm(newNode.Text, newNode.Tag?.ToString());
+                    articleGroupVm.CreateArticleGroup(vm);
+                    newNode.ImageIndex = articleGroupVm.GetNodeId(vm);
+                    node.Nodes.Add(newNode);
                     node.Checked = false;
                 }
                 if(node.Nodes.Count > 0)
@@ -79,7 +78,7 @@ namespace DBS_View.View
             {
                 if (node.Checked == true)
                 {
-                    ArticleGroupVm vm = new ArticleGroupVm(node.Text, node.Tag.ToString());
+                    ArticleGroupVm vm = new ArticleGroupVm(node.Text, node.Tag?.ToString());
                     articleGroupVm.DeleteArticleGroup(vm);
                 }
                 RekursiveCheckSelectedTreeNodesForDeleting(node.Nodes);
@@ -95,7 +94,7 @@ namespace DBS_View.View
             {
                 if (node.Checked == true)
                 {
-                    ArticleGroupVm vm = new ArticleGroupVm(node.Text, node.Tag.ToString());
+                    ArticleGroupVm vm = new ArticleGroupVm(node.Text, node.Tag?.ToString());
                     articleGroupVm.DeleteArticleGroup(vm);
                 }
                 if (node.Nodes.Count > 0)

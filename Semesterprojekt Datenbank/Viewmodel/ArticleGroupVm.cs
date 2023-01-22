@@ -21,14 +21,14 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public string Name { get; set; }
         public string? ParentId { get; set; } 
 
-        public ArticleGroupVm(int id, string name, string parentId)
+        public ArticleGroupVm(int id, string name, string? parentId)
         {
             Id = id;
             Name = name;
             ParentId = parentId;
         }
 
-        public ArticleGroupVm(string name, string parentId)
+        public ArticleGroupVm(string name, string? parentId)
         {
             Name = name;
             ParentId = parentId;

@@ -22,7 +22,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 using (var context = new DataContext())
                 {
-                    ArticleGroup articleGroup = new ArticleGroup(articleGroupVm.Name, articleGroupVm.ParentId.ToString());
+                    ArticleGroup articleGroup = new ArticleGroup(articleGroupVm.Name, articleGroupVm.ParentId);
                     context.Add(articleGroup);
 
                     modelBuilder.Entity<ArticleGroup>().HasData(new ArticleGroup()
@@ -102,23 +102,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     List<ArticleGroupVm> articleGroupVmList = new List<ArticleGroupVm>();
-                    //            var cte = @"with cte_Articlegroup (Id, parentId, Name) as (
-                    //                        Select ArticleGroup.Id, ArticleGroup.parentId, ArticleGroup.Name
-                    //                        From ArticleGroup
-                    //                        where parentId is null
-
-                    //                        Union ALL
-
-                    //                        Select ArticleGroup.Id, ArticleGroup.ParentId, ArticleGroup.Name
-                    //                        From ArticleGroup
-                    //                        inner join cte_Articlegroup as cte 
-                    //                        on cte.Id = ArticleGroup.parentId)
-
-                    //                        Select cte_Articlegroup.Id, cte_Articlegroup.ParentId, cte_Articlegroup.Name from cte_Articlegroup
-                    //order by Id;";
-
-                    //            List<ArticleGroup>? result = context.ArticleGroup.FromSqlRaw(cte).ToList();
-                    SqlConnection conn = new SqlConnection(DataContext.OUSAMA_CONNECTION);
+                    SqlConnection conn = new SqlConnection(DataContext.KimPc); //<----------------------------- Connection String
                     SqlCommand cmd = new SqlCommand("Select * from dbo.ArticleGroups()", conn);
                     conn.Open();
                     IDataReader dr = cmd.ExecuteReader();
