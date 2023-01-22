@@ -20,17 +20,17 @@ namespace SemesterprojektDatenbank.Migrations
             // TestingData for ArticleGroup
             migrationBuilder.Sql("INSERT INTO dbo.ArticleGroup(Name, ParentId)" +
                                  "VALUES" +
-                                 "('Audio Player', 5)," +
-                                 "('Audio Zubehör + Ersatzteile', 5)," +
-                                 "('Car HiFi', 5)," +
-                                 "('DJ', 5)," +
+                                 "('PC Komponenten', null)," +
                                  "('Audio', null)," +
-                                 "('Gehäuse', 11)," +
-                                 "('Grafikkarte', 11)," +
-                                 "('Mainboard', 11)," +
-                                 "('Prozessor', 11)," +
-                                 "('RAM', 11)," +
-                                 "('PC Komponenten', null)" +
+                                 "('Audio Player', 2)," +
+                                 "('Audio Zubehör + Ersatzteile', 2)," +
+                                 "('Car HiFi', 2)," +
+                                 "('DJ', 2)," +
+                                 "('Gehäuse', 1)," +
+                                 "('Grafikkarte', 1)," +
+                                 "('Mainboard', 1)," +
+                                 "('Prozessor', 1)," +
+                                 "('RAM', 1)" +
                                  ";");
 
 
@@ -112,11 +112,11 @@ namespace SemesterprojektDatenbank.Migrations
             // TestingData for Customers
             migrationBuilder.Sql("INSERT INTO dbo.Customer(Nr, Name, Email, Website, Password, Street, TownId)" +
                                  "VALUES" +
-                                 "(5001, Herbert AG, herbert@werkstatt.ch, herbertag.ch, herbertGutesPw, Wilerstrasse 12, 112)," +
-                                 "(5002, Starrag AG, starrag@rorschach.ch, starrag.ch, WirBauenMaschinen, Seestrasse 44, 442)," +
-                                 "(5003, McDonalds GmbH, mcdonalds@imlovinit.com, mcdonalds.com, UnserEssenSchmecktScheisse, Stadtstrasse 34, 200)," +
-                                 "(5004, Eiko GmbH, eiko@stgallen.ch, eiko.ch, SehrGutesPW, St-Fidenstrasse 11, 155)," +
-                                 "(5005, Bamboo GmbH, bamboo@food.ch, bamboo.ch, WeSellRice!, Bahnhofsstrasse 15, 111)" +
+                                 "(5001, 'Herbert AG', 'herbert@werkstatt.ch', 'herbertag.ch', 'herbertGutesPw', 'Wilerstrasse 12', 112)," +
+                                 "(5002, 'Starrag AG', 'starrag@rorschach.ch', 'starrag.ch', 'WirBauenMaschinen', 'Seestrasse 44', 442)," +
+                                 "(5003, 'McDonalds GmbH', 'mcdonalds@imlovinit.com', 'mcdonalds.com', 'UnserEssenSchmecktScheisse', 'Stadtstrasse 34', 200)," +
+                                 "(5004, 'Eiko GmbH', 'eiko@stgallen.ch', 'eiko.ch', 'SehrGutesPW', 'St-Fidenstrasse 11', 155)," +
+                                 "(5005, 'Bamboo GmbH', 'bamboo@food.ch', 'bamboo.ch', 'WeSellRice!', 'Bahnhofsstrasse 15',111)" +
                                  ";");
 
 
