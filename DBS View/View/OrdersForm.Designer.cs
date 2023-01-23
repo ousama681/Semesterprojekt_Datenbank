@@ -37,8 +37,6 @@
             this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LbPositionen = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.CmbArticle = new System.Windows.Forms.ComboBox();
-            this.LblArticleName = new System.Windows.Forms.Label();
             this.CmbCustomer = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.CmdAddOrder = new System.Windows.Forms.Button();
@@ -46,6 +44,8 @@
             this.NumQuantity = new System.Windows.Forms.NumericUpDown();
             this.TrVArticleGroupOrder = new System.Windows.Forms.TreeView();
             this.LbArtikel = new System.Windows.Forms.ListBox();
+            this.LblArticleName = new System.Windows.Forms.Label();
+            this.CmbArticle = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             this.SuspendLayout();
@@ -98,6 +98,7 @@
             this.DgVOrders.ReadOnly = true;
             this.DgVOrders.RowHeadersVisible = false;
             this.DgVOrders.RowTemplate.Height = 25;
+            this.DgVOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgVOrders.Size = new System.Drawing.Size(203, 394);
             this.DgVOrders.TabIndex = 9;
             // 
@@ -134,24 +135,6 @@
             this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 39;
             this.label1.Text = "Anzahl";
-            // 
-            // CmbArticle
-            // 
-            this.CmbArticle.FormattingEnabled = true;
-            this.CmbArticle.Location = new System.Drawing.Point(1131, 97);
-            this.CmbArticle.Name = "CmbArticle";
-            this.CmbArticle.Size = new System.Drawing.Size(200, 23);
-            this.CmbArticle.TabIndex = 37;
-            // 
-            // LblArticleName
-            // 
-            this.LblArticleName.AutoSize = true;
-            this.LblArticleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblArticleName.Location = new System.Drawing.Point(1131, 74);
-            this.LblArticleName.Name = "LblArticleName";
-            this.LblArticleName.Size = new System.Drawing.Size(89, 20);
-            this.LblArticleName.TabIndex = 36;
-            this.LblArticleName.Text = "Artikelname";
             // 
             // CmbCustomer
             // 
@@ -215,6 +198,24 @@
             this.LbArtikel.Size = new System.Drawing.Size(182, 394);
             this.LbArtikel.TabIndex = 48;
             // 
+            // LblArticleName
+            // 
+            this.LblArticleName.AutoSize = true;
+            this.LblArticleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblArticleName.Location = new System.Drawing.Point(1131, 74);
+            this.LblArticleName.Name = "LblArticleName";
+            this.LblArticleName.Size = new System.Drawing.Size(89, 20);
+            this.LblArticleName.TabIndex = 36;
+            this.LblArticleName.Text = "Artikelname";
+            // 
+            // CmbArticle
+            // 
+            this.CmbArticle.FormattingEnabled = true;
+            this.CmbArticle.Location = new System.Drawing.Point(1131, 97);
+            this.CmbArticle.Name = "CmbArticle";
+            this.CmbArticle.Size = new System.Drawing.Size(200, 23);
+            this.CmbArticle.TabIndex = 37;
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -254,8 +255,6 @@
         private DataGridView DgVOrders;
         private ListBox LbPositionen;
         private Label label1;
-        private ComboBox CmbArticle;
-        private Label LblArticleName;
         private ComboBox CmbCustomer;
         private Label label3;
         private Button CmdAddOrder;
@@ -265,5 +264,7 @@
         private NumericUpDown NumQuantity;
         private TreeView TrVArticleGroupOrder;
         private ListBox LbArtikel;
+        private Label LblArticleName;
+        private ComboBox CmbArticle;
     }
 }

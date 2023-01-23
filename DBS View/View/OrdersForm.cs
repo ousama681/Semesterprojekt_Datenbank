@@ -7,8 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Semesterprojekt_Datenbank;
+using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Utilities;
 using Semesterprojekt_Datenbank.Viewmodel;
+using Syncfusion.Windows.Forms.Tools;
 
 namespace DBS_View.View
 {
@@ -108,7 +111,26 @@ namespace DBS_View.View
 
         private void CmdAddOrder_Click(object sender, EventArgs e)
         {
+            Order savedOrder = null;
+            string customerName = CmbCustomer.Text;
+            if (customerName.Length != 0)
+            {
+                using (var context = new DataContext())
+                {
+                    int customerId = (from c in context.Customer
+                                      where c.Name == customerName
+                                          select c.Id).FirstOrDefault();
 
+                    var order = new Order() { CustomerId = customerId, Date = DateTime.Now };
+                    context.Order.Add(order);
+                    context.SaveChanges();
+
+                    savedOrder = context.Order.Find(order.Id);
+                }
+            }
+
+            // UI Reload
+            DgVOrders.Rows.Add(savedOrder.Id, customerName);
         }
 
         private void CmdDeleteOrder_Click(object sender, EventArgs e)
