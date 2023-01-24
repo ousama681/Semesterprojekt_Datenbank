@@ -140,7 +140,7 @@ namespace DBS_View.View
 
         private void TrVArticleGroupOrder_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            LbArtikel.Items.Clear();
+            CmbArticle.Items.Clear();
 
             string articleGroupName = TrVArticleGroupOrder.SelectedNode.Text;
 
@@ -150,8 +150,17 @@ namespace DBS_View.View
 
             foreach (var article in articles)
             {
-                LbArtikel.Items.Add(article);
+                CmbArticle.Items.Add(article);
+                CmbArticle.Text = articles[0].Name;
             }
+
+            // Sollten wir allenfalls noch implementieren.... 
+
+            //if (articles[0].Name != null)
+            //{
+            //    CmbArticle.Text = articles[0].Name;
+            //}
+
         }
     }
 }
