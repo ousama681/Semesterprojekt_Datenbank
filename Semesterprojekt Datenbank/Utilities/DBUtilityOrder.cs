@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using Semesterprojekt_Datenbank.Interfaces;
+using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Viewmodel;
 
 namespace Semesterprojekt_Datenbank.Utilities
@@ -16,7 +17,23 @@ namespace Semesterprojekt_Datenbank.Utilities
 
         public void Create(OrderVM item)
         {
-            throw new NotImplementedException();
+            Order savedOrder = null;
+            string customerName = item.customerName;
+            if (customerName.Length != 0)
+            {
+                using (var context = new DataContext())
+                {
+                    int customerId = (from c in context.Customer
+                                      where c.Name == customerName
+                                      select c.Id).FirstOrDefault();
+
+                    var order = new Order() { CustomerId = customerId, Date = item.orderDate };
+                    context.Order.Add(order);
+                    context.SaveChanges();
+
+                    //savedOrder = context.Order.Find(order.Id);
+                }
+            }
         }
 
         public bool Delete(OrderVM item)

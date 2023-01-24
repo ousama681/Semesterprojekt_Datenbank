@@ -48,7 +48,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         }
         public void CreateOrder(OrderVM orderVm)
         {
-
+            db.Create(orderVm);
         }
 
         public List<string> GetCustomerNames()

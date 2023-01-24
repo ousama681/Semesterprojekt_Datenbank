@@ -106,6 +106,7 @@
             this.DgVOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgVOrders.Size = new System.Drawing.Size(377, 841);
             this.DgVOrders.TabIndex = 9;
+            this.DgVOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_CellDoubleClick);
             // 
             // colOrderNr
             // 
