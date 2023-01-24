@@ -167,5 +167,25 @@ namespace DBS_View.View
 
 
         }
+
+        private void OrdersForm_Load(object sender, EventArgs e)
+        {
+            List<Order> orders;
+            using (var context = new DataContext())
+            {
+                orders = (from o in context.Order
+                    select o).ToList();
+
+                foreach (Order order in orders)
+                {
+
+                    string customerName = (from c in context.Customer
+                        where c.Id == order.CustomerId
+                        select c.Name).FirstOrDefault();
+
+                    DgVOrders.Rows.Add(order.Id, customerName);
+                }
+            }
+        }
     }
 }
