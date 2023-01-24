@@ -37,20 +37,22 @@
             this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LbPositionen = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.CmbArticle = new System.Windows.Forms.ComboBox();
-            this.LblArticleName = new System.Windows.Forms.Label();
             this.CmbCustomer = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.CmdAddOrder = new System.Windows.Forms.Button();
             this.CmdDeleteOrder = new System.Windows.Forms.Button();
             this.NumQuantity = new System.Windows.Forms.NumericUpDown();
+            this.TrVArticleGroupOrder = new System.Windows.Forms.TreeView();
+            this.LbArtikel = new System.Windows.Forms.ListBox();
+            this.LblArticleName = new System.Windows.Forms.Label();
+            this.CmbArticle = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             this.SuspendLayout();
             // 
             // CmdAddPosition
             // 
-            this.CmdAddPosition.Location = new System.Drawing.Point(697, 205);
+            this.CmdAddPosition.Location = new System.Drawing.Point(1131, 206);
             this.CmdAddPosition.Name = "CmdAddPosition";
             this.CmdAddPosition.Size = new System.Drawing.Size(121, 40);
             this.CmdAddPosition.TabIndex = 5;
@@ -60,7 +62,7 @@
             // 
             // CmdDeletePosition
             // 
-            this.CmdDeletePosition.Location = new System.Drawing.Point(824, 205);
+            this.CmdDeletePosition.Location = new System.Drawing.Point(1258, 206);
             this.CmdDeletePosition.Name = "CmdDeletePosition";
             this.CmdDeletePosition.Size = new System.Drawing.Size(75, 40);
             this.CmdDeletePosition.TabIndex = 6;
@@ -70,14 +72,14 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(697, 383);
+            this.TxtSearch.Location = new System.Drawing.Point(1131, 384);
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(121, 23);
             this.TxtSearch.TabIndex = 7;
             // 
             // CmdSearch
             // 
-            this.CmdSearch.Location = new System.Drawing.Point(824, 383);
+            this.CmdSearch.Location = new System.Drawing.Point(1258, 384);
             this.CmdSearch.Name = "CmdSearch";
             this.CmdSearch.Size = new System.Drawing.Size(75, 23);
             this.CmdSearch.TabIndex = 8;
@@ -96,6 +98,7 @@
             this.DgVOrders.ReadOnly = true;
             this.DgVOrders.RowHeadersVisible = false;
             this.DgVOrders.RowTemplate.Height = 25;
+            this.DgVOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgVOrders.Size = new System.Drawing.Size(203, 394);
             this.DgVOrders.TabIndex = 9;
             // 
@@ -127,34 +130,16 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(697, 137);
+            this.label1.Location = new System.Drawing.Point(1131, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 39;
             this.label1.Text = "Anzahl";
             // 
-            // CmbArticle
-            // 
-            this.CmbArticle.FormattingEnabled = true;
-            this.CmbArticle.Location = new System.Drawing.Point(697, 96);
-            this.CmbArticle.Name = "CmbArticle";
-            this.CmbArticle.Size = new System.Drawing.Size(200, 23);
-            this.CmbArticle.TabIndex = 37;
-            // 
-            // LblArticleName
-            // 
-            this.LblArticleName.AutoSize = true;
-            this.LblArticleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblArticleName.Location = new System.Drawing.Point(697, 73);
-            this.LblArticleName.Name = "LblArticleName";
-            this.LblArticleName.Size = new System.Drawing.Size(89, 20);
-            this.LblArticleName.TabIndex = 36;
-            this.LblArticleName.Text = "Artikelname";
-            // 
             // CmbCustomer
             // 
             this.CmbCustomer.FormattingEnabled = true;
-            this.CmbCustomer.Location = new System.Drawing.Point(697, 35);
+            this.CmbCustomer.Location = new System.Drawing.Point(1131, 36);
             this.CmbCustomer.Name = "CmbCustomer";
             this.CmbCustomer.Size = new System.Drawing.Size(200, 23);
             this.CmbCustomer.TabIndex = 42;
@@ -163,7 +148,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(697, 12);
+            this.label3.Location = new System.Drawing.Point(1131, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 43;
@@ -171,7 +156,7 @@
             // 
             // CmdAddOrder
             // 
-            this.CmdAddOrder.Location = new System.Drawing.Point(697, 320);
+            this.CmdAddOrder.Location = new System.Drawing.Point(1131, 321);
             this.CmdAddOrder.Name = "CmdAddOrder";
             this.CmdAddOrder.Size = new System.Drawing.Size(121, 40);
             this.CmdAddOrder.TabIndex = 44;
@@ -181,7 +166,7 @@
             // 
             // CmdDeleteOrder
             // 
-            this.CmdDeleteOrder.Location = new System.Drawing.Point(824, 320);
+            this.CmdDeleteOrder.Location = new System.Drawing.Point(1258, 321);
             this.CmdDeleteOrder.Name = "CmdDeleteOrder";
             this.CmdDeleteOrder.Size = new System.Drawing.Size(75, 40);
             this.CmdDeleteOrder.TabIndex = 45;
@@ -191,16 +176,53 @@
             // 
             // NumQuantity
             // 
-            this.NumQuantity.Location = new System.Drawing.Point(698, 160);
+            this.NumQuantity.Location = new System.Drawing.Point(1132, 161);
             this.NumQuantity.Name = "NumQuantity";
             this.NumQuantity.Size = new System.Drawing.Size(53, 23);
             this.NumQuantity.TabIndex = 46;
+            // 
+            // TrVArticleGroupOrder
+            // 
+            this.TrVArticleGroupOrder.Location = new System.Drawing.Point(698, 12);
+            this.TrVArticleGroupOrder.Name = "TrVArticleGroupOrder";
+            this.TrVArticleGroupOrder.Size = new System.Drawing.Size(215, 392);
+            this.TrVArticleGroupOrder.TabIndex = 47;
+            this.TrVArticleGroupOrder.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TrVArticleGroupOrder_AfterSelect);
+            // 
+            // LbArtikel
+            // 
+            this.LbArtikel.FormattingEnabled = true;
+            this.LbArtikel.ItemHeight = 15;
+            this.LbArtikel.Location = new System.Drawing.Point(930, 12);
+            this.LbArtikel.Name = "LbArtikel";
+            this.LbArtikel.Size = new System.Drawing.Size(182, 394);
+            this.LbArtikel.TabIndex = 48;
+            // 
+            // LblArticleName
+            // 
+            this.LblArticleName.AutoSize = true;
+            this.LblArticleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblArticleName.Location = new System.Drawing.Point(1131, 74);
+            this.LblArticleName.Name = "LblArticleName";
+            this.LblArticleName.Size = new System.Drawing.Size(89, 20);
+            this.LblArticleName.TabIndex = 36;
+            this.LblArticleName.Text = "Artikelname";
+            // 
+            // CmbArticle
+            // 
+            this.CmbArticle.FormattingEnabled = true;
+            this.CmbArticle.Location = new System.Drawing.Point(1131, 97);
+            this.CmbArticle.Name = "CmbArticle";
+            this.CmbArticle.Size = new System.Drawing.Size(200, 23);
+            this.CmbArticle.TabIndex = 37;
             // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(909, 430);
+            this.ClientSize = new System.Drawing.Size(1354, 430);
+            this.Controls.Add(this.LbArtikel);
+            this.Controls.Add(this.TrVArticleGroupOrder);
             this.Controls.Add(this.NumQuantity);
             this.Controls.Add(this.CmdDeleteOrder);
             this.Controls.Add(this.CmdAddOrder);
@@ -233,8 +255,6 @@
         private DataGridView DgVOrders;
         private ListBox LbPositionen;
         private Label label1;
-        private ComboBox CmbArticle;
-        private Label LblArticleName;
         private ComboBox CmbCustomer;
         private Label label3;
         private Button CmdAddOrder;
@@ -242,5 +262,9 @@
         private DataGridViewTextBoxColumn colOrderNr;
         private DataGridViewTextBoxColumn colCustomerName;
         private NumericUpDown NumQuantity;
+        private TreeView TrVArticleGroupOrder;
+        private ListBox LbArtikel;
+        private Label LblArticleName;
+        private ComboBox CmbArticle;
     }
 }

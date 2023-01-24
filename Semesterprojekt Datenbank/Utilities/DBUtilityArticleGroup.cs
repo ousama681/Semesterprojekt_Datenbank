@@ -153,18 +153,48 @@ namespace Semesterprojekt_Datenbank.Utilities
 
         public static void ChangeArticleGroupName(string newName, string oldName)
         {
-            var context = new DataContext();
+            using (var context = new DataContext())
+            {
 
-            // ArticleGruppenach nach Name suchen und mit neuem Namen ersetzen
-            (from a in context.ArticleGroup
-                    where a.Name == oldName 
-                    select a).ToList()
-                .ForEach(x => x.Name = newName);
+                // ArticleGruppenach nach Name suchen und mit neuem Namen ersetzen
+                (from a in context.ArticleGroup
+                        where a.Name == oldName
+                        select a).ToList()
+                    .ForEach(x => x.Name = newName);
 
-            // Änderungen speichern
-            context.SaveChanges();
+                // Änderungen speichern
+                context.SaveChanges();
+            }
         }
 
+        public static List<Article> GetArticlesWithParentId(int parentId)
+        {
+            List<Article> articles = new List<Article>();
+            using (var context = new DataContext())
+            {
+                articles = (from a in context.Article
+                        where a.ArticleGroupId == parentId
+                        select a)
+                    .ToList();
+            }
+
+            return articles;
+        }
+
+        public static int GetParentId(string articleGroupName)
+        {
+            int parentId = 0;
+
+            using (var context = new DataContext())
+            {
+                parentId = (from ag in context.ArticleGroup
+                    where ag.Name == articleGroupName
+                    select ag.Id).ToList()[0];
+
+
+            }
+            return parentId;
+        }
     }
 }
 
