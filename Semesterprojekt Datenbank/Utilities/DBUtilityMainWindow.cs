@@ -51,7 +51,7 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 //using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["connection"].ConnectionString))
 
-                using (SqlConnection connection = new SqlConnection(DataContext.Leandro_Connection))
+                using (SqlConnection connection = new SqlConnection())
                 {
                     if (connection.State != ConnectionState.Open)
                         connection.Open();
