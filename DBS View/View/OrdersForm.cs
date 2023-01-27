@@ -166,13 +166,14 @@ namespace DBS_View.View
             orderVM.PositionList.Clear();
             positionnr = 1;
 
-            string selectedOrder = DgVOrders.SelectedCells.ToString();
+            var cells = DgVOrders.SelectedCells;
+            string customerName = cells[1].Value.ToString();
             List<Position> positions = new List<Position>();
 
             using (var context = new DataContext())
             {
                 int customerId = (from c in context.Customer
-                    where c.Name == selectedOrder
+                    where c.Name == customerName
                     select c.Id).FirstOrDefault();
 
                 var savedOrder = (from o in context.Order

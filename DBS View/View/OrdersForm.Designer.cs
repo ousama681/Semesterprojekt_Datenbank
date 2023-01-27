@@ -33,6 +33,8 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.CmdSearch = new System.Windows.Forms.Button();
             this.DgVOrders = new System.Windows.Forms.DataGridView();
+            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LbPositionen = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CmbCustomer = new System.Windows.Forms.ComboBox();
@@ -43,8 +45,6 @@
             this.TrVArticleGroupOrder = new System.Windows.Forms.TreeView();
             this.LblArticleName = new System.Windows.Forms.Label();
             this.CmbArticle = new System.Windows.Forms.ComboBox();
-            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +87,7 @@
             // 
             // DgVOrders
             // 
+            this.DgVOrders.AllowUserToAddRows = false;
             this.DgVOrders.AllowUserToDeleteRows = false;
             this.DgVOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgVOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -102,6 +103,23 @@
             this.DgVOrders.Size = new System.Drawing.Size(226, 394);
             this.DgVOrders.TabIndex = 9;
             this.DgVOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_CellDoubleClick);
+            // 
+            // colOrderNr
+            // 
+            this.colOrderNr.FillWeight = 30F;
+            this.colOrderNr.HeaderText = "Auftragsnr";
+            this.colOrderNr.MinimumWidth = 10;
+            this.colOrderNr.Name = "colOrderNr";
+            this.colOrderNr.ReadOnly = true;
+            this.colOrderNr.Width = 80;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.HeaderText = "Kundenname";
+            this.colCustomerName.MinimumWidth = 10;
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.ReadOnly = true;
+            this.colCustomerName.Width = 143;
             // 
             // LbPositionen
             // 
@@ -204,24 +222,6 @@
             this.CmbArticle.Name = "CmbArticle";
             this.CmbArticle.Size = new System.Drawing.Size(200, 23);
             this.CmbArticle.TabIndex = 37;
-            // 
-            // colOrderNr
-            // 
-            this.colOrderNr.DividerWidth = 1;
-            this.colOrderNr.FillWeight = 30F;
-            this.colOrderNr.HeaderText = "Auftragsnr";
-            this.colOrderNr.MinimumWidth = 10;
-            this.colOrderNr.Name = "colOrderNr";
-            this.colOrderNr.ReadOnly = true;
-            this.colOrderNr.Width = 80;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.HeaderText = "Kundenname";
-            this.colCustomerName.MinimumWidth = 10;
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.ReadOnly = true;
-            this.colCustomerName.Width = 143;
             // 
             // OrdersForm
             // 
