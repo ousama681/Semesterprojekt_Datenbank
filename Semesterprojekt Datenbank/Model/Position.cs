@@ -16,5 +16,19 @@ namespace Semesterprojekt_Datenbank.Model
         public int OrderId { get; set; }
         public virtual Article Article { get; set; }
         public virtual Order Order { get; set; }
+
+        public Position(int quantity, decimal priceNetto, decimal priceBrutto, int articleId, int orderId)
+        {
+            Quantity = quantity;
+            PriceNetto = priceNetto;
+            PriceBrutto = priceBrutto;
+            ArticleId = articleId;
+            OrderId = orderId;
+        }
+
+        public Position()
+        {
+
+        }
     }
 }

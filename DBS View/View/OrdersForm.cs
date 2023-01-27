@@ -161,14 +161,14 @@ namespace DBS_View.View
 
         private void DgVOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
             LbPositionen.Items.Clear();
             orderVM.PositionList.Clear();
             positionnr = 1;
 
+
             var cells = DgVOrders.SelectedCells;
             string customerName = cells[1].Value.ToString();
-            List<Position> positions = new List<Position>();
+            List<OrderVM> positions = new List<OrderVM>();
 
             using (var context = new DataContext())
             {
@@ -180,17 +180,27 @@ namespace DBS_View.View
                     where o.CustomerId == customerId && o.Date == orderVM.orderDate
                     select o.Id).FirstOrDefault();
                 
-                positions = (from pos in context.Position
+                var positionsQuery = (from pos in context.Position
                                 where savedOrder == pos.OrderId
                                     select pos).ToList();
+                int posNr = 1;
+                LbPositionen.Items.Add(customerName);
+                foreach (var position in positionsQuery)
+                {
+
+                    var articleNameQuery = (from article in context.Article
+                        where article.Id == position.Id
+                            select article.Name).FirstOrDefault();
+
+                    OrderVM vm = new OrderVM(posNr++, articleNameQuery, position.Quantity);
+                    LbPositionen.Items.Add(vm.GetPosition());
+                    LbPositionen.Items.Add("");
+                }
             }
 
-            foreach (var position in positions)
-            {
-                LbPositionen.Items.Add(position);
-            }
+            
 
-
+            
         }
     }
 }
