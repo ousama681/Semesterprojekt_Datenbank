@@ -102,6 +102,7 @@ namespace DBS_View.View
 
         private void CmdAddOrder_Click(object sender, EventArgs e)
         {
+
             Order savedOrder = null;
             string customerName = CmbCustomer.Text;
             if (customerName.Length != 0)
@@ -123,6 +124,9 @@ namespace DBS_View.View
                                   select o).FirstOrDefault();
                 }
                 DgVOrders.Rows.Add(savedOrder.Id, customerName);
+                LbPositionen.Items.Clear();
+                orderVM.PositionList.Clear();
+                positionnr = 1;
             }
         }
 
