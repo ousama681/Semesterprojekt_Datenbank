@@ -163,11 +163,31 @@ namespace DBS_View.View
         {
 
             LbPositionen.Items.Clear();
+            orderVM.PositionList.Clear();
+            positionnr = 1;
 
             string selectedOrder = DgVOrders.SelectedCells.ToString();
+            List<Position> positions = new List<Position>();
 
+            using (var context = new DataContext())
+            {
+                int customerId = (from c in context.Customer
+                    where c.Name == selectedOrder
+                    select c.Id).FirstOrDefault();
 
+                var savedOrder = (from o in context.Order
+                    where o.CustomerId == customerId && o.Date == orderVM.orderDate
+                    select o.Id).FirstOrDefault();
+                
+                positions = (from pos in context.Position
+                                where savedOrder == pos.OrderId
+                                    select pos).ToList();
+            }
 
+            foreach (var position in positions)
+            {
+                LbPositionen.Items.Add(position);
+            }
 
 
         }
