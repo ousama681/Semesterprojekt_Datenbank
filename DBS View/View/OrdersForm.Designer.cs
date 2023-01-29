@@ -198,6 +198,7 @@
             // 
             // TrVArticleGroupOrder
             // 
+
             this.TrVArticleGroupOrder.Location = new System.Drawing.Point(707, 12);
             this.TrVArticleGroupOrder.Name = "TrVArticleGroupOrder";
             this.TrVArticleGroupOrder.Size = new System.Drawing.Size(215, 394);
@@ -246,6 +247,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OrdersForm";
             this.Text = "Aufträge";
+            this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).EndInit();
             this.ResumeLayout(false);
