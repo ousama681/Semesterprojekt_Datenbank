@@ -102,6 +102,7 @@ namespace DBS_View.View
 
         private void CmdAddOrder_Click(object sender, EventArgs e)
         {
+
             Order savedOrder = null;
             string customerName = CmbCustomer.Text;
             if (customerName.Length != 0)
@@ -123,6 +124,9 @@ namespace DBS_View.View
                                   select o).FirstOrDefault();
                 }
                 DgVOrders.Rows.Add(savedOrder.Id, customerName);
+                LbPositionen.Items.Clear();
+                orderVM.PositionList.Clear();
+                positionnr = 1;
             }
         }
 
@@ -157,15 +161,46 @@ namespace DBS_View.View
 
         private void DgVOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
             LbPositionen.Items.Clear();
-
-            string selectedOrder = DgVOrders.SelectedCells.ToString();
-
-
+            orderVM.PositionList.Clear();
+            positionnr = 1;
 
 
+            var cells = DgVOrders.SelectedCells;
+            string customerName = cells[1].Value.ToString();
+            List<OrderVM> positions = new List<OrderVM>();
 
+            using (var context = new DataContext())
+            {
+                int customerId = (from c in context.Customer
+                    where c.Name == customerName
+                    select c.Id).FirstOrDefault();
+
+                var savedOrder = (from o in context.Order
+                    where o.CustomerId == customerId && o.Date == orderVM.orderDate
+                    select o.Id).FirstOrDefault();
+                
+                var positionsQuery = (from pos in context.Position
+                                where savedOrder == pos.OrderId
+                                    select pos).ToList();
+                int posNr = 1;
+                LbPositionen.Items.Add(customerName);
+                foreach (var position in positionsQuery)
+                {
+
+                    var articleNameQuery = (from article in context.Article
+                        where article.Id == position.Id
+                            select article.Name).FirstOrDefault();
+
+                    OrderVM vm = new OrderVM(posNr++, articleNameQuery, position.Quantity);
+                    LbPositionen.Items.Add(vm.GetPosition());
+                    LbPositionen.Items.Add("");
+                }
+            }
+
+            
+
+            
         }
 
         private void OrdersForm_Load(object sender, EventArgs e)

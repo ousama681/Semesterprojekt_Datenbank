@@ -87,6 +87,7 @@
             // 
             // DgVOrders
             // 
+            this.DgVOrders.AllowUserToAddRows = false;
             this.DgVOrders.AllowUserToDeleteRows = false;
             this.DgVOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgVOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -99,13 +100,13 @@
             this.DgVOrders.RowHeadersWidth = 82;
             this.DgVOrders.RowTemplate.Height = 25;
             this.DgVOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgVOrders.Size = new System.Drawing.Size(203, 394);
+            this.DgVOrders.Size = new System.Drawing.Size(226, 394);
             this.DgVOrders.TabIndex = 9;
             this.DgVOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_CellDoubleClick);
             // 
             // colOrderNr
             // 
-            this.colOrderNr.FillWeight = 40F;
+            this.colOrderNr.FillWeight = 30F;
             this.colOrderNr.HeaderText = "Auftragsnr";
             this.colOrderNr.MinimumWidth = 10;
             this.colOrderNr.Name = "colOrderNr";
@@ -118,13 +119,13 @@
             this.colCustomerName.MinimumWidth = 10;
             this.colCustomerName.Name = "colCustomerName";
             this.colCustomerName.ReadOnly = true;
-            this.colCustomerName.Width = 120;
+            this.colCustomerName.Width = 143;
             // 
             // LbPositionen
             // 
             this.LbPositionen.FormattingEnabled = true;
             this.LbPositionen.ItemHeight = 15;
-            this.LbPositionen.Location = new System.Drawing.Point(230, 12);
+            this.LbPositionen.Location = new System.Drawing.Point(244, 13);
             this.LbPositionen.Name = "LbPositionen";
             this.LbPositionen.Size = new System.Drawing.Size(457, 394);
             this.LbPositionen.TabIndex = 10;
@@ -141,6 +142,7 @@
             // 
             // CmbCustomer
             // 
+            this.CmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCustomer.FormattingEnabled = true;
             this.CmbCustomer.Location = new System.Drawing.Point(928, 36);
             this.CmbCustomer.Name = "CmbCustomer";
@@ -180,15 +182,26 @@
             // NumQuantity
             // 
             this.NumQuantity.Location = new System.Drawing.Point(929, 161);
+            this.NumQuantity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.NumQuantity.Name = "NumQuantity";
             this.NumQuantity.Size = new System.Drawing.Size(53, 23);
             this.NumQuantity.TabIndex = 46;
+            this.NumQuantity.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // TrVArticleGroupOrder
             // 
-            this.TrVArticleGroupOrder.Location = new System.Drawing.Point(698, 12);
+
+            this.TrVArticleGroupOrder.Location = new System.Drawing.Point(707, 12);
             this.TrVArticleGroupOrder.Name = "TrVArticleGroupOrder";
-            this.TrVArticleGroupOrder.Size = new System.Drawing.Size(215, 392);
+            this.TrVArticleGroupOrder.Size = new System.Drawing.Size(215, 394);
             this.TrVArticleGroupOrder.TabIndex = 47;
             this.TrVArticleGroupOrder.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TrVArticleGroupOrder_AfterSelect);
             // 
@@ -254,11 +267,11 @@
         private Label label3;
         private Button CmdAddOrder;
         private Button CmdDeleteOrder;
-        private DataGridViewTextBoxColumn colOrderNr;
-        private DataGridViewTextBoxColumn colCustomerName;
         private NumericUpDown NumQuantity;
         private TreeView TrVArticleGroupOrder;
         private Label LblArticleName;
         private ComboBox CmbArticle;
+        private DataGridViewTextBoxColumn colOrderNr;
+        private DataGridViewTextBoxColumn colCustomerName;
     }
 }

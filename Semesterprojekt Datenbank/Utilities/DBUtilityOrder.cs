@@ -30,6 +30,20 @@ namespace Semesterprojekt_Datenbank.Utilities
                     var order = new Order() { CustomerId = customerId, Date = item.orderDate };
                     context.Order.Add(order);
                     context.SaveChanges();
+                    var orderId = (from o in context.Order
+                                   where o.CustomerId == customerId && o.Date == item.orderDate
+                                       select o.Id).FirstOrDefault();
+                    foreach (var pos in item.PositionList)
+                    {
+                        var articleId = (from article in context.Article
+                            where pos.articleName == article.Name
+                            select article.Id).FirstOrDefault();
+
+                        var position = new Position(pos.quantity, 0, 0, articleId, orderId);
+                        context.Position.Add(position);
+                    }
+                    context.SaveChanges();
+
 
                     //savedOrder = context.Order.Find(order.Id);
                 }
