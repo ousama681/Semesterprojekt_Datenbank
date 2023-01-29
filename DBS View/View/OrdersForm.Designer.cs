@@ -43,7 +43,6 @@
             this.CmdDeleteOrder = new System.Windows.Forms.Button();
             this.NumQuantity = new System.Windows.Forms.NumericUpDown();
             this.TrVArticleGroupOrder = new System.Windows.Forms.TreeView();
-            this.LbArtikel = new System.Windows.Forms.ListBox();
             this.LblArticleName = new System.Windows.Forms.Label();
             this.CmbArticle = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
@@ -52,7 +51,7 @@
             // 
             // CmdAddPosition
             // 
-            this.CmdAddPosition.Location = new System.Drawing.Point(1131, 206);
+            this.CmdAddPosition.Location = new System.Drawing.Point(928, 206);
             this.CmdAddPosition.Name = "CmdAddPosition";
             this.CmdAddPosition.Size = new System.Drawing.Size(121, 40);
             this.CmdAddPosition.TabIndex = 5;
@@ -62,7 +61,7 @@
             // 
             // CmdDeletePosition
             // 
-            this.CmdDeletePosition.Location = new System.Drawing.Point(1258, 206);
+            this.CmdDeletePosition.Location = new System.Drawing.Point(1055, 206);
             this.CmdDeletePosition.Name = "CmdDeletePosition";
             this.CmdDeletePosition.Size = new System.Drawing.Size(75, 40);
             this.CmdDeletePosition.TabIndex = 6;
@@ -72,14 +71,14 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(1131, 384);
+            this.TxtSearch.Location = new System.Drawing.Point(928, 384);
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(121, 23);
             this.TxtSearch.TabIndex = 7;
             // 
             // CmdSearch
             // 
-            this.CmdSearch.Location = new System.Drawing.Point(1258, 384);
+            this.CmdSearch.Location = new System.Drawing.Point(1055, 384);
             this.CmdSearch.Name = "CmdSearch";
             this.CmdSearch.Size = new System.Drawing.Size(75, 23);
             this.CmdSearch.TabIndex = 8;
@@ -97,15 +96,18 @@
             this.DgVOrders.Name = "DgVOrders";
             this.DgVOrders.ReadOnly = true;
             this.DgVOrders.RowHeadersVisible = false;
+            this.DgVOrders.RowHeadersWidth = 82;
             this.DgVOrders.RowTemplate.Height = 25;
             this.DgVOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgVOrders.Size = new System.Drawing.Size(203, 394);
             this.DgVOrders.TabIndex = 9;
+            this.DgVOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_CellDoubleClick);
             // 
             // colOrderNr
             // 
             this.colOrderNr.FillWeight = 40F;
             this.colOrderNr.HeaderText = "Auftragsnr";
+            this.colOrderNr.MinimumWidth = 10;
             this.colOrderNr.Name = "colOrderNr";
             this.colOrderNr.ReadOnly = true;
             this.colOrderNr.Width = 80;
@@ -113,6 +115,7 @@
             // colCustomerName
             // 
             this.colCustomerName.HeaderText = "Kundenname";
+            this.colCustomerName.MinimumWidth = 10;
             this.colCustomerName.Name = "colCustomerName";
             this.colCustomerName.ReadOnly = true;
             this.colCustomerName.Width = 120;
@@ -130,7 +133,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(1131, 138);
+            this.label1.Location = new System.Drawing.Point(928, 138);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 39;
@@ -139,7 +142,7 @@
             // CmbCustomer
             // 
             this.CmbCustomer.FormattingEnabled = true;
-            this.CmbCustomer.Location = new System.Drawing.Point(1131, 36);
+            this.CmbCustomer.Location = new System.Drawing.Point(928, 36);
             this.CmbCustomer.Name = "CmbCustomer";
             this.CmbCustomer.Size = new System.Drawing.Size(200, 23);
             this.CmbCustomer.TabIndex = 42;
@@ -148,7 +151,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(1131, 13);
+            this.label3.Location = new System.Drawing.Point(928, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 43;
@@ -156,7 +159,7 @@
             // 
             // CmdAddOrder
             // 
-            this.CmdAddOrder.Location = new System.Drawing.Point(1131, 321);
+            this.CmdAddOrder.Location = new System.Drawing.Point(928, 321);
             this.CmdAddOrder.Name = "CmdAddOrder";
             this.CmdAddOrder.Size = new System.Drawing.Size(121, 40);
             this.CmdAddOrder.TabIndex = 44;
@@ -166,7 +169,7 @@
             // 
             // CmdDeleteOrder
             // 
-            this.CmdDeleteOrder.Location = new System.Drawing.Point(1258, 321);
+            this.CmdDeleteOrder.Location = new System.Drawing.Point(1055, 321);
             this.CmdDeleteOrder.Name = "CmdDeleteOrder";
             this.CmdDeleteOrder.Size = new System.Drawing.Size(75, 40);
             this.CmdDeleteOrder.TabIndex = 45;
@@ -176,7 +179,7 @@
             // 
             // NumQuantity
             // 
-            this.NumQuantity.Location = new System.Drawing.Point(1132, 161);
+            this.NumQuantity.Location = new System.Drawing.Point(929, 161);
             this.NumQuantity.Name = "NumQuantity";
             this.NumQuantity.Size = new System.Drawing.Size(53, 23);
             this.NumQuantity.TabIndex = 46;
@@ -189,20 +192,11 @@
             this.TrVArticleGroupOrder.TabIndex = 47;
             this.TrVArticleGroupOrder.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TrVArticleGroupOrder_AfterSelect);
             // 
-            // LbArtikel
-            // 
-            this.LbArtikel.FormattingEnabled = true;
-            this.LbArtikel.ItemHeight = 15;
-            this.LbArtikel.Location = new System.Drawing.Point(930, 12);
-            this.LbArtikel.Name = "LbArtikel";
-            this.LbArtikel.Size = new System.Drawing.Size(182, 394);
-            this.LbArtikel.TabIndex = 48;
-            // 
             // LblArticleName
             // 
             this.LblArticleName.AutoSize = true;
             this.LblArticleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblArticleName.Location = new System.Drawing.Point(1131, 74);
+            this.LblArticleName.Location = new System.Drawing.Point(928, 74);
             this.LblArticleName.Name = "LblArticleName";
             this.LblArticleName.Size = new System.Drawing.Size(89, 20);
             this.LblArticleName.TabIndex = 36;
@@ -210,8 +204,9 @@
             // 
             // CmbArticle
             // 
+            this.CmbArticle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbArticle.FormattingEnabled = true;
-            this.CmbArticle.Location = new System.Drawing.Point(1131, 97);
+            this.CmbArticle.Location = new System.Drawing.Point(928, 97);
             this.CmbArticle.Name = "CmbArticle";
             this.CmbArticle.Size = new System.Drawing.Size(200, 23);
             this.CmbArticle.TabIndex = 37;
@@ -220,8 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1354, 430);
-            this.Controls.Add(this.LbArtikel);
+            this.ClientSize = new System.Drawing.Size(1148, 430);
             this.Controls.Add(this.TrVArticleGroupOrder);
             this.Controls.Add(this.NumQuantity);
             this.Controls.Add(this.CmdDeleteOrder);
@@ -240,6 +234,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "OrdersForm";
             this.Text = "Aufträge";
+            this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).EndInit();
             this.ResumeLayout(false);
@@ -263,7 +258,6 @@
         private DataGridViewTextBoxColumn colCustomerName;
         private NumericUpDown NumQuantity;
         private TreeView TrVArticleGroupOrder;
-        private ListBox LbArtikel;
         private Label LblArticleName;
         private ComboBox CmbArticle;
     }
