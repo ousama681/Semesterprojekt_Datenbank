@@ -70,28 +70,35 @@ namespace DBS_View.View
 
                 pos = new Position(quantity, 0, 0, articleId, orderId);
 
+                orderVM.positionList = (from p in context.Position
+                    where p.OrderId == orderId
+                    select p).ToList();
                 // Position in Datenbank speichern
-                if (DBUtilityOrder.SavePosition(pos))
+                // Wenn Artikel bereits existiert dann Menge zur Position hinzufügen
+                if (orderVM.positionList.Contains(pos))
                 {
-                    OrderVM orderVM = new OrderVM();
-                    orderVM.customerName = CmbCustomer.Text;
-                    orderVM.positionList.Add(pos);
-
-                    foreach (Position position in orderVM.positionList)
-                    {
-                        Article article = (from a in context.Article
-                            where a.Id == position.ArticleId
-                            select a).SingleOrDefault();
-
-                        DgVPositions.Rows.Add(new object[] { positionnr++, article.Name, quantity, (quantity * article.Price) }) ;
-                    }
+                    // Hier kommt der code hin um die Menge für die Position in der DB upzudaten
                 }
                 else
                 {
+                    // ansonsten Neue Position erstellen
+                    if (DBUtilityOrder.SavePosition(pos))
+                    {
+                        OrderVM orderVM = new OrderVM();
+                        orderVM.customerName = CmbCustomer.Text;
+                        orderVM.positionList.Add(pos);
 
+                        foreach (Position position in orderVM.positionList)
+                        {
+                            Article article = (from a in context.Article
+                                where a.Id == position.ArticleId
+                                select a).SingleOrDefault();
+
+                            DgVPositions.Rows.Add(new object[] { positionnr++, article.Name, quantity, (quantity * article.Price) });
+                        }
+                    }
                 }
             }
-
         }
 
         private void CmdDeletePosition_Click(object sender, EventArgs e)
@@ -106,19 +113,19 @@ namespace DBS_View.View
 
                 int positionNr =(int) selectedPosCells[0].Value;
                 int quantity = (int)selectedPosCells[2].Value;
-                int articleId = 0;
+                Article article;
                 int orderId = (int)selectedOrderCells[0].Value;
 
 
                 using (var context = new DataContext())
                 {
 
-                    articleId = (from a in context.Article
+                    article = (from a in context.Article
                                 where a.Name == selectedPosCells[1].Value.ToString()
-                                select a.Id).SingleOrDefault();
+                                select a).SingleOrDefault();
 
                     pos = (from p  in context.Position
-                           where p.Article.Id == articleId
+                           where p.Article.Name == article.Name
                            select p).SingleOrDefault();
 
 
