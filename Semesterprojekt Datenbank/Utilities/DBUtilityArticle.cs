@@ -16,15 +16,15 @@ namespace Semesterprojekt_Datenbank.Utilities
         MWST mwst = new MWST();
 
 
-        public void Create(ArticleVm articleVm)
+        public bool Create(ArticleVm orderVM)
         {
             try
             {
                 using (var context = new DataContext())
                 {
 
-                    var articleGroupId = GetArticleGroupId(context, articleVm);
-                    Article article = new Article(articleVm.Name, articleVm.Nr, articleVm.Price, articleGroupId, 1);
+                    var articleGroupId = GetArticleGroupId(context, orderVM);
+                    Article article = new Article(orderVM.Name, orderVM.Nr, orderVM.Price, articleGroupId, 1);
                     context.Add(article);
                     modelBuilder.Entity<Article>().HasData(new Article()
                     {
@@ -35,21 +35,23 @@ namespace Semesterprojekt_Datenbank.Utilities
                         Mwstid = article.Mwstid
                     });
                     context.SaveChanges();
-                    ArticleVm.ArticleList.Add(articleVm);
+                    ArticleVm.ArticleList.Add(orderVM);
                 }
             }
             catch (Microsoft.Data.SqlClient.SqlException e)
             {
                 MessageBox.Show("Artikel konnte nicht gespeichert werden. Keine Verbindung zur Datenbank!\r\n \r\n" +
                                 "Error Message: \r\n" + e.Message);
-                return;
+                return false;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Artikel konnte nicht gespeichert werden. \r\n \r\n" +
                                 "Error Message: \r\n" + e.Message);
-                return;
+                return false;
             }
+
+            return true;
         }
 
         private int GetArticleGroupId(DataContext context, ArticleVm articleVm)
@@ -208,6 +210,16 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 MessageBox.Show("Fehler beim auslesen der Daten von der Datenbank. \r\n \r\n" +
                                 "Error Message: \r\n" + e.Message);
+            }
+        }
+
+        public static Article FindArticle(string articleName)
+        {
+            using (var context = new DataContext())
+            {
+                return (from a in context.Article
+                        where a.Name == articleName
+                        select a).SingleOrDefault();
             }
         }
     }

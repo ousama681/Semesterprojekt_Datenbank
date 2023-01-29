@@ -56,48 +56,102 @@ namespace DBS_View.View
 
         private void CmdAddPosition_Click(object sender, EventArgs e)
         {
-            OrderVM pos = new OrderVM();
-            pos.positionNr = positionnr++;
-            pos.articleName = CmbArticle.Text;
-            pos.quantity = Convert.ToInt32(NumQuantity.Value);
-            orderVM.customerName = CmbCustomer.Text;
-            orderVM.PositionList.Add(pos);
-            LbPositionen.Items.Clear();
-            LbPositionen.Items.Add(orderVM.customerName);
-            foreach (OrderVM position in orderVM.PositionList)
+
+            Position pos;
+
+            int quantity = Convert.ToInt32(NumQuantity.Value);
+            int articleId;
+
+            //orderId organisieren durch dataGrid
+            var SelectedOrderCells = DgVOrders.SelectedCells;
+            int orderId = (int)SelectedOrderCells[0].Value;
+
+            using (var context = new DataContext())
             {
-                LbPositionen.Items.Add("");
-                LbPositionen.Items.Add(position.GetPosition());
+                articleId = (from a in context.Article
+                    where a.Name == CmbArticle.Text
+                    select a.Id).SingleOrDefault();
+
+
+                pos = new Position(quantity, 0, 0, articleId, orderId);
+
+                //orderVM.positionNr
+                //    //orderVM.articleName
+                //    //orderVM.quantity
+                //    orderVM.customerName
+
+                // Position in Datenbank speichern
+                if (DBUtilityOrder.SavePosition(pos))
+                {
+                    OrderVM orderVM = new OrderVM();
+                    //orderVM.articleName = CmbArticle.Text;
+                    //orderVM.quantity = Convert.ToInt32(NumQuantity.Value);
+                    orderVM.customerName = CmbCustomer.Text;
+                    orderVM.positionList.Add(pos);
+
+
+
+                    // Position in ´DataGridview packen
+
+                    //pos.Quantity = orderVM.quantity;
+                    //pos.Article = DBUtilityArticle.FindArticle(orderVM.articleName);
+
+
+                    foreach (Position position in orderVM.positionList)
+                    {
+                        Article article = (from a in context.Article
+                            where a.Id == position.ArticleId
+                            select a).SingleOrDefault();
+
+                        DgVPositions.Rows.Add(new object[] { positionnr++, article.Name, quantity, (quantity * article.Price) }) ;
+                        //LbPositionen.Items.Add("");
+                        //LbPositionen.Items.Add(position.PositionToString(orderVM.positionNr));
+                    }
+
+
+                }
+                else
+                {
+
+                }
             }
+
         }
 
         private void CmdDeletePosition_Click(object sender, EventArgs e)
         {
-            if (LbPositionen.SelectedItem != null && LbPositionen.SelectedIndex % 2 == 0 && LbPositionen.SelectedIndex > 0)
-            {
-                string removeableItem = LbPositionen.SelectedItem.ToString();
-                int removeableIndex = LbPositionen.SelectedIndex;
-                OrderVM removePos = new OrderVM();
-                LbPositionen.Items.RemoveAt(removeableIndex);
-                LbPositionen.Items.RemoveAt(removeableIndex - 1);
-                foreach (OrderVM position in orderVM.PositionList)
-                {
-                    if (position.GetPosition().Equals(removeableItem))
-                        removePos = position;
-                }
-                orderVM.PositionList.Remove(removePos);
-                positionnr--;
-                LbPositionen.Items.Clear();
-                LbPositionen.Items.Add(orderVM.customerName);
-                int newPosNr = 1;
-                foreach (OrderVM pos in orderVM.PositionList)
-                {
-                    pos.positionNr = newPosNr++;
-                    LbPositionen.Items.Add("");
-                    LbPositionen.Items.Add(pos.GetPosition());
-                }
+            //if (LbPositionen.SelectedItem != null && LbPositionen.SelectedIndex % 2 == 0 && LbPositionen.SelectedIndex > 0)
+            //{
+            //    string removeableItem = LbPositionen.SelectedItem.ToString();
+            //    int removeableIndex = LbPositionen.SelectedIndex;
+            //    Position removePos = new Position();
+            //    LbPositionen.Items.RemoveAt(removeableIndex);
+            //    LbPositionen.Items.RemoveAt(removeableIndex - 1);
+            //    foreach (Position position in orderVM.positionList)
+            //    {
+            //        if (position.PositionToString(orderVM.positionNr).Equals(removeableItem))
+            //            removePos = position;
+            //    }
+            //    orderVM.positionList.Remove(removePos);
+            //    // wieso zählen wir hier die Positionsnummer zurück?
+            //    // Mal angenommen ich habe 5 Positionen und ich lösche Position 3, dann würde die Positionsnummer von 5 auf 4 zurückfallen, wenn ich jetzt
+            //    // eine neue Position hinzufuege, wird diese mit PositionsNr 5 gespeichert, aber diese existiert ja schon.
+            //    // ich persönlich würde einfach weiter laufen lassen, oder wir müssen alle neu durchnummerieren.
+            //    // wir können das ja noch zusammen besprechen.
+            //    positionnr--;
+            //    LbPositionen.Items.Clear();
+            //    LbPositionen.Items.Add(orderVM.customerName);
+            //    int newPosNr = 1;
+            //    foreach (Position pos in orderVM.positionList)
+            //    {
+            //        // Hier brauchen wir wieder die Positionsnummer.
+            //        // Am einfachsten wäre es, der Position ein neues Feld hinzuzufuegen mit der Nr. Da dies auch OOP entspricht. 
+            //        pos.positionNr = newPosNr++;
+            //        LbPositionen.Items.Add("");
+            //        LbPositionen.Items.Add(pos.GetPosition());
+            //    }
 
-            }
+            //}
         }
 
         private void CmdAddOrder_Click(object sender, EventArgs e)
@@ -107,26 +161,36 @@ namespace DBS_View.View
             string customerName = CmbCustomer.Text;
             if (customerName.Length != 0)
             {
+
                 orderVM.customerName = customerName;
                 orderVM.orderDate = DateTime.Now;
-                orderVM.CreateOrder(orderVM);
 
-                // This Part is only needed to get the saved Order, so we can Display the OrderId on the UI
-                // Maybe we can add a Property to the OrderVM and Order Relation (OrderNumber)
-                using (var context = new DataContext())
-                {
-                    int customerId = (from c in context.Customer
-                                      where c.Name == customerName
-                                      select c.Id).FirstOrDefault();
+                if (orderVM.CreateOrder(orderVM)) {
 
-                    savedOrder = (from o in context.Order
-                                  where o.CustomerId == customerId && o.Date == orderVM.orderDate
-                                  select o).FirstOrDefault();
+                    // This Part is only needed to get the saved Order, so we can Display the OrderId on the UI
+                    // Maybe we can add a Property to the OrderVM and Order Relation (OrderNumber)
+                    using (var context = new DataContext())
+                    {
+                        int customerId = (from c in context.Customer
+                            where c.Name == customerName
+                            select c.Id).FirstOrDefault();
+
+                        savedOrder = (from o in context.Order
+                            where o.CustomerId == customerId && o.Date == orderVM.orderDate
+                            select o).FirstOrDefault();
+                    }
+                    DgVOrders.Rows.Add(savedOrder.Id, customerName);
+
+                    // DatagridView Clearen
+                    // OrderVM zurücksetzen?
+                    //LbPositionen.Items.Clear();
+                    //orderVM.PositionList.Clear();
+                    positionnr = 1;
                 }
-                DgVOrders.Rows.Add(savedOrder.Id, customerName);
-                LbPositionen.Items.Clear();
-                orderVM.PositionList.Clear();
-                positionnr = 1;
+                else
+                {
+                    // Display Error that Adding Order failed
+                }
             }
         }
 
@@ -161,45 +225,8 @@ namespace DBS_View.View
 
         private void DgVOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            LbPositionen.Items.Clear();
-            orderVM.PositionList.Clear();
-            positionnr = 1;
 
-
-            var cells = DgVOrders.SelectedCells;
-            string customerName = cells[1].Value.ToString();
-            List<OrderVM> positions = new List<OrderVM>();
-
-            using (var context = new DataContext())
-            {
-                int customerId = (from c in context.Customer
-                    where c.Name == customerName
-                    select c.Id).FirstOrDefault();
-
-                var savedOrder = (from o in context.Order
-                    where o.CustomerId == customerId && o.Date == orderVM.orderDate
-                    select o.Id).FirstOrDefault();
-                
-                var positionsQuery = (from pos in context.Position
-                                where savedOrder == pos.OrderId
-                                    select pos).ToList();
-                int posNr = 1;
-                LbPositionen.Items.Add(customerName);
-                foreach (var position in positionsQuery)
-                {
-
-                    var articleNameQuery = (from article in context.Article
-                        where article.Id == position.Id
-                            select article.Name).FirstOrDefault();
-
-                    OrderVM vm = new OrderVM(posNr++, articleNameQuery, position.Quantity);
-                    LbPositionen.Items.Add(vm.GetPosition());
-                    LbPositionen.Items.Add("");
-                }
-            }
-
-            
-
+           
             
         }
 
@@ -221,6 +248,72 @@ namespace DBS_View.View
                     DgVOrders.Rows.Add(order.Id, customerName);
                 }
             }
+        }
+
+        private void DgVOrders_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            // DgView Positions Clearen
+            // OrderVm Positionen Clearen
+
+            //LbPositionen.Items.Clear();
+            //orderVM.PositionList.Clear();
+            positionnr = 1;
+
+            DgVPositions.Rows.Clear();
+
+
+            if (DgVOrders.SelectedRows.Count != 0)
+            {
+
+                var cells = DgVOrders.SelectedCells;
+                string customerName = cells[1].Value.ToString();
+                List<OrderVM> orderVms = new List<OrderVM>();
+
+                using (var context = new DataContext())
+                {
+                    int customerId = (from c in context.Customer
+                                      where c.Name == customerName
+                                      select c.Id).FirstOrDefault();
+
+                    var clickedOrder = (from o in context.Order
+                                        where o.Customer.Name == customerName && o.Id == (int)cells[0].Value
+                                        select o).FirstOrDefault();
+
+                    clickedOrder.Customer = (from c in context.Customer
+                                             where c.Id == clickedOrder.CustomerId
+                                             select c).SingleOrDefault();
+
+                    clickedOrder.Positions = (from p in context.Position
+                                              where p.OrderId == clickedOrder.Id
+                                              select p).ToList();
+
+                    //var positions = (from pos in context.Position
+                    //                where clickedOrder.Id == pos.OrderId
+                    //                    select pos).ToList();
+
+                    int posNr = 1;
+
+                    foreach (var position in clickedOrder.Positions)
+                    {
+
+                        Article article = (from a in context.Article
+                                           where a.Id == position.ArticleId
+                                           select a).SingleOrDefault();
+
+                        DgVPositions.Rows.Add(new object[] { positionnr++, article.Name, position.Quantity, (position.Quantity * article.Price) });
+
+                        //OrderVM vm = new OrderVM(clickedOrder.Positions, customerName, clickedOrder.Id, clickedOrder.Date);
+
+                        // Position der DatagridView hinzufuegen
+                        //LbPositionen.Items.Add(vm.GetPosition());
+                        //LbPositionen.Items.Add("");
+                    }
+                }
+
+            }
+
+
+
         }
     }
 }

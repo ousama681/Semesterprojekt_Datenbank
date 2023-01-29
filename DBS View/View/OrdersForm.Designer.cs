@@ -35,7 +35,6 @@
             this.DgVOrders = new System.Windows.Forms.DataGridView();
             this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LbPositionen = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.CmbCustomer = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,8 +44,14 @@
             this.TrVArticleGroupOrder = new System.Windows.Forms.TreeView();
             this.LblArticleName = new System.Windows.Forms.Label();
             this.CmbArticle = new System.Windows.Forms.ComboBox();
+            this.DgVPositions = new System.Windows.Forms.DataGridView();
+            this.Positionsnr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Articlename = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PriceBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgVPositions)).BeginInit();
             this.SuspendLayout();
             // 
             // CmdAddPosition
@@ -100,9 +105,10 @@
             this.DgVOrders.RowHeadersWidth = 82;
             this.DgVOrders.RowTemplate.Height = 25;
             this.DgVOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgVOrders.Size = new System.Drawing.Size(226, 394);
+            this.DgVOrders.Size = new System.Drawing.Size(227, 394);
             this.DgVOrders.TabIndex = 9;
             this.DgVOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_CellDoubleClick);
+            this.DgVOrders.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_RowEnter);
             // 
             // colOrderNr
             // 
@@ -120,15 +126,6 @@
             this.colCustomerName.Name = "colCustomerName";
             this.colCustomerName.ReadOnly = true;
             this.colCustomerName.Width = 143;
-            // 
-            // LbPositionen
-            // 
-            this.LbPositionen.FormattingEnabled = true;
-            this.LbPositionen.ItemHeight = 15;
-            this.LbPositionen.Location = new System.Drawing.Point(244, 13);
-            this.LbPositionen.Name = "LbPositionen";
-            this.LbPositionen.Size = new System.Drawing.Size(457, 394);
-            this.LbPositionen.TabIndex = 10;
             // 
             // label1
             // 
@@ -198,7 +195,6 @@
             // 
             // TrVArticleGroupOrder
             // 
-
             this.TrVArticleGroupOrder.Location = new System.Drawing.Point(707, 12);
             this.TrVArticleGroupOrder.Name = "TrVArticleGroupOrder";
             this.TrVArticleGroupOrder.Size = new System.Drawing.Size(215, 394);
@@ -224,11 +220,56 @@
             this.CmbArticle.Size = new System.Drawing.Size(200, 23);
             this.CmbArticle.TabIndex = 37;
             // 
+            // DgVPositions
+            // 
+            this.DgVPositions.AllowUserToAddRows = false;
+            this.DgVPositions.AllowUserToDeleteRows = false;
+            this.DgVPositions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgVPositions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Positionsnr,
+            this.Articlename,
+            this.Quantity,
+            this.PriceBrutto});
+            this.DgVPositions.Location = new System.Drawing.Point(245, 12);
+            this.DgVPositions.Name = "DgVPositions";
+            this.DgVPositions.ReadOnly = true;
+            this.DgVPositions.RowHeadersVisible = false;
+            this.DgVPositions.RowHeadersWidth = 82;
+            this.DgVPositions.RowTemplate.Height = 25;
+            this.DgVPositions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgVPositions.Size = new System.Drawing.Size(404, 394);
+            this.DgVPositions.TabIndex = 48;
+            // 
+            // Positionsnr
+            // 
+            this.Positionsnr.HeaderText = "Positionnr";
+            this.Positionsnr.Name = "Positionsnr";
+            this.Positionsnr.ReadOnly = true;
+            // 
+            // Articlename
+            // 
+            this.Articlename.HeaderText = "Artikelname";
+            this.Articlename.Name = "Articlename";
+            this.Articlename.ReadOnly = true;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Anzahl";
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            // 
+            // PriceBrutto
+            // 
+            this.PriceBrutto.HeaderText = "Preis";
+            this.PriceBrutto.Name = "PriceBrutto";
+            this.PriceBrutto.ReadOnly = true;
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 430);
+            this.ClientSize = new System.Drawing.Size(1142, 420);
+            this.Controls.Add(this.DgVPositions);
             this.Controls.Add(this.TrVArticleGroupOrder);
             this.Controls.Add(this.NumQuantity);
             this.Controls.Add(this.CmdDeleteOrder);
@@ -238,7 +279,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CmbArticle);
             this.Controls.Add(this.LblArticleName);
-            this.Controls.Add(this.LbPositionen);
             this.Controls.Add(this.DgVOrders);
             this.Controls.Add(this.CmdSearch);
             this.Controls.Add(this.TxtSearch);
@@ -250,6 +290,7 @@
             this.Load += new System.EventHandler(this.OrdersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DgVPositions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -261,7 +302,6 @@
         private TextBox TxtSearch;
         private Button CmdSearch;
         private DataGridView DgVOrders;
-        private ListBox LbPositionen;
         private Label label1;
         private ComboBox CmbCustomer;
         private Label label3;
@@ -273,5 +313,10 @@
         private ComboBox CmbArticle;
         private DataGridViewTextBoxColumn colOrderNr;
         private DataGridViewTextBoxColumn colCustomerName;
+        private DataGridView DgVPositions;
+        private DataGridViewTextBoxColumn Positionsnr;
+        private DataGridViewTextBoxColumn Articlename;
+        private DataGridViewTextBoxColumn Quantity;
+        private DataGridViewTextBoxColumn PriceBrutto;
     }
 }

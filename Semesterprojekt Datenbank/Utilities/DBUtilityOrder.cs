@@ -15,10 +15,10 @@ namespace Semesterprojekt_Datenbank.Utilities
     {
         ModelBuilder modelBuilder = new ModelBuilder();
 
-        public void Create(OrderVM item)
+        public bool Create(OrderVM orderVM)
         {
             Order savedOrder = null;
-            string customerName = item.customerName;
+            string customerName = orderVM.customerName;
             if (customerName.Length != 0)
             {
                 using (var context = new DataContext())
@@ -27,27 +27,34 @@ namespace Semesterprojekt_Datenbank.Utilities
                                       where c.Name == customerName
                                       select c.Id).FirstOrDefault();
 
-                    var order = new Order() { CustomerId = customerId, Date = item.orderDate };
+                    var order = new Order() { CustomerId = customerId, Date = orderVM.orderDate };
                     context.Order.Add(order);
                     context.SaveChanges();
                     var orderId = (from o in context.Order
-                                   where o.CustomerId == customerId && o.Date == item.orderDate
+                                   where o.CustomerId == customerId && o.Date == orderVM.orderDate
                                        select o.Id).FirstOrDefault();
-                    foreach (var pos in item.PositionList)
+
+
+
+                    foreach (var pos in orderVM.positionList)
                     {
                         var articleId = (from article in context.Article
-                            where pos.articleName == article.Name
+                            where pos.Article.Name == article.Name
                             select article.Id).FirstOrDefault();
 
-                        var position = new Position(pos.quantity, 0, 0, articleId, orderId);
+                        var position = new Position(pos.Quantity, 0, 0, articleId, orderId);
                         context.Position.Add(position);
                     }
+
+
                     context.SaveChanges();
 
 
                     //savedOrder = context.Order.Find(order.Id);
                 }
             }
+
+            return false;
         }
 
         public bool Delete(OrderVM item)
@@ -115,6 +122,23 @@ namespace Semesterprojekt_Datenbank.Utilities
                                 "Error Message: \r\n" + e.Message);
                 return null;
             }
+        }
+
+        public static bool SavePosition(Position position)
+        {
+            using (var context = new DataContext())
+            {
+                if (context.Position.Add(position) != null)
+                {
+                    context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    // Fehlermeldung ausgeben
+                }
+            }
+            return false;
         }
     }
 }

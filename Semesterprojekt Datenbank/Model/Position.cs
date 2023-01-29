@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Syncfusion.Windows.Forms.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,11 @@ namespace Semesterprojekt_Datenbank.Model
         public Position()
         {
 
+        }
+
+        public string PositionToString(int positionNr)
+        {
+            return "Pos Nr: " + positionNr + "   |   Artikel: " + Article.Name + "   |   Anzahl: " + Quantity;
         }
     }
 }
