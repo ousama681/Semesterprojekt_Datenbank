@@ -45,7 +45,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                             select article.Id).FirstOrDefault();
 
                         // TODO: muss noch nummer PosNr vergeben
-                        var position = new Position(0, pos.Quantity, 0, 0, articleId, orderId);
+                        var position = new Position(pos.Quantity, 0, 0, articleId, orderId);
                         context.Position.Add(position);
                     }
 

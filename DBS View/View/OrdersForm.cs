@@ -72,8 +72,7 @@ namespace DBS_View.View
                     where a.Name == CmbArticle.Text
                     select a.Id).SingleOrDefault();
 
-                // TODO: muss noch nummer PosNr vergeben
-                pos = new Position(positionnr, quantity, 0, 0, articleId, orderId);
+                pos = new Position(quantity, 0, 0, articleId, orderId);
 
                 //orderVM.positionNr
                 //    //orderVM.articleName
@@ -120,41 +119,6 @@ namespace DBS_View.View
 
         private void CmdDeletePosition_Click(object sender, EventArgs e)
         {
-            //if (LbPositionen.SelectedItem != null && LbPositionen.SelectedIndex % 2 == 0 && LbPositionen.SelectedIndex > 0)
-            //{
-            //    string removeableItem = LbPositionen.SelectedItem.ToString();
-            //    int removeableIndex = LbPositionen.SelectedIndex;
-            //    Position removePos = new Position();
-            //    LbPositionen.Items.RemoveAt(removeableIndex);
-            //    LbPositionen.Items.RemoveAt(removeableIndex - 1);
-            //    foreach (Position position in orderVM.positionList)
-            //    {
-            //        if (position.PositionToString(orderVM.positionNr).Equals(removeableItem))
-            //            removePos = position;
-            //    }
-            //    orderVM.positionList.Remove(removePos);
-            //    // wieso zählen wir hier die Positionsnummer zurück?
-            //    // Mal angenommen ich habe 5 Positionen und ich lösche Position 3, dann würde die Positionsnummer von 5 auf 4 zurückfallen, wenn ich jetzt
-            //    // eine neue Position hinzufuege, wird diese mit PositionsNr 5 gespeichert, aber diese existiert ja schon.
-            //    // ich persönlich würde einfach weiter laufen lassen, oder wir müssen alle neu durchnummerieren.
-            //    // wir können das ja noch zusammen besprechen.
-            //    positionnr--;
-            //    LbPositionen.Items.Clear();
-            //    LbPositionen.Items.Add(orderVM.customerName);
-            //    int newPosNr = 1;
-            //    foreach (Position pos in orderVM.positionList)
-            //    {
-            //        // Hier brauchen wir wieder die Positionsnummer.
-            //        // Am einfachsten wäre es, der Position ein neues Feld hinzuzufuegen mit der Nr. Da dies auch OOP entspricht. 
-            //        pos.positionNr = newPosNr++;
-            //        LbPositionen.Items.Add("");
-            //        LbPositionen.Items.Add(pos.GetPosition());
-            //    }
-
-            //}
-
-            // prüfe ob Position angewählt
-
             if (DgVPositions.SelectedRows.Count != 0)
             {
 
@@ -177,7 +141,7 @@ namespace DBS_View.View
                                 select a.Id).SingleOrDefault();
 
                     pos = (from p  in context.Position
-                           where p.PositionNr == positionNr && p.ArticleId == articleId
+                           where p.Article.Id == articleId
                            select p).SingleOrDefault();
 
 
