@@ -190,6 +190,9 @@ namespace DBS_View.View
 
                         DgVOrders_RowEnter(null, null);
 
+                        // Wir müssen hier irgendwie die positionsnummern aktualisieren
+                        // Wir können nach dem UI Updat edie PosNr des DataGridView übernehmen und dann einen Update Table Position machen auf die Order.Positions.
+
                     } else
                   {
                         // Fehlermeldung ausgeben
