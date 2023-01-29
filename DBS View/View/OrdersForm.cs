@@ -56,13 +56,9 @@ namespace DBS_View.View
 
         private void CmdAddPosition_Click(object sender, EventArgs e)
         {
-
             Position pos;
-            
             int quantity = Convert.ToInt32(NumQuantity.Value);
             int articleId;
-
-            //orderId organisieren durch dataGrid
             var SelectedOrderCells = DgVOrders.SelectedCells;
             int orderId = (int)SelectedOrderCells[0].Value;
 
@@ -74,27 +70,12 @@ namespace DBS_View.View
 
                 pos = new Position(quantity, 0, 0, articleId, orderId);
 
-                //orderVM.positionNr
-                //    //orderVM.articleName
-                //    //orderVM.quantity
-                //    orderVM.customerName
-
                 // Position in Datenbank speichern
                 if (DBUtilityOrder.SavePosition(pos))
                 {
                     OrderVM orderVM = new OrderVM();
-                    //orderVM.articleName = CmbArticle.Text;
-                    //orderVM.quantity = Convert.ToInt32(NumQuantity.Value);
                     orderVM.customerName = CmbCustomer.Text;
                     orderVM.positionList.Add(pos);
-
-
-
-                    // Position in ´DataGridview packen
-
-                    //pos.Quantity = orderVM.quantity;
-                    //pos.Article = DBUtilityArticle.FindArticle(orderVM.articleName);
-
 
                     foreach (Position position in orderVM.positionList)
                     {
@@ -103,11 +84,7 @@ namespace DBS_View.View
                             select a).SingleOrDefault();
 
                         DgVPositions.Rows.Add(new object[] { positionnr++, article.Name, quantity, (quantity * article.Price) }) ;
-                        //LbPositionen.Items.Add("");
-                        //LbPositionen.Items.Add(position.PositionToString(orderVM.positionNr));
                     }
-
-
                 }
                 else
                 {
@@ -151,11 +128,7 @@ namespace DBS_View.View
                         context.SaveChanges();
 
                         // Update UI
-
                         DgVOrders_RowEnter(null, null);
-
-                        // Wir müssen hier irgendwie die positionsnummern aktualisieren
-                        // Wir können nach dem UI Updat edie PosNr des DataGridView übernehmen und dann einen Update Table Position machen auf die Order.Positions.
 
                     } else
                   {
