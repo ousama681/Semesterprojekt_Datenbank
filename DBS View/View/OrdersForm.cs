@@ -58,7 +58,7 @@ namespace DBS_View.View
         {
 
             Position pos;
-
+            
             int quantity = Convert.ToInt32(NumQuantity.Value);
             int articleId;
 
@@ -72,8 +72,8 @@ namespace DBS_View.View
                     where a.Name == CmbArticle.Text
                     select a.Id).SingleOrDefault();
 
-
-                pos = new Position(quantity, 0, 0, articleId, orderId);
+                // TODO: muss noch nummer PosNr vergeben
+                pos = new Position(positionnr, quantity, 0, 0, articleId, orderId);
 
                 //orderVM.positionNr
                 //    //orderVM.articleName
@@ -152,6 +152,56 @@ namespace DBS_View.View
             //    }
 
             //}
+
+            // prüfe ob Position angewählt
+
+            if (DgVPositions.SelectedRows.Count != 0)
+            {
+
+                Position pos;
+
+                var selectedPosCells = DgVPositions.SelectedCells;
+                var selectedOrderCells = DgVOrders.SelectedCells;
+
+                int positionNr =(int) selectedPosCells[0].Value;
+                int quantity = (int)selectedPosCells[2].Value;
+                int articleId = 0;
+                int orderId = (int)selectedOrderCells[0].Value;
+
+
+                using (var context = new DataContext())
+                {
+
+                    articleId = (from a in context.Article
+                                where a.Name == selectedPosCells[1].Value.ToString()
+                                select a.Id).SingleOrDefault();
+
+                    pos = (from p  in context.Position
+                           where p.PositionNr == positionNr && p.ArticleId == articleId
+                           select p).SingleOrDefault();
+
+
+                    if (context.Position.Remove(pos) != null)
+                    {
+
+                        context.SaveChanges();
+
+                        // Update UI
+
+                        DgVOrders_RowEnter(null, null);
+
+                    } else
+                  {
+                        // Fehlermeldung ausgeben
+                    }
+
+                }
+            }
+
+
+            // lösche position aus Context und Speichere
+
+
         }
 
         private void CmdAddOrder_Click(object sender, EventArgs e)
@@ -237,11 +287,10 @@ namespace DBS_View.View
             {
                 orders = (from o in context.Order
                     select o).ToList();
-
+                string customerName;
                 foreach (Order order in orders)
                 {
-
-                    string customerName = (from c in context.Customer
+                    customerName = (from c in context.Customer
                         where c.Id == order.CustomerId
                         select c.Name).FirstOrDefault();
 
@@ -295,7 +344,6 @@ namespace DBS_View.View
 
                     foreach (var position in clickedOrder.Positions)
                     {
-
                         Article article = (from a in context.Article
                                            where a.Id == position.ArticleId
                                            select a).SingleOrDefault();

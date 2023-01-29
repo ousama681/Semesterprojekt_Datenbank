@@ -14,6 +14,7 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
         public void Visit(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Position>().Property(p => p.ArticleId).IsRequired();
+            modelBuilder.Entity<Position>().Property(p => p.PositionNr).IsRequired();
             modelBuilder.Entity<Position>().Property(p => p.Quantity).IsRequired();
             modelBuilder.Entity<Position>().Property(p => p.PriceNetto).IsRequired();
 

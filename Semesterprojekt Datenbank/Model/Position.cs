@@ -10,6 +10,7 @@ namespace Semesterprojekt_Datenbank.Model
     public class Position
     {
         public int Id { get; set; }
+        public int PositionNr { get; set; }
         public int Quantity { get; set; }
         public decimal PriceNetto { get; set; }
         public decimal PriceBrutto { get; set; }
@@ -18,8 +19,9 @@ namespace Semesterprojekt_Datenbank.Model
         public virtual Article Article { get; set; }
         public virtual Order Order { get; set; }
 
-        public Position(int quantity, decimal priceNetto, decimal priceBrutto, int articleId, int orderId)
+        public Position(int positionNr, int quantity, decimal priceNetto, decimal priceBrutto, int articleId, int orderId)
         {
+            PositionNr = positionNr;
             Quantity = quantity;
             PriceNetto = priceNetto;
             PriceBrutto = priceBrutto;
@@ -32,9 +34,9 @@ namespace Semesterprojekt_Datenbank.Model
 
         }
 
-        public string PositionToString(int positionNr)
+        public string PositionToString()
         {
-            return "Pos Nr: " + positionNr + "   |   Artikel: " + Article.Name + "   |   Anzahl: " + Quantity;
+            return "Pos Nr: " + PositionNr + "   |   Artikel: " + Article.Name + "   |   Anzahl: " + Quantity;
         }
     }
 }

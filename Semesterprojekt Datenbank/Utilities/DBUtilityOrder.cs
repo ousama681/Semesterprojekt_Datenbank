@@ -19,8 +19,10 @@ namespace Semesterprojekt_Datenbank.Utilities
         {
             Order savedOrder = null;
             string customerName = orderVM.customerName;
+
             if (customerName.Length != 0)
             {
+
                 using (var context = new DataContext())
                 {
                     int customerId = (from c in context.Customer
@@ -42,15 +44,12 @@ namespace Semesterprojekt_Datenbank.Utilities
                             where pos.Article.Name == article.Name
                             select article.Id).FirstOrDefault();
 
-                        var position = new Position(pos.Quantity, 0, 0, articleId, orderId);
+                        // TODO: muss noch nummer PosNr vergeben
+                        var position = new Position(0, pos.Quantity, 0, 0, articleId, orderId);
                         context.Position.Add(position);
                     }
 
-
                     context.SaveChanges();
-
-
-                    //savedOrder = context.Order.Find(order.Id);
                 }
             }
 
