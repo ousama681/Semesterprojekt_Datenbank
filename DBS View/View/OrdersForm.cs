@@ -78,11 +78,14 @@ namespace DBS_View.View
                 if (orderVM.positionList.Contains(pos))
                 {
                     // Hier kommt der code hin um die Menge für die Position in der DB upzudaten
+                    DBUtilityOrder.SaveExistingPosition(pos);
+                    // Update UI
+                    DgVOrders_RowEnter(null, null);
                 }
                 else
                 {
                     // ansonsten Neue Position erstellen
-                    if (DBUtilityOrder.SavePosition(pos))
+                    if (DBUtilityOrder.SaveNewPosition(pos))
                     {
                         OrderVM orderVM = new OrderVM();
                         orderVM.customerName = CmbCustomer.Text;

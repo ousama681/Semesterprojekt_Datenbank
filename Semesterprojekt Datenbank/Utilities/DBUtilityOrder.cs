@@ -123,12 +123,38 @@ namespace Semesterprojekt_Datenbank.Utilities
             }
         }
 
-        public static bool SavePosition(Position position)
+        public static bool SaveNewPosition(Position position)
         {
             using (var context = new DataContext())
             {
-                if (context.Position.Add(position) != null)
+                if (position.Quantity > 0)
                 {
+                    if (context.Position.Add(position) != null)
+                    {
+                        context.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        // Fehlermeldung ausgeben
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool SaveExistingPosition(Position pos)
+        {
+            using (var context = new DataContext())
+            {
+                if (pos.Quantity > 0)
+                {
+
+                    Position savedPosition = (from p in context.Position
+                        where p.ArticleId == pos.ArticleId
+                        select p).SingleOrDefault();
+
+                    savedPosition.Quantity += pos.Quantity;
                     context.SaveChanges();
                     return true;
                 }
@@ -137,6 +163,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                     // Fehlermeldung ausgeben
                 }
             }
+
             return false;
         }
     }
