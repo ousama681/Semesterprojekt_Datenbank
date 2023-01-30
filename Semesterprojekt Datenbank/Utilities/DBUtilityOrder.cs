@@ -50,6 +50,8 @@ namespace Semesterprojekt_Datenbank.Utilities
                     }
 
                     context.SaveChanges();
+
+                    return true;
                 }
             }
 

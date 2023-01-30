@@ -174,13 +174,16 @@ namespace DBS_View.View
                             where o.CustomerId == customerId && o.Date == orderVM.orderDate
                             select o).FirstOrDefault();
                     }
-                    DgVOrders.Rows.Add(savedOrder.Id, customerName);
 
                     // DatagridView Clearen
                     // OrderVM zurücksetzen?
                     //LbPositionen.Items.Clear();
                     //orderVM.PositionList.Clear();
                     positionnr = 1;
+
+                    // UI-Update
+                    OrdersForm_Load(null, null);
+
                 }
                 else
                 {
@@ -191,7 +194,21 @@ namespace DBS_View.View
 
         private void CmdDeleteOrder_Click(object sender, EventArgs e)
         {
+            var selectedOrderCells = DgVOrders.SelectedCells;
+            int orderId = (int)selectedOrderCells[0].Value;
+            using (var context = new DataContext())
+            {
 
+                Order order = (from o in context.Order
+                               where o.Id == orderId
+                                   select o).SingleOrDefault();
+
+                context.Order.Remove(order);
+                context.SaveChanges();
+
+                // UI-Update
+                OrdersForm_Load(null, null);
+            }
         }
         private void TrVArticleGroupOrder_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -227,6 +244,7 @@ namespace DBS_View.View
 
         private void OrdersForm_Load(object sender, EventArgs e)
         {
+            DgVOrders.Rows.Clear();
             List<Order> orders;
             using (var context = new DataContext())
             {
