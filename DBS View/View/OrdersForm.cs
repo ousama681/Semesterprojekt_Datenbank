@@ -73,12 +73,12 @@ namespace DBS_View.View
                 orderVM.positionList = (from p in context.Position
                     where p.OrderId == orderId
                     select p).ToList();
-                // Position in Datenbank speichern
+
                 // Wenn Artikel bereits existiert dann Menge zur Position hinzufügen
                 if (orderVM.positionList.Contains(pos))
                 {
-                    // Hier kommt der code hin um die Menge für die Position in der DB upzudaten
                     DBUtilityOrder.SaveExistingPosition(pos);
+
                     // Update UI
                     DgVOrders_RowEnter(null, null);
                 }
@@ -144,14 +144,9 @@ namespace DBS_View.View
                   {
                         // Fehlermeldung ausgeben
                     }
-
                 }
             }
-
-
             // lösche position aus Context und Speichere
-
-
         }
 
         private void CmdAddOrder_Click(object sender, EventArgs e)
