@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Utilities;
 
 namespace Semesterprojekt_Datenbank.Viewmodel
@@ -11,11 +12,11 @@ namespace Semesterprojekt_Datenbank.Viewmodel
     {
         public static List<OrderVM> OrderList = new List<OrderVM>();
 
-        public List<OrderVM> PositionList = new List<OrderVM>();
-        private DBUtilityOrder db = new DBUtilityOrder();
+        //public List<OrderVM> PositionList = new List<OrderVM>();
+
+        public List<Position> positionList = new List<Position>();
+        private DBUtilityOrder db = new DBUtilityOrder();           
         public string customerName { get; set; }
-        public string articleName { get; set; }
-        public int quantity { get; set;  }
         public string orderNr { get; set; }
         public int positionNr { get; set; }
         public DateTime orderDate { get; set; }
@@ -25,30 +26,25 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         }
 
-        public OrderVM(int positionNr, string articleName, int quantity)
+        public OrderVM(int positionNr)
         {
             this.positionNr = positionNr;
-            this.articleName = articleName;
-            this.quantity = quantity;
         }
-        public OrderVM(List<OrderVM> positionList, string customerName, string articleName, int quantity, string orderNr, int positionNr, DateTime orderDate)
+        public OrderVM(List<Position> positionList, string customerName, int orderNr, DateTime orderDate)
         {
-            PositionList = positionList;
+            this.positionList = positionList;
             this.customerName = customerName;
-            this.articleName = articleName;
-            this.quantity = quantity;
-            this.orderNr = orderNr;
             this.positionNr = positionNr;
             this.orderDate = orderDate;
         }
 
-        public string GetPosition()
+        //public string GetPostion()
+        //{
+        //    return "Pos Nr: " + positionNr + "   |   Artikel: " + articleName + "   |   Anzahl: " + quantity;
+        //}
+        public bool CreateOrder(OrderVM orderVm)
         {
-            return "Pos Nr: " + positionNr + "   |   Artikel: " + articleName + "   |   Anzahl: " + quantity;
-        }
-        public void CreateOrder(OrderVM orderVm)
-        {
-            db.Create(orderVm);
+            return db.Create(orderVm);
         }
 
         public List<string> GetCustomerNames()

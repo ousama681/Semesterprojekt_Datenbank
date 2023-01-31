@@ -68,7 +68,6 @@ namespace SemesterprojektDatenbank.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ParentId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -217,6 +216,9 @@ namespace SemesterprojektDatenbank.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PositionNr")
                         .HasColumnType("int");
 
                     b.Property<decimal>("PriceBrutto")

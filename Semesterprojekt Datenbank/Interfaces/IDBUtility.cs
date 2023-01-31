@@ -9,7 +9,7 @@ namespace Semesterprojekt_Datenbank.Interfaces
     {
         // CRUD Funktionen der Datenbank
 
-        void Create(T item);
+        bool Create(T orderVM);
 
         List<T> Read();
         T ReadSingle(T customerVm);

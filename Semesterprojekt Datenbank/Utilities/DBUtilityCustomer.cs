@@ -14,14 +14,14 @@ namespace Semesterprojekt_Datenbank.Utilities
     {
         ModelBuilder modelBuilder = new ModelBuilder();
 
-        public void Create(CustomerVm customerVm)
+        public bool Create(CustomerVm orderVM)
         {
             try
             {
                 using (var context = new DataContext())
                 {
-                    var id = GetTownId(context, customerVm);
-                    Customer customer = new Customer(customerVm.Id, customerVm.Nr, customerVm.Name, customerVm.Email, customerVm.Website, customerVm.Password, customerVm.Street, id);
+                    var id = GetTownId(context, orderVM);
+                    Customer customer = new Customer(orderVM.Id, orderVM.Nr, orderVM.Name, orderVM.Email, orderVM.Website, orderVM.Password, orderVM.Street, id);
                     context.Add(customer);
                     modelBuilder.Entity<Customer>().HasData(new Customer()
                     {
@@ -35,21 +35,23 @@ namespace Semesterprojekt_Datenbank.Utilities
                         TownId = id
                     });
                     context.SaveChanges();
-                    CustomerVm.CustomerList.Add(customerVm);
+                    CustomerVm.CustomerList.Add(orderVM);
                 }
             }
             catch (Microsoft.Data.SqlClient.SqlException e)
             {
                 MessageBox.Show("Kunde konnte nicht gespeichert werden. Keine Verbindung zur Datenbank!\r\n \r\n" +
                                 "Error Message: \r\n" + e.Message);
-                return;
+                return false;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Kunde konnte nicht gespeichert werden. \r\n \r\n" +
                      "Error Message: \r\n" + e.Message);
-                return;
+                return false;
             }
+
+            return true;
         }
 
         public bool Delete(CustomerVm customerVm)

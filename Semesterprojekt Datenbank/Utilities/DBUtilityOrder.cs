@@ -15,39 +15,50 @@ namespace Semesterprojekt_Datenbank.Utilities
     {
         ModelBuilder modelBuilder = new ModelBuilder();
 
-        public void Create(OrderVM item)
+        public bool Create(OrderVM orderVM)
         {
             Order savedOrder = null;
-            string customerName = item.customerName;
+            string customerName = orderVM.customerName;
+
             if (customerName.Length != 0)
             {
+
                 using (var context = new DataContext())
                 {
                     int customerId = (from c in context.Customer
                                       where c.Name == customerName
                                       select c.Id).FirstOrDefault();
 
-                    var order = new Order() { CustomerId = customerId, Date = item.orderDate };
+                    var order = new Order() { CustomerId = customerId, Date = orderVM.orderDate };
                     context.Order.Add(order);
                     context.SaveChanges();
                     var orderId = (from o in context.Order
-                                   where o.CustomerId == customerId && o.Date == item.orderDate
+                                   where o.CustomerId == customerId && o.Date == orderVM.orderDate
                                        select o.Id).FirstOrDefault();
-                    foreach (var pos in item.PositionList)
-                    {
-                        var articleId = (from article in context.Article
-                            where pos.articleName == article.Name
-                            select article.Id).FirstOrDefault();
 
-                        var position = new Position(pos.quantity, 0, 0, articleId, orderId);
-                        context.Position.Add(position);
+
+
+                    if (orderVM.positionList.Count > 0)
+                    {
+                        foreach (var pos in orderVM.positionList)
+                        {
+                            var articleId = (from article in context.Article
+                                where pos.Article.Name == article.Name
+                                select article.Id).FirstOrDefault();
+
+                            // TODO: muss noch nummer PosNr vergeben
+                            var position = new Position(pos.Quantity, 0, 0, articleId, orderId);
+                            context.Position.Add(position);
+                        }
                     }
+
                     context.SaveChanges();
 
-
-                    //savedOrder = context.Order.Find(order.Id);
+                    return true;
                 }
             }
+
+            return false;
         }
 
         public bool Delete(OrderVM item)
@@ -115,6 +126,50 @@ namespace Semesterprojekt_Datenbank.Utilities
                                 "Error Message: \r\n" + e.Message);
                 return null;
             }
+        }
+
+        public static bool SaveNewPosition(Position position)
+        {
+            using (var context = new DataContext())
+            {
+                if (position.Quantity > 0)
+                {
+                    if (context.Position.Add(position) != null)
+                    {
+                        context.SaveChanges();
+                        return true;
+                    }
+                    else
+                    {
+                        // Fehlermeldung ausgeben
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool SaveExistingPosition(Position pos)
+        {
+            using (var context = new DataContext())
+            {
+                if (pos.Quantity > 0)
+                {
+
+                    Position savedPosition = (from p in context.Position
+                        where p.ArticleId == pos.ArticleId
+                        select p).SingleOrDefault();
+
+                    savedPosition.Quantity += pos.Quantity;
+                    context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    // Fehlermeldung ausgeben
+                }
+            }
+
+            return false;
         }
     }
 }

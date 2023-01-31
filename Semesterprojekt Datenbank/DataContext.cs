@@ -29,6 +29,8 @@ namespace Semesterprojekt_Datenbank
         public object ObjectStateManager { get; internal set; }
 
         public const string OUSAMA_CONNECTION = "Server=DESKTOP-PMVN625; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
+        public const string OUSAMA_LP = "Server=LAPTOP-AA7RTN6F\\MSSQLZBW; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
+
         public const string Leandro_Connection = "Server=LEANDROPAJE1C16\\ZBWMSSQL; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         const string BigBoss = "Server=DESKTOP-1470VE0\\ZBW; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         public const string KimPc = "Server=Koneko\\KONEKO; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
@@ -39,7 +41,7 @@ namespace Semesterprojekt_Datenbank
 
 
             //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-            optionsBuilder.UseSqlServer(KimPc);
+            optionsBuilder.UseSqlServer(OUSAMA_LP);
 
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }
