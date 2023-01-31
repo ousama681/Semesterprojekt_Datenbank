@@ -38,15 +38,18 @@ namespace Semesterprojekt_Datenbank.Utilities
 
 
 
-                    foreach (var pos in orderVM.positionList)
+                    if (orderVM.positionList.Count > 0)
                     {
-                        var articleId = (from article in context.Article
-                            where pos.Article.Name == article.Name
-                            select article.Id).FirstOrDefault();
+                        foreach (var pos in orderVM.positionList)
+                        {
+                            var articleId = (from article in context.Article
+                                where pos.Article.Name == article.Name
+                                select article.Id).FirstOrDefault();
 
-                        // TODO: muss noch nummer PosNr vergeben
-                        var position = new Position(pos.Quantity, 0, 0, articleId, orderId);
-                        context.Position.Add(position);
+                            // TODO: muss noch nummer PosNr vergeben
+                            var position = new Position(pos.Quantity, 0, 0, articleId, orderId);
+                            context.Position.Add(position);
+                        }
                     }
 
                     context.SaveChanges();

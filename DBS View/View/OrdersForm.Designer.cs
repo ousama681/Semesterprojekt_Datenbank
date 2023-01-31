@@ -56,7 +56,7 @@
             // 
             // CmdAddPosition
             // 
-            this.CmdAddPosition.Location = new System.Drawing.Point(928, 206);
+            this.CmdAddPosition.Location = new System.Drawing.Point(903, 204);
             this.CmdAddPosition.Name = "CmdAddPosition";
             this.CmdAddPosition.Size = new System.Drawing.Size(121, 40);
             this.CmdAddPosition.TabIndex = 5;
@@ -66,7 +66,7 @@
             // 
             // CmdDeletePosition
             // 
-            this.CmdDeletePosition.Location = new System.Drawing.Point(1055, 206);
+            this.CmdDeletePosition.Location = new System.Drawing.Point(1030, 204);
             this.CmdDeletePosition.Name = "CmdDeletePosition";
             this.CmdDeletePosition.Size = new System.Drawing.Size(75, 40);
             this.CmdDeletePosition.TabIndex = 6;
@@ -76,14 +76,14 @@
             // 
             // TxtSearch
             // 
-            this.TxtSearch.Location = new System.Drawing.Point(928, 384);
+            this.TxtSearch.Location = new System.Drawing.Point(903, 382);
             this.TxtSearch.Name = "TxtSearch";
             this.TxtSearch.Size = new System.Drawing.Size(121, 23);
             this.TxtSearch.TabIndex = 7;
             // 
             // CmdSearch
             // 
-            this.CmdSearch.Location = new System.Drawing.Point(1055, 384);
+            this.CmdSearch.Location = new System.Drawing.Point(1030, 382);
             this.CmdSearch.Name = "CmdSearch";
             this.CmdSearch.Size = new System.Drawing.Size(75, 23);
             this.CmdSearch.TabIndex = 8;
@@ -94,6 +94,8 @@
             // 
             this.DgVOrders.AllowUserToAddRows = false;
             this.DgVOrders.AllowUserToDeleteRows = false;
+            this.DgVOrders.AllowUserToResizeColumns = false;
+            this.DgVOrders.AllowUserToResizeRows = false;
             this.DgVOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgVOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colOrderNr,
@@ -103,6 +105,7 @@
             this.DgVOrders.ReadOnly = true;
             this.DgVOrders.RowHeadersVisible = false;
             this.DgVOrders.RowHeadersWidth = 82;
+            this.DgVOrders.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DgVOrders.RowTemplate.Height = 25;
             this.DgVOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgVOrders.Size = new System.Drawing.Size(227, 394);
@@ -131,7 +134,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(928, 138);
+            this.label1.Location = new System.Drawing.Point(903, 136);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 39;
@@ -141,7 +144,7 @@
             // 
             this.CmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCustomer.FormattingEnabled = true;
-            this.CmbCustomer.Location = new System.Drawing.Point(928, 36);
+            this.CmbCustomer.Location = new System.Drawing.Point(903, 34);
             this.CmbCustomer.Name = "CmbCustomer";
             this.CmbCustomer.Size = new System.Drawing.Size(200, 23);
             this.CmbCustomer.TabIndex = 42;
@@ -150,7 +153,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(928, 13);
+            this.label3.Location = new System.Drawing.Point(903, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 20);
             this.label3.TabIndex = 43;
@@ -158,7 +161,7 @@
             // 
             // CmdAddOrder
             // 
-            this.CmdAddOrder.Location = new System.Drawing.Point(928, 321);
+            this.CmdAddOrder.Location = new System.Drawing.Point(903, 319);
             this.CmdAddOrder.Name = "CmdAddOrder";
             this.CmdAddOrder.Size = new System.Drawing.Size(121, 40);
             this.CmdAddOrder.TabIndex = 44;
@@ -168,7 +171,7 @@
             // 
             // CmdDeleteOrder
             // 
-            this.CmdDeleteOrder.Location = new System.Drawing.Point(1055, 321);
+            this.CmdDeleteOrder.Location = new System.Drawing.Point(1030, 319);
             this.CmdDeleteOrder.Name = "CmdDeleteOrder";
             this.CmdDeleteOrder.Size = new System.Drawing.Size(75, 40);
             this.CmdDeleteOrder.TabIndex = 45;
@@ -178,7 +181,7 @@
             // 
             // NumQuantity
             // 
-            this.NumQuantity.Location = new System.Drawing.Point(929, 161);
+            this.NumQuantity.Location = new System.Drawing.Point(904, 159);
             this.NumQuantity.Minimum = new decimal(new int[] {
             1,
             0,
@@ -195,9 +198,9 @@
             // 
             // TrVArticleGroupOrder
             // 
-            this.TrVArticleGroupOrder.Location = new System.Drawing.Point(707, 12);
+            this.TrVArticleGroupOrder.Location = new System.Drawing.Point(655, 12);
             this.TrVArticleGroupOrder.Name = "TrVArticleGroupOrder";
-            this.TrVArticleGroupOrder.Size = new System.Drawing.Size(215, 394);
+            this.TrVArticleGroupOrder.Size = new System.Drawing.Size(242, 394);
             this.TrVArticleGroupOrder.TabIndex = 47;
             this.TrVArticleGroupOrder.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TrVArticleGroupOrder_AfterSelect);
             // 
@@ -205,7 +208,7 @@
             // 
             this.LblArticleName.AutoSize = true;
             this.LblArticleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblArticleName.Location = new System.Drawing.Point(928, 74);
+            this.LblArticleName.Location = new System.Drawing.Point(903, 72);
             this.LblArticleName.Name = "LblArticleName";
             this.LblArticleName.Size = new System.Drawing.Size(89, 20);
             this.LblArticleName.TabIndex = 36;
@@ -215,7 +218,7 @@
             // 
             this.CmbArticle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbArticle.FormattingEnabled = true;
-            this.CmbArticle.Location = new System.Drawing.Point(928, 97);
+            this.CmbArticle.Location = new System.Drawing.Point(903, 95);
             this.CmbArticle.Name = "CmbArticle";
             this.CmbArticle.Size = new System.Drawing.Size(200, 23);
             this.CmbArticle.TabIndex = 37;
@@ -224,6 +227,8 @@
             // 
             this.DgVPositions.AllowUserToAddRows = false;
             this.DgVPositions.AllowUserToDeleteRows = false;
+            this.DgVPositions.AllowUserToResizeColumns = false;
+            this.DgVPositions.AllowUserToResizeRows = false;
             this.DgVPositions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgVPositions.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Positionsnr,
@@ -268,7 +273,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 420);
+            this.ClientSize = new System.Drawing.Size(1116, 420);
             this.Controls.Add(this.DgVPositions);
             this.Controls.Add(this.TrVArticleGroupOrder);
             this.Controls.Add(this.NumQuantity);
