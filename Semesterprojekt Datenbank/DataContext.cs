@@ -41,7 +41,7 @@ namespace Semesterprojekt_Datenbank
 
 
             //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-            optionsBuilder.UseSqlServer(OUSAMA_LP);
+            optionsBuilder.UseSqlServer(OUSAMA_CONNECTION);
 
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }
