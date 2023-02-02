@@ -19,6 +19,8 @@ namespace SemesterprojektDatenbank.Migrations
         const string KimPc = "Server=Koneko\\KONEKO; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
 
         const string leandro = "Server=LAMAKUMBAWIN\\LEOSQLSERVER; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
+        public static string leandro_container = "Server=localhost; Database=SemesterarbeitDBS;User Id=sa; Password=leandropajer316032; Trusted_Connection=true; Encrypt=false;";
+
 
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +28,7 @@ namespace SemesterprojektDatenbank.Migrations
 
             using (var connection = new SqlConnection())
             {
-                connection.ConnectionString = DataContext.OUSAMA_LP;
+                connection.ConnectionString = DataContext.leandro_container;
                 SqlCommand cmd = new SqlCommand();
                 connection.Open();
 
@@ -35,7 +37,7 @@ namespace SemesterprojektDatenbank.Migrations
 
                 //using (StreamReader reader = new StreamReader(@"C:\Users\lamakumba\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
 
-                using (StreamReader reader = new StreamReader(@"C:\ZbWworkspace\ZbWProjects\DatenbankAdvancedI\SemesterprojektDBS\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
+                using (StreamReader reader = new StreamReader(@"C:\Users\lamakumba\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
                 {
                     while (!reader.EndOfStream)
                     {

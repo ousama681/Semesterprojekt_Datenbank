@@ -31,17 +31,21 @@ namespace Semesterprojekt_Datenbank
         public const string OUSAMA_CONNECTION = "Server=DESKTOP-PMVN625; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         public const string OUSAMA_LP = "Server=LAPTOP-AA7RTN6F\\MSSQLZBW; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
 
-        public const string Leandro_Connection = "Server=LEANDROPAJE1C16\\ZBWMSSQL; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         const string BigBoss = "Server=DESKTOP-1470VE0\\ZBW; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         public const string KimPc = "Server=Koneko\\KONEKO; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
+        
         public static string leandro = "Server=LAMAKUMBAWIN\\LEOSQLSERVER; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
+        public static string leandro_docker = "Server=10.211.55.2; Database=SemesterarbeitDBS;User Id=sa; Password=3dgeY0urB3ts; Integrated Security = false; Encrypt=false;";
+
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
 
             //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-            optionsBuilder.UseSqlServer(OUSAMA_LP);
+            optionsBuilder.UseSqlServer(leandro_docker);
 
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }

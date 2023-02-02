@@ -195,6 +195,11 @@ namespace Semesterprojekt_Datenbank.Utilities
             }
             return parentId;
         }
+
+        bool IDBUtility<ArticleGroupVm>.Create(ArticleGroupVm orderVM)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
