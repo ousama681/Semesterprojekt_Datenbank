@@ -16,7 +16,7 @@ namespace Semesterprojekt_Datenbank.Utilities
         ModelBuilder modelBuilder = new ModelBuilder();
 
 
-        public void Create(ArticleGroupVm articleGroupVm)
+        public bool Create(ArticleGroupVm articleGroupVm)
         {
             try
             {
@@ -39,14 +39,16 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 MessageBox.Show("Artikelgruppe konnte nicht gespeichert werden. Keine Verbindung zur Datenbank!\r\n \r\n" +
                                 "Error Message: \r\n" + e.Message);
-                return;
+                return false;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Artikelgruppe konnte nicht gespeichert werden. \r\n \r\n" +
                                 "Error Message: \r\n" + e.Message);
-                return;
+                return false;
             }
+
+            return true;
         }
 
         public bool Delete(ArticleGroupVm articleGroupVm)
@@ -102,7 +104,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     List<ArticleGroupVm> articleGroupVmList = new List<ArticleGroupVm>();
-                    SqlConnection conn = new SqlConnection(DataContext.OUSAMA_LP); //<----------------------------- Connection String
+                    SqlConnection conn = new SqlConnection(DataContext.OUSAMA_CONNECTION); //<----------------------------- Connection String
                     SqlCommand cmd = new SqlCommand("Select * from dbo.ArticleGroups()", conn);
                     conn.Open();
                     IDataReader dr = cmd.ExecuteReader();
