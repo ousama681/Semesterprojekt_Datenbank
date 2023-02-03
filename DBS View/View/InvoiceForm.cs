@@ -21,7 +21,10 @@ namespace DBS_View.View
             InitializeComponent();
             vm= new InvoiceVm();
 
-            DgvSearch.DataSource= vm.GetInvoices();
+           
+
+            // DgvSearch.DataSource= vm.GetInvoices();
+            AdvDgvInvoice.DataSource= vm.GetInvoices();
 
 
 

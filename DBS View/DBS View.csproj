@@ -10,11 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.1">
+    <PackageReference Include="DG.AdvancedDataGridView" Version="1.2.27706.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Syncfusion.Tools.Windows" Version="20.4.0.42" />
+    <PackageReference Include="Syncfusion.Tools.Windows" Version="20.4.0.48" />
   </ItemGroup>
 
   <ItemGroup>
