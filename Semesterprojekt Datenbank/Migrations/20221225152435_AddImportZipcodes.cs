@@ -19,7 +19,7 @@ namespace SemesterprojektDatenbank.Migrations
         const string KimPc = "Server=Koneko\\KONEKO; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
 
         const string leandro = "Server=LAMAKUMBAWIN\\LEOSQLSERVER; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
-        public static string leandro_container = "Server=localhost; Database=SemesterarbeitDBS;User Id=sa; Password=leandropajer316032; Trusted_Connection=true; Encrypt=false;";
+        public static string leandro_docker = "Server=10.211.55.2; Database=SemesterarbeitDBS;User Id=sa; Password=3dgeY0urB3ts; Integrated Security = false; Encrypt=false;";
 
 
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,7 +28,7 @@ namespace SemesterprojektDatenbank.Migrations
 
             using (var connection = new SqlConnection())
             {
-                connection.ConnectionString = DataContext.leandro_container;
+                connection.ConnectionString = DataContext.leandro_docker;
                 SqlCommand cmd = new SqlCommand();
                 connection.Open();
 

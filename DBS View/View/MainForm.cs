@@ -104,5 +104,11 @@ namespace DBS_View.View
                 }
             }
         }
+
+        private void CmdSearch_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new InvoiceForm());
+            ActiveButton((Button)sender);
+        }
     }
 }

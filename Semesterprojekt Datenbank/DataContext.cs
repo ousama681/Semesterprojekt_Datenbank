@@ -38,8 +38,6 @@ namespace Semesterprojekt_Datenbank
         public static string leandro_docker = "Server=10.211.55.2; Database=SemesterarbeitDBS;User Id=sa; Password=3dgeY0urB3ts; Integrated Security = false; Encrypt=false;";
 
 
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

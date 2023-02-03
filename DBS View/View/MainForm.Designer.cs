@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PnlSidebar = new System.Windows.Forms.Panel();
+            this.CmdSearch = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CmdOrders = new System.Windows.Forms.Button();
             this.CmdArticleGroups = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             // PnlSidebar
             // 
             this.PnlSidebar.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.PnlSidebar.Controls.Add(this.CmdSearch);
             this.PnlSidebar.Controls.Add(this.pictureBox1);
             this.PnlSidebar.Controls.Add(this.CmdOrders);
             this.PnlSidebar.Controls.Add(this.CmdArticleGroups);
@@ -57,6 +59,18 @@
             this.PnlSidebar.Name = "PnlSidebar";
             this.PnlSidebar.Size = new System.Drawing.Size(166, 477);
             this.PnlSidebar.TabIndex = 0;
+            // 
+            // CmdSearch
+            // 
+            this.CmdSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.CmdSearch.Location = new System.Drawing.Point(3, 335);
+            this.CmdSearch.Name = "CmdSearch";
+            this.CmdSearch.Size = new System.Drawing.Size(157, 47);
+            this.CmdSearch.TabIndex = 5;
+            this.CmdSearch.Text = "Rechnungen";
+            this.CmdSearch.UseVisualStyleBackColor = true;
+            this.CmdSearch.Click += new System.EventHandler(this.CmdSearch_Click);
             // 
             // pictureBox1
             // 
@@ -189,5 +203,6 @@
         private PictureBox pictureBox1;
         private Panel PnlMainPanel;
         private Panel PnlTitle;
+        private Button CmdSearch;
     }
 }
