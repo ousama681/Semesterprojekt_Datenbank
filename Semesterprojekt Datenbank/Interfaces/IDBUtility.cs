@@ -14,6 +14,8 @@ namespace Semesterprojekt_Datenbank.Interfaces
         List<T> Read();
         T ReadSingle(T item);
 
+        List<string> ReadFilter(List<string> item);
+
         void Update(T item);
 
         bool Delete(T item);

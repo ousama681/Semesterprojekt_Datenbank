@@ -200,6 +200,11 @@ namespace Semesterprojekt_Datenbank.Utilities
         {
             throw new NotImplementedException();
         }
+
+        public List<string> ReadFilter(List<string> item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 

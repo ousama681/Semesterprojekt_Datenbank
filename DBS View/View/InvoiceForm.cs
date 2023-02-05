@@ -1,13 +1,4 @@
 ﻿using Semesterprojekt_Datenbank.Viewmodel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace DBS_View.View
 {
@@ -19,19 +10,49 @@ namespace DBS_View.View
         public InvoiceForm()
         {
             InitializeComponent();
-            vm= new InvoiceVm();
-
-           
+            vm = new InvoiceVm();
 
             // DgvSearch.DataSource= vm.GetInvoices();
-            AdvDgvInvoice.DataSource= vm.GetInvoices();
+
+            AdvDgvInvoice.DataSource = vm.GetInvoices();
+
+            ChkBox.DisplayMember = "Text";
+            ChkBox.ValueMember = "Value";
+            ChkBox.Items.Insert(0, new { Value = $"{vm.Id}" });
+            ChkBox.Items.Insert(0, new { Value = $"{vm.Date}" });
+            ChkBox.Items.Insert(0, "Rechnungs Nr");
+            ChkBox.Items.Insert(1, "Rechnungs Datum");
+            ChkBox.Items.Insert(2, "Rechnung Netto");
+            ChkBox.Items.Insert(3, "Rechnung Brutto");
+            ChkBox.Items.Insert(4, "Kunden Nr");
+            ChkBox.Items.Insert(5, "Name");
+            ChkBox.Items.Insert(6, "Plz");
+            ChkBox.Items.Insert(7, "Ort");
+            ChkBox.Items.Insert(8, "Land");
 
 
 
 
         }
 
+        private void CmdSearch_Click(object sender, EventArgs e)
+        {
+            this.AdvDgvInvoice.DataSource = null;
+            this.AdvDgvInvoice.Rows.Clear();
 
+            var texts = this.ChkBox.CheckedItems.Cast<object>()
+                .Select(x => this.ChkBox.GetItemText(x));
+
+            MessageBox.Show(string.Join(",", texts));
+
+            var yourList = texts.ToList();
+
+            AdvDgvInvoice.DataSource = vm.GetFilteredOptions(yourList);
+
+
+
+
+        }
 
 
 

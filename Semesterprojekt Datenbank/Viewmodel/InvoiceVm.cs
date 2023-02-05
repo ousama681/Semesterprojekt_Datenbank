@@ -2,6 +2,8 @@
 using Semesterprojekt_Datenbank.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using SemesterprojektDatenbank;
 
 namespace Semesterprojekt_Datenbank.Viewmodel
 {
@@ -59,6 +61,13 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         {
             return db.Read();
         }
+
+        public List<string> GetFilteredOptions(List<string> items)
+        {
+            return db.ReadFilter(items);
+
+        }
+
 
 
 

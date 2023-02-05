@@ -171,5 +171,10 @@ namespace Semesterprojekt_Datenbank.Utilities
 
             return false;
         }
+
+        public List<string> ReadFilter(List<string> item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
