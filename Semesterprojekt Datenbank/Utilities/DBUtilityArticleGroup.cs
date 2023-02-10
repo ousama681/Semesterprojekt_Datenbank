@@ -102,7 +102,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     List<ArticleGroupVm> articleGroupVmList = new List<ArticleGroupVm>();
-                    SqlConnection conn = new SqlConnection(DataContext.leandro_docker); //<----------------------------- Connection String
+                    SqlConnection conn = new SqlConnection(DataContext.GetConnectionStringByName("connection")); 
                     SqlCommand cmd = new SqlCommand("Select * from dbo.ArticleGroups()", conn);
                     conn.Open();
                     IDataReader dr = cmd.ExecuteReader();

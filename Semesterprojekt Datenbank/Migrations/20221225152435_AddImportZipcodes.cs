@@ -28,16 +28,13 @@ namespace SemesterprojektDatenbank.Migrations
 
             using (var connection = new SqlConnection())
             {
-                connection.ConnectionString = DataContext.leandro_docker;
+                connection.ConnectionString = DataContext.GetConnectionStringByName("connection");
                 SqlCommand cmd = new SqlCommand();
                 connection.Open();
 
-                // using (StreamReader reader = new StreamReader(@"C:\Users\Koneko\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))
-
-
-                //using (StreamReader reader = new StreamReader(@"C:\Users\lamakumba\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
-
-                using (StreamReader reader = new StreamReader(@"C:\Users\lamakumba\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
+                using (StreamReader reader = new StreamReader(@"C:\Users\Koneko\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv")) 
+                    //using (StreamReader reader = new StreamReader(@"C:\Users\lamakumba\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
+                    //using (StreamReader reader = new StreamReader(@"C:\Users\lamakumba\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
                 {
                     while (!reader.EndOfStream)
                     {

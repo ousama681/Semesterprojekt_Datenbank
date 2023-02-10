@@ -37,13 +37,12 @@ namespace Semesterprojekt_Datenbank
         public static string leandro = "Server=LAMAKUMBAWIN\\LEOSQLSERVER; Database=SemesterarbeitDBS; Trusted_Connection=true; Encrypt=false;";
         public static string leandro_docker = "Server=10.211.55.2; Database=SemesterarbeitDBS;User Id=sa; Password=3dgeY0urB3ts; Integrated Security = false; Encrypt=false;";
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
 
             //  optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["connection"].ConnectionString);
-            optionsBuilder.UseSqlServer(leandro_docker);
+            optionsBuilder.UseSqlServer(GetConnectionStringByName("connection"));
 
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Debug);
         }
@@ -63,6 +62,20 @@ namespace Semesterprojekt_Datenbank
                 .Entity<Customer>()
                 .ToTable("Customer", c => c.IsTemporal());
         }
+        public static string GetConnectionStringByName(string name)
+        {
+            // Assume failure.
+            string returnValue = null;
 
+            // Look for the name in the connectionStrings section.
+            ConnectionStringSettings settings =
+                ConfigurationManager.ConnectionStrings[name];
+
+            // If found, return the connection string.
+            if (settings != null)
+                returnValue = settings.ConnectionString;
+
+            return returnValue;
+        }
     }
 }
