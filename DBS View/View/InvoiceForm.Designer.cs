@@ -35,6 +35,7 @@
             this.AdvDgvInvoice = new Zuby.ADGV.AdvancedDataGridView();
             this.CmdSearch = new System.Windows.Forms.Button();
             this.ChkBox = new System.Windows.Forms.CheckedListBox();
+            this.TxtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.articleGroupVmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.articleVmBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdvDgvInvoice)).BeginInit();
@@ -79,9 +80,9 @@
             // 
             // CmdSearch
             // 
-            this.CmdSearch.Location = new System.Drawing.Point(948, 30);
+            this.CmdSearch.Location = new System.Drawing.Point(962, 12);
             this.CmdSearch.Name = "CmdSearch";
-            this.CmdSearch.Size = new System.Drawing.Size(147, 23);
+            this.CmdSearch.Size = new System.Drawing.Size(133, 23);
             this.CmdSearch.TabIndex = 7;
             this.CmdSearch.Text = "Suche";
             this.CmdSearch.UseVisualStyleBackColor = true;
@@ -89,17 +90,27 @@
             // 
             // ChkBox
             // 
+            this.ChkBox.CheckOnClick = true;
             this.ChkBox.FormattingEnabled = true;
             this.ChkBox.Location = new System.Drawing.Point(962, 70);
             this.ChkBox.Name = "ChkBox";
             this.ChkBox.Size = new System.Drawing.Size(133, 292);
+            this.ChkBox.Sorted = true;
             this.ChkBox.TabIndex = 8;
+            // 
+            // TxtSearch
+            // 
+            this.TxtSearch.Location = new System.Drawing.Point(962, 41);
+            this.TxtSearch.Name = "TxtSearch";
+            this.TxtSearch.Size = new System.Drawing.Size(133, 23);
+            this.TxtSearch.TabIndex = 9;
             // 
             // InvoiceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1267, 381);
+            this.Controls.Add(this.TxtSearch);
             this.Controls.Add(this.ChkBox);
             this.Controls.Add(this.CmdSearch);
             this.Controls.Add(this.AdvDgvInvoice);
@@ -110,6 +121,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.articleVmBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AdvDgvInvoice)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -119,5 +131,6 @@
         private Zuby.ADGV.AdvancedDataGridView AdvDgvInvoice;
         private Button CmdSearch;
         private CheckedListBox ChkBox;
+        private TextBox TxtSearch;
     }
 }

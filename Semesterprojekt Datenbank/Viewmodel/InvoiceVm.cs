@@ -13,7 +13,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         public MWST mwst = new MWST();
 
-        public InvoiceVm(int id, DateTime date, decimal netPrice, int customerNr, string customerName, string zipCode, string city, string country)
+        public InvoiceVm(int id, DateTime date, decimal netPrice, int customerNr, string customerName, string zipCode, string street, string city, string country)
         {
             Id = id;
             Date = date;
@@ -23,6 +23,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             CustomerNr = customerNr;
             CustomerName = customerName;
             ZipCode = zipCode;
+            Street = street;
             City = city;
             Country = country;
         }
@@ -48,6 +49,9 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         [System.ComponentModel.DisplayName("PLZ")]
         public string ZipCode { get; set; }
 
+        [System.ComponentModel.DisplayName("Strasse")]
+        public string Street { get; set; }
+
         [System.ComponentModel.DisplayName("Ort")]
         public string City { get; set; }
 
@@ -67,7 +71,11 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             return db.ReadFilter(items);
 
         }
+        public List<InvoiceVm> GetFilteredData(string whereQuery)
+        {
+            return db.ReadFilteredData(whereQuery);
 
+        }
 
 
 
