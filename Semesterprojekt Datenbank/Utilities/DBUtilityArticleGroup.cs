@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Semesterprojekt_Datenbank.Interfaces;
 using Semesterprojekt_Datenbank.Model;
@@ -16,7 +16,7 @@ namespace Semesterprojekt_Datenbank.Utilities
         ModelBuilder modelBuilder = new ModelBuilder();
 
 
-        public void Create(ArticleGroupVm articleGroupVm)
+        public bool Create(ArticleGroupVm articleGroupVm)
         {
             try
             {
@@ -39,14 +39,16 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 MessageBox.Show("Artikelgruppe konnte nicht gespeichert werden. Keine Verbindung zur Datenbank!\r\n \r\n" +
                                 "Error Message: \r\n" + e.Message);
-                return;
+                return false;
             }
             catch (Exception e)
             {
                 MessageBox.Show("Artikelgruppe konnte nicht gespeichert werden. \r\n \r\n" +
                                 "Error Message: \r\n" + e.Message);
-                return;
+                return false;
             }
+
+            return true;
         }
 
         public bool Delete(ArticleGroupVm articleGroupVm)

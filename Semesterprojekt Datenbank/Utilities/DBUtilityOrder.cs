@@ -43,7 +43,8 @@ namespace Semesterprojekt_Datenbank.Utilities
                         foreach (var pos in orderVM.positionList)
                         {
                             var articleId = (from article in context.Article
-                                where pos.Article.Name == article.Name
+
+                                where pos.ArticleId == article.Id
                                 select article.Id).FirstOrDefault();
 
                             // TODO: muss noch nummer PosNr vergeben
@@ -163,8 +164,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 {
 
                     Position savedPosition = (from p in context.Position
-                        where p.ArticleId == pos.ArticleId &&
-                        p.OrderId == pos.OrderId
+                        where p.ArticleId == pos.ArticleId && p.OrderId == pos.OrderId
                         select p).SingleOrDefault();
 
                     savedPosition.Quantity += pos.Quantity;

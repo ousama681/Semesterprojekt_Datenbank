@@ -29,6 +29,7 @@ namespace SemesterprojektDatenbank.Migrations
             using (var connection = new SqlConnection())
             {
                 connection.ConnectionString = DataContext.GetConnectionStringByName("connection");
+
                 SqlCommand cmd = new SqlCommand();
                 connection.Open();
 
