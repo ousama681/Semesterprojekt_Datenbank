@@ -196,10 +196,9 @@ namespace Semesterprojekt_Datenbank.Utilities
             return Convert.ToInt32(id);
         }
 
-
-
-
-
-
+        public List<string> ReadFilter(List<string> item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

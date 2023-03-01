@@ -135,6 +135,13 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 if (position.Quantity > 0)
                 {
+
+                    // Hier noch den Preis der Positionen hinzufügen
+                    // Was fehlt:
+                    //- PriceNetto
+                    //- PriceBrutto
+
+
                     if (context.Position.Add(position) != null)
                     {
                         context.SaveChanges();
@@ -171,6 +178,11 @@ namespace Semesterprojekt_Datenbank.Utilities
             }
 
             return false;
+        }
+
+        public List<string> ReadFilter(List<string> item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

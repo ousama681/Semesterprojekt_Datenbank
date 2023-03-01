@@ -19,6 +19,9 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public string customerName { get; set; }
         public string orderNr { get; set; }
         public int positionNr { get; set; }
+
+        public bool isInvoiceGenerated { get; set; }
+
         public DateTime orderDate { get; set; }
 
         public OrderVM()

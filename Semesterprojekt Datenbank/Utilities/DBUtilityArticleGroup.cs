@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Semesterprojekt_Datenbank.Interfaces;
 using Semesterprojekt_Datenbank.Model;
@@ -104,7 +104,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     List<ArticleGroupVm> articleGroupVmList = new List<ArticleGroupVm>();
-                    SqlConnection conn = new SqlConnection(DataContext.OUSAMA_CONNECTION); //<----------------------------- Connection String
+                    SqlConnection conn = new SqlConnection(DataContext.GetConnectionStringByName("connection")); 
                     SqlCommand cmd = new SqlCommand("Select * from dbo.ArticleGroups()", conn);
                     conn.Open();
                     IDataReader dr = cmd.ExecuteReader();
@@ -196,6 +196,16 @@ namespace Semesterprojekt_Datenbank.Utilities
 
             }
             return parentId;
+        }
+
+        bool IDBUtility<ArticleGroupVm>.Create(ArticleGroupVm orderVM)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> ReadFilter(List<string> item)
+        {
+            throw new NotImplementedException();
         }
     }
 }

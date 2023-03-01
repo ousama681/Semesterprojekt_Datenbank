@@ -222,5 +222,10 @@ namespace Semesterprojekt_Datenbank.Utilities
                         select a).SingleOrDefault();
             }
         }
+
+        public List<string> ReadFilter(List<string> item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
