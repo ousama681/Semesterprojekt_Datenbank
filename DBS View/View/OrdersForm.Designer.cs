@@ -49,6 +49,7 @@
             this.Articlename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CmdGenerateInvoice = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgVPositions)).BeginInit();
@@ -161,7 +162,7 @@
             // 
             // CmdAddOrder
             // 
-            this.CmdAddOrder.Location = new System.Drawing.Point(903, 319);
+            this.CmdAddOrder.Location = new System.Drawing.Point(903, 265);
             this.CmdAddOrder.Name = "CmdAddOrder";
             this.CmdAddOrder.Size = new System.Drawing.Size(121, 40);
             this.CmdAddOrder.TabIndex = 44;
@@ -171,7 +172,7 @@
             // 
             // CmdDeleteOrder
             // 
-            this.CmdDeleteOrder.Location = new System.Drawing.Point(1030, 319);
+            this.CmdDeleteOrder.Location = new System.Drawing.Point(1030, 265);
             this.CmdDeleteOrder.Name = "CmdDeleteOrder";
             this.CmdDeleteOrder.Size = new System.Drawing.Size(75, 40);
             this.CmdDeleteOrder.TabIndex = 45;
@@ -269,11 +270,22 @@
             this.PriceBrutto.Name = "PriceBrutto";
             this.PriceBrutto.ReadOnly = true;
             // 
+            // CmdGenerateInvoice
+            // 
+            this.CmdGenerateInvoice.Location = new System.Drawing.Point(903, 322);
+            this.CmdGenerateInvoice.Name = "CmdGenerateInvoice";
+            this.CmdGenerateInvoice.Size = new System.Drawing.Size(121, 40);
+            this.CmdGenerateInvoice.TabIndex = 49;
+            this.CmdGenerateInvoice.Text = "Rechnung erstellen";
+            this.CmdGenerateInvoice.UseVisualStyleBackColor = true;
+            this.CmdGenerateInvoice.Click += new System.EventHandler(this.CmdGenerateInvoice_Click);
+            // 
             // OrdersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1116, 420);
+            this.Controls.Add(this.CmdGenerateInvoice);
             this.Controls.Add(this.DgVPositions);
             this.Controls.Add(this.TrVArticleGroupOrder);
             this.Controls.Add(this.NumQuantity);
@@ -323,5 +335,6 @@
         private DataGridViewTextBoxColumn Articlename;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn PriceBrutto;
+        private Button CmdGenerateInvoice;
     }
 }

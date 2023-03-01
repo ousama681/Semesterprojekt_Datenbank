@@ -3,6 +3,8 @@ using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Utilities;
 using Semesterprojekt_Datenbank.Viewmodel;
 using System.Data;
+using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace DBS_View.View
 {
@@ -84,8 +86,6 @@ namespace DBS_View.View
                 }
                 else
                 {
-                    // ansonsten Neue Position erstellen
-                    if (DBUtilityOrder.SaveNewPosition(pos))
                     {
                         OrderVM orderVM = new OrderVM();
                         orderVM.customerName = CmbCustomer.Text;
@@ -96,6 +96,13 @@ namespace DBS_View.View
                             Article article = (from a in context.Article
                                 where a.Id == position.ArticleId
                                 select a).SingleOrDefault();
+
+                            pos.PriceNetto = (article.Price * pos.Quantity);
+
+                            // wir haben das speichern mal hier runter genommen, da wir noch den Preis setzen müssen.
+                            // Position über DB speichern
+                            // ansonsten Neue Position erstellen
+                            if (DBUtilityOrder.SaveNewPosition(pos))
 
                             DgVPositions.Rows.Add(new object[] { positionnr++, article.Name, quantity, (quantity * article.Price) });
                         }
@@ -184,6 +191,11 @@ namespace DBS_View.View
                     // UI-Update
                     OrdersForm_Load(null, null);
 
+                    // DVGridView auf neue Order setzen.
+                    int lastOrderIndex = DgVOrders.RowCount - 1;
+
+                    DgVOrders.Rows[lastOrderIndex].Selected = true;
+
                 }
                 else
                 {
@@ -208,6 +220,9 @@ namespace DBS_View.View
 
                 // UI-Update
                 OrdersForm_Load(null, null);
+                
+                // Positionen Updaten
+
             }
         }
         private void TrVArticleGroupOrder_AfterSelect(object sender, TreeViewEventArgs e)
@@ -256,6 +271,8 @@ namespace DBS_View.View
                     customerName = (from c in context.Customer
                         where c.Id == order.CustomerId
                         select c.Name).FirstOrDefault();
+
+                    DgVOrders.ClearSelection();
 
                     DgVOrders.Rows.Add(order.Id, customerName);
                 }
@@ -325,6 +342,53 @@ namespace DBS_View.View
 
 
 
+        }
+
+        private void CmdGenerateInvoice_Click(object sender, EventArgs e)
+        {
+            // code um die Rechnung zu erstellen.
+            // hier noch richtige Order selecten
+
+            var cells = DgVOrders.SelectedCells;
+            int orderIdToSelect = Convert.ToInt32(cells[0].Value);
+
+            using (var context = new DataContext())
+            {
+                Order order = (from o in context.Order
+                    where o.Id == orderIdToSelect
+                    select o).FirstOrDefault();
+
+                List<Position> positions = (from o in context.Order
+                                            where o.Id == order.Id
+                                            join p in context.Position
+                                                on o.Id equals p.OrderId
+                                            select p).ToList();
+
+
+
+                decimal netPrice = 0;
+
+                foreach (var postion in positions)
+                {
+                    netPrice += postion.PriceNetto;
+                }
+
+
+                int customerId = order.CustomerId;
+                int orderId = order.Id;
+                DateTime date = DateTime.Now;
+
+
+                Invoice invoice = new Invoice();
+
+                invoice.OrderId = orderId;
+                invoice.Date = date;
+                invoice.NetPrice = netPrice;
+                invoice.CustomerId = customerId;
+
+                context.Invoice.Add(invoice);
+                context.SaveChanges();
+            }
         }
     }
 }

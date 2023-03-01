@@ -134,6 +134,13 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 if (position.Quantity > 0)
                 {
+
+                    // Hier noch den Preis der Positionen hinzufügen
+                    // Was fehlt:
+                    //- PriceNetto
+                    //- PriceBrutto
+
+
                     if (context.Position.Add(position) != null)
                     {
                         context.SaveChanges();
@@ -156,7 +163,8 @@ namespace Semesterprojekt_Datenbank.Utilities
                 {
 
                     Position savedPosition = (from p in context.Position
-                        where p.ArticleId == pos.ArticleId
+                        where p.ArticleId == pos.ArticleId &&
+                        p.OrderId == pos.OrderId
                         select p).SingleOrDefault();
 
                     savedPosition.Quantity += pos.Quantity;

@@ -120,7 +120,10 @@ namespace Semesterprojekt_Datenbank.Utilities
                 List<InvoiceVm> list = new List<InvoiceVm>();
                 using (var context = new DataContext()){
                     SqlConnection conn = new SqlConnection(DataContext.GetConnectionStringByName("connection"));
-                    SqlCommand cmd = new SqlCommand("Select Invoice.Id, Invoice.Date, Invoice.NetPrice, Customer.Nr, Customer.Name, Town.ZipCode, Customer.Street, Town.City, Town.Country From Customer join Town on Town.Id = Customer.TownId join [Order] on Customer.Id = [Order].Id join Invoice on [Order].Id = Invoice.OrderId " + $"{ whereQuery }", conn);
+                    SqlCommand cmd = new SqlCommand("Select Invoice.Id, Invoice.Date, Invoice.NetPrice, Customer.Nr, Customer.Name, Town.ZipCode, Customer.Street, Town.City, Town.Country" +
+                                                    " From Invoice Join Customer on Invoice.CustomerId = Customer.Id " +
+                                                    "Join Town on Town.Id = Customer.TownId "
+                                                    + $"{ whereQuery }", conn);
                     conn.Open();
                     IDataReader reader = cmd.ExecuteReader();
                     while (reader.Read())
