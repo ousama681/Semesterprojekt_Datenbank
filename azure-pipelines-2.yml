@@ -31,7 +31,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: test
-    projects: '**/*Tests/*.csproj'
+    projects: 'SemesterarbeitDBS\Testing\Testing.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
 - task: VSTest@2
