@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semesterprojekt Datenbank",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBS View", "DBS View\DBS View.csproj", "{560AA30F-46C5-4AE6-B779-484755DCAB5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{01F9C57C-7DDE-4085-AAF8-785ACCF928C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Testing", "Testing\Testing.csproj", "{E06742D7-6E9F-4708-9F93-FDD22F01872E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{560AA30F-46C5-4AE6-B779-484755DCAB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{560AA30F-46C5-4AE6-B779-484755DCAB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{560AA30F-46C5-4AE6-B779-484755DCAB5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01F9C57C-7DDE-4085-AAF8-785ACCF928C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01F9C57C-7DDE-4085-AAF8-785ACCF928C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01F9C57C-7DDE-4085-AAF8-785ACCF928C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01F9C57C-7DDE-4085-AAF8-785ACCF928C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E06742D7-6E9F-4708-9F93-FDD22F01872E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E06742D7-6E9F-4708-9F93-FDD22F01872E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E06742D7-6E9F-4708-9F93-FDD22F01872E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E06742D7-6E9F-4708-9F93-FDD22F01872E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
