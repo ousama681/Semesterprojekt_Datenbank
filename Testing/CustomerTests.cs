@@ -20,7 +20,7 @@ namespace Testing
 
 
             // assert
-            Assert.That(1+1, Is.EqualTo(2));
+            Assert.That(1+5, Is.EqualTo(2));
         }
     }
 }
