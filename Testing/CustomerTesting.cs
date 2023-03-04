@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Testing
 {
     [TestFixture]
-    internal class CustomerTests
+    internal class CustomerTesting
     {
         [Test]
         public void Customer_CreateCustomer_isSuccess()
