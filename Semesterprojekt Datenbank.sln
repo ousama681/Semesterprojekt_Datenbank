@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Semesterprojekt Datenbank",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DBS View", "DBS View\DBS View.csproj", "{560AA30F-46C5-4AE6-B779-484755DCAB5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Testing", "Testing\Testing.csproj", "{E06742D7-6E9F-4708-9F93-FDD22F01872E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerTests", "Testing\CustomerTests.csproj", "{E06742D7-6E9F-4708-9F93-FDD22F01872E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{8FD18B33-AE54-44C8-B9D9-99165CBDA761}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InvoiceTests", "TestProject1\InvoiceTests.csproj", "{8FD18B33-AE54-44C8-B9D9-99165CBDA761}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
