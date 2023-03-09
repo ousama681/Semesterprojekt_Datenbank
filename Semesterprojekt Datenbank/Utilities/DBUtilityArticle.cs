@@ -24,7 +24,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 {
 
                     var articleGroupId = GetArticleGroupId(context, orderVM);
-                    Article article = new Article(orderVM.Name, orderVM.Nr, orderVM.Price, articleGroupId, 1);
+                    Article article = new Article(orderVM.Name, orderVM.Nr, orderVM.Price, articleGroupId, 1, DateTime.Now);
                     context.Add(article);
                     modelBuilder.Entity<Article>().HasData(new Article()
                     {
@@ -32,7 +32,8 @@ namespace Semesterprojekt_Datenbank.Utilities
                         Name = article.Name,
                         Price = article.Price,
                         ArticleGroupId = article.ArticleGroupId,
-                        Mwstid = article.Mwstid
+                        Mwstid = article.Mwstid,
+                        DateTime = article.DateTime
                     });
                     context.SaveChanges();
                     ArticleVm.ArticleList.Add(orderVM);
@@ -128,7 +129,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                                                  where article.ArticleGroupId == articleGroup.Id
                                                  select articleGroup).FirstOrDefault();
 
-                        ArticleVm articleVm = new ArticleVm(article.Name, article.Nr, article.Price, queryArticleGroup.Name);
+                        ArticleVm articleVm = new ArticleVm(article.Name, article.Nr, article.Price, queryArticleGroup.Name, article.DateTime);
                         articleVmList.Add(articleVm);
                     }
                     return articleVmList;
@@ -160,7 +161,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                     var queryArticleGroup = (from articleGroup in context.ArticleGroup
                                              where articleGroup.Id == queryArticle.ArticleGroupId
                                              select articleGroup).FirstOrDefault();
-                    ArticleVm vm = new ArticleVm(queryArticle.Name, queryArticle.Nr, queryArticle.Price, queryArticleGroup.Name);
+                    ArticleVm vm = new ArticleVm(queryArticle.Name, queryArticle.Nr, queryArticle.Price, queryArticleGroup.Name, queryArticle.DateTime);
                     return vm;
                 }
             }

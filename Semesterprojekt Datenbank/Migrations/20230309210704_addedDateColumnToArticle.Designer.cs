@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Semesterprojekt_Datenbank;
 
@@ -11,9 +12,11 @@ using Semesterprojekt_Datenbank;
 namespace SemesterprojektDatenbank.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20230309210704_addedDateColumnToArticle")]
+    partial class addedDateColumnToArticle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -223,6 +226,9 @@ namespace SemesterprojektDatenbank.Migrations
 
                     b.Property<int>("OrderId")
                         .HasColumnType("int");
+
+                    b.Property<decimal>("PriceBrutto")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("PriceNetto")
                         .HasColumnType("decimal(18,2)");
