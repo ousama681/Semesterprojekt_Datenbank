@@ -40,28 +40,36 @@ namespace DBS_View.View
         }
         private void CmdSave_Click(object sender, EventArgs e)
         {
-            articleVm.ArticleGroup = CmbArticleGroup.Text;
-            articleVm.Name = TxtArticleName.Text;
-            if (TxtPrice.TextLength > 0 && !TxtPrice.Text.Any(char.IsLetter)) 
-                articleVm.Price = Convert.ToDecimal(TxtPrice.Text);
-            if (isArticleUpdated != true)
-            { 
-                if (!articleVm.isArticleNrUsed(Convert.ToInt32(TxtArticleNr.Text)) && TxtArticleNr.TextLength > 0 && TxtArticleNr.Text.All(char.IsDigit))
-                    { 
+            try
+            {
+                articleVm.ArticleGroup = CmbArticleGroup.Text;
+                articleVm.Name = TxtArticleName.Text;
+                if (TxtPrice.TextLength > 0 && !TxtPrice.Text.Any(char.IsLetter))
+                    articleVm.Price = Convert.ToDecimal(TxtPrice.Text);
+                if (isArticleUpdated != true)
+                {
+                    if (!articleVm.isArticleNrUsed(Convert.ToInt32(TxtArticleNr.Text)) && TxtArticleNr.TextLength > 0 &&
+                        TxtArticleNr.Text.All(char.IsDigit))
+                    {
                         articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text);
                         articleVm.CreateArticle(articleVm);
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Artikelnr bereits vergeben. Bitte andere Artikelnummer auswählen.");
+                    }
                 }
                 else
-                { 
-                    MessageBox.Show(this, "Artikelnr bereits vergeben. Bitte andere Artikelnummer auswählen.");
+                {
+                    articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text);
+                    articleVm.UpdateArticle(articleVm);
                 }
-                }
-            else
-            { 
-                articleVm.Nr = Convert.ToInt32(TxtArticleNr.Text); 
-                articleVm.UpdateArticle(articleVm);
+                this.Close();
             }
-            this.Close();
+            catch (FormatException ex) 
+            {
+                MessageBox.Show("Bitte korrekte Werte in alle Felder eingeben ");
+            }
             
             
             

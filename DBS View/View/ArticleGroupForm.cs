@@ -110,6 +110,11 @@ namespace DBS_View.View
         private void ArticleGroupForm_Load(object sender, EventArgs e)
         {
             LoadTreeView();
+            CmdAddArticleGroup.Enabled = false;
+            CmdChangeArticleGrpName.Enabled = false;
+            CmdDeleteArticleGroup.Enabled = false;
+            TxtAddArticleGroup.Enabled = false;
+            TxtArticleGroupName.Enabled = false;
         }
 
 
@@ -148,6 +153,11 @@ namespace DBS_View.View
         {
             TrVArticleGroup.CheckBoxes ^= true;
             TrVArticleGroup.LabelEdit ^= true;
+            CmdAddArticleGroup.Enabled ^= true;
+            CmdChangeArticleGrpName .Enabled ^= true;
+            CmdDeleteArticleGroup.Enabled ^= true;
+            TxtAddArticleGroup.Enabled ^= true;
+            TxtArticleGroupName.Enabled ^= true;
         }
 
         void UncheckAll(TreeNode node)
@@ -182,13 +192,17 @@ namespace DBS_View.View
 
         private void CmdChangeArticleGrpName_Click(object sender, EventArgs e)
         {
-            string oldName = TrVArticleGroup.SelectedNode.Text;
-            string newName = TxtArticleGroupName.Text;
-            if (newName.Length != 0)
+            if (TrVArticleGroup.SelectedNode != null)
             {
-                TrVArticleGroup.SelectedNode.Text = newName;
-                DBUtilityArticleGroup.ChangeArticleGroupName(newName, oldName);
+                string oldName = TrVArticleGroup.SelectedNode.Text;
+                string newName = TxtArticleGroupName.Text;
+                if (newName.Length != 0)
+                {
+                    TrVArticleGroup.SelectedNode.Text = newName;
+                    DBUtilityArticleGroup.ChangeArticleGroupName(newName, oldName);
+                }
             }
+            TxtArticleGroupName.Clear();
         }
     }
 }

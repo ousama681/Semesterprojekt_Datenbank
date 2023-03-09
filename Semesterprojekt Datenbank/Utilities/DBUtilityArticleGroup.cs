@@ -15,7 +15,6 @@ namespace Semesterprojekt_Datenbank.Utilities
     {
         ModelBuilder modelBuilder = new ModelBuilder();
 
-
         public bool Create(ArticleGroupVm articleGroupVm)
         {
             try
@@ -104,9 +103,9 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     List<ArticleGroupVm> articleGroupVmList = new List<ArticleGroupVm>();
-                    SqlConnection conn = new SqlConnection(DataContext.GetConnectionStringByName("connection")); 
-                    SqlCommand cmd = new SqlCommand("Select * from dbo.ArticleGroups()", conn);
-                    conn.Open();
+                    SqlConnection con = new SqlConnection(DataContext.GetConnectionStringByName("connection"));
+                    SqlCommand cmd = new SqlCommand("Select * from dbo.ArticleGroups()", con);
+                    con.Open();
                     IDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
@@ -114,7 +113,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                         articleGroupVmList.Add(articleGroupVm1);
                     }
                     context.SaveChanges();
-                    conn.Close();
+                    con.Close();
                     return articleGroupVmList;
                 }
             }

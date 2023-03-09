@@ -140,7 +140,7 @@
             this.PnlBack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlBack.Location = new System.Drawing.Point(166, 0);
             this.PnlBack.Name = "PnlBack";
-            this.PnlBack.Size = new System.Drawing.Size(1100, 477);
+            this.PnlBack.Size = new System.Drawing.Size(1116, 477);
             this.PnlBack.TabIndex = 4;
             // 
             // PnlMainPanel
@@ -148,7 +148,7 @@
             this.PnlMainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PnlMainPanel.Location = new System.Drawing.Point(0, 47);
             this.PnlMainPanel.Name = "PnlMainPanel";
-            this.PnlMainPanel.Size = new System.Drawing.Size(1100, 430);
+            this.PnlMainPanel.Size = new System.Drawing.Size(1116, 430);
             this.PnlMainPanel.TabIndex = 5;
             // 
             // PnlTitle
@@ -158,7 +158,7 @@
             this.PnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlTitle.Location = new System.Drawing.Point(0, 0);
             this.PnlTitle.Name = "PnlTitle";
-            this.PnlTitle.Size = new System.Drawing.Size(1100, 47);
+            this.PnlTitle.Size = new System.Drawing.Size(1116, 47);
             this.PnlTitle.TabIndex = 4;
             // 
             // LblTitle
@@ -176,7 +176,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(1266, 477);
+            this.ClientSize = new System.Drawing.Size(1282, 477);
             this.Controls.Add(this.PnlBack);
             this.Controls.Add(this.PnlSidebar);
             this.Name = "MainForm";

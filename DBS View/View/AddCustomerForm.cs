@@ -32,32 +32,42 @@ namespace DBS_View.View
 
         private void CmdSave_Click(object sender, EventArgs e)
         {
-            customerVm.Name = TxtCustomerName.Text;
-            customerVm.Street = TxtStreet.Text; 
-            customerVm.City = TxtTown.Text;
-            customerVm.ZipCode = TxtZipCode.Text; 
-            customerVm.Email = TxtEmail.Text; 
-            customerVm.Website = TxtWebsite.Text;
-            customerVm.Password = TxtPassword.Text.GetHashCode().ToString();
-
-            if (isCustomerUpdated != true)
+            try
             {
-                if (!customerVm.IsCustomerNrUsed(Convert.ToInt32(TxtCustomerNr.Text)) && TxtCustomerNr.TextLength > 0)
+                customerVm.Name = TxtCustomerName.Text;
+                customerVm.Street = TxtStreet.Text;
+                customerVm.City = TxtTown.Text;
+                customerVm.ZipCode = TxtZipCode.Text;
+                customerVm.Email = TxtEmail.Text;
+                customerVm.Website = TxtWebsite.Text;
+                customerVm.Password = TxtPassword.Text.GetHashCode().ToString();
+
+                if (isCustomerUpdated != true)
                 {
-                    customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
-                    customerVm.CreateCustomer(customerVm);
+                    if (!customerVm.IsCustomerNrUsed(Convert.ToInt32(TxtCustomerNr.Text)) &&
+                        TxtCustomerNr.TextLength > 0)
+                    {
+                        customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
+                        customerVm.CreateCustomer(customerVm);
+                    }
+                    else
+                    {
+                        MessageBox.Show(this, "Kundennr bereits vergeben. Bitte andere Kundennummer auswählen.");
+                    }
                 }
                 else
                 {
-                MessageBox.Show(this, "Kundennr bereits vergeben. Bitte andere Kundennummer auswählen.");
+                    customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
+                    customerVm.UpdateCustomer(customerVm);
                 }
+
+                this.Close();
             }
-            else 
+            catch (FormatException ex)
             {
-                customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
-                customerVm.UpdateCustomer(customerVm);
+                MessageBox.Show("Bitte korrekte Werte in alle Felder eingeben");
             }
-            this.Close();
+            
             
         }
     }

@@ -33,8 +33,6 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.CmdSearch = new System.Windows.Forms.Button();
             this.DgVOrders = new System.Windows.Forms.DataGridView();
-            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.CmbCustomer = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,6 +48,8 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CmdGenerateInvoice = new System.Windows.Forms.Button();
+            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgVPositions)).BeginInit();
@@ -109,27 +109,10 @@
             this.DgVOrders.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.DgVOrders.RowTemplate.Height = 25;
             this.DgVOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgVOrders.Size = new System.Drawing.Size(227, 394);
+            this.DgVOrders.Size = new System.Drawing.Size(250, 394);
             this.DgVOrders.TabIndex = 9;
             this.DgVOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_CellDoubleClick);
             this.DgVOrders.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_RowEnter);
-            // 
-            // colOrderNr
-            // 
-            this.colOrderNr.FillWeight = 30F;
-            this.colOrderNr.HeaderText = "Auftragsnr";
-            this.colOrderNr.MinimumWidth = 10;
-            this.colOrderNr.Name = "colOrderNr";
-            this.colOrderNr.ReadOnly = true;
-            this.colOrderNr.Width = 80;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.HeaderText = "Kundenname";
-            this.colCustomerName.MinimumWidth = 10;
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.ReadOnly = true;
-            this.colCustomerName.Width = 143;
             // 
             // label1
             // 
@@ -199,9 +182,9 @@
             // 
             // TrVArticleGroupOrder
             // 
-            this.TrVArticleGroupOrder.Location = new System.Drawing.Point(655, 12);
+            this.TrVArticleGroupOrder.Location = new System.Drawing.Point(627, 12);
             this.TrVArticleGroupOrder.Name = "TrVArticleGroupOrder";
-            this.TrVArticleGroupOrder.Size = new System.Drawing.Size(242, 394);
+            this.TrVArticleGroupOrder.Size = new System.Drawing.Size(270, 394);
             this.TrVArticleGroupOrder.TabIndex = 47;
             this.TrVArticleGroupOrder.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TrVArticleGroupOrder_AfterSelect);
             // 
@@ -236,33 +219,36 @@
             this.Articlename,
             this.Quantity,
             this.PriceBrutto});
-            this.DgVPositions.Location = new System.Drawing.Point(245, 12);
+            this.DgVPositions.Location = new System.Drawing.Point(268, 12);
             this.DgVPositions.Name = "DgVPositions";
             this.DgVPositions.ReadOnly = true;
             this.DgVPositions.RowHeadersVisible = false;
             this.DgVPositions.RowHeadersWidth = 82;
             this.DgVPositions.RowTemplate.Height = 25;
             this.DgVPositions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgVPositions.Size = new System.Drawing.Size(404, 394);
+            this.DgVPositions.Size = new System.Drawing.Size(353, 394);
             this.DgVPositions.TabIndex = 48;
             // 
             // Positionsnr
             // 
-            this.Positionsnr.HeaderText = "Positionnr";
+            this.Positionsnr.HeaderText = "Pos";
             this.Positionsnr.Name = "Positionsnr";
             this.Positionsnr.ReadOnly = true;
+            this.Positionsnr.Width = 50;
             // 
             // Articlename
             // 
             this.Articlename.HeaderText = "Artikelname";
             this.Articlename.Name = "Articlename";
             this.Articlename.ReadOnly = true;
+            this.Articlename.Width = 120;
             // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Anzahl";
             this.Quantity.Name = "Quantity";
             this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 80;
             // 
             // PriceBrutto
             // 
@@ -279,6 +265,23 @@
             this.CmdGenerateInvoice.Text = "Rechnung erstellen";
             this.CmdGenerateInvoice.UseVisualStyleBackColor = true;
             this.CmdGenerateInvoice.Click += new System.EventHandler(this.CmdGenerateInvoice_Click);
+            // 
+            // colOrderNr
+            // 
+            this.colOrderNr.FillWeight = 30F;
+            this.colOrderNr.HeaderText = "Auftragsnr";
+            this.colOrderNr.MinimumWidth = 10;
+            this.colOrderNr.Name = "colOrderNr";
+            this.colOrderNr.ReadOnly = true;
+            this.colOrderNr.Width = 70;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomerName.HeaderText = "Kundenname";
+            this.colCustomerName.MinimumWidth = 10;
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.ReadOnly = true;
             // 
             // OrdersForm
             // 
@@ -328,13 +331,13 @@
         private TreeView TrVArticleGroupOrder;
         private Label LblArticleName;
         private ComboBox CmbArticle;
-        private DataGridViewTextBoxColumn colOrderNr;
-        private DataGridViewTextBoxColumn colCustomerName;
         private DataGridView DgVPositions;
+        private Button CmdGenerateInvoice;
         private DataGridViewTextBoxColumn Positionsnr;
         private DataGridViewTextBoxColumn Articlename;
         private DataGridViewTextBoxColumn Quantity;
         private DataGridViewTextBoxColumn PriceBrutto;
-        private Button CmdGenerateInvoice;
+        private DataGridViewTextBoxColumn colOrderNr;
+        private DataGridViewTextBoxColumn colCustomerName;
     }
 }

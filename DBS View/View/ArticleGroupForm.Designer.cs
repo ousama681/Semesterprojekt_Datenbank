@@ -111,7 +111,7 @@
             // CmdAdjustArticleGroups
             // 
             this.CmdAdjustArticleGroups.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CmdAdjustArticleGroups.Location = new System.Drawing.Point(12, 201);
+            this.CmdAdjustArticleGroups.Location = new System.Drawing.Point(12, 132);
             this.CmdAdjustArticleGroups.Name = "CmdAdjustArticleGroups";
             this.CmdAdjustArticleGroups.Size = new System.Drawing.Size(164, 29);
             this.CmdAdjustArticleGroups.TabIndex = 13;
@@ -121,15 +121,15 @@
             // 
             // TrVArticleGroup
             // 
-            this.TrVArticleGroup.Location = new System.Drawing.Point(300, 12);
+            this.TrVArticleGroup.Location = new System.Drawing.Point(195, 12);
             this.TrVArticleGroup.Name = "TrVArticleGroup";
-            this.TrVArticleGroup.Size = new System.Drawing.Size(225, 368);
+            this.TrVArticleGroup.Size = new System.Drawing.Size(225, 372);
             this.TrVArticleGroup.TabIndex = 15;
             this.TrVArticleGroup.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TrVArticleGroup_AfterCheck);
             // 
             // TxtArticleGroupName
             // 
-            this.TxtArticleGroupName.Location = new System.Drawing.Point(12, 140);
+            this.TxtArticleGroupName.Location = new System.Drawing.Point(12, 214);
             this.TxtArticleGroupName.Name = "TxtArticleGroupName";
             this.TxtArticleGroupName.Size = new System.Drawing.Size(164, 23);
             this.TxtArticleGroupName.TabIndex = 16;
@@ -137,7 +137,7 @@
             // CmdChangeArticleGrpName
             // 
             this.CmdChangeArticleGrpName.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CmdChangeArticleGrpName.Location = new System.Drawing.Point(12, 166);
+            this.CmdChangeArticleGrpName.Location = new System.Drawing.Point(12, 179);
             this.CmdChangeArticleGrpName.Name = "CmdChangeArticleGrpName";
             this.CmdChangeArticleGrpName.Size = new System.Drawing.Size(164, 29);
             this.CmdChangeArticleGrpName.TabIndex = 17;

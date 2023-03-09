@@ -38,7 +38,7 @@ namespace DBS_View.View
                 // Getting column number to prevent errors when changing the order of the columns
                 string articleName = Convert.ToString(DgvArticle.CurrentRow.Cells[column["colName"].Index].Value);
 
-                if (MessageBox.Show("Möchten Sie den Kunden" + " \"" + articleName + "\" " +
+                if (MessageBox.Show("Möchten Sie den Artikel" + " \"" + articleName + "\" " +
                                     "wirklich löschen?", "Eintrag löschen?", MessageBoxButtons.YesNo,
                                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {

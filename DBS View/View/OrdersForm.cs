@@ -23,6 +23,7 @@ namespace DBS_View.View
             //CmbArticle.DataSource = orderVM.GetArticles();
             articleGroupVm = new ArticleGroupVm();
             LoadTreeView();
+          
         }
 
         private void LoadTreeView()
@@ -63,52 +64,56 @@ namespace DBS_View.View
             int articleId;
             var SelectedOrderCells = DgVOrders.SelectedCells;
             int orderId = (int)SelectedOrderCells[0].Value;
-
-            using (var context = new DataContext())
+            if (CmbArticle.Text.Length > 0)
             {
-                articleId = (from a in context.Article
-                    where a.Name == CmbArticle.Text
-                    select a.Id).SingleOrDefault();
-
-                pos = new Position(quantity, 0, 0, articleId, orderId);
-
-                orderVM.positionList = (from p in context.Position
-                    where p.OrderId == orderId
-                    select p).ToList();
-
-                // Wenn Artikel bereits existiert dann Menge zur Position hinzufügen
-                if (orderVM.positionList.Contains(pos))
+                using (var context = new DataContext())
                 {
-                    DBUtilityOrder.SaveExistingPosition(pos);
+                    articleId = (from a in context.Article
+                        where a.Name == CmbArticle.Text
+                        select a.Id).SingleOrDefault();
 
-                    // Update UI
-                    DgVOrders_RowEnter(null, null);
-                }
-                else
-                {
+                    pos = new Position(quantity, 0, 0, articleId, orderId);
+
+                    orderVM.positionList = (from p in context.Position
+                        where p.OrderId == orderId
+                        select p).ToList();
+
+                    // Wenn Artikel bereits existiert dann Menge zur Position hinzufügen
+                    if (orderVM.positionList.Contains(pos))
                     {
-                        OrderVM orderVM = new OrderVM();
-                        orderVM.customerName = CmbCustomer.Text;
-                        orderVM.positionList.Add(pos);
+                        DBUtilityOrder.SaveExistingPosition(pos);
 
-                        foreach (Position position in orderVM.positionList)
+                        // Update UI
+                        DgVOrders_RowEnter(null, null);
+                    }
+                    else
+                    {
                         {
-                            Article article = (from a in context.Article
-                                where a.Id == position.ArticleId
-                                select a).SingleOrDefault();
+                            OrderVM orderVM = new OrderVM();
+                            orderVM.customerName = CmbCustomer.Text;
+                            orderVM.positionList.Add(pos);
 
-                            pos.PriceNetto = (article.Price * pos.Quantity);
+                            foreach (Position position in orderVM.positionList)
+                            {
+                                Article article = (from a in context.Article
+                                    where a.Id == position.ArticleId
+                                    select a).SingleOrDefault();
 
-                            // wir haben das speichern mal hier runter genommen, da wir noch den Preis setzen müssen.
-                            // Position über DB speichern
-                            // ansonsten Neue Position erstellen
-                            if (DBUtilityOrder.SaveNewPosition(pos))
+                                pos.PriceNetto = (article.Price * pos.Quantity);
 
-                            DgVPositions.Rows.Add(new object[] { positionnr++, article.Name, quantity, (quantity * article.Price) });
+                                // wir haben das speichern mal hier runter genommen, da wir noch den Preis setzen müssen.
+                                // Position über DB speichern
+                                // ansonsten Neue Position erstellen
+                                if (DBUtilityOrder.SaveNewPosition(pos))
+
+                                    DgVPositions.Rows.Add(new object[]
+                                        { positionnr++, article.Name, quantity, (quantity * article.Price) });
+                            }
                         }
                     }
                 }
             }
+
         }
 
         private void CmdDeletePosition_Click(object sender, EventArgs e)
@@ -276,6 +281,7 @@ namespace DBS_View.View
 
                     DgVOrders.Rows.Add(order.Id, customerName);
                 }
+                DgVOrders.FirstDisplayedCell.Selected = true;
             }
         }
 
