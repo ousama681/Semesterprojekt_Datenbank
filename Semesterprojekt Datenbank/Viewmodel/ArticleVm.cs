@@ -19,16 +19,20 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public decimal Price { get; set; }
         public string ArticleGroup { get; set; }
 
+        public DateTime DateTime { get; set; }
+
         public ArticleVm()
         {
 
         }
-        public ArticleVm(string name, int nr, decimal price, string articleGroup)
+        public ArticleVm(string name, int nr, decimal price, string articleGroup, DateTime dateTime)
         {
             Name = name;
             Nr = nr;
             Price = price;
             ArticleGroup = articleGroup;
+            DateTime = dateTime;
+
         }
 
         public void CreateArticle(ArticleVm articleVm)
