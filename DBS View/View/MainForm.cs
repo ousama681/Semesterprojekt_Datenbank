@@ -110,5 +110,11 @@ namespace DBS_View.View
             OpenChildForm(new InvoiceForm());
             ActiveButton((Button)sender);
         }
+
+        private void CmdJahresvergleich_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new YearComparisonForm());
+            ActiveButton((Button)sender);
+        }
     }
 }
