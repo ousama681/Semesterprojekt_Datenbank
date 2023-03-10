@@ -42,20 +42,6 @@ namespace SemesterprojektDatenbank.Migrations
                                  "(3.7)" +
                                  ";");
 
-
-            // TestingData for Customers
-            migrationBuilder.Sql("INSERT INTO dbo.Customer(Nr, Name, Email, Website, Password, Street, TownId)" +
-                                 "VALUES" +
-                                 "(5001, 'Herbert AG', 'herbert@werkstatt.ch', 'herbertag.ch', 'herbertGutesPw', 'Wilerstrasse 12', 112)," +
-                                 "(5002, 'Starrag AG', 'starrag@rorschach.ch', 'starrag.ch', 'WirBauenMaschinen', 'Seestrasse 44', 442)," +
-                                 "(5003, 'McDonalds GmbH', 'mcdonalds@imlovinit.com', 'mcdonalds.com', 'UnserEssenSchmecktScheisse', 'Stadtstrasse 34', 200)," +
-                                 "(5004, 'Eiko GmbH', 'eiko@stgallen.ch', 'eiko.ch', 'SehrGutesPW', 'St-Fidenstrasse 11', 155)," +
-                                 "(5005, 'Bamboo GmbH', 'bamboo@food.ch', 'bamboo.ch', 'WeSellRice!', 'Bahnhofsstrasse 15',111)" +
-                                 ";");
-
-
-
-
         }
 
         /// <inheritdoc />
