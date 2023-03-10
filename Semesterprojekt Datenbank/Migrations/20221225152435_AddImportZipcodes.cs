@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Configuration;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System.Data;
 using System.IO;
@@ -38,7 +39,7 @@ namespace SemesterprojektDatenbank.Migrations
 
                 //using (StreamReader reader = new StreamReader(@"C:\Users\lamakumba\source\repos\Semesterprojekt_Datenbank\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))   
 
-                using (StreamReader reader = new StreamReader(@"C:\ZbwTechniker\DatenbankenAdvanced\SemesterarbeitDBS\Semesterprojekt Datenbank\plz_verzeichnis_new (1).csv"))
+                using (StreamReader reader = new StreamReader(ConfigurationManager.AppSettings["PathZipCodes"]))
                 {
                     while (!reader.EndOfStream)
                     {
