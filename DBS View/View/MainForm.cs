@@ -15,27 +15,17 @@ namespace DBS_View.View
     {
         private Form activeForm;
         private Button currentButton;
-        //private string currentUser = Login.CurrentUser;
 
         public MainForm()
         {
             InitializeComponent();
-            //LblCurrentUser.Text = Convert.ToString(currentUser);
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            //OpenChildForm(new DashboardForm());
-            //ActiveButton(CmdDashboard);
             OpenChildForm(new CustomerForm());
             ActiveButton(CmdCustomer);
         }
-
-        //private void CmdDashboard_Click(object sender, EventArgs e)
-        //{
-        //    OpenChildForm(new DashboardForm());
-        //    ActiveButton((Button)sender);
-        //}
 
         private void CmdCustomers_Click(object sender, EventArgs e)
         {

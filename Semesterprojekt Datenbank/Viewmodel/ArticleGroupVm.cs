@@ -12,15 +12,11 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 {
     public class ArticleGroupVm
     {
-
         public static List<ArticleGroupVm> articleGroupList = new List<ArticleGroupVm>();
-
         private DBUtilityArticleGroup db = new DBUtilityArticleGroup();
-
         public int Id { get; set; }
         public string Name { get; set; }
-        public string? ParentId { get; set; } 
-
+        public string? ParentId { get; set; }
         public ArticleGroupVm(int id, string name, string? parentId)
         {
             Id = id;
@@ -39,7 +35,6 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         public void CreateArticleGroup(ArticleGroupVm articleGroupVm)
         {
             db.Create(articleGroupVm);
-
         }
         public List<ArticleGroupVm> GetArticleGroup()
         {
@@ -55,6 +50,5 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         {
             return db.GetId(articleGroupVm);
         }
-
     }
 }

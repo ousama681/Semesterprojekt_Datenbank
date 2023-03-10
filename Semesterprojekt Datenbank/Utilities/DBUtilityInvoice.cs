@@ -62,7 +62,6 @@ namespace Semesterprojekt_Datenbank.Utilities
 
                     }
                     return list;
-
                 }
             }
             catch (Microsoft.Data.SqlClient.SqlException e)
@@ -77,7 +76,6 @@ namespace Semesterprojekt_Datenbank.Utilities
                                 "Error Message: \r\n" + e.Message);
                 return null;
             }
-           
         }
 
 
@@ -91,24 +89,8 @@ namespace Semesterprojekt_Datenbank.Utilities
                                     join c in context.Customer on t.Id equals (c.TownId)
                                     join o in context.Order on c.Id equals (o.CustomerId)
                                     join i in context.Invoice on o.Id equals (i.OrderId)
-
-                                    where i.Id == item.Count() 
-
+                                    where i.Id == item.Count()
                                     select i).ToList();
-                                   
-                                    //select new
-                                    //{
-
-                                    //    i.Id,
-                                    //    i.Date,
-                                    //    i.NetPrice,
-                                    //    c.Nr,
-                                    //    c.Name,
-                                    //    c.Street,
-                                    //    t.ZipCode,
-                                    //    t.City,
-                                    //    t.Country,
-                                    //}).ToList();
             };
             return null;
         }
@@ -147,7 +129,6 @@ namespace Semesterprojekt_Datenbank.Utilities
                 MessageBox.Show("Error Message: \r\n" + e.Message);
                 return null;
             }
-           
         }
         public InvoiceVm ReadSingle(InvoiceVm filterList)
         {

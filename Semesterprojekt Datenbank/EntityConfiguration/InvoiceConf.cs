@@ -17,9 +17,6 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
             modelBuilder.Entity<Invoice>().Property(a => a.NetPrice);
             modelBuilder.Entity<Invoice>().Property(a => a.OrderId).IsRequired();
 
-            // ZU Beachten
-            // Falls es einen Fehler in der DB bzgl. Invoice gibt.
-            // Hier nochmal über den Code gehen.
             modelBuilder.Entity<Invoice>()
                 .HasOne(i => i.Order)
                 .WithOne(o => o.Invoice)

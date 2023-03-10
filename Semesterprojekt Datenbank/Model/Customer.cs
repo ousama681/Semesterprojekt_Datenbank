@@ -9,7 +9,6 @@ namespace Semesterprojekt_Datenbank.Model
 {
     public class Customer
     {
-        
         public int Id { get; set; }
         public int Nr { get; set; }
         public string Name { get; set; }

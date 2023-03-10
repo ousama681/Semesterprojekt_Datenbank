@@ -38,11 +38,8 @@ namespace Semesterprojekt_Datenbank.Model
                 return false;
             }
             pos = (Position)obj;
-
             string posArticleName = "";
             string thisArticleName = "";
-
-
 
             using (var context = new DataContext())
             {

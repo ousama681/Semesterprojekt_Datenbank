@@ -14,7 +14,6 @@ namespace Semesterprojekt_Datenbank.Utilities
     public class DBUtilityOrder : IDBUtility<OrderVM>
     {
         ModelBuilder modelBuilder = new ModelBuilder();
-
         public bool Create(OrderVM orderVM)
         {
             Order savedOrder = null;
@@ -22,7 +21,6 @@ namespace Semesterprojekt_Datenbank.Utilities
 
             if (customerName.Length != 0)
             {
-
                 using (var context = new DataContext())
                 {
                     int customerId = (from c in context.Customer
@@ -35,8 +33,6 @@ namespace Semesterprojekt_Datenbank.Utilities
                     var orderId = (from o in context.Order
                                    where o.CustomerId == customerId && o.Date == orderVM.orderDate
                                        select o.Id).FirstOrDefault();
-
-
 
                     if (orderVM.positionList.Count > 0)
                     {
@@ -52,13 +48,10 @@ namespace Semesterprojekt_Datenbank.Utilities
                             context.Position.Add(position);
                         }
                     }
-
                     context.SaveChanges();
-
                     return true;
                 }
             }
-
             return false;
         }
 
@@ -89,7 +82,7 @@ namespace Semesterprojekt_Datenbank.Utilities
                 using (var context = new DataContext())
                 {
                     return (from customer in context.Customer
-                        select customer.Name).ToList();
+                            select customer.Name).ToList();
                 }
             }
             catch (Microsoft.Data.SqlClient.SqlException e)
@@ -135,13 +128,6 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 if (position.Quantity > 0)
                 {
-
-                    // Hier noch den Preis der Positionen hinzufügen
-                    // Was fehlt:
-                    //- PriceNetto
-                    //- PriceBrutto
-
-
                     if (context.Position.Add(position) != null)
                     {
                         context.SaveChanges();
@@ -176,7 +162,6 @@ namespace Semesterprojekt_Datenbank.Utilities
                     // Fehlermeldung ausgeben
                 }
             }
-
             return false;
         }
 

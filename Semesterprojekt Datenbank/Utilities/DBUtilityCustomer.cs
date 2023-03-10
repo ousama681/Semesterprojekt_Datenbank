@@ -13,7 +13,6 @@ namespace Semesterprojekt_Datenbank.Utilities
     public class DBUtilityCustomer : IDBUtility<CustomerVm>
     {
         ModelBuilder modelBuilder = new ModelBuilder();
-
         public bool Create(CustomerVm orderVM)
         {
             try
@@ -146,8 +145,6 @@ namespace Semesterprojekt_Datenbank.Utilities
                                 "Error Message: \r\n" + e.Message);
                 return null;
             }
-
-
         }
 
         public void Update(CustomerVm customerVm)

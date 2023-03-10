@@ -10,7 +10,6 @@ namespace Semesterprojekt_Datenbank.Model
     {
 
         public int Id { get; set; }
-
         public string Name { get; set; }
         public int Nr { get; set; }
         public decimal Price { get; set; }
@@ -37,7 +36,6 @@ namespace Semesterprojekt_Datenbank.Model
         {
 
         }
-
 
         public override string ToString()
         {

@@ -10,16 +10,13 @@ namespace Semesterprojekt_Datenbank.Viewmodel
     public class InvoiceVm
     {
         DBUtilityInvoice db = new DBUtilityInvoice();
-
         public MWST mwst = new MWST();
-
         public InvoiceVm(int id, DateTime date, decimal netPrice, int customerNr, string customerName, string zipCode, string street, string city, string country)
         {
             Id = id;
             Date = date;
             NetPrice = netPrice;
             BurritoPrice = NetPrice + (NetPrice / 100 * Convert.ToDecimal(mwst.TaxValue));
-            //OrderId = orderId;
             CustomerNr = customerNr;
             CustomerName = customerName;
             ZipCode = zipCode;
@@ -57,8 +54,6 @@ namespace Semesterprojekt_Datenbank.Viewmodel
 
         [System.ComponentModel.DisplayName("Land")]
         public string Country { get; set; }
-
-
         public InvoiceVm() { }
 
         public List<InvoiceVm> GetInvoices()
@@ -76,14 +71,5 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             return db.ReadFilteredData(whereQuery);
 
         }
-
-
-
     }
-
-
-
-
-
-
 }

@@ -19,7 +19,6 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
             modelBuilder.Entity<Town>().Property(a => a.Country).IsRequired();
 
             modelBuilder.Entity<Town>().HasMany(t => t.Customers).WithOne(c => c.Town).HasForeignKey(c => c.TownId);
-
         }
     }
 }

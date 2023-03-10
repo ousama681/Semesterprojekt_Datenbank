@@ -7,16 +7,11 @@ namespace DBS_View.View
     {
         InvoiceVm vm;
 
-
         public InvoiceForm()
         {
             InitializeComponent();
             vm = new InvoiceVm();
-
-            // DgvSearch.DataSource= vm.GetInvoices();
-
             AdvDgvInvoice.DataSource = vm.GetInvoices();
-
             ChkBox.DisplayMember = "Text";
             ChkBox.ValueMember = "Value";
             ChkBox.Items.Insert(0, new {Text = "Rechnungs Nr", Value = "Invoice.Id" });
@@ -29,12 +24,10 @@ namespace DBS_View.View
             ChkBox.Items.Insert(7, new { Text = "Strasse", Value = "Customer.Street" });
             ChkBox.Items.Insert(8, new { Text = "Ort", Value = "Order.City" });
             ChkBox.Items.Insert(9, new { Text = "Land", Value = "Order.Country" });
-
         }
 
         private void CmdSearch_Click(object sender, EventArgs e)
         {
-            
             var texts = new List<string>();
             if (ChkBox.CheckedItems.Count > 0)
             {
@@ -61,7 +54,7 @@ namespace DBS_View.View
                             texts.Add("Town.ZipCode");
                             break;
                         case 6:
-                            //texts.Add("Invoice.BruttoPrice");
+                            //texts.Add("Invoice.BruttoPrice"); // nicht fertig implementiert aus zeitgründen
                             break;
                         case 7:
                             texts.Add("Invoice.NetPrice");
@@ -80,7 +73,7 @@ namespace DBS_View.View
                 texts.Add("Invoice.Id");
                 texts.Add("Invoice.Date");
                 texts.Add("Invoice.NetPrice");
-                //texts.Add("Invoice.BruttoPrice");
+                //texts.Add("Invoice.BruttoPrice"); // nicht fertig implementiert aus zeitgründen
                 texts.Add("Customer.Nr");
                 texts.Add("Customer.Name");
                 texts.Add("Town.ZipCode");
@@ -97,15 +90,6 @@ namespace DBS_View.View
                 var whereQuery = GetWhereString(texts, searchText);
                 AdvDgvInvoice.DataSource = vm.GetFilteredData(whereQuery);
             }
-            
-
-            //var ChkBoxtexts = this.ChkBox.CheckedItems.Cast<object>()
-            //                                  .Select(x => this.ChkBox.ValueMember);
-
-            //var list = ChkBoxtexts.ToList();
-
-            //AdvDgvInvoice.DataSource = vm.GetFilteredOptions(yourList);
-            
         }
 
 

@@ -12,8 +12,7 @@ namespace DBS_View.View
     {
         ArticleGroupVm articleGroupVm;
         bool isAnyCheckboxSelected = false;
-       
-
+        
         public ArticleGroupForm()
         {
             InitializeComponent();
@@ -29,7 +28,7 @@ namespace DBS_View.View
                 {
                     isAnyCheckboxSelected = true;
                     TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
-                    newNode.Tag = node.ImageIndex; //ImageIndex == ID Node == newNode ParentID
+                    newNode.Tag = node.ImageIndex; //ImageIndex == ID Node == newNode ParentID      (ノಠ益ಠ)ノ彡┻━┻    H.E.L.P
                     ArticleGroupVm vm = new ArticleGroupVm(newNode.Text, newNode.Tag?.ToString());
                     articleGroupVm.CreateArticleGroup(vm);
                     newNode.ImageIndex = articleGroupVm.GetNodeId(vm);
@@ -43,10 +42,8 @@ namespace DBS_View.View
                 TreeNode rootNode = new TreeNode(TxtAddArticleGroup.Text);
                 rootNode.Tag = null;
                 ArticleGroupVm vm = new ArticleGroupVm(rootNode.Text, rootNode.Tag?.ToString());
-                
                 articleGroupVm.CreateArticleGroup(vm);
                 rootNode.ImageIndex = articleGroupVm.GetNodeId(vm);
-                
                 TrVArticleGroup.Nodes.Add(rootNode);
             }
             TrVArticleGroup.LabelEdit = false;
@@ -71,6 +68,7 @@ namespace DBS_View.View
                 RekursiveCheckSelectedTreeNodes(node.Nodes);
             }
         }
+
         private void CmdDeleteArticleGroup_Click(object sender, EventArgs e)
         {
             isAnyCheckboxSelected = false;
@@ -117,14 +115,10 @@ namespace DBS_View.View
             TxtArticleGroupName.Enabled = false;
         }
 
-
         private void LoadTreeView()
         {
             TrVArticleGroup.Nodes.Clear();
-
-
             var ArticleGroupList = articleGroupVm.GetArticleGroup();
-
             TreeNode node;
             List<TreeNode> nodes = new List<TreeNode>();
             if (ArticleGroupList != null)
@@ -134,7 +128,6 @@ namespace DBS_View.View
                     node.Tag = articleGroupVm.ParentId;
                     node.ImageIndex = articleGroupVm.Id;
                     nodes.Add(node);
-                    
                 }
 
             for (int i = 0; i < nodes.Count; i++)

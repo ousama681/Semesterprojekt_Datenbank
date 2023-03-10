@@ -20,7 +20,6 @@ namespace DBS_View.View
             orderVM = new OrderVM();
             positionnr = 1;
             CmbCustomer.DataSource = orderVM.GetCustomerNames();
-            //CmbArticle.DataSource = orderVM.GetArticles();
             articleGroupVm = new ArticleGroupVm();
             LoadTreeView();
           
@@ -29,10 +28,7 @@ namespace DBS_View.View
         private void LoadTreeView()
         {
             TrVArticleGroupOrder.Nodes.Clear();
-
-
             var ArticleGroupList = articleGroupVm.GetArticleGroup();
-
             TreeNode node;
             List<TreeNode> nodes = new List<TreeNode>();
             if (ArticleGroupList != null)
@@ -42,7 +38,6 @@ namespace DBS_View.View
                     node.Tag = articleGroupVm.ParentId;
                     node.ImageIndex = articleGroupVm.Id;
                     nodes.Add(node);
-
                 }
 
             for (int i = 0; i < nodes.Count; i++)
@@ -120,21 +115,16 @@ namespace DBS_View.View
         {
             if (DgVPositions.SelectedRows.Count != 0)
             {
-
                 Position pos;
-
                 var selectedPosCells = DgVPositions.SelectedCells;
                 var selectedOrderCells = DgVOrders.SelectedCells;
-
                 int positionNr =(int) selectedPosCells[0].Value;
                 int quantity = (int)selectedPosCells[2].Value;
                 Article article;
                 int orderId = (int)selectedOrderCells[0].Value;
 
-
                 using (var context = new DataContext())
                 {
-
                     article = (from a in context.Article
                                 where a.Name == selectedPosCells[1].Value.ToString()
                                 select a).SingleOrDefault();
@@ -143,15 +133,11 @@ namespace DBS_View.View
                            where p.Article.Name == article.Name
                            select p).SingleOrDefault();
 
-
                     if (context.Position.Remove(pos) != null)
                     {
-
                         context.SaveChanges();
-
                         // Update UI
                         DgVOrders_RowEnter(null, null);
-
                     } else
                   {
                         // Fehlermeldung ausgeben
@@ -163,17 +149,13 @@ namespace DBS_View.View
 
         private void CmdAddOrder_Click(object sender, EventArgs e)
         {
-
             Order savedOrder = null;
             string customerName = CmbCustomer.Text;
             if (customerName.Length != 0)
             {
-
                 orderVM.customerName = customerName;
                 orderVM.orderDate = DateTime.Now;
-
                 if (orderVM.CreateOrder(orderVM)) {
-
                     // This Part is only needed to get the saved Order, so we can Display the OrderId on the UI
                     // Maybe we can add a Property to the OrderVM and Order Relation (OrderNumber)
                     using (var context = new DataContext())
@@ -192,15 +174,12 @@ namespace DBS_View.View
                     //LbPositionen.Items.Clear();
                     //orderVM.PositionList.Clear();
                     positionnr = 1;
-
                     // UI-Update
                     OrdersForm_Load(null, null);
 
                     // DVGridView auf neue Order setzen.
                     int lastOrderIndex = DgVOrders.RowCount - 1;
-
                     DgVOrders.Rows[lastOrderIndex].Selected = true;
-
                 }
                 else
                 {
@@ -225,20 +204,15 @@ namespace DBS_View.View
 
                 // UI-Update
                 OrdersForm_Load(null, null);
-                
                 // Positionen Updaten
-
             }
         }
         private void TrVArticleGroupOrder_AfterSelect(object sender, TreeViewEventArgs e)
         {
             CmbArticle.Items.Clear();
-
             string articleGroupName = TrVArticleGroupOrder.SelectedNode.Text;
-
             int parentId = DBUtilityArticleGroup.GetParentId(articleGroupName);
             var articles = DBUtilityArticleGroup.GetArticlesWithParentId(parentId);
-
 
             foreach (var article in articles)
             {
@@ -258,8 +232,6 @@ namespace DBS_View.View
         private void DgVOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-           
-            
         }
 
         private void OrdersForm_Load(object sender, EventArgs e)
@@ -293,9 +265,7 @@ namespace DBS_View.View
             //LbPositionen.Items.Clear();
             //orderVM.PositionList.Clear();
             positionnr = 1;
-
             DgVPositions.Rows.Clear();
-
 
             if (DgVOrders.SelectedRows.Count != 0)
             {

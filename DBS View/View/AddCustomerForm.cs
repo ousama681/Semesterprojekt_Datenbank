@@ -27,7 +27,6 @@ namespace DBS_View.View
             TxtWebsite.Text = customerVm.Website;
             TxtPassword.Text = customerVm.Password;
             TxtCustomerNr.Enabled = false;
-
         }
 
         private void CmdSave_Click(object sender, EventArgs e)
@@ -60,7 +59,6 @@ namespace DBS_View.View
                     customerVm.Nr = Convert.ToInt32(TxtCustomerNr.Text);
                     customerVm.UpdateCustomer(customerVm);
                 }
-
                 this.Close();
             }
             catch (FormatException ex)
