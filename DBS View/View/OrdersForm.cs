@@ -3,6 +3,7 @@ using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Utilities;
 using Semesterprojekt_Datenbank.Viewmodel;
 using System.Data;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -13,6 +14,7 @@ namespace DBS_View.View
         OrderVM orderVM;
         private int positionnr;
         ArticleGroupVm articleGroupVm;
+        List<Order> orders = new List<Order>();
 
         public OrdersForm()
         {
@@ -265,7 +267,7 @@ namespace DBS_View.View
         private void OrdersForm_Load(object sender, EventArgs e)
         {
             DgVOrders.Rows.Clear();
-            List<Order> orders;
+            List<Order> orders = new List<Order>();
             using (var context = new DataContext())
             {
                 orders = (from o in context.Order
@@ -283,6 +285,8 @@ namespace DBS_View.View
                 }
                 DgVOrders.FirstDisplayedCell.Selected = true;
             }
+
+            this.orders = orders;
         }
 
         private void DgVOrders_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -394,6 +398,37 @@ namespace DBS_View.View
 
                 context.Invoice.Add(invoice);
                 context.SaveChanges();
+            }
+        }
+
+        private void CmdSearch_Click(object sender, EventArgs e)
+        {
+            DgVOrders.Rows.Clear();
+            List<Order> orders = new List<Order>();
+            string searchValue = TxtSearch.Text;
+
+            // Gegen SqlInjection noch schützen
+
+            using (var context = new DataContext())
+            {
+                foreach (Order order in this.orders)
+                {
+                    order.Customer = (from c in context.Customer
+                                      where c.Id == order.CustomerId
+                                      select c).FirstOrDefault();
+                }
+            }
+
+            orders = this.orders.FindAll(delegate(Order o)
+            {
+                return o.Customer.Name.Contains(searchValue);
+            });
+
+            foreach (Order order in orders)
+            {
+                DgVOrders.ClearSelection();
+
+                DgVOrders.Rows.Add(order.Id, order.Customer.Name);
             }
         }
     }
