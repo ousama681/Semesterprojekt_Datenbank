@@ -14,7 +14,6 @@ namespace Semesterprojekt_Datenbank.Utilities
     public class DBUtilityArticleGroup : IDBUtility<ArticleGroupVm>
     {
         ModelBuilder modelBuilder = new ModelBuilder();
-
         public bool Create(ArticleGroupVm articleGroupVm)
         {
             try
@@ -156,14 +155,10 @@ namespace Semesterprojekt_Datenbank.Utilities
         {
             using (var context = new DataContext())
             {
-
-                // ArticleGruppenach nach Name suchen und mit neuem Namen ersetzen
                 (from a in context.ArticleGroup
                         where a.Name == oldName
                         select a).ToList()
                     .ForEach(x => x.Name = newName);
-
-                // Änderungen speichern
                 context.SaveChanges();
             }
         }
@@ -178,7 +173,6 @@ namespace Semesterprojekt_Datenbank.Utilities
                         select a)
                     .ToList();
             }
-
             return articles;
         }
 

@@ -13,12 +13,10 @@ namespace Semesterprojekt_Datenbank.Viewmodel
     {
         public static List<ArticleVm> ArticleList { get; set; } = new List<ArticleVm>();
         private DBUtilityArticle dB = new DBUtilityArticle();
-
         public string Name { get; set; }
         public int Nr { get; set; }
         public decimal Price { get; set; }
         public string ArticleGroup { get; set; }
-
         public DateTime DateTime { get; set; }
 
         public ArticleVm()
@@ -32,7 +30,6 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             Price = price;
             ArticleGroup = articleGroup;
             DateTime = dateTime;
-
         }
 
         public void CreateArticle(ArticleVm articleVm)
@@ -71,7 +68,5 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         {
             return dB.ReadArticleGroup();
         }
-
-
     }
 }

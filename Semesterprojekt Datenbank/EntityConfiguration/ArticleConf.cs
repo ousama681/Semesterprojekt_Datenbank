@@ -19,7 +19,6 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
             modelBuilder.Entity<Article>().Property(a => a.Price).IsRequired();
             modelBuilder.Entity<Article>().Property(a => a.DateTime).IsRequired();
 
-
             modelBuilder.Entity<Article>().HasOne(a => a.ArticleGroup)
                 .WithMany(a => a.Articles).HasForeignKey(a => a.ArticleGroupId);
 

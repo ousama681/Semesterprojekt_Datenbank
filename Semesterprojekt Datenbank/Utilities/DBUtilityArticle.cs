@@ -12,9 +12,7 @@ namespace Semesterprojekt_Datenbank.Utilities
     public class DBUtilityArticle : IDBUtility<ArticleVm>
     {
         ModelBuilder modelBuilder = new ModelBuilder();
-
         MWST mwst = new MWST();
-
 
         public bool Create(ArticleVm orderVM)
         {
@@ -22,7 +20,6 @@ namespace Semesterprojekt_Datenbank.Utilities
             {
                 using (var context = new DataContext())
                 {
-
                     var articleGroupId = GetArticleGroupId(context, orderVM);
                     Article article = new Article(orderVM.Name, orderVM.Nr, orderVM.Price, articleGroupId, 1, DateTime.Now);
                     context.Add(article);

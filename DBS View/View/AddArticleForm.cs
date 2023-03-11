@@ -25,12 +25,10 @@ namespace DBS_View.View
         }
         public AddArticleForm(ArticleVm articleVm)
         {
-            
             InitializeComponent();
             articleForm = new ArticleForm();
             this.articleVm = new ArticleVm();
             isArticleUpdated = true;
-
             CmbArticleGroup.Text = articleVm.ArticleGroup;
             TxtArticleName.Text = articleVm.Name;
             TxtArticleNr.Text = articleVm.Nr.ToString();
@@ -70,9 +68,6 @@ namespace DBS_View.View
             {
                 MessageBox.Show("Bitte korrekte Werte in alle Felder eingeben ");
             }
-            
-            
-            
         }
     }
 }

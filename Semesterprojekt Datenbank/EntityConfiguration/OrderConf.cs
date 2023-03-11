@@ -17,7 +17,6 @@ namespace Semesterprojekt_Datenbank.EntityConfiguration
                 .HasOne(o => o.Customer)
                 .WithMany(c => c.Orders)
                 .HasForeignKey(o => o.CustomerId);
-            
         }
     }
 }

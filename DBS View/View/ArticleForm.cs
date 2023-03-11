@@ -19,7 +19,6 @@ namespace DBS_View.View
         public ArticleForm()
         {
             InitializeComponent();
-            
         }
 
         private void CmdAddArticle_Click(object sender, EventArgs e)
@@ -30,12 +29,9 @@ namespace DBS_View.View
         }
         private void CmdDelete_Click(object sender, EventArgs e)
         {
-
             if (DgvArticle.CurrentRow != null)
             {
-                // Create row and column variable for better readability
                 DataGridViewColumnCollection column = DgvArticle.Columns;
-                // Getting column number to prevent errors when changing the order of the columns
                 string articleName = Convert.ToString(DgvArticle.CurrentRow.Cells[column["colName"].Index].Value);
 
                 if (MessageBox.Show("Möchten Sie den Artikel" + " \"" + articleName + "\" " +
@@ -73,8 +69,6 @@ namespace DBS_View.View
                 DataGridViewCell cell = row.Cells[articleNameColumnIndex];
                 string artikelName = Convert.ToString(cell.Value);
                 ArticleVm articleVm = ArticleVm.ArticleList.Find(x => x.Name == artikelName);
-                
-
                 AddArticleForm addArticleForm = new AddArticleForm(articleVm);
                 addArticleForm.FormClosed += new FormClosedEventHandler(this.AddArticleForm_FormClosed);
                 addArticleForm.ShowDialog();
@@ -84,40 +78,28 @@ namespace DBS_View.View
         private void FillDataGrid()
         {
             DgvArticle.Rows.Clear();
-
-            // Create row and column variable for better readability
             DataGridViewRowCollection row = DgvArticle.Rows;
-
             DataGridViewColumnCollection column = DgvArticle.Columns;
+
             if (ArticleVm.ArticleList != null)
             {
                 foreach (ArticleVm articleVm in ArticleVm.ArticleList)
                 {
-                    // Add new row to DataGridView
                     int rowIndex = row.Add();
-
-                    // Create cell variable for better readability
                     DataGridViewCellCollection cell = row[rowIndex].Cells;
-
-                    // Add data to new row
                     cell[column["colNr"].Index].Value = articleVm.Nr;
                     cell[column["colName"].Index].Value = articleVm.Name;
                     cell[column["colPrice"].Index].Value = articleVm.Price;
                     cell[column["colArticleGroup"].Index].Value = articleVm.ArticleGroup;
-
                 }
             }
-            //DgvCustomer.Sort(column["colName"], ListSortDirection.Ascending);
             DgvArticle.ClearSelection();
         }
 
         private void SearchArticle()
         {
-            // Create row and column variable for better readability
             DataGridViewColumnCollection column = DgvArticle.Columns;
-
             int count = 0;
-            // Check every row for cells that contain the search string
             if (TxtSearch.Text.Length >= 3)
             {
                 foreach (DataGridViewRow row in DgvArticle.Rows)
@@ -137,7 +119,6 @@ namespace DBS_View.View
                                 break;
                             };
                         }
-
                     }
                 }
                 if (count == DgvArticle.RowCount)
@@ -176,8 +157,6 @@ namespace DBS_View.View
             if (e.KeyCode == Keys.Enter)
             {
                 SearchArticle();
-
-                // Suppresses the Windows sound if "enter" is pressed in a single line textbox
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }

@@ -11,19 +11,13 @@ namespace Semesterprojekt_Datenbank.Viewmodel
     public class OrderVM
     {
         public static List<OrderVM> OrderList = new List<OrderVM>();
-
-        //public List<OrderVM> PositionList = new List<OrderVM>();
-
         public List<Position> positionList = new List<Position>();
         private DBUtilityOrder db = new DBUtilityOrder();           
         public string customerName { get; set; }
         public string orderNr { get; set; }
         public int positionNr { get; set; }
-
         public bool isInvoiceGenerated { get; set; }
-
         public DateTime orderDate { get; set; }
-
         public OrderVM()
         {
 
@@ -41,10 +35,6 @@ namespace Semesterprojekt_Datenbank.Viewmodel
             this.orderDate = orderDate;
         }
 
-        //public string GetPostion()
-        //{
-        //    return "Pos Nr: " + positionNr + "   |   Artikel: " + articleName + "   |   Anzahl: " + quantity;
-        //}
         public bool CreateOrder(OrderVM orderVm)
         {
             return db.Create(orderVm);
@@ -59,7 +49,5 @@ namespace Semesterprojekt_Datenbank.Viewmodel
         {
             return db.ReadArticles();
         }
-
-
     }
 }

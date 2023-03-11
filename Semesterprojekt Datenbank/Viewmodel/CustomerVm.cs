@@ -7,11 +7,7 @@ namespace Semesterprojekt_Datenbank.Viewmodel
     public class CustomerVm : Utilities.ViewModelBase
     {
         public static List<CustomerVm> CustomerList { get; set; } = new List<CustomerVm>();
-
-        private readonly Town town = new Town();
-        //private readonly CustomerVm customerVm;
         private DBUtilityCustomer dB = new DBUtilityCustomer();
-
         public int Id { get; set; }
         public int Nr { get; set; }
         public string Name { get; set; }
