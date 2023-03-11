@@ -57,9 +57,9 @@
             // 
             // CmdAddPosition
             // 
-            this.CmdAddPosition.Location = new System.Drawing.Point(903, 204);
+            this.CmdAddPosition.Location = new System.Drawing.Point(988, 183);
             this.CmdAddPosition.Name = "CmdAddPosition";
-            this.CmdAddPosition.Size = new System.Drawing.Size(121, 40);
+            this.CmdAddPosition.Size = new System.Drawing.Size(117, 40);
             this.CmdAddPosition.TabIndex = 5;
             this.CmdAddPosition.Text = "Position hinzufügen";
             this.CmdAddPosition.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // CmdDeletePosition
             // 
-            this.CmdDeletePosition.Location = new System.Drawing.Point(1030, 204);
+            this.CmdDeletePosition.Location = new System.Drawing.Point(988, 229);
             this.CmdDeletePosition.Name = "CmdDeletePosition";
-            this.CmdDeletePosition.Size = new System.Drawing.Size(75, 40);
+            this.CmdDeletePosition.Size = new System.Drawing.Size(117, 40);
             this.CmdDeletePosition.TabIndex = 6;
             this.CmdDeletePosition.Text = "Position löschen";
             this.CmdDeletePosition.UseVisualStyleBackColor = true;
@@ -136,7 +136,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(903, 136);
+            this.label1.Location = new System.Drawing.Point(905, 171);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 20);
             this.label1.TabIndex = 39;
@@ -146,7 +146,7 @@
             // 
             this.CmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbCustomer.FormattingEnabled = true;
-            this.CmbCustomer.Location = new System.Drawing.Point(903, 34);
+            this.CmbCustomer.Location = new System.Drawing.Point(905, 34);
             this.CmbCustomer.Name = "CmbCustomer";
             this.CmbCustomer.Size = new System.Drawing.Size(200, 23);
             this.CmbCustomer.TabIndex = 42;
@@ -163,9 +163,9 @@
             // 
             // CmdAddOrder
             // 
-            this.CmdAddOrder.Location = new System.Drawing.Point(903, 265);
+            this.CmdAddOrder.Location = new System.Drawing.Point(905, 63);
             this.CmdAddOrder.Name = "CmdAddOrder";
-            this.CmdAddOrder.Size = new System.Drawing.Size(121, 40);
+            this.CmdAddOrder.Size = new System.Drawing.Size(89, 40);
             this.CmdAddOrder.TabIndex = 44;
             this.CmdAddOrder.Text = "Auftrag erstellen";
             this.CmdAddOrder.UseVisualStyleBackColor = true;
@@ -173,9 +173,9 @@
             // 
             // CmdDeleteOrder
             // 
-            this.CmdDeleteOrder.Location = new System.Drawing.Point(1030, 265);
+            this.CmdDeleteOrder.Location = new System.Drawing.Point(1013, 63);
             this.CmdDeleteOrder.Name = "CmdDeleteOrder";
-            this.CmdDeleteOrder.Size = new System.Drawing.Size(75, 40);
+            this.CmdDeleteOrder.Size = new System.Drawing.Size(92, 40);
             this.CmdDeleteOrder.TabIndex = 45;
             this.CmdDeleteOrder.Text = "Auftrag löschen";
             this.CmdDeleteOrder.UseVisualStyleBackColor = true;
@@ -183,7 +183,7 @@
             // 
             // NumQuantity
             // 
-            this.NumQuantity.Location = new System.Drawing.Point(904, 159);
+            this.NumQuantity.Location = new System.Drawing.Point(906, 194);
             this.NumQuantity.Minimum = new decimal(new int[] {
             1,
             0,
@@ -210,7 +210,7 @@
             // 
             this.LblArticleName.AutoSize = true;
             this.LblArticleName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblArticleName.Location = new System.Drawing.Point(903, 72);
+            this.LblArticleName.Location = new System.Drawing.Point(904, 122);
             this.LblArticleName.Name = "LblArticleName";
             this.LblArticleName.Size = new System.Drawing.Size(89, 20);
             this.LblArticleName.TabIndex = 36;
@@ -220,9 +220,9 @@
             // 
             this.CmbArticle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbArticle.FormattingEnabled = true;
-            this.CmbArticle.Location = new System.Drawing.Point(903, 95);
+            this.CmbArticle.Location = new System.Drawing.Point(904, 145);
             this.CmbArticle.Name = "CmbArticle";
-            this.CmbArticle.Size = new System.Drawing.Size(200, 23);
+            this.CmbArticle.Size = new System.Drawing.Size(201, 23);
             this.CmbArticle.TabIndex = 37;
             // 
             // DgVPositions
@@ -276,7 +276,7 @@
             // 
             // CmdGenerateInvoice
             // 
-            this.CmdGenerateInvoice.Location = new System.Drawing.Point(903, 322);
+            this.CmdGenerateInvoice.Location = new System.Drawing.Point(988, 300);
             this.CmdGenerateInvoice.Name = "CmdGenerateInvoice";
             this.CmdGenerateInvoice.Size = new System.Drawing.Size(121, 40);
             this.CmdGenerateInvoice.TabIndex = 49;

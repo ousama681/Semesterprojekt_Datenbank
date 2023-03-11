@@ -5,6 +5,7 @@ using Semesterprojekt_Datenbank.Viewmodel;
 using System.Data;
 using System.Windows.Automation;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Navigation;
 
 namespace DBS_View.View
@@ -142,7 +143,8 @@ namespace DBS_View.View
                                select a).SingleOrDefault();
 
                     pos = (from p in context.Position
-                           where p.Article.Name == article.Name
+                           where p.Article.Name == article.Name &&
+                           p.OrderId == orderId
                            select p).SingleOrDefault();
 
 
@@ -203,7 +205,13 @@ namespace DBS_View.View
                     // DVGridView auf neue Order setzen.
                     int lastOrderIndex = DgVOrders.RowCount - 1;
 
+                    foreach (DataGridViewRow dataGridViewRow in DgVOrders.SelectedRows)
+                    {
+                        dataGridViewRow.Selected = false;
+                    }
+
                     DgVOrders.Rows[lastOrderIndex].Selected = true;
+                    DgVOrders.FirstDisplayedScrollingRowIndex = DgVOrders.SelectedRows[0].Index;
 
                 }
                 else
@@ -293,11 +301,6 @@ namespace DBS_View.View
 
         private void DgVOrders_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            // DgView Positions Clearen
-            // OrderVm Positionen Clearen
-
-            //LbPositionen.Items.Clear();
-            //orderVM.PositionList.Clear();
             positionnr = 1;
 
             DgVPositions.Rows.Clear();
@@ -328,10 +331,6 @@ namespace DBS_View.View
                                               where p.OrderId == clickedOrder.Id
                                               select p).ToList();
 
-                    //var positions = (from pos in context.Position
-                    //                where clickedOrder.Id == pos.OrderId
-                    //                    select pos).ToList();
-
                     int posNr = 1;
 
                     foreach (var position in clickedOrder.Positions)
@@ -341,12 +340,21 @@ namespace DBS_View.View
                                            select a).SingleOrDefault();
 
                         DgVPositions.Rows.Add(new object[] { positionnr++, article.Name, position.Quantity, (position.Quantity * article.Price) });
+                    }
 
-                        //OrderVM vm = new OrderVM(clickedOrder.Positions, customerName, clickedOrder.Id, clickedOrder.Date);
-
-                        // Position der DatagridView hinzufuegen
-                        //LbPositionen.Items.Add(vm.GetPosition());
-                        //LbPositionen.Items.Add("");
+                    if (clickedOrder.IsInvoiceGenerated)
+                    {
+                        CmdAddPosition.Enabled = false;
+                        CmdGenerateInvoice.Enabled = false;
+                        CmdDeleteOrder.Enabled = false;
+                        CmdDeletePosition.Enabled = false;
+                    }
+                    else
+                    {
+                        CmdAddPosition.Enabled = true;
+                        CmdGenerateInvoice.Enabled = true;
+                        CmdDeleteOrder.Enabled = true;
+                        CmdDeletePosition.Enabled = true;
                     }
                 }
 
@@ -399,8 +407,14 @@ namespace DBS_View.View
                 invoice.CustomerId = customerId;
 
                 context.Invoice.Add(invoice);
+                order.IsInvoiceGenerated = true;
                 context.SaveChanges();
             }
+
+            CmdGenerateInvoice.Enabled = false;
+            CmdAddPosition.Enabled = false;
+            CmdDeleteOrder.Enabled = false;
+            CmdDeletePosition.Enabled = false;
         }
 
         private void CmdSearch_Click(object sender, EventArgs e)
