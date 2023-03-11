@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PnlSidebar = new System.Windows.Forms.Panel();
+            this.CmdJahresvergleich = new System.Windows.Forms.Button();
             this.CmdSearch = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CmdOrders = new System.Windows.Forms.Button();
@@ -48,6 +49,7 @@
             // PnlSidebar
             // 
             this.PnlSidebar.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.PnlSidebar.Controls.Add(this.CmdJahresvergleich);
             this.PnlSidebar.Controls.Add(this.CmdSearch);
             this.PnlSidebar.Controls.Add(this.pictureBox1);
             this.PnlSidebar.Controls.Add(this.CmdOrders);
@@ -59,6 +61,18 @@
             this.PnlSidebar.Name = "PnlSidebar";
             this.PnlSidebar.Size = new System.Drawing.Size(166, 477);
             this.PnlSidebar.TabIndex = 0;
+            // 
+            // CmdJahresvergleich
+            // 
+            this.CmdJahresvergleich.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CmdJahresvergleich.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.CmdJahresvergleich.Location = new System.Drawing.Point(3, 388);
+            this.CmdJahresvergleich.Name = "CmdJahresvergleich";
+            this.CmdJahresvergleich.Size = new System.Drawing.Size(157, 47);
+            this.CmdJahresvergleich.TabIndex = 6;
+            this.CmdJahresvergleich.Text = "Jahresvergleich";
+            this.CmdJahresvergleich.UseVisualStyleBackColor = true;
+            this.CmdJahresvergleich.Click += new System.EventHandler(this.CmdJahresvergleich_Click);
             // 
             // CmdSearch
             // 
@@ -204,5 +218,6 @@
         private Panel PnlMainPanel;
         private Panel PnlTitle;
         private Button CmdSearch;
+        private Button CmdJahresvergleich;
     }
 }

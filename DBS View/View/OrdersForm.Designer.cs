@@ -33,6 +33,8 @@
             this.TxtSearch = new System.Windows.Forms.TextBox();
             this.CmdSearch = new System.Windows.Forms.Button();
             this.DgVOrders = new System.Windows.Forms.DataGridView();
+            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.CmbCustomer = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,8 +50,6 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceBrutto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CmdGenerateInvoice = new System.Windows.Forms.Button();
-            this.colOrderNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgVOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumQuantity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgVPositions)).BeginInit();
@@ -90,6 +90,7 @@
             this.CmdSearch.TabIndex = 8;
             this.CmdSearch.Text = "Suchen";
             this.CmdSearch.UseVisualStyleBackColor = true;
+            this.CmdSearch.Click += new System.EventHandler(this.CmdSearch_Click);
             // 
             // DgVOrders
             // 
@@ -113,6 +114,23 @@
             this.DgVOrders.TabIndex = 9;
             this.DgVOrders.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_CellDoubleClick);
             this.DgVOrders.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgVOrders_RowEnter);
+            // 
+            // colOrderNr
+            // 
+            this.colOrderNr.FillWeight = 30F;
+            this.colOrderNr.HeaderText = "Auftragsnr";
+            this.colOrderNr.MinimumWidth = 10;
+            this.colOrderNr.Name = "colOrderNr";
+            this.colOrderNr.ReadOnly = true;
+            this.colOrderNr.Width = 70;
+            // 
+            // colCustomerName
+            // 
+            this.colCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCustomerName.HeaderText = "Kundenname";
+            this.colCustomerName.MinimumWidth = 10;
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.ReadOnly = true;
             // 
             // label1
             // 
@@ -265,23 +283,6 @@
             this.CmdGenerateInvoice.Text = "Rechnung erstellen";
             this.CmdGenerateInvoice.UseVisualStyleBackColor = true;
             this.CmdGenerateInvoice.Click += new System.EventHandler(this.CmdGenerateInvoice_Click);
-            // 
-            // colOrderNr
-            // 
-            this.colOrderNr.FillWeight = 30F;
-            this.colOrderNr.HeaderText = "Auftragsnr";
-            this.colOrderNr.MinimumWidth = 10;
-            this.colOrderNr.Name = "colOrderNr";
-            this.colOrderNr.ReadOnly = true;
-            this.colOrderNr.Width = 70;
-            // 
-            // colCustomerName
-            // 
-            this.colCustomerName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colCustomerName.HeaderText = "Kundenname";
-            this.colCustomerName.MinimumWidth = 10;
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.ReadOnly = true;
             // 
             // OrdersForm
             // 

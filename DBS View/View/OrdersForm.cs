@@ -3,6 +3,7 @@ using Semesterprojekt_Datenbank.Model;
 using Semesterprojekt_Datenbank.Utilities;
 using Semesterprojekt_Datenbank.Viewmodel;
 using System.Data;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
@@ -13,6 +14,7 @@ namespace DBS_View.View
         OrderVM orderVM;
         private int positionnr;
         ArticleGroupVm articleGroupVm;
+        List<Order> orders = new List<Order>();
 
         public OrdersForm()
         {
@@ -20,15 +22,19 @@ namespace DBS_View.View
             orderVM = new OrderVM();
             positionnr = 1;
             CmbCustomer.DataSource = orderVM.GetCustomerNames();
+            //CmbArticle.DataSource = orderVM.GetArticles();
             articleGroupVm = new ArticleGroupVm();
             LoadTreeView();
-          
+
         }
 
         private void LoadTreeView()
         {
             TrVArticleGroupOrder.Nodes.Clear();
+
+
             var ArticleGroupList = articleGroupVm.GetArticleGroup();
+
             TreeNode node;
             List<TreeNode> nodes = new List<TreeNode>();
             if (ArticleGroupList != null)
@@ -38,6 +44,7 @@ namespace DBS_View.View
                     node.Tag = articleGroupVm.ParentId;
                     node.ImageIndex = articleGroupVm.Id;
                     nodes.Add(node);
+
                 }
 
             for (int i = 0; i < nodes.Count; i++)
@@ -64,14 +71,14 @@ namespace DBS_View.View
                 using (var context = new DataContext())
                 {
                     articleId = (from a in context.Article
-                        where a.Name == CmbArticle.Text
-                        select a.Id).SingleOrDefault();
+                                 where a.Name == CmbArticle.Text
+                                 select a.Id).SingleOrDefault();
 
                     pos = new Position(quantity, 0, 0, articleId, orderId);
 
                     orderVM.positionList = (from p in context.Position
-                        where p.OrderId == orderId
-                        select p).ToList();
+                                            where p.OrderId == orderId
+                                            select p).ToList();
 
                     // Wenn Artikel bereits existiert dann Menge zur Position hinzufügen
                     if (orderVM.positionList.Contains(pos))
@@ -91,8 +98,8 @@ namespace DBS_View.View
                             foreach (Position position in orderVM.positionList)
                             {
                                 Article article = (from a in context.Article
-                                    where a.Id == position.ArticleId
-                                    select a).SingleOrDefault();
+                                                   where a.Id == position.ArticleId
+                                                   select a).SingleOrDefault();
 
                                 pos.PriceNetto = (article.Price * pos.Quantity);
 
@@ -115,31 +122,41 @@ namespace DBS_View.View
         {
             if (DgVPositions.SelectedRows.Count != 0)
             {
+
                 Position pos;
+
                 var selectedPosCells = DgVPositions.SelectedCells;
                 var selectedOrderCells = DgVOrders.SelectedCells;
-                int positionNr =(int) selectedPosCells[0].Value;
+
+                int positionNr = (int)selectedPosCells[0].Value;
                 int quantity = (int)selectedPosCells[2].Value;
                 Article article;
                 int orderId = (int)selectedOrderCells[0].Value;
 
+
                 using (var context = new DataContext())
                 {
-                    article = (from a in context.Article
-                                where a.Name == selectedPosCells[1].Value.ToString()
-                                select a).SingleOrDefault();
 
-                    pos = (from p  in context.Position
+                    article = (from a in context.Article
+                               where a.Name == selectedPosCells[1].Value.ToString()
+                               select a).SingleOrDefault();
+
+                    pos = (from p in context.Position
                            where p.Article.Name == article.Name
                            select p).SingleOrDefault();
 
+
                     if (context.Position.Remove(pos) != null)
                     {
+
                         context.SaveChanges();
+
                         // Update UI
                         DgVOrders_RowEnter(null, null);
-                    } else
-                  {
+
+                    }
+                    else
+                    {
                         // Fehlermeldung ausgeben
                     }
                 }
@@ -149,24 +166,29 @@ namespace DBS_View.View
 
         private void CmdAddOrder_Click(object sender, EventArgs e)
         {
+
             Order savedOrder = null;
             string customerName = CmbCustomer.Text;
             if (customerName.Length != 0)
             {
+
                 orderVM.customerName = customerName;
                 orderVM.orderDate = DateTime.Now;
-                if (orderVM.CreateOrder(orderVM)) {
+
+                if (orderVM.CreateOrder(orderVM))
+                {
+
                     // This Part is only needed to get the saved Order, so we can Display the OrderId on the UI
                     // Maybe we can add a Property to the OrderVM and Order Relation (OrderNumber)
                     using (var context = new DataContext())
                     {
                         int customerId = (from c in context.Customer
-                            where c.Name == customerName
-                            select c.Id).FirstOrDefault();
+                                          where c.Name == customerName
+                                          select c.Id).FirstOrDefault();
 
                         savedOrder = (from o in context.Order
-                            where o.CustomerId == customerId && o.Date == orderVM.orderDate
-                            select o).FirstOrDefault();
+                                      where o.CustomerId == customerId && o.Date == orderVM.orderDate
+                                      select o).FirstOrDefault();
                     }
 
                     // DatagridView Clearen
@@ -174,12 +196,15 @@ namespace DBS_View.View
                     //LbPositionen.Items.Clear();
                     //orderVM.PositionList.Clear();
                     positionnr = 1;
+
                     // UI-Update
                     OrdersForm_Load(null, null);
 
                     // DVGridView auf neue Order setzen.
                     int lastOrderIndex = DgVOrders.RowCount - 1;
+
                     DgVOrders.Rows[lastOrderIndex].Selected = true;
+
                 }
                 else
                 {
@@ -197,22 +222,27 @@ namespace DBS_View.View
 
                 Order order = (from o in context.Order
                                where o.Id == orderId
-                                   select o).SingleOrDefault();
+                               select o).SingleOrDefault();
 
                 context.Order.Remove(order);
                 context.SaveChanges();
 
                 // UI-Update
                 OrdersForm_Load(null, null);
+
                 // Positionen Updaten
+
             }
         }
         private void TrVArticleGroupOrder_AfterSelect(object sender, TreeViewEventArgs e)
         {
             CmbArticle.Items.Clear();
+
             string articleGroupName = TrVArticleGroupOrder.SelectedNode.Text;
+
             int parentId = DBUtilityArticleGroup.GetParentId(articleGroupName);
             var articles = DBUtilityArticleGroup.GetArticlesWithParentId(parentId);
+
 
             foreach (var article in articles)
             {
@@ -232,22 +262,24 @@ namespace DBS_View.View
         private void DgVOrders_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
+
+
         }
 
         private void OrdersForm_Load(object sender, EventArgs e)
         {
             DgVOrders.Rows.Clear();
-            List<Order> orders;
+            List<Order> orders = new List<Order>();
             using (var context = new DataContext())
             {
                 orders = (from o in context.Order
-                    select o).ToList();
+                          select o).ToList();
                 string customerName;
                 foreach (Order order in orders)
                 {
                     customerName = (from c in context.Customer
-                        where c.Id == order.CustomerId
-                        select c.Name).FirstOrDefault();
+                                    where c.Id == order.CustomerId
+                                    select c.Name).FirstOrDefault();
 
                     DgVOrders.ClearSelection();
 
@@ -256,6 +288,8 @@ namespace DBS_View.View
                 if(DgVOrders.Rows.Count > 0) 
                 DgVOrders.FirstDisplayedCell.Selected = true;
             }
+
+            this.orders = orders;
         }
 
         private void DgVOrders_RowEnter(object sender, DataGridViewCellEventArgs e)
@@ -266,7 +300,9 @@ namespace DBS_View.View
             //LbPositionen.Items.Clear();
             //orderVM.PositionList.Clear();
             positionnr = 1;
+
             DgVPositions.Rows.Clear();
+
 
             if (DgVOrders.SelectedRows.Count != 0)
             {
@@ -332,8 +368,8 @@ namespace DBS_View.View
             using (var context = new DataContext())
             {
                 Order order = (from o in context.Order
-                    where o.Id == orderIdToSelect
-                    select o).FirstOrDefault();
+                               where o.Id == orderIdToSelect
+                               select o).FirstOrDefault();
 
                 List<Position> positions = (from o in context.Order
                                             where o.Id == order.Id
@@ -365,6 +401,35 @@ namespace DBS_View.View
 
                 context.Invoice.Add(invoice);
                 context.SaveChanges();
+            }
+        }
+
+        private void CmdSearch_Click(object sender, EventArgs e)
+        {
+            DgVOrders.Rows.Clear();
+            List<Order> orders = new List<Order>();
+            string searchValue = TxtSearch.Text;
+
+            using (var context = new DataContext())
+            {
+                foreach (Order order in this.orders)
+                {
+                    order.Customer = (from c in context.Customer
+                                      where c.Id == order.CustomerId
+                                      select c).FirstOrDefault();
+                }
+            }
+
+            orders = this.orders.FindAll(delegate (Order o)
+            {
+                return o.Customer.Name.Contains(searchValue);
+            });
+
+            foreach (Order order in orders)
+            {
+                DgVOrders.ClearSelection();
+
+                DgVOrders.Rows.Add(order.Id, order.Customer.Name);
             }
         }
     }
