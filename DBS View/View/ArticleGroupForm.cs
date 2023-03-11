@@ -103,9 +103,10 @@ namespace DBS_View.View
             var searchText = TxtSearchArticleGroup.Text;
             foreach (TreeNode node in TrVArticleGroup.Nodes)
             {
-                if (node.Text.Contains(searchText) || node.Text.ToLower().Contains(searchText))
+                if (node.Text.ToLower().Contains(searchText.ToLower()))
                 {
                     TrVArticleGroup.SelectedNode = node;
+                    TrVArticleGroup.Focus();
                 }
                 if(node.Nodes.Count > 0)
                 RekursiveSearchTreeNode(node.Nodes, searchText);
@@ -116,7 +117,7 @@ namespace DBS_View.View
         {
             foreach (TreeNode node in nodeCollection)
             {
-                if (node.Text.Contains(searchText) || node.Text.ToLower().Contains(searchText))
+                if (node.Text.ToLower().Contains(searchText.ToLower()))
                 {
                     TrVArticleGroup.SelectedNode = node;
                     TrVArticleGroup.Focus();
