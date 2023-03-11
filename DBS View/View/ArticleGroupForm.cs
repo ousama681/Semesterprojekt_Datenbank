@@ -56,7 +56,7 @@ namespace DBS_View.View
                 if (node.Checked == true)
                 {
                     isAnyCheckboxSelected = true;
-                    TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text);
+                    TreeNode newNode = new TreeNode(TxtAddArticleGroup.Text); // Artikelgruppen mit selben namen erzeugen einen absturz, da in der Linq query von GetNodeId mit dem namen verglichen wird mit SingleorDefault! muss noch behoben werden
                     newNode.Tag = node.ImageIndex;
                     ArticleGroupVm vm = new ArticleGroupVm(newNode.Text, newNode.Tag?.ToString());
                     articleGroupVm.CreateArticleGroup(vm);
@@ -81,8 +81,6 @@ namespace DBS_View.View
                 }
                 RekursiveCheckSelectedTreeNodesForDeleting(node.Nodes);
             }
-            TrVArticleGroup.LabelEdit = false;
-            TrVArticleGroup.CheckBoxes = false;
             LoadTreeView();
         }
 
@@ -102,7 +100,31 @@ namespace DBS_View.View
 
         private void CmdSearchArticleGroup_Click(object sender, EventArgs e)
         {
+            var searchText = TxtSearchArticleGroup.Text;
+            foreach (TreeNode node in TrVArticleGroup.Nodes)
+            {
+                if (node.Text.Contains(searchText) || node.Text.ToLower().Contains(searchText))
+                {
+                    TrVArticleGroup.SelectedNode = node;
+                }
+                if(node.Nodes.Count > 0)
+                RekursiveSearchTreeNode(node.Nodes, searchText);
+            }
+        }
 
+        private void RekursiveSearchTreeNode(TreeNodeCollection nodeCollection, string searchText)
+        {
+            foreach (TreeNode node in nodeCollection)
+            {
+                if (node.Text.Contains(searchText) || node.Text.ToLower().Contains(searchText))
+                {
+                    TrVArticleGroup.SelectedNode = node;
+                    TrVArticleGroup.Focus();
+                }
+                if (node.Nodes.Count > 0)
+                    RekursiveSearchTreeNode(node.Nodes, searchText);
+            }
+            
         }
 
         private void ArticleGroupForm_Load(object sender, EventArgs e)

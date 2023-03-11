@@ -293,6 +293,7 @@ namespace DBS_View.View
 
                     DgVOrders.Rows.Add(order.Id, customerName);
                 }
+                if(DgVOrders.Rows.Count > 0) 
                 DgVOrders.FirstDisplayedCell.Selected = true;
             }
 
