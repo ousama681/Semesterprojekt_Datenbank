@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SemesterprojektTests.OrderTests">
+    <Position X="0.5" Y="1.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OrderTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SemesterprojektTests.CustomerTests">
+    <Position X="5.25" Y="1.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>CustomerTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SemesterprojektTests.ArticleTests">
+    <Position X="0.5" Y="2.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ArticleTests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

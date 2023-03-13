@@ -24,4 +24,8 @@
     <PackageReference Include="Syncfusion.Tools.Windows" Version="20.4.0.48" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="SemesterprojektDatenbank\Migrations\" />
+  </ItemGroup>
+
 </Project>

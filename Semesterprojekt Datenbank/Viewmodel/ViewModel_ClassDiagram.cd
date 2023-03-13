@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Semesterprojekt_Datenbank.Viewmodel.ArticleGroupVm">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAACAAAAAAAQAAAAAAAAAAQAAACAAEAAAgAACAAAAAA=</HashCode>
+      <FileName>Viewmodel\ArticleGroupVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Viewmodel.ArticleVm">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQEAAAAQAAAIBAAAAAAAUAAAAAAARAAAAAAAAAACg=</HashCode>
+      <FileName>Viewmodel\ArticleVm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dB" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Viewmodel.CustomerVm">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACEAAQASAAgAAIBAAQAAQAAAAAAABDAAIAAAAAAAA=</HashCode>
+      <FileName>Viewmodel\CustomerVm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dB" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Viewmodel.InvoiceVm">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAQAAAIAQAAAAAAQAJACAABMAIAAAAAAAA=</HashCode>
+      <FileName>Viewmodel\InvoiceVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Viewmodel.MainWindowVm">
+    <Position X="2.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Viewmodel\MainWindowVm.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="dBMainWindow" />
+      <Field Name="searchView" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Viewmodel.NavigationVm">
+    <Position X="6.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAACAAAAAACAAAEAAAAAEAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Viewmodel\NavigationVm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Viewmodel.OrderVM">
+    <Position X="0.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAQAAAAIAAAAAAAAAAAAEIAAAAAAIhAUAA=</HashCode>
+      <FileName>Viewmodel\OrderVM.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="db" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Utilities.DBUtilityOrder" Collapsed="true">
+    <Position X="3" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAABAAAAAAAABQABABgAAEAAEAAAAAAEAAAAAA=</HashCode>
+      <FileName>Utilities\DBUtilityOrder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Utilities.DBUtilityArticle" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAEAAAAAAAAABgQAEAAEAAEAAIEAAAAAA=</HashCode>
+      <FileName>Utilities\DBUtilityArticle.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Utilities.DBUtilityCustomer" Collapsed="true">
+    <Position X="13.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAAAAAABAAABgAAEAAEAAAAAAEAAAAAA=</HashCode>
+      <FileName>Utilities\DBUtilityCustomer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Utilities.DBUtilityMainWindow" Collapsed="true">
+    <Position X="4.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAgAAEAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\DBUtilityMainWindow.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.View.SearchView" Collapsed="true">
+    <Position X="5.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAIAAEAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\SearchView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Semesterprojekt_Datenbank.Model.Article">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAgAAQAAAQAkAAAAAAQAAAAAAARAAAQAAAAAAAg=</HashCode>
+      <FileName>Model\Article.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ArticleGroup" />
+      <Property Name="MWST" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Model.ArticleGroup">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAAAAAAAAAAQAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Model\ArticleGroup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Model.Customer">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAiAAgAAAAAAAAAQAAAAAAABCAAIAACBAAAA=</HashCode>
+      <FileName>Model\Customer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Town" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Model.Invoice">
+    <Position X="8.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAAAAAAAAAAAAAAAAAAAACBABAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Invoice.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Order" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Model.MWST">
+    <Position X="1.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAIAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MWST.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Model.Order">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAQAAgAAAAAAAAAAAAABABAAAAAAAAAQA=</HashCode>
+      <FileName>Model\Order.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Customer" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Model.Position">
+    <Position X="4.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAAAAAAAAwAAAAAAAEAAAAAAIgAAAgAAAAAA=</HashCode>
+      <FileName>Model\Position.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Article" />
+      <Property Name="Order" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Semesterprojekt_Datenbank.Model.Town">
+    <Position X="11.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAAAAAAAAAAIAAAAAAAAAAIAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Town.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
